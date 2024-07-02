@@ -1,0 +1,432 @@
+Animal,Symptom1,Symptom2,Symptom3,Symptom4,Disease
+cat,weight loss,increased thirst,increased urination,dehydration,diabetes
+dog,unable to jump up,difficulty exercising,limping,fatigue,arthritis
+dog,diarrhea,dehydration,pot-bellied appearance,rough coat,roundworms
+parrot,watery eyes,sneezing,fatigue,runny nose,aspergillosis
+parrot,fluffed feathers,weakness,loss of appetite,vomiting,candidiasis
+dog,infertility,inflammation in eye,inflection in reproductive organ,infection,brucellosis
+cat,loss of appetite,enlarged lymph nodes,fever,weakness,plague
+cat,abdominal pain,fever,loss of appetite,fatigue,plague
+dog,back pain,diarrhea,loss of appetite,vomiting,spondylosis
+parrot,runny nose,watery eyes,sneezing,fatigue,aspergillosis
+cat,weakness,seizures,loss of appetite,paralysis,rabies
+dog,inflammation in eye,inflection in reproductive organ,infertility,infection,brucellosis
+cat,cough,sneezing,fever,runny nose,feline herpesvirus
+cat,fever,loss of appetite,enlarged lymph nodes,fatigue,plague
+cat,weight loss,diarrhea,increased urination,dry coat,kidney diesease
+dog,diarrhea,fatigue,vomiting,dehydration,parvo
+parrot,depression,cough,difficulty breathing,loss of appetite,E. coli
+cat,dehydration,increased urination,weight loss,increased thirst,diabetes
+parrot,runny nose,sneezing,watery eyes,fatigue,aspergillosis
+cat,cough,runny nose,sneezing,fever,feline herpesvirus
+dog,fatigue,unable to jump up,limping,difficulty exercising,arthritis
+cat,paralysis,weakness,seizures,loss of appetite,rabies
+dog,vomiting,diarrhea,back pain,loss of appetite,spondylosis
+cat,paralysis,weakness,seizures,loss of appetite,rabies
+dog,loss of appetite,weakness,difficulty breathing,fever,plague
+cat,weight loss,diarrhea,increased urination,dry coat,kidney diesease
+parrot,cough,sneezing,discharge,difficulty breathing,mycoplasma synoviae
+parrot,runny nose,watery eyes,sneezing,fatigue,aspergillosis
+dog,bleeding,vomiting,sleeplessness,motion sickness,vestibular disorder
+dog,vomiting,pacing,dizziness,fatigue,cataracts
+dog,weight loss,increased appetite,vomiting,hair loss,hot spots
+cat,seizures,diarrhea,fever,infection,feline leukemia virus
+cat,seizures,paralysis,weakness,loss of appetite,rabies
+dog,vomiting,back pain,loss of appetite,diarrhea,spondylosis
+dog,diarrhea,pot-bellied appearance,rough coat,dehydration,roundworms
+dog,pain,limping,swelling,swelling,sprain
+dog,diarrhea,dehydration,pot-bellied appearance,rough coat,roundworms
+dog,vomiting,back pain,loss of appetite,diarrhea,spondylosis
+dog,diarrhea,dehydration,pot-bellied appearance,rough coat,roundworms
+dog,pacing,fatigue,dizziness,vomiting,cataracts
+cat,seizures,infection,fever,diarrhea,feline leukemia virus
+dog,dizziness,fatigue,pacing,vomiting,cataracts
+dog,vomiting,motion sickness,bleeding,sleeplessness,vestibular disorder
+parrot,diarrhea,weakness,discharge,vomiting,pacheco
+dog,hair loss,vomiting,increased appetite,weight loss,hot spots
+cat,seizures,infection,fever,diarrhea,feline leukemia virus
+dog,fatigue,limping,difficulty exercising,unable to jump up,arthritis
+dog,dizziness,pacing,vomiting,fatigue,cataracts
+parrot,watery eyes,sneezing,fatigue,runny nose,aspergillosis
+parrot,difficulty breathing,growth on body,weight loss,weakness,avian pox
+dog,vomiting,back pain,loss of appetite,diarrhea,spondylosis
+cat,increased urination,increased thirst,dehydration,weight loss,diabetes
+dog,rough coat,pot-bellied appearance,diarrhea,dehydration,roundworms
+cat,fever,loss of appetite,enlarged lymph nodes,weakness,plague
+cat,fever,infection,weight loss,seizures,feline leukemia virus
+cat,fatigue,fever,loss of appetite,decolored eyes,tularemia
+dog,vomiting,bleeding,motion sickness,sleeplessness,vestibular disorder
+dog,infection,inflection in reproductive organ,infertility,inflammation in eye,brucellosis
+cat,fever,fatigue,decolored eyes,loss of appetite,tularemia
+cat,runny nose,sneezing,cough,fever,feline herpesvirus
+cat,fever,fatigue,loss of appetite,decolored eyes,tularemia
+dog,diarrhea,depression,fever,shaking,liver shunt
+cat,increased urination,fatigue,weight loss,dehydration,diabetes
+dog,fever,swelling,bleeding,scratching,ear mites
+cat,weight loss,increased urination,increased thirst,dehydration,diabetes
+dog,inflection in reproductive organ,inflammation in eye,infertility,infection,brucellosis
+dog,pot-bellied appearance,dehydration,rough coat,diarrhea,roundworms
+dog,pain,limping,swelling,swelling,sprain
+parrot,weight loss,weakness,difficulty breathing,growth on body,avian pox
+cat,difficulty breathing,wheezing,vomiting,wheezing,asthma
+parrot,discharge,difficulty breathing,cough,sneezing,mycoplasma synoviae
+cat,weight loss,increased thirst,increased urination,dehydration,diabetes
+dog,diarrhea,pot-bellied appearance,rough coat,dehydration,roundworms
+cat,weight loss,increased thirst,increased urination,dehydration,diabetes
+cat,weight loss,increased urination,increased thirst,dehydration,diabetes
+dog,swelling,pain,limping,swelling,sprain
+parrot,vomiting,fluffed feathers,weakness,loss of appetite,candidiasis
+dog,swolen joint,pain,swelling,limping,sprain
+parrot,discharge,diarrhea,loss of appetite,difficulty breathing,psittacosis
+cat,increased thirst,increased urination,dehydration,weight loss,diabetes
+dog,dizziness,pacing,vomiting,fatigue,cataracts
+dog,motion sickness,bleeding,vomiting,sleeplessness,vestibular disorder
+cat,enlarged lymph nodes,vomiting,fever,fatigue,cat scratch disease
+dog,loss of appetite,fatigue,hair loss,difficulty breathing,asthma
+cat,weight loss,diarrhea,increased urination,dry coat,kidney diesease
+dog,unable to jump up,difficulty exercising,limping,fatigue,arthritis
+cat,weight loss,fatigue,increased urination,dehydration,diabetes
+cat,weight loss,dehydration,greasy stools,diarrhea,giardiasis 
+cat,difficulty breathing,wheezing,cough,vomiting,asthma
+dog,diarrhea,dehydration,rough coat,pot-bellied appearance,roundworms
+parrot,vomiting,diarrhea,weakness,discharge,pacheco
+dog,loss of appetite,hair loss,difficulty breathing,fatigue,asthma
+cat,nausea,diarrhea,fever,vomiting,campylobacteriosis
+cat,weight loss,dehydration,increased thirst,increased urination,diabetes
+parrot,discharge,vomiting,diarrhea,weakness,pacheco
+dog,loss of appetite,infection,anemia,weight loss,hookworm
+dog,motion sickness,bleeding,vomiting,sleeplessness,vestibular disorder
+cat,weight loss,increased urination,diarrhea,dry coat,kidney diesease
+dog,bleeding,fever,scratching,swelling,ear mites
+cat,nausea,abdominal pain,diarrhea,fever,campylobacteriosis
+cat,anemia,weight loss,cough,blood in stool,cat hookworm
+parrot,difficulty breathing,loss of appetite,depression,cough,E. coli
+dog,fatigue,unable to jump up,limping,difficulty exercising,arthritis
+dog,diarrhea,greasy stools,dehydration,fatigue,giardiasis
+dog,fatigue,limping,difficulty exercising,unable to jump up,arthritis
+parrot,watery eyes,sneezing,fatigue,runny nose,aspergillosis
+cat,paralysis,seizures,weakness,loss of appetite,rabies
+cat,fever,loss of appetite,swelling,weakness,plague
+dog,diarrhea,pot-bellied appearance,rough coat,dehydration,roundworms
+parrot,loss of appetite,diarrhea,weight loss,dehydration,polyomavirus
+cat,loss of appetite,fever,enlarged lymph nodes,weakness,plague
+cat,dehydration,increased urination,increased thirst,weight loss,diabetes
+dog,vomiting,bleeding,motion sickness,sleeplessness,vestibular disorder
+dog,pain,limping,swelling,swelling,sprain
+dog,infection,loss of appetite,anemia,weight loss,hookworm
+dog,rough coat,pot-bellied appearance,diarrhea,dehydration,roundworms
+parrot,difficulty breathing,cough,sneezing,discharge,mycoplasma synoviae
+dog,vomiting,diarrhea,loss of appetite,back pain,spondylosis
+cat,dry coat,diarrhea,increased urination,weight loss,kidney diesease
+dog,drooling,shaking,seizures,vomiting,poisoning
+cat,weight loss,increased urination,increased thirst,dehydration,diabetes
+cat,greasy stools,dehydration,weight loss,diarrhea,giardiasis 
+cat,paralysis,seizures,weakness,loss of appetite,rabies
+dog,limping,swelling,pain,swelling,sprain
+cat,greasy stools,dehydration,weight loss,diarrhea,giardiasis 
+dog,vomiting,depression,drooling,diarrhea,liver disease
+parrot,diarrhea,weakness,weight loss,depression,avian mycobacteriosis
+cat,fever,decolored eyes,loss of appetite,fatigue,tularemia
+cat,dehydration,diarrhea,weight loss,greasy stools,giardiasis 
+dog,weight loss,hair loss,increased appetite,vomiting,hot spots
+dog,weight loss,increased appetite,vomiting,hair loss,hot spots
+dog,pot-bellied appearance,dehydration,rough coat,diarrhea,roundworms
+dog,weight loss,vomiting,increased appetite,hair loss,hot spots
+dog,weight loss,vomiting,hair loss,increased appetite,hot spots
+cat,wheezing,difficulty breathing,cough,vomiting,asthma
+cat,fever,nausea,diarrhea,abdominal pain,campylobacteriosis
+dog,pot-bellied appearance,dehydration,rough coat,diarrhea,roundworms
+cat,difficulty breathing,wheezing,vomiting,wheezing,asthma
+parrot,runny nose,sneezing,fatigue,watery eyes,aspergillosis
+dog,weight loss,vomiting,hair loss,increased appetite,hot spots
+dog,infertility,inflection in reproductive organ,inflammation in eye,infection,brucellosis
+parrot,undigested food,loss of appetite,weight loss,fatigue,clostridium
+parrot,dehydration,loss of appetite,diarrhea,weight loss,polyomavirus
+dog,vomiting,depression,diarrhea,drooling,liver disease
+cat,loss of appetite,seizures,paralysis,weakness,rabies
+cat,vomiting,wheezing,difficulty breathing,cough,asthma
+cat,weight loss,anemia,cough,blood in stool,cat hookworm
+dog,infertility,inflammation in eye,inflection in reproductive organ,infection,brucellosis
+cat,increased urination,increased thirst,weight loss,dehydration,diabetes
+cat,vomiting,diarrhea,fatigue,dehydration,stomach flu
+dog,weight loss,anemia,infection,loss of appetite,hookworm
+cat,difficulty breathing,wheezing,vomiting,wheezing,asthma
+dog,hair loss,fatigue,difficulty breathing,loss of appetite,asthma
+cat,paralysis,seizures,loss of appetite,weakness,rabies
+cat,weight loss,dehydration,increased thirst,increased urination,diabetes
+dog,swelling,scratching,bleeding,fever,ear mites
+dog,infection,infertility,inflection in reproductive organ,inflammation in eye,brucellosis
+dog,loss of appetite,sneezing,cough,runny nose,kennel cough
+dog,unable to jump up,difficulty exercising,limping,fatigue,arthritis
+dog,inflammation in eye,inflection in reproductive organ,infertility,infection,brucellosis
+parrot,watery eyes,sneezing,fatigue,runny nose,aspergillosis
+dog,sneezing,runny nose,cough,loss of appetite,kennel cough
+cat,cough,runny nose,sneezing,fever,feline herpesvirus
+dog,vomiting,fatigue,pacing,dizziness,cataracts
+dog,difficulty exercising,fatigue,limping,unable to jump up,arthritis
+cat,increased thirst,increased urination,weight loss,dehydration,diabetes
+cat,cough,blood in stool,weight loss,anemia,cat hookworm
+dog,fatigue,difficulty exercising,limping,unable to jump up,arthritis
+dog,infection,infertility,inflection in reproductive organ,inflammation in eye,brucellosis
+cat,weight loss,anemia,cough,blood in stool,cat hookworm
+parrot,loss of appetite,fatigue,fluffed feathers,diarrhea,psittacine beak and feather disease
+dog,hair loss,fatigue,difficulty breathing,loss of appetite,asthma
+cat,paralysis,loss of appetite,weakness,seizures,rabies
+dog,diarrhea,dehydration,pot-bellied appearance,rough coat,roundworms
+cat,increased thirst,increased urination,dehydration,weight loss,diabetes
+dog,vomiting,pacing,dizziness,fatigue,cataracts
+dog,limping,swelling,pain,swelling,sprain
+parrot,watery eyes,runny nose,sneezing,fatigue,aspergillosis
+cat,weight loss,diarrhea,dry coat,increased urination,kidney diesease
+parrot,diarrhea,depression,discharge,sneezing,new castle disease
+cat,diarrhea,dehydration,weight loss,greasy stools,giardiasis 
+dog,loss of appetite,fatigue,difficulty breathing,hair loss,asthma
+cat,weight loss,dry coat,diarrhea,increased urination,kidney diesease
+dog,vomiting,fatigue,pacing,dizziness,cataracts
+cat,nausea,abdominal pain,diarrhea,fever,campylobacteriosis
+cat,seizures,paralysis,loss of appetite,weakness,rabies
+dog,swelling,scratching,bleeding,fever,ear mites
+cat,diarrhea,fever,abdominal pain,nausea,campylobacteriosis
+dog,weight loss,vomiting,hair loss,increased appetite,hot spots
+dog,loss of appetite,hair loss,difficulty breathing,fatigue,asthma
+cat,nausea,nausea,diarrhea,fever,campylobacteriosis
+dog,weight loss,dehydration,fatigue,diarrhea,whipworm
+cat,greasy stools,dehydration,weight loss,diarrhea,giardiasis 
+dog,swelling,fever,bleeding,scratching,ear mites
+dog,scratching,fever,bleeding,swelling,ear mites
+dog,loss of appetite,hair loss,difficulty breathing,fatigue,asthma
+cat,diarrhea,dehydration,weight loss,greasy stools,giardiasis 
+dog,loss of appetite,fatigue,hair loss,difficulty breathing,asthma
+dog,infection,inflection in reproductive organ,infertility,inflammation in eye,brucellosis
+dog,vomiting,bleeding,motion sickness,sleeplessness,vestibular disorder
+parrot,diarrhea,loss of appetite,difficulty breathing,discharge,psittacosis
+dog,rough coat,pot-bellied appearance,diarrhea,dehydration,roundworms
+cat,loss of appetite,fever,enlarged lymph nodes,weakness,plague
+dog,sneezing,runny nose,cough,loss of appetite,kennel cough
+cat,weight loss,dry coat,diarrhea,increased urination,kidney diesease
+cat,loss of appetite,fever,enlarged lymph nodes,weakness,plague
+parrot,runny nose,sneezing,watery eyes,fatigue,aspergillosis
+cat,loss of appetite,seizures,paralysis,weakness,rabies
+dog,weight loss,depression,swelling,difficulty exercising,cancer
+cat,loss of appetite,seizures,paralysis,weakness,rabies
+cat,cough,sneezing,fever,runny nose,feline herpesvirus
+dog,vomiting,back pain,loss of appetite,diarrhea,spondylosis
+cat,increased thirst,increased urination,weight loss,dehydration,diabetes
+dog,infection,loss of appetite,anemia,weight loss,hookworm
+cat,seizures,fever,diarrhea,infection,feline leukemia virus
+dog,diarrhea,pot-bellied appearance,rough coat,dehydration,roundworms
+parrot,watery eyes,sneezing,fatigue,runny nose,aspergillosis
+cat,fever,fatigue,loss of appetite,decolored eyes,tularemia
+parrot,watery eyes,sneezing,runny nose,fatigue,aspergillosis
+dog,loss of appetite,weakness,difficulty breathing,fever,plague
+cat,weight loss,increased urination,increased thirst,dehydration,diabetes
+dog,swolen joint,pain,swelling,limping,sprain
+dog,weight loss,increased appetite,vomiting,hair loss,hot spots
+cat,paralysis,loss of appetite,weakness,seizures,rabies
+dog,increased thirst,increased urination,weight loss,excessive hunger,diabetes
+dog,vomiting,fatigue,dizziness,pacing,cataracts
+dog,drooling,depression,vomiting,diarrhea,liver disease
+dog,vomiting,fatigue,diarrhea,dehydration,parvo
+dog,vomiting,fever,fatigue,infection,pyoderma
+dog,cough,sneezing,runny nose,loss of appetite,kennel cough
+parrot,runny nose,sneezing,fatigue,watery eyes,aspergillosis
+dog,vomiting,depression,diarrhea,drooling,liver disease
+cat,dry coat,diarrhea,increased urination,weight loss,kidney diesease
+dog,depression,weight loss,swelling,difficulty exercising,cancer
+dog,fatigue,unable to jump up,limping,difficulty exercising,arthritis
+dog,limping,swelling,pain,swelling,sprain
+dog,hair loss,vomiting,increased appetite,weight loss,hot spots
+cat,blood in stool,anemia,cough,weight loss,cat hookworm
+cat,dry coat,diarrhea,increased urination,weight loss,kidney diesease
+dog,weight loss,vomiting,hair loss,increased appetite,hot spots
+dog,dizziness,pacing,vomiting,fatigue,cataracts
+cat,seizures,infection,weight loss,fever,feline leukemia virus
+dog,pot-bellied appearance,rough coat,dehydration,diarrhea,roundworms
+cat,diarrhea,dehydration,weight loss,fatigue,giardiasis 
+dog,diarrhea,dehydration,pot-bellied appearance,rough coat,roundworms
+dog,pot-bellied appearance,dehydration,rough coat,diarrhea,roundworms
+cat,weight loss,dehydration,greasy stools,diarrhea,giardiasis 
+cat,seizures,infection,weight loss,fever,feline leukemia virus
+dog,inflammation in eye,inflection in reproductive organ,infection,infertility,brucellosis
+cat,weight loss,dehydration,increased thirst,increased urination,diabetes
+cat,diarrhea,dehydration,weight loss,greasy stools,giardiasis 
+cat,abdominal pain,nausea,fever,diarrhea,campylobacteriosis
+dog,diarrhea,pot-bellied appearance,rough coat,dehydration,roundworms
+cat,paralysis,seizures,weakness,loss of appetite,rabies
+cat,seizures,diarrhea,fever,infection,feline leukemia virus
+cat,loss of appetite,enlarged lymph nodes,fever,weakness,plague
+dog,sneezing,runny nose,cough,loss of appetite,kennel cough
+dog,fatigue,difficulty exercising,unable to jump up,limping,arthritis
+dog,hair loss,vomiting,increased appetite,weight loss,hot spots
+cat,infection,diarrhea,fever,seizures,feline leukemia virus
+dog,fatigue,loss of appetite,difficulty breathing,hair loss,asthma
+dog,weight loss,vomiting,increased appetite,hair loss,hot spots
+cat,loss of appetite,weakness,fever,enlarged lymph nodes,plague
+cat,loss of appetite,fever,weakness,enlarged lymph nodes,plague
+cat,fever,fatigue,loss of appetite,decolored eyes,tularemia
+parrot,weight loss,fatigue,undigested food,loss of appetite,clostridium
+parrot,loss of appetite,discharge,diarrhea,difficulty breathing,psittacosis
+cat,increased urination,fatigue,weight loss,dehydration,diabetes
+cat,weight loss,cough,anemia,blood in stool,cat hookworm
+dog,dehydration,diarrhea,pot-bellied appearance,rough coat,roundworms
+cat,loss of appetite,fever,enlarged lymph nodes,weakness,plague
+dog,motion sickness,bleeding,vomiting,sleeplessness,vestibular disorder
+cat,weight loss,increased thirst,increased urination,vomiting,hyperthyroidism
+cat,seizures,paralysis,loss of appetite,weakness,rabies
+cat,greasy stools,dehydration,weight loss,diarrhea,giardiasis 
+parrot,difficulty breathing,cough,sneezing,discharge,mycoplasma synoviae
+dog,vomiting,drooling,depression,diarrhea,liver disease
+dog,vomiting,diarrhea,back pain,loss of appetite,spondylosis
+dog,pot-bellied appearance,dehydration,rough coat,diarrhea,roundworms
+parrot,watery eyes,sneezing,fatigue,runny nose,aspergillosis
+cat,paralysis,seizures,weakness,loss of appetite,rabies
+cat,diarrhea,dehydration,weight loss,greasy stools,giardiasis 
+parrot,loss of appetite,depression,cough,difficulty breathing,E. coli
+cat,anemia,weight loss,blood in stool,cough,cat hookworm
+cat,diarrhea,nausea,fever,abdominal pain,campylobacteriosis
+dog,pot-bellied appearance,rough coat,diarrhea,dehydration,roundworms
+dog,vomiting,pacing,dizziness,fatigue,cataracts
+parrot,depression,diarrhea,weakness,weight loss,avian mycobacteriosis
+parrot,runny nose,watery eyes,sneezing,fatigue,aspergillosis
+cat,greasy stools,dehydration,weight loss,diarrhea,giardiasis 
+cat,difficulty breathing,cough,wheezing,vomiting,asthma
+dog,fatigue,difficulty exercising,limping,unable to jump up,arthritis
+dog,limping,difficulty exercising,fatigue,unable to jump up,arthritis
+parrot,weakness,loss of appetite,vomiting,fluffed feathers,candidiasis
+dog,weight loss,vomiting,hair loss,increased appetite,hot spots
+dog,swolen joint,pain,swelling,limping,sprain
+cat,seizures,paralysis,loss of appetite,weakness,rabies
+dog,increased appetite,vomiting,weight loss,hair loss,hot spots
+dog,vomiting,diarrhea,loss of appetite,back pain,spondylosis
+cat,fever,decolored eyes,vomiting,loss of appetite,cat scratch disease
+parrot,discharge,sneezing,diarrhea,depression,new castle disease
+cat,weight loss,diarrhea,increased urination,dry coat,kidney diesease
+cat,seizures,paralysis,loss of appetite,weakness,rabies
+cat,runny nose,sneezing,cough,fever,feline herpesvirus
+dog,decolored eyes,fatigue,vomiting,fever,pyoderma
+dog,loss of appetite,diarrhea,vomiting,back pain,spondylosis
+dog,vomiting,diarrhea,loss of appetite,back pain,spondylosis
+cat,loss of appetite,enlarged lymph nodes,fever,weakness,plague
+dog,loss of appetite,fever,difficulty breathing,weakness,plague
+parrot,runny nose,sneezing,watery eyes,fatigue,aspergillosis
+parrot,diarrhea,difficulty breathing,discharge,loss of appetite,psittacosis
+cat,decolored eyes,vomiting,fever,loss of appetite,cat scratch disease
+cat,loss of appetite,fever,enlarged lymph nodes,weakness,plague
+cat,dehydration,increased urination,weight loss,increased thirst,diabetes
+cat,loss of appetite,fatigue,fatigue,decolored eyes,tularemia
+dog,vomiting,diarrhea,blood in stool,abdominal pain,stomach infection
+parrot,loss of appetite,vomiting,fluffed feathers,weakness,candidiasis
+cat,anemia,weight loss,blood in stool,cough,cat hookworm
+cat,runny nose,sneezing,cough,fever,feline herpesvirus
+cat,infection,diarrhea,fever,seizures,feline leukemia virus
+dog,pacing,dizziness,fatigue,vomiting,cataracts
+dog,swelling,pain,limping,swelling,sprain
+dog,cough,sneezing,runny nose,loss of appetite,kennel cough
+dog,increased appetite,vomiting,weight loss,hair loss,hot spots
+dog,back pain,diarrhea,loss of appetite,vomiting,spondylosis
+dog,limping,difficulty exercising,fatigue,unable to jump up,arthritis
+dog,loss of appetite,sneezing,cough,runny nose,kennel cough
+dog,pot-bellied appearance,dehydration,rough coat,diarrhea,roundworms
+parrot,weakness,weight loss,depression,diarrhea,avian mycobacteriosis
+dog,rough coat,pot-bellied appearance,diarrhea,dehydration,roundworms
+parrot,watery eyes,runny nose,sneezing,fatigue,aspergillosis
+dog,increased appetite,vomiting,weight loss,hair loss,hot spots
+dog,pacing,dizziness,fatigue,vomiting,cataracts
+dog,dizziness,fatigue,pacing,vomiting,cataracts
+dog,swelling,pain,limping,swelling,sprain
+dog,pot-bellied appearance,rough coat,dehydration,diarrhea,roundworms
+dog,pacing,fatigue,dizziness,vomiting,cataracts
+dog,limping,swelling,difficulty exercising,pain,hip dysplasia
+cat,difficulty breathing,cough,wheezing,vomiting,asthma
+dog,pacing,dizziness,fatigue,vomiting,cataracts
+parrot,diarrhea,weight loss,dehydration,loss of appetite,polyomavirus
+parrot,growth on body,weight loss,weakness,difficulty breathing,avian pox
+cat,cough,runny nose,sneezing,fever,feline herpesvirus
+dog,fatigue,pale gums,,,anemia
+cat,weight loss,infection,seizures,fever,feline leukemia virus
+parrot,weakness,discharge,vomiting,diarrhea,pacheco
+dog,vomiting,fatigue,pacing,dizziness,cataracts
+dog,weight loss,hair loss,increased appetite,vomiting,hot spots
+dog,diarrhea,dehydration,pot-bellied appearance,rough coat,roundworms
+dog,fatigue,limping,difficulty exercising,unable to jump up,arthritis
+dog,infertility,inflammation in eye,infection,inflection in reproductive organ,brucellosis
+dog,diarrhea,dehydration,pot-bellied appearance,rough coat,roundworms
+cat,increased urination,increased thirst,dehydration,weight loss,diabetes
+cat,paralysis,seizures,loss of appetite,weakness,rabies
+cat,wheezing,difficulty breathing,cough,vomiting,asthma
+dog,diarrhea,dehydration,pot-bellied appearance,rough coat,roundworms
+cat,cough,sneezing,fever,runny nose,feline herpesvirus
+dog,vomiting,motion sickness,bleeding,sleeplessness,vestibular disorder
+dog,weight loss,hair loss,increased appetite,vomiting,hot spots
+dog,vomiting,fatigue,fever,diarrhea,leptospirosis
+parrot,watery eyes,sneezing,fatigue,runny nose,aspergillosis
+cat,paralysis,seizures,weakness,loss of appetite,rabies
+cat,dehydration,increased urination,weight loss,increased thirst,diabetes
+dog,dizziness,fatigue,pacing,vomiting,cataracts
+cat,difficulty breathing,cough,wheezing,vomiting,asthma
+dog,loss of appetite,sneezing,cough,runny nose,kennel cough
+cat,weight loss,increased urination,increased thirst,dehydration,diabetes
+cat,cough,sneezing,runny nose,fever,feline herpesvirus
+cat,weakness,seizures,loss of appetite,paralysis,rabies
+cat,limping,pain,swelling,loss of appetite,arthritis
+dog,cough,sneezing,runny nose,loss of appetite,kennel cough
+dog,vomiting,back pain,loss of appetite,diarrhea,spondylosis
+cat,enlarged lymph nodes,loss of appetite,fever,weakness,plague
+parrot,weakness,difficulty breathing,growth on body,weight loss,avian pox
+cat,weakness,loss of appetite,fever,enlarged lymph nodes,plague
+cat,weight loss,dehydration,increased thirst,increased urination,diabetes
+parrot,watery eyes,sneezing,fatigue,runny nose,aspergillosis
+cat,loss of appetite,enlarged lymph nodes,fever,weakness,plague
+cat,paralysis,weakness,seizures,loss of appetite,rabies
+dog,drooling,depression,vomiting,diarrhea,liver disease
+dog,weight loss,depression,swelling,difficulty exercising,cancer
+parrot,watery eyes,sneezing,fatigue,runny nose,aspergillosis
+dog,fatigue,difficulty exercising,unable to jump up,limping,arthritis
+parrot,depression,discharge,sneezing,diarrhea,new castle disease
+dog,runny nose,sneezing,cough,loss of appetite,kennel cough
+cat,wheezing,difficulty breathing,cough,vomiting,asthma
+parrot,loss of appetite,weight loss,fatigue,undigested food,clostridium
+dog,vomiting,motion sickness,bleeding,sleeplessness,vestibular disorder
+cat,increased urination,increased thirst,dehydration,weight loss,diabetes
+dog,rough coat,pot-bellied appearance,diarrhea,dehydration,roundworms
+dog,weight loss,vomiting,hair loss,increased appetite,hot spots
+dog,fatigue,difficulty exercising,unable to jump up,limping,arthritis
+dog,vomiting,depression,drooling,diarrhea,liver disease
+dog,infection,infertility,inflection in reproductive organ,inflammation in eye,brucellosis
+parrot,runny nose,sneezing,fatigue,watery eyes,aspergillosis
+cat,paralysis,seizures,weakness,loss of appetite,rabies
+parrot,weight loss,dehydration,loss of appetite,diarrhea,polyomavirus
+cat,weight loss,diarrhea,increased urination,dry coat,kidney diesease
+dog,vomiting,fatigue,fever,infection,pyoderma
+cat,weight loss,diarrhea,dry coat,increased urination,kidney diesease
+dog,vomiting,drooling,depression,diarrhea,liver disease
+cat,paralysis,loss of appetite,weakness,seizures,rabies
+dog,pacing,fatigue,dizziness,vomiting,cataracts
+dog,limping,difficulty exercising,fatigue,unable to jump up,arthritis
+cat,increased thirst,increased urination,dehydration,weight loss,diabetes
+parrot,watery eyes,runny nose,sneezing,fatigue,aspergillosis
+dog,difficulty breathing,fever,loss of appetite,weakness,plague
+parrot,fatigue,undigested food,loss of appetite,weight loss,clostridium
+dog,loss of appetite,depression,fever,swelling,carnassial tooth
+dog,dizziness,pacing,vomiting,fatigue,cataracts
+dog,loss of appetite,fatigue,hair loss,difficulty breathing,asthma
+parrot,cough,difficulty breathing,loss of appetite,depression,E. coli
+cat,weakness,seizures,loss of appetite,paralysis,rabies
+dog,hair loss,fatigue,difficulty breathing,loss of appetite,asthma
+dog,vomiting,depression,drooling,diarrhea,liver disease
+cat,weight loss,dehydration,greasy stools,diarrhea,giardiasis 
+cat,weight loss,diarrhea,dry coat,increased urination,kidney diesease
+cat,anemia,weight loss,blood in stool,cough,cat hookworm
+dog,dizziness,pacing,vomiting,fatigue,cataracts
+cat,weight loss,dry coat,diarrhea,increased urination,kidney diesease
+dog,swelling,scratching,fever,scratching,ear mites
+dog,scratching,fever,bleeding,swelling,ear mites
+parrot,sneezing,diarrhea,depression,discharge,new castle disease
+cat,weight loss,diarrhea,increased urination,dry coat,kidney diesease
+cat,nausea,abdominal pain,diarrhea,fever,campylobacteriosis
+dog,diarrhea,dehydration,pot-bellied appearance,rough coat,roundworms
+dog,weight loss,vomiting,increased appetite,hair loss,hot spots
+dog,diarrhea,fatigue,weight loss,dehydration,whipworm
+dog,fatigue,loss of appetite,difficulty breathing,hair loss,asthma
+dog,limping,pain,swelling,swelling,sprain
+parrot,weight loss,depression,diarrhea,weakness,avian mycobacteriosis
