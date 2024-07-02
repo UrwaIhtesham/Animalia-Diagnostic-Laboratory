@@ -1,7 +1,38 @@
-.App {
-  text-align: center;
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
+.App {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: #474d5e;
+}
+.react-chatbot-kit-chat-container {
+  
+  width: 400px;
+}
+.react-chatbot-kit-chat-bot-message {
+  margin: 0;
+}
+.react-chatbot-kit-user-chat-message {
+  background-color: #474d5e;
+  color: white;
 
+}
+.react-chatbot-kit-user-chat-message-arrow {
+  
+  border-left: 8px solid #474d5e;
+}
+.react-chatbot-kit-chat-bot-avatar-container {
+  border-radius: 0%;
+}
+.react-chatbot-kit-chat-bot-avatar-letter {
+  background-image: url(chatbot.png);
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
