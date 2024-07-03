@@ -11,26 +11,50 @@ class ActionProvider {
         const message = this.createChatBotMessage(messageText);
         this.updateChatbotState(message);
     }
+
+    handleSymptoms = (animalType, symptoms) => {
+      const data = {
+          animal_type: animalType,
+          symptoms: symptoms
+      };
+
+      fetch('http://localhost:5000/predict', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
+      })
+      .then(response => response.json())
+      .then(data => {
+          const message = this.createChatBotMessage(`The predicted disease is: ${data.disease}`);
+          this.updateChatbotState(message);
+      })
+      .catch(error => {
+          const message = this.createChatBotMessage('An error occurred. Please try again.');
+          this.updateChatbotState(message);
+      });
+  }
+
     
   
     handleAnimalCategory = (category) => {
       // Define valid categories
-      const validCategories = ["pets", "livestock", "poultry"];
+      const validCategories = ["pets", "pet", "livestock", "livestocks", "poultry"];
   
       // Check if the entered category is valid
       if (validCategories.includes(category.toLowerCase())) {
-        if (category.toLowerCase() === "pets") {
+        if (category.toLowerCase() === "pets" || category.toLowerCase() === "pet") {
             const message = this.createChatBotMessage("Please enter your pet type (Dog, Cat, Parrot):");
             this.updateChatbotState(message);
             this.setState(state => ({ ...state, nextInputAction: this.handlePetType }));
-          } else if(category.toLowerCase() === "livestock") {
+          } else if(category.toLowerCase() === "livestock" || category.toLowerCase() === "livestocks") {
             // Handle other categories similarly
             const message = this.createChatBotMessage("Please enter your livestock type (Cow, Buffalo, Sheep, Goat):");
             this.updateChatbotState(message);
             this.setState(state => ({ ...state, nextInputAction: this.handleLiveStockType }));
             
-          }
-          else if(category.toLowerCase() === "poultry"){
+          } else if(category.toLowerCase() === "poultry"){
             const message = this.createChatBotMessage("Please enter your poultry type (Chicken):");
             this.updateChatbotState(message);
             this.setState(state => ({ ...state, nextInputAction: this.handlePoultryType }));
@@ -44,7 +68,7 @@ class ActionProvider {
     
 
     handlePetType = (petType) => {
-        const validPets = ["dog", "cat", "parrot"];
+        const validPets = ["dog", "dogs", "cat", "cats", "parrot", "parrots"];
         if (validPets.includes(petType.toLowerCase())) {
           const message = this.createChatBotMessage("Please enter your pet's symptoms:");
           this.updateChatbotState(message);
@@ -57,7 +81,7 @@ class ActionProvider {
         }
       };
     handleLiveStockType = (livestocktype) => {
-        const validLivestock = ["cow", "buffalo", "sheep", "goat"];
+        const validLivestock = ["cow", "cows", "buffalo", "sheep", "sheeps", "goat", "goats"];
         if (validLivestock.includes(livestocktype.toLowerCase())) {
           const message = this.createChatBotMessage("Please enter your livestock's symptoms:");
           this.updateChatbotState(message);
@@ -70,7 +94,7 @@ class ActionProvider {
         }
     }
     handlePoultryType = (poultrytype) => {
-        const validpoultry =["chicken"];
+        const validpoultry =["chicken", "chickens"];
         if (validpoultry.includes(poultrytype.toLowerCase())) {
             const message = this.createChatBotMessage("Please enter your poultry's symptoms:");
             this.updateChatbotState(message);
