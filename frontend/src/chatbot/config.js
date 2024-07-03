@@ -4,8 +4,8 @@ import MessageParser from './MessageParser';
 //import avatar from './Avatar';
 
 const config = {
-  initialMessages: [createChatBotMessage(`Hi. Please enter your animal category!`)],
-  botName: 'Doctor',
+  initialMessages: [createChatBotMessage(`Welcome to Animalia Diagnostic Laboratory. Please Enter your valid animal type -> (pets, livestock, poultry)`)],
+  botName: 'Animalia',
   customStyles: {
     botMessageBox: {
       backgroundColor: '#474d5e',
