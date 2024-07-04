@@ -1,12 +1,10 @@
-from flask import Flask
+from app import create_app
 
-app = Flask(__name__)
+app = create_app()
 
-#API routes
-@app.route("/members")
+@app.route('/')
+def index():
+    return 'Welcome to my Flask App!'
 
-def members():
-    return {"members": ["Members1", "Members2", "Members2"]}
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     app.run(debug=True)
