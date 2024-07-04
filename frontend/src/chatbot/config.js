@@ -1,11 +1,12 @@
 import { createChatBotMessage } from 'react-chatbot-kit';
 import ActionProvider from './ActionProvider';
 import MessageParser from './MessageParser';
+import SymptomsDropdown from './SymptomsDropdown';
 //import avatar from './Avatar';
 
 const config = {
-  initialMessages: [createChatBotMessage(`Welcome to Animalia Diagnostic Laboratory. Please Enter your valid animal type -> (pets, livestock, poultry)`)],
-  botName: 'Animalia',
+  initialMessages: [createChatBotMessage(`Hi. Please enter your animal category!`)],
+  botName: 'Doctor',
   customStyles: {
     botMessageBox: {
       backgroundColor: '#474d5e',
@@ -14,9 +15,22 @@ const config = {
       backgroundColor: '#474d5e',
     },
   },
+  customComponents:{
+
+  },
+  
+  widgets: [
+    {
+        widgetName: "SymptomsDropdown",
+        widgetFunc: (props) => <SymptomsDropdown {...props} />,
+        mapStateToProps: ["options","data"]
+    }
+],
+
   state: {},
-  actionProvider: new ActionProvider(), // Make sure to instantiate with correct arguments if needed
-  messageParser: new MessageParser()
+  actionProvider: new ActionProvider(), 
+  messageParser: new MessageParser(),
+  
   
 };
 
