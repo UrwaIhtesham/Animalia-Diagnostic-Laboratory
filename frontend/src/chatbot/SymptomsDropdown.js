@@ -22,8 +22,13 @@ const SymptomsDropdown = ({ options, data, onSelect }) => {
   };
 
   const handleConfirmSelection = () => {
-    onSelect(selectedSymptoms); // Pass selected symptoms to parent component
-    setIsOpen(false); // Close dropdown after selection
+    if (selectedSymptoms.length === 4) {
+      onSelect(selectedSymptoms); // Pass selected symptoms to parent component
+      setIsOpen(false); // Close dropdown after selection
+    } else {
+      console.log("Please select exactly 4 symptoms."); 
+      // Optionally display a message to the user
+    }
   };
 
   return (
@@ -52,7 +57,12 @@ const SymptomsDropdown = ({ options, data, onSelect }) => {
               ))}
             </ul>
           </div>
-          <button onClick={handleConfirmSelection}>Confirm Selection</button>
+          <button 
+            onClick={handleConfirmSelection} 
+            disabled={selectedSymptoms.length !== 4}
+          >
+            Confirm Selection
+          </button>
         </div>
       )}
     </div>
