@@ -10,6 +10,8 @@ class ActionProvider {
     this.selectedSymptoms = [];
   }
 
+  
+
   handleSymptoms = (animalType) => {
     const fileName = `${animalType.toLowerCase()}.txt`;
     const filePath = `${process.env.PUBLIC_URL}/files/${fileName}`; // Adjust path as per your project structure
@@ -29,7 +31,7 @@ class ActionProvider {
           this.updateChatbotState(message);
           return;
         }
-  
+
         const dropdownMessage = this.createChatBotMessage(
           <SymptomsDropdown options={symptoms} data={{ animalType: animalType }} onSelect={this.handleSelectSymptom} />,
           {
@@ -45,36 +47,12 @@ class ActionProvider {
       });
   };
 
-  handleSelectSymptom = (selectedSymptom) => {
-    // Ensure selectedSymptom is not empty and is not already in selectedSymptoms array
-    if (selectedSymptom && !this.selectedSymptoms.includes(selectedSymptom)) {
-      if (this.selectedSymptoms.length < 4) {
-        this.selectedSymptoms.push(selectedSymptom);
-      } else {
-        const message = this.createChatBotMessage("You can only select up to 4 symptoms.");
-        this.updateChatbotState(message);
-      }
-    }
+  handleSelectSymptom = (selectedSymptoms) => {
+    console.log('Selected symptoms in ActionProvider:', selectedSymptoms); // Debugging statement
+    const message = this.createChatBotMessage(`Selected symptoms: ${selectedSymptoms.join(', ')}`);
+    this.updateChatbotState(message);
+  }
   
-    // Update chatbot state to display selected symptoms
-    this.displaySelectedSymptoms();
-  };
-  
-  handleConfirmSelection = () => {
-    if (this.selectedSymptoms.length === 4) {
-      const confirmationMessage = `These are the selected symptoms: ${this.selectedSymptoms.join(', ')}. Confirm selection?`;
-      const confirmSelection = window.confirm(confirmationMessage);
-      if (confirmSelection) {
-        // Process the confirmed symptoms
-        this.displaySelectedSymptoms();
-        // Optionally, clear the selected symptoms array for the next selection
-        this.selectedSymptoms = [];
-      }
-    } else {
-      const message = this.createChatBotMessage("Please select exactly 4 symptoms.");
-      this.updateChatbotState(message);
-    }
-  };
   displaySelectedSymptoms() {
     const message = this.createChatBotMessage(`Selected symptoms: ${this.selectedSymptoms.join(', ')}`);
     this.updateChatbotState(message);
