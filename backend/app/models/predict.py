@@ -29,9 +29,9 @@ def read_from_file(f):
     # return symptoms_dict
 
 pet_type_mapping = {
-    0: 'cat',
-    1: 'dog',
-    2: 'parrot',
+    'cat': 0,
+    'dog': 1,
+    'parrot': 2,
 }
 
 
@@ -90,8 +90,8 @@ def predict_disease(animal_type, symptoms):
             encoded_value = pet_type_mapping[animal_type]
         else:
             raise ValueError(f"Animal type '{animal_type}' not found in mapping")
-        original_label = encoder.inverse_transform([encoded_value])
-        print(f"Original label for encoded value {encoded_value}: {original_label}")
+        #original_label = encoder.inverse_transform([encoded_value])
+        print(f"label : {encoded_value}")
 
         #current_dir = os.path.dirname(os.path.abspath(__file__))
         #file_path = os.path.join(current_dir, 'files', 'dog.txt')
@@ -116,7 +116,7 @@ def predict_disease(animal_type, symptoms):
         print(symptom_array)
         pred = model.predict(symptom_array)
         print(pred)
-        return pred
+        return pred.tolist()
         # if hasattr(model, 'coef_'):
         #     feature_names = model.coef_.shape[1]  # This gives number of columns
         # elif hasattr(model, 'feature_importances_'):

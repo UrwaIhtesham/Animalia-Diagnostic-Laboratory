@@ -16,7 +16,10 @@ def predict():
 
     if animal_type and symptoms:
         prediction = predict_disease(animal_type, symptoms)
-        return jsonify({'disease': prediction}), 200
+        if prediction is not None:
+            return jsonify({'disease': prediction}), 200
+        else:
+            return jsonify({'error': 'Prediction failed'}), 500
     else:
         return jsonify({'error': 'Invalid input'}), 400
     
