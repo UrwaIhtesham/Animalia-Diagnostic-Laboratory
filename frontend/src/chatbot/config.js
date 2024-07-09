@@ -2,6 +2,7 @@ import { createChatBotMessage } from 'react-chatbot-kit';
 import ActionProvider from './ActionProvider';
 import MessageParser from './MessageParser';
 import SymptomsDropdown from './SymptomsDropdown';
+
 //import avatar from './Avatar';
 
 const config = {
@@ -21,9 +22,9 @@ const config = {
   
   widgets: [
     {
-        widgetName: "SymptomsDropdown",
-        widgetFunc: (props) => <SymptomsDropdown {...props} />,
-        mapStateToProps: ["options","data"]
+      widgetName: "SymptomsDropdown",
+      widgetFunc: (props) => <SymptomsDropdown {...props} />,
+
     }
 ],
 
