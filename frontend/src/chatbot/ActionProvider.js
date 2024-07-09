@@ -229,6 +229,8 @@ class ActionProvider {
     .then(response => {
       console.log('Response from backend: ', response.data);
       const disease = response.data.disease;
+
+      const 
       const message = this.createChatBotMessage(`Predicted disease: ${disease}`);
       this.updateChatbotState(message);
     })
