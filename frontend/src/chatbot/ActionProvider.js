@@ -204,7 +204,10 @@ class ActionProvider {
     }
 
     if (detectedLivestockType) {
-      this.handleSymptoms(livestocktype);
+      const message = `your pet type is ${livestocktype}.`;
+      const ChatBotMessage = this.createChatBotMessage(message);
+      this.updateChatbotState(ChatBotMessage);
+      this.handleInfo(livestocktype);
     } else {
       this.handleInvalidMessage("livestock (Cow, Buffalo, Sheep, Goat)");
     }
