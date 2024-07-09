@@ -10,11 +10,25 @@ class ActionProvider {
     this.maxSymptoms = 4;
     this.selectedSymptoms = [];
 
+    this.loadDiseaseMapping();
+
     this.state = {
       currentAnimalType: null
     };
   }
 
+  loadDiseaseMapping = () => {
+    const mappingUrl = `${process.env.PUBLIC_URL}/diseases/pets_disease.txt`; // URL to the txt file in the public directory
+    fetch(mappingUrl)
+      .then(response => response.text())
+      .then(text => {
+        this.diseaseMapping = this.parseMapping(text);
+        //console.log('Loaded disease mapping:', this.diseaseMapping);
+      })
+      .catch(error => {
+        console.error('Error loading disease mapping:', error);
+      });
+  };
   
 
   handleSymptoms = (animalType) => {
@@ -230,8 +244,10 @@ class ActionProvider {
       console.log('Response from backend: ', response.data);
       const disease = response.data.disease;
 
-      const 
-      const message = this.createChatBotMessage(`Predicted disease: ${disease}`);
+      console.log("All Diseases: ", this.diseaseMapping)
+      console.log("Disease Mapping: ", this.diseaseMapping[disease]);
+      const diseaseName = this.diseaseMapping[disease] || 'Unknown disease';
+      const message = this.createChatBotMessage(`Predicted disease: ${diseaseName}`);
       this.updateChatbotState(message);
     })
     .catch(error => {
@@ -239,6 +255,21 @@ class ActionProvider {
       const message = this.createChatBotMessage("Failed to predict disease. Please try again later.");
       this.updateChatbotState(message);
     })
+  };
+
+  parseMapping = (mappingText) => {
+    const lines = mappingText.split('\n');
+    const diseaseMap = {};
+
+    lines.forEach(line => {
+      const [encodedValue, diseaseName] = line.split(': ');
+      if (encodedValue && diseaseName) {
+        diseaseMap[parseInt(encodedValue.trim(), 10)] =diseaseName.trim();
+      }
+      
+    });
+
+    return diseaseMap;
   }
 }
 
