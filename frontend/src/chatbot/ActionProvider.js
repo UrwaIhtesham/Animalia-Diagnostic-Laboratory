@@ -10,15 +10,35 @@ class ActionProvider {
     this.maxSymptoms = 4;
     this.selectedSymptoms = [];
 
-    this.loadDiseaseMapping();
-
     this.state = {
       currentAnimalType: null
     };
   }
 
-  loadDiseaseMapping = () => {
-    const mappingUrl = `${process.env.PUBLIC_URL}/diseases/pets_disease.txt`; // URL to the txt file in the public directory
+  loadDiseaseMapping = (animalType) => {
+    let mappingFileName = '';
+
+    switch (animalType){
+      case 'dog':
+      case 'cat':
+      case 'parrot':
+        mappingFileName = 'pets_disease.txt';
+        break;
+      case 'cow':
+      case 'sheep':
+      case 'buffalo':
+      case 'goat':
+        mappingFileName = 'livestock_disease.txt';
+        break;
+      case 'chicken':
+        mappingFileName = 'poultry_disease.txt';
+        break;
+      default:
+        console.error('Unknown animal type: ', animalType);
+        return;
+    }
+
+    const mappingUrl = `${process.env.PUBLIC_URL}/diseases/${mappingFileName}`; // URL to the txt file in the public directory
     fetch(mappingUrl)
       .then(response => response.text())
       .then(text => {
@@ -33,10 +53,11 @@ class ActionProvider {
 
   handleSymptoms = (animalType) => {
     //this.setState({currentAnimalType: animalType});
+    this.loadDiseaseMapping(animalType);
 
     const fileName = `${animalType.toLowerCase()}.txt`;
     const filePath = `${process.env.PUBLIC_URL}/files/${fileName}`; // Adjust path as per your project structure
-    //const filePath = `public/files/${fileName}`; // Adjust path as per your project structure
+
     console.log(animalType);
     console.log(`Fetching symptoms from: ${filePath}`); // Debugging statement
 
