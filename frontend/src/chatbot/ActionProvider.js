@@ -18,6 +18,7 @@ class ActionProvider {
   loadDiseaseMapping = (animalType) => {
     let mappingFileName = '';
 
+    //Adding filename to variable mappingFileName according to the animalType
     switch (animalType){
       case 'dog':
       case 'cat':
@@ -52,7 +53,6 @@ class ActionProvider {
   
 
   handleSymptoms = (animalType) => {
-    //this.setState({currentAnimalType: animalType});
     this.loadDiseaseMapping(animalType);
 
     const fileName = `${animalType.toLowerCase()}.txt`;
@@ -94,7 +94,7 @@ class ActionProvider {
 
   handleSelectSymptom = (selectedSymptoms, animalType) => {
     console.log('Selected symptoms in ActionProvider:', selectedSymptoms); // Debugging statement
-    const message = this.createChatBotMessage(`Selected symptoms: ${selectedSymptoms.join(', ')}`);
+    const message = this.createChatBotMessage(`Selected symptoms: ${selectedSymptoms.join(', ')}`, {withAvatar: true});
     this.updateChatbotState(message);
     //const {currentAnimalType} = this.state;
     console.log(animalType);
@@ -107,7 +107,7 @@ class ActionProvider {
   }
   
   displaySelectedSymptoms() {
-    const message = this.createChatBotMessage(`Selected symptoms: ${this.selectedSymptoms.join(', ')}`);
+    const message = this.createChatBotMessage(`Selected symptoms: ${this.selectedSymptoms.join(', ')}`, {withAvatar: true});
     this.updateChatbotState(message);
   }
 
@@ -189,7 +189,7 @@ class ActionProvider {
 
   handleInfo = (animalType) => {
     const infomessage = "Enter information about your animal (age, breed, etc).";
-    const message = this.createChatBotMessage(infomessage);
+    const message = this.createChatBotMessage(infomessage, {withAvatar: true});
     this.updateChatbotState(message);
     this.setState(state => ({ ...state, currentAnimalType:animalType, nextInputAction: (info) => this.handleInfoInput(info, animalType)}));
   }
@@ -225,7 +225,7 @@ class ActionProvider {
     }
 
     if (detectedLivestockType) {
-      const message = `your pet type is ${livestocktype}.`;
+      const message = `your Livestock type is ${livestocktype}.`;
       const ChatBotMessage = this.createChatBotMessage(message);
       this.updateChatbotState(ChatBotMessage);
       this.handleInfo(livestocktype);
@@ -244,6 +244,9 @@ class ActionProvider {
       poultrytype = "chicken";
     }
     if (detectedPoultryType) {
+      const message = `Your poultry type is ${poultrytype}`;
+      const ChatBotMessage = this.createChatBotMessage(message);
+      this.updateChatbotState(ChatBotMessage);
       this.handleSymptoms(poultrytype);
     } else {
       this.handleInvalidMessage("poultry (Chicken)");
@@ -271,7 +274,7 @@ class ActionProvider {
       console.log("All Diseases: ", this.diseaseMapping)
       console.log("Disease Mapping: ", this.diseaseMapping[disease]);
       const diseaseName = this.diseaseMapping[disease] || 'Unknown disease';
-      const message = this.createChatBotMessage(`Predicted disease: ${diseaseName}`);
+      const message = this.createChatBotMessage(`Predicted disease: ${diseaseName}`, {withAvatar: true});
       this.updateChatbotState(message);
     })
     .catch(error => {
