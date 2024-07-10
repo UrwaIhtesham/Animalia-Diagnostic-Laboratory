@@ -6,7 +6,7 @@ import SymptomsDropdown from './SymptomsDropdown';
 //import avatar from './Avatar';
 
 const config = {
-  initialMessages: [createChatBotMessage(`Hi. Please enter your animal category!`)],
+  initialMessages: [createChatBotMessage(`Hi. WELCOME TO ANIMALIA DIAGNOSTIC CENTRE. Please enter your animal category!`)],
   botName: 'Doctor',
   customStyles: {
     botMessageBox: {
