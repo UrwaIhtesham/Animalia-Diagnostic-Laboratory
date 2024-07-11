@@ -2,30 +2,37 @@ import { createChatBotMessage } from 'react-chatbot-kit';
 import ActionProvider from './ActionProvider';
 import MessageParser from './MessageParser';
 import SymptomsDropdown from './SymptomsDropdown';
+import React from 'react';
+import BotAvatar from '../Components/BotAvatar/BotAvatar';
 
 //import avatar from './Avatar';
 
 const config = {
-  initialMessages: [createChatBotMessage(`Hi. Please enter your animal category!`)],
-  botName: 'Doctor',
+  initialMessages: [createChatBotMessage(<React.Fragment>
+    Hi.<br /> <br/>
+    WELCOME TO ANIMALIA DIAGNOSTIC CENTRE. <br/> <br/>
+    Please Enter your Animal Category (Pets, Livestock, Poultry)
+  </React.Fragment>)],
+  botName: 'Animalia',
   customStyles: {
-    botMessageBox: {
-      backgroundColor: '#474d5e',
-    },
+    botMessageBox: 'bg-lightgray text-black text-lg',
+      //backgroundColor: 'lightgray',
+      //color: 'black',
+      //fontSize: 'larger',
     chatButton: {
-      backgroundColor: '#474d5e',
+      backgroundColor: 'maroon',
     },
   },
   customComponents:{
-
+    botAvatar: (props) => <BotAvatar {...props}/>,
+    //optionsLinks: (props) => <OptionsLinks {...props} />,
   },
   
   widgets: [
     {
       widgetName: "SymptomsDropdown",
       widgetFunc: (props) => <SymptomsDropdown {...props} />,
-
-    }
+    },
 ],
 
   state: {},

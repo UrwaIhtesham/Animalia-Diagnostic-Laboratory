@@ -1,0 +1,11 @@
+0: 'E. coli'
+1: 'Pasteurella multocida'
+2: 'avian influenza'
+3: 'egg drop syndrome'
+4: 'gumboro'
+5: 'infectious bronchitis'
+6: 'mycoplasma gallisepticum'
+7: 'mycoplasma synoviae'
+8: 'new castle disease'
+9: 'salmonella'
+
