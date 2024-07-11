@@ -1,45 +1,4 @@
-/* .dropdown{
-    background-color: #474d5e;
-    display: flex;
-    justify-content: center;
-    color: rgb(7, 7, 7);
-    margin-top: 0%;
-    
-}
-
-  
-  .dropdown-content {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    color:black;
-    border: 1px solid #0a0808;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    max-height: 200px;
-    overflow-y: auto;
-    width: 100%;
-  
-  }
-  .symptoms-list ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  .symptoms-list li {
-    padding: 4px;
-    border-bottom: 1px solid #ccc;
-  }
-  
-  .symptoms-list li label {
-    display: block;
-    cursor: pointer;
-  }
-  
-  .symptoms-list li input[type="checkbox"] {
-    margin-right: 8px;
-  }
-  */
-
-  .dropdown-container {
+ .dropdown-container {
     width: 100%;
     max-width: 600px; /* Adjust as needed */
     margin: 0 auto;

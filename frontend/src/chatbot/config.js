@@ -24,15 +24,15 @@ const config = {
     },
   },
   customComponents:{
-    botAvatar: (props) => <BotAvatar {...props}/>
+    botAvatar: (props) => <BotAvatar {...props}/>,
+    //optionsLinks: (props) => <OptionsLinks {...props} />,
   },
   
   widgets: [
     {
       widgetName: "SymptomsDropdown",
       widgetFunc: (props) => <SymptomsDropdown {...props} />,
-
-    }
+    },
 ],
 
   state: {},

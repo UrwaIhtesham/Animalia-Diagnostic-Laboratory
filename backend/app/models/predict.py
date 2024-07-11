@@ -6,12 +6,12 @@ import pickle
 import numpy as np
 
 # Define paths to your model pickle files
-LIVESTOCK_MODEL_PATH = '../training/livestock/livestock.pkl'
-PETS_MODEL_PATH = '../training/pets/pets.pkl'
-POULTRY_MODEL_PATH = '../training/poultry/poultry.pkl'
-LIVESTOCK_ENCODER = '../training/livestock/livestock_label_encoder.pkl'
-PETS_ENCODER = '../training/pets/pets_label_encoder.pkl'
-POULTRY_ENCODER = './training/poultry/poultry_label_encoder.pkl'
+LIVESTOCK_MODEL_PATH = './livestock.pkl'
+PETS_MODEL_PATH = './pets.pkl'
+POULTRY_MODEL_PATH = './poultry.pkl'
+LIVESTOCK_ENCODER = './livestock_label_encoder.pkl'
+PETS_ENCODER = './pets_label_encoder.pkl'
+POULTRY_ENCODER = './poultry_label_encoder.pkl'
 
 def read_from_file(f):
     symptoms_dict = {}
@@ -62,6 +62,7 @@ def load_models(animal_type):
 
 def predict_disease(animal_type, symptoms):
     try:
+        print("n predict.py")
         model, encoder = load_models(animal_type)
         #print(model)
         print(f"Loaded model type: {type(model)}")

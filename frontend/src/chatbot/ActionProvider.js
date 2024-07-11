@@ -276,6 +276,7 @@ class ActionProvider {
       const diseaseName = this.diseaseMapping[disease] || 'Unknown disease';
       const message = this.createChatBotMessage(`Predicted disease: ${diseaseName}`, {withAvatar: true});
       this.updateChatbotState(message);
+      this.redirect();
     })
     .catch(error => {
       console.error('Error predicting disease:', error);
@@ -283,6 +284,20 @@ class ActionProvider {
       this.updateChatbotState(message);
     })
   };
+
+  redirect = () => {
+    const linksMessage = this.createChatBotMessage(
+      <div>
+      <p>What would you like to do next?</p>
+      <a href="/" style={{ display: 'block', margin: '10px 0', color: 'blue' }}>Go to Home Page</a>
+      <a href="/lab-tests" style={{ display: 'block', margin: '10px 0', color: 'blue' }}>Go to Lab Tests Page</a>
+    </div>,
+    {
+      withAvatar: true,
+    }
+    );
+    this.updateChatbotState(linksMessage);
+  }
 
   parseMapping = (mappingText) => {
     const lines = mappingText.split('\n');
