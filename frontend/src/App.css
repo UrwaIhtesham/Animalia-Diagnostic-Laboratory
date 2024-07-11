@@ -10,29 +10,57 @@
   height: 100vh;
   width: 100vw;
   background-color: #474d5e;
+  margin-top: 0px;
 }
 .react-chatbot-kit-chat-container {
-  
-  width: 400px;
+  width: 50%;
 }
+
+.react-chatbot-kit-chat-header {
+  height: 50px;
+  font-size: large !important;
+  color: maroon;
+}
+
 .react-chatbot-kit-chat-bot-message {
   margin: 0;
+  width: 70%;
+  font-size: 1rem;
+  font-weight: 500;
+  background-color: lightgray;
+  color: black;
 }
-.react-chatbot-kit-user-chat-message {
-  background-color: #474d5e;
-  color: white;
 
+.react-chatbot-kit-chat-bot-message-container {
+  font: larger;
+}
+
+.react-chatbot-kit-user-chat-message {
+  background-color: maroon;
+  color: white;
+  font-size: 1rem;
+  font-weight: 500;
 }
 .react-chatbot-kit-user-chat-message-arrow {
   
-  border-left: 8px solid #474d5e;
+  border-left: 8px solid maroon;
 }
 .react-chatbot-kit-chat-bot-avatar-container {
   border-radius: 0%;
 }
-.react-chatbot-kit-chat-bot-avatar-letter {
-  background-image: url(chatbot.png);
+
+.react-chatbot-kit-user-avatar-container {
+  width: 55px;
+  height: 55px;
+  margin-left: 20px;
+  background-color: maroon;
 }
+
+svg{
+  width: 25px !important;
+  height: 25px !important;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -45,7 +73,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: maroon;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
