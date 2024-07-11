@@ -249,7 +249,8 @@ nav ul li a:hover {
 
 .gallery-images img {
   margin-top: 50px;
-  width: 700px;
+  width: 500px;
+  height: 300px;
   border-radius: 10px;
   transition: transform 0.3s ease;
 }
@@ -402,6 +403,8 @@ nav ul li a:hover {
   padding: 40px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Optional: add box shadow */
+  width: 40vw;
+  height: 75vh;
 }
 
 .modal-overlay {
@@ -415,4 +418,67 @@ nav ul li a:hover {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+
+.react-chatbot-kit-chat-container {
+  min-width: 100%;
+  min-height: 70vh;
+}
+
+.react-chatbot-kit-chat-inner-container {
+  width: 100%;
+  min-height: 70%;
+}
+
+.react-chatbot-kit-chat-message-container{
+  height: 65vh;
+}
+
+.react-chatbot-kit-chat-input-container {
+  min-height: 5vh;
+}
+
+.react-chatbot-kit-chat-input {
+  font-size: 1.5rem;
+}
+
+.react-chatbot-kit-chat-header {
+  height: 50px;
+  font-size: large !important;
+  color: maroon;
+}
+
+.react-chatbot-kit-chat-bot-message {
+  margin: 0;
+  width: 50%;
+  font-size: 1.5rem !important;
+  font-weight: 500;
+  background-color: lightgray;
+  color: black;
+}
+
+.react-chatbot-kit-chat-bot-message-container {
+  font: larger;
+}
+
+.react-chatbot-kit-user-chat-message {
+  background-color: maroon;
+  color: white;
+  font-size: 1.5rem !important;
+  font-weight: 500;
+}
+.react-chatbot-kit-user-chat-message-arrow {
+  
+  border-left: 8px solid maroon;
+}
+.react-chatbot-kit-chat-bot-avatar-container {
+  border-radius: 0%;
+}
+
+.react-chatbot-kit-user-avatar-container {
+  width: 55px;
+  height: 55px;
+  margin-left: 20px;
+  background-color: maroon;
 }
