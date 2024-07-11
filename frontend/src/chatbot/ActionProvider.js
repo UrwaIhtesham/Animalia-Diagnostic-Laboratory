@@ -289,8 +289,8 @@ class ActionProvider {
     const linksMessage = this.createChatBotMessage(
       <div>
       <p>What would you like to do next?</p>
-      <a href="/" style={{ display: 'block', margin: '10px 0', color: 'blue' }}>Go to Home Page</a>
-      <a href="/lab-tests" style={{ display: 'block', margin: '10px 0', color: 'blue' }}>Go to Lab Tests Page</a>
+      <a href="/" style={{ display: 'block', margin: '10px 0', color: 'maroon' }}>Go to Home Page</a>
+      <a href="/lab-tests" style={{ display: 'block', margin: '10px 0', color: 'maroon' }}>Go to Lab Tests Page</a>
     </div>,
     {
       withAvatar: true,
