@@ -12,17 +12,27 @@ const SymptomsDropdown = ({ options, data, onSelect }) => {
     if (selectedSymptoms.includes(symptom)) {
       setSelectedSymptoms(selectedSymptoms.filter(item => item !== symptom));
     } else {
-      if (selectedSymptoms.length < 4) {
-        setSelectedSymptoms([...selectedSymptoms, symptom]);
+      if (animalType === 'cow' || animalType === 'buffalo' || animalType === 'sheep' || animalType === 'goat'){
+        if (selectedSymptoms.length < 3){
+          setSelectedSymptoms([...selectedSymptoms, symptom]);
+        } else {
+          console.log("Cannot select more than 3 symptoms.");
+        }
       } else {
-        console.log("Cannot select more than 4 symptoms.");
-        // Optionally display a message to the user
+        if (selectedSymptoms.length < 4) {
+          setSelectedSymptoms([...selectedSymptoms, symptom]);
+        } else {
+          console.log("Cannot select more than 4 symptoms.");
+        }
       }
     }
   };
 
   const handleConfirmSelection = () => {
-    if (selectedSymptoms.length === 4) {
+    if (
+      ((animalType === 'cow' || animalType === 'buffalo' || animalType === 'sheep' || animalType === 'goat') && selectedSymptoms.length === 3) || 
+      (!(animalType === 'cow' || animalType === 'buffalo' || animalType === 'sheep' || animalType === 'goat') && selectedSymptoms.length === 4)
+    ) {
       onSelect(selectedSymptoms); // Pass selected symptoms to parent component
       setIsOpen(false); // Close dropdown after selection
     } else {
@@ -34,8 +44,10 @@ const SymptomsDropdown = ({ options, data, onSelect }) => {
   return (
     <div className="dropdown-container">
       <div className="dropdown-header" onClick={toggleDropdown}>
-        <p>Select 4 symptoms for {animalType}</p>
-        <span style={{ cursor: 'pointer' }}>{isOpen ? '▲' : '▼'}</span>
+      <p>
+        Select {['cow', 'buffalo', 'sheep', 'goat'].includes(animalType) ? '3' : '4'} symptoms for {animalType}
+      </p>
+        <span style={{ cursor: 'pointer', marginLeft: '8px' }}>{isOpen ? '▲' : '▼'}</span>
       </div>
       {isOpen && (
         <div className="dropdown-content">
@@ -43,7 +55,7 @@ const SymptomsDropdown = ({ options, data, onSelect }) => {
             <ul>
               {options.map((symptom, index) => (
                 <li key={index}>
-                  <label>
+                  <label className='checkbox-label'>
                     <input
                       type="checkbox"
                       id={symptom}
@@ -58,8 +70,12 @@ const SymptomsDropdown = ({ options, data, onSelect }) => {
             </ul>
           </div>
           <button 
+            className='confirm-button'
             onClick={handleConfirmSelection} 
-            disabled={selectedSymptoms.length !== 4}
+            disabled={
+              ((animalType === 'cow' || animalType === 'buffalo' || animalType === 'sheep' || animalType === 'goat') && selectedSymptoms.length !== 3) ||
+              (!(animalType === 'cow' || animalType === 'buffalo' || animalType === 'sheep' || animalType === 'goat') && selectedSymptoms.length !== 4)
+            }
           >
             Confirm Selection
           </button>

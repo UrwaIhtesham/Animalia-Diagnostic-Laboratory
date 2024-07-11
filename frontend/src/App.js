@@ -19,6 +19,10 @@ function App() {
           config={config}
           messageParser={MessageParser}
           actionProvider={ActionProvider}
+          avatarStyle={{
+            width: '50px',
+            height: '50px',
+          }}
         />
     </div>
   );
