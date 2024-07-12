@@ -64,13 +64,11 @@ function Home() {
       >
        <div className="modal-content"> 
      <button onClick={closeChatbot}>Close</button> {/* Close button */}
-     <div style={{ width: '100%', height: '100%' }}>
         <Chatbot
           config={config} // your chatbot configuration
           messageParser={MessageParser} // your message parser component
           actionProvider={ActionProvider} // your action provider component
         />
-        </div>
         </div>
       </Modal>
         <section className="features" id="features">
