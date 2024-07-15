@@ -6,12 +6,12 @@ import pickle
 import numpy as np
 
 # Define paths to your model pickle files
-LIVESTOCK_MODEL_PATH = './livestock.pkl'
-PETS_MODEL_PATH = './pets.pkl'
-POULTRY_MODEL_PATH = './poultry.pkl'
-LIVESTOCK_ENCODER = './livestock_label_encoder.pkl'
-PETS_ENCODER = './pets_label_encoder.pkl'
-POULTRY_ENCODER = './poultry_label_encoder.pkl'
+LIVESTOCK_MODEL_PATH = './app/models/livestock.pkl'
+PETS_MODEL_PATH = "./app/models/pets.pkl"
+POULTRY_MODEL_PATH = './app/models/poultry.pkl'
+LIVESTOCK_ENCODER = './app/models/livestock_label_encoder.pkl'
+PETS_ENCODER = './app/models/pets_label_encoder.pkl'
+POULTRY_ENCODER = './app/models/poultry_label_encoder.pkl'
 
 def read_from_file(f):
     symptoms_dict = {}
