@@ -1,0 +1,484 @@
+/* App.css */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  background-image: url('../../public/assets/pics/lab.jpg'); /* Path to your background image */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  position: relative;
+  overflow-y: auto;
+}
+
+.nav-bg {
+  display: flex;
+  align-items: center;
+  padding: 20px 0;
+  background-color: #f0f0f0ce;
+}
+
+nav {
+  justify-content: center;
+  padding: 20px 0;
+  margin-left: 250px;
+  font-family: 'Baskervville SC', serif;
+}
+
+h1 {
+  margin-left: 160px;
+  font-family: 'Baskervville SC', serif;
+  font-size: 44px; /* Example font size for the heading */
+  color: maroon;
+  font-weight: bold;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+
+nav ul li {
+  margin-left: 130px;
+}
+
+nav ul li:last-child {
+  margin-right: 0;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #242223;
+  font-weight: bold;
+  font-size: 30px; /* Example font size for nav items */
+}
+
+nav ul li a:hover {
+  text-decoration: underline;
+}
+
+.button-bg {
+  background-color: maroon;
+  color: #f0efeff5;
+  font-size: 30px;
+  padding: 9px 15px;
+  font-family: 'Baskervville SC', serif;
+}
+
+.features {
+  width: 100%;
+  display: flex;
+  padding: 0px;
+  margin-top: 900px;
+  margin-bottom: 0px; /* Add margin to separate from the next section */
+}
+
+.feature-cards {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.features .feature {
+  flex: 1 1 300px;
+  border: 1px solid #24222398;
+  padding: 40px;
+  font-family: 'Baskervville SC', serif;
+  text-align: center;
+  background-color: #f0f0f0b9;
+}
+
+.features .feature h2 {
+  font-size: 30px;
+}
+
+.features .feature p {
+  font-size: 24px;
+}
+
+.header {
+  background-color:white;
+  padding: 0px;
+  text-align: left;
+  margin-top: 5px;
+}
+
+.about .sec {
+  display: flex;
+  padding: 40px;
+  align-items: center; /* Center vertically */
+}
+
+.about .sec .left {
+  width: 40%; /* Adjust as needed */
+  padding-right: 20px; /* Add spacing between image and content */
+}
+
+.about .sec .left img {
+  width: 100%; /* Make the image fill its container */
+  max-width: 100%; /* Ensure image doesn't exceed its original size */
+  height: auto; /* Maintain aspect ratio */
+  margin-left: 160px;
+  margin-top: 70px;
+}
+
+.about .sec .right {
+  width: 40%; /* Adjust as needed */
+  text-align: left; 
+  margin-left: 140px;
+  margin-bottom: 250px;
+
+}
+.hehe{
+  text-align: left; 
+  margin-left: 180px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  padding:10px;
+}
+.about .sec .right h1#heading-1 {
+  color: #574f4f;
+  margin-top: 10px;
+  font-size: 60px;
+}
+
+.about .sec .right h1#heading-2 {
+  color: #800000;
+  margin-top: 10px;
+  font-size: 60px;
+}
+.about .sec .right h3 {
+  color: #800000;
+  font-size: 30px;
+}
+
+.about .sec .right p{
+  font-size: 30px;
+  margin-top: 8px;
+}
+
+.container-2{
+  margin-top: 0;
+  padding-top: 0px;
+  
+}
+.achievements {
+  color: white;
+  padding: 150px 150px;
+  text-align: center;
+  background-color:#0c0a0ad0 ;
+  margin-top: 80px;
+}
+
+.achievements h1 {
+  margin-bottom: 30px;
+  color: white;
+  font-size: 60px;
+}
+
+.achievements p {
+  margin-bottom: 40px;
+  font-size: 30px;
+  line-height: 45px; ;
+}
+
+.achievement-cards {
+ 
+  display: flex;
+  justify-content: space-around;
+}
+
+.achievement-card {
+  width: 20%;
+  margin-top: 70px;
+}
+
+.achievement-card h3 {
+  font-size: 80px;
+  margin-bottom: 10px;
+}
+
+.achievement-card p {
+  font-size: 30px;
+}
+
+.divider {
+  border: 0;
+  height: 1px;
+  background: white; /* Adjust the color to your preference */
+  margin: 40px 0; /* Adjust the spacing as needed */
+}
+
+.gallery {
+  padding: 100px 50px;
+  text-align: center;
+}
+
+.gallery-buttons {
+  margin-bottom: 20px;
+  margin-top: 40px;
+}
+
+.gallery-buttons button {
+  background: maroon;
+  border: 2px solid maroon;
+  color: white;
+  padding: 20px 40px;
+  margin: 10px 40px;
+  font-size: 30px;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.gallery-buttons button:hover {
+  background: maroon;
+  color: white;
+}
+
+.gallery-images {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.gallery-images img {
+  margin-top: 50px;
+  width: 500px;
+  height: 300px;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+.gallery-images img:hover {
+  transform: scale(1.05);
+}
+
+.gallery h2#gallery-heading{
+  font-size: 60px;
+  color:#574f4f;
+  margin-bottom: 30px;
+}
+
+
+.contact {
+  padding: 50px 140px;
+  text-align: center;
+  margin-left: 370px;
+  margin-top:120px;
+  background-color:white;
+  position: absolute;
+  box-shadow: 0 8px 6px rgba(73, 72, 72, 0.6); 
+  border-radius: 10px;
+  
+}
+
+.contact-container {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+
+}
+
+.contact-map {
+  flex: 1;
+  margin-top: 40px;
+}
+
+.contact-form {
+  flex: 1;
+  text-align: left;
+  margin-top: 40px;
+  margin-left: 100px;
+  padding-right: 50px;
+  
+}
+
+.contact-form h2 {
+  margin-bottom: 50px;
+  font-size: 45px;
+  color:#574f4f;
+}
+
+.contact-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.contact-form label {
+  display: flex;
+  flex-direction: row;
+  gap: 25px;
+  font-size: 28px;
+  color:#574f4f
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 80%;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 20px;
+}
+
+.contact-form textarea {
+  height: 150px;
+}
+
+.contact-form .submit-button {
+  background-color: #790e0e;
+  color: white;
+  padding: 10px 6px;
+  width:220px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 23px;
+  margin-left: 200px;
+  font-family:"mouse-300", Arial, Helvetica, sans-serif;
+  font-weight: 400;
+}
+
+
+.contact-form button:hover {
+  background: darkred;
+}
+.color-div{
+  background-color: #ab0707a8;
+  height: 540px;
+  position: relative;
+
+}
+
+.color-div::before{
+  content: "";
+  background-color: #d3d1d198; /* Grey background */
+  height: 580px; /* Half of 1080px */
+  position: absolute;
+  top: 540px; /* Position the grey background below the red background */
+  left: 0;
+  right: 0;
+  z-index: -1
+
+}
+
+.footer {
+  display: flex;
+  padding: 30px;
+  color: white;
+  font-size: 30px;
+  background-color:#433c3c; /* Example background color */
+  font-family: 'Baskervville SC', serif;
+  margin-top: 580px; /* Adjust as needed */
+  position: relative;
+  height: 120px;
+  justify-content: space-between; /* Adjust to align items */
+  align-items: center; /* Align items vertically */
+  text-align: center; /* Center text within the footer */
+}
+
+.footer .centered-text {
+  flex: 1; /* Take up remaining space */
+}
+
+.footer .right-text {
+  text-align: right;
+  margin-right: 30px; /* Align text to the right */
+}
+
+
+.modal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white; /* Adjust background color */
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Optional: add box shadow */
+  width: 40vw;
+  height: 75vh;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Adjust background opacity */
+  z-index: 1000; /* Ensure overlay is on top */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.react-chatbot-kit-chat-container {
+  min-width: 100%;
+  min-height: 70vh;
+}
+
+.react-chatbot-kit-chat-inner-container {
+  width: 100%;
+  min-height: 70%;
+}
+
+.react-chatbot-kit-chat-message-container{
+  height: 65vh;
+}
+
+.react-chatbot-kit-chat-input-container {
+  min-height: 5vh;
+}
+
+.react-chatbot-kit-chat-input {
+  font-size: 1.5rem;
+}
+
+.react-chatbot-kit-chat-header {
+  height: 50px;
+  font-size: large !important;
+  color: maroon;
+}
+
+.react-chatbot-kit-chat-bot-message {
+  margin: 0;
+  width: 50%;
+  font-size: 1.5rem !important;
+  font-weight: 500;
+  background-color: lightgray;
+  color: black;
+}
+
+.react-chatbot-kit-chat-bot-message-container {
+  font: larger;
+}
+
+.react-chatbot-kit-user-chat-message {
+  background-color: maroon;
+  color: white;
+  font-size: 1.5rem !important;
+  font-weight: 500;
+}
+.react-chatbot-kit-user-chat-message-arrow {
+  
+  border-left: 8px solid maroon;
+}
+.react-chatbot-kit-chat-bot-avatar-container {
+  border-radius: 0%;
+}
+
+.react-chatbot-kit-user-avatar-container {
+  width: 55px;
+  height: 55px;
+  margin-left: 20px;
+  background-color: maroon;
+}
