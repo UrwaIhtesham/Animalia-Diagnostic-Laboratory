@@ -1,6 +1,8 @@
 from flask import Blueprint, request, jsonify
 from flask_cors import CORS
 from app.models.predict import predict_disease
+from flask_sqlalchemy import SQLAlchemy
+from datetime import datetime
 
 bp = Blueprint('main', __name__)
 
