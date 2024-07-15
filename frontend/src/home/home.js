@@ -18,16 +18,16 @@ function Home() {
     const images = {
         Pet: [
             `${process.env.PUBLIC_URL}/assets/pics/cat-dog.jpeg`,
-            `${process.env.PUBLIC_URL}/assets/pics/budgie.png`
+            `${process.env.PUBLIC_URL}/assets/pics/budgie.PNG`
         ],
         Poultry: [
             `${process.env.PUBLIC_URL}/assets/pics/chicken (1).png`
         ],
         Livestock: [
             `${process.env.PUBLIC_URL}/assets/pics/cow.jpeg`,
-            `${process.env.PUBLIC_URL}/assets/pics/sheep.png`,
-            `${process.env.PUBLIC_URL}/assets/pics/goat.png`,
-            `${process.env.PUBLIC_URL}/assets/pics/buffalo.png`
+            `${process.env.PUBLIC_URL}/assets/pics/sheep.PNG`,
+            `${process.env.PUBLIC_URL}/assets/pics/goat.PNG`,
+            `${process.env.PUBLIC_URL}/assets/pics/buffalo.PNG`
         ],
   
     };
@@ -162,9 +162,10 @@ function Home() {
                     <div className="contact-container">
                         <div className="contact-map">
                             <iframe
+                                title='Map'
                                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.8354345095075!2d144.95565131531677!3d-37.817327979751924!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0xf577d8f31e6371d7!2sVictoria%20Harbour!5e0!3m2!1sen!2sau!4v1625791123451!5m2!1sen!2sau"
-                                width="1000"
-                                height="650"
+                                width="600"
+                                height="600"
                                 style={{ border: 0 }}
                                 allowFullScreen=""
                                 loading="lazy"
