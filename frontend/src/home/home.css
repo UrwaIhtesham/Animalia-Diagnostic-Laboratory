@@ -17,21 +17,21 @@ body {
 .nav-bg {
   display: flex;
   align-items: center;
-  padding: 20px 0;
+  padding: 10px 0;
   background-color: #f0f0f0ce;
 }
 
 nav {
   justify-content: center;
   padding: 20px 0;
-  margin-left: 250px;
+  margin-left: 150px;
   font-family: 'Baskervville SC', serif;
 }
 
 h1 {
-  margin-left: 160px;
+  margin-left: 100px;
   font-family: 'Baskervville SC', serif;
-  font-size: 44px; /* Example font size for the heading */
+  font-size: 30px; /* Example font size for the heading */
   color: maroon;
   font-weight: bold;
 }
@@ -44,7 +44,7 @@ nav ul {
 }
 
 nav ul li {
-  margin-left: 130px;
+  margin-left: 90px;
 }
 
 nav ul li:last-child {
@@ -55,26 +55,32 @@ nav ul li a {
   text-decoration: none;
   color: #242223;
   font-weight: bold;
-  font-size: 30px; /* Example font size for nav items */
+  font-size: 25px; /* Example font size for nav items */
 }
 
 nav ul li a:hover {
   text-decoration: underline;
+  color: maroon;
 }
 
 .button-bg {
   background-color: maroon;
   color: #f0efeff5;
-  font-size: 30px;
+  font-size: 25px;
   padding: 9px 15px;
   font-family: 'Baskervville SC', serif;
+}
+
+.button-bg:hover{
+  background-color:#f0f0f0ce;
+  color: #790e0e;
 }
 
 .features {
   width: 100%;
   display: flex;
   padding: 0px;
-  margin-top: 900px;
+  margin-top: 700px;
   margin-bottom: 0px; /* Add margin to separate from the next section */
 }
 
@@ -267,22 +273,21 @@ nav ul li a:hover {
 
 
 .contact {
-  padding: 50px 140px;
+  padding: 30px 50px;
   text-align: center;
-  margin-left: 370px;
+  margin-left: 300px;
+  /*margin-right: 150px;*/
   margin-top:120px;
   background-color:white;
   position: absolute;
   box-shadow: 0 8px 6px rgba(73, 72, 72, 0.6); 
   border-radius: 10px;
-  
 }
 
 .contact-container {
   display: flex;
   justify-content: space-between;
   position: relative;
-
 }
 
 .contact-map {
@@ -295,7 +300,7 @@ nav ul li a:hover {
   text-align: left;
   margin-top: 40px;
   margin-left: 100px;
-  padding-right: 50px;
+  padding-right: 30px;
   
 }
 
@@ -423,16 +428,16 @@ nav ul li a:hover {
 
 .react-chatbot-kit-chat-container {
   min-width: 100%;
-  min-height: 70vh;
+  min-height: 68vh;
 }
 
 .react-chatbot-kit-chat-inner-container {
   width: 100%;
-  min-height: 70%;
+  min-height: 60%;
 }
 
 .react-chatbot-kit-chat-message-container{
-  height: 65vh;
+  height: 58vh;
 }
 
 .react-chatbot-kit-chat-input-container {

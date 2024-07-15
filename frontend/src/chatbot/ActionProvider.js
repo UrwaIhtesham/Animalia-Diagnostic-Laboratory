@@ -200,7 +200,7 @@ class ActionProvider {
       //this.handleSymptoms(animalType);
     } else {
       //this.setState(state => ({... state, nextInputAction: this.handleSymptoms}));
-      console.log(this.state.currentAnimalType);
+      //console.log(this.state.currentAnimalType);
       this.handleSymptoms(animalType);
     }
   }
