@@ -4,9 +4,9 @@ import React, { useState, useRef } from "react";
 //import config from './chatbot/config';
 //import ActionProvider from './chatbot/ActionProvider';
 //import MessageParser from './chatbot/MessageParser';
-import Home from './home/home';
+//import Home from './home/home';
 import Login from "./Components/Login/Login";
-import LandingPage from './Components/LandingPage/Landingpage'
+//import LandingPage from './Components/LandingPage/Landingpage'
 
 import './App.css'
 
