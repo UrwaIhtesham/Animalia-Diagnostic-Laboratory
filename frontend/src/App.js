@@ -17,18 +17,7 @@ function App() {
   stateRef.current = state;
 
   return (
-    /*<div className="App">
-       <Chatbot
-          config={config}
-          messageParser={MessageParser}
-          actionProvider={ActionProvider}
-          avatarStyle={{
-            width: '50px',
-            height: '50px',
-          }}
-        />
-        
-    </div>*/
+    
     <Login/>
     //<LandingPage/>
   );
