@@ -15,8 +15,8 @@ const tests = {
     { id: 8, name: 'Bovine Tuberculosis (TB) Test', price: 2200 },
   ],
   dog: [
-    { id: 9, name: 'complete blood count (CBC)', price: 500 },
-    { id: 10, name: 'biochemistry profile', price: 1000 },
+    { id: 9, name: 'Complete Blood Count (CBC)', price: 500 },
+    { id: 10, name: 'Biochemistry Profile', price: 1000 },
     { id: 11, name: 'Lyme Disease Test', price: 1500 },
     { id: 12, name: 'Heartworm Test', price: 2000 },
   ],
