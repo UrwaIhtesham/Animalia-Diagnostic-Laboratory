@@ -7,8 +7,8 @@ import React, { useState, useRef } from "react";
 //import MessageParser from './chatbot/MessageParser';
 //import Home from './home/home';
 //import LandingPage from './Components/LandingPage/Landingpage'
-//import Appointment from "./Appointment/Appointment.js";
-import TestsSelection from "./TestsSelection/TestsSelection";
+import Appointment from "./Appointment/Appointment.js";
+//import TestsSelection from "./TestsSelection/TestsSelection";
 import './App.css'
 
 
@@ -32,7 +32,7 @@ function App() {
     </div>*/
     //<Home/>
     <div className="app">
-      <TestsSelection />
+      < Appointment/>
     </div>
 
     

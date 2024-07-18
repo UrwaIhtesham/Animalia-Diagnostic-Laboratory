@@ -1,3 +1,4 @@
+
 .tests-selection-container {
   font-family: Arial, sans-serif;
   background-color: rgb(255, 255, 255);
@@ -7,38 +8,61 @@
   max-width: 500px;
   margin: auto;
   min-height: 90vh;
-  width: 70%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .tests-selection-container h1 {
   text-align: center;
+  background-color: maroon;
+  color: white;
+  width: 100%;
 }
 
 .tests-selection-container label {
   display: block;
-  margin: 10px 0;
+  margin: 20px 0;
+  text-align: start;
 }
 
 .tests-selection-container ul {
   list-style-type: none;
-  padding: 0;
+  flex-direction: column;
+  text-align: start;
 }
 
 .tests-selection-container li {
-  margin: 5px 0;
+  
+  width: 100%;
+  text-align: start;
+  
+}
+
+.tests-selection-container li label {
+  display: flex;
+  width: 100%;
+  padding: 5px 0;
+}
+
+.tests-selection-container li label input {
+  margin-right: 10px;
 }
 
 .total-amount {
   margin: 20px 0;
   font-size: 1.2em;
+  text-align: center;
 }
 
 .payment-button {
   display: block;
-  width: 100%;
+  width: 50%;
+  margin: 0 auto;
   padding: 10px;
   background-color: maroon;
-  color: rgb(255, 255, 255);
+  color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
