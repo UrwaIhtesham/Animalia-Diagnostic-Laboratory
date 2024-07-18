@@ -44,7 +44,7 @@ function Appointment() {
     <div className="appointment-container">
       <h1>Doctor Appointment Booking</h1>
 
-      <label htmlFor="specialization">Choose Animal Specialization:</label>
+      <label htmlFor="specialization">Choose Animal:</label>
       <select id="specialization" onChange={handleSpecializationChange} value={selectedSpecialization}>
         <option value="">Select Specialization</option>
         {uniqueSpecializations.map((specialization, index) => (

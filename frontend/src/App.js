@@ -9,6 +9,10 @@ import React, { useState, useRef } from "react";
 //import LandingPage from './Components/LandingPage/Landingpage'
 import Appointment from "./Appointment/Appointment.js";
 //import TestsSelection from "./TestsSelection/TestsSelection";
+//import Home from './home/home';
+//import Login from "./Components/Login/Login";
+//import LandingPage from './Components/LandingPage/Landingpage'
+
 import './App.css'
 
 
