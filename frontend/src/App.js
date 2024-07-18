@@ -5,7 +5,8 @@ import React, { useState, useRef } from "react";
 //import ActionProvider from './chatbot/ActionProvider';
 //import MessageParser from './chatbot/MessageParser';
 import Home from './home/home';
-//import LandingPage from './Components/LandingPage/Landingpage'
+import Login from "./Components/Login/Login";
+import LandingPage from './Components/LandingPage/Landingpage'
 
 import './App.css'
 
@@ -28,7 +29,7 @@ function App() {
         />
         
     </div>*/
-    <Home/>
+    <Login/>
     //<LandingPage/>
   );
 }
