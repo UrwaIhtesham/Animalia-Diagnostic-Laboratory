@@ -40,17 +40,74 @@ function Appointment() {
     }
   }, [selectedSpecialization, filteredDoctors]);
 
+  const halfIndex = Math.ceil(doctors.length / 2);
+  const firstHalfDoctors = doctors.slice(0, halfIndex);
+  const secondHalfDoctors = doctors.slice(halfIndex);
+
   return (
     <div className="appointment-container">
       <h1>Doctor Appointment Booking</h1>
 
-      <label htmlFor="specialization">Choose Animal:</label>
+      <label htmlFor="specialization">Choose Animal Specialization:</label>
       <select id="specialization" onChange={handleSpecializationChange} value={selectedSpecialization}>
         <option value="">Select Specialization</option>
         {uniqueSpecializations.map((specialization, index) => (
           <option key={index} value={specialization}>{specialization}</option>
         ))}
       </select>
+
+      {selectedSpecialization === '' && (
+        <div className="doctor-tables">
+          <table className="doctor-table">
+            <thead>
+              <tr>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Specialization</th>
+                <th>Fees</th>
+                <th>Experience</th>
+                <th>Timing</th>
+              </tr>
+            </thead>
+            <tbody>
+              {firstHalfDoctors.map((doctor) => (
+                <tr key={doctor.id}>
+                  <td><img src={doctorImage} alt="Doctor" className="doctor-image" /></td>
+                  <td>{doctor.name}</td>
+                  <td>{doctor.specialization}</td>
+                  <td>{doctor.fees}</td>
+                  <td>{doctor.experience}</td>
+                  <td>{doctor.timing}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <table className="doctor-table">
+            <thead>
+              <tr>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Specialization</th>
+                <th>Fees</th>
+                <th>Experience</th>
+                <th>Timing</th>
+              </tr>
+            </thead>
+            <tbody>
+              {secondHalfDoctors.map((doctor) => (
+                <tr key={doctor.id}>
+                  <td><img src={doctorImage} alt="Doctor" className="doctor-image" /></td>
+                  <td>{doctor.name}</td>
+                  <td>{doctor.specialization}</td>
+                  <td>{doctor.fees}</td>
+                  <td>{doctor.experience}</td>
+                  <td>{doctor.timing}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
 
       {filteredDoctors.length > 0 && (
         <>
