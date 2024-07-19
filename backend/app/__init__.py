@@ -12,6 +12,7 @@ db = SQLAlchemy()
 
 def create_app():
     app = Flask(__name__)
+<<<<<<< HEAD
     app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://root:Password123*@localhost/anemalia'
     db.init_app(app)
     bcrypt.init_app(app)
@@ -19,6 +20,8 @@ def create_app():
     #CORS(app)
     CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}})  # Allow CORS for your frontend URL
 
+=======
+>>>>>>> origin/urwa/login_signup
     # Import blueprints here to avoid circular imports
     #app.register_blueprint(main_bp, url_prefix='/main')
 
