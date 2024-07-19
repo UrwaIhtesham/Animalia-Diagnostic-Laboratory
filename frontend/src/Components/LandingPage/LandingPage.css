@@ -6,25 +6,16 @@
 }
 
 .upper-half {
-  /*background-color: lightgray;*/ /* Light gray background */
-  /*background-image: url('/images/pets.jpg');*/
-  /*background-size: cover;*/
-  /*display: flex;*/
-  /*justify-content: center;*/
-  /*align-items: center;*/
-  /*width: 100vw;
-  height: 50vh;*/
   position: relative;
   height: 50vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  /*overflow: hidden;*/
 }
 
 .bg-img {
   position: absolute;
-  top: -68%;
+  top: -30%;
   left: 0;
   width: 100%;
   height: auto;
@@ -129,6 +120,7 @@
   .title {
     font-size: 5rem; /* Adjust font size for smaller screens */
     margin-top: 20px; /* Adjust top margin for title */
+    color: black;
   }
 
   .lower-half p {
@@ -191,6 +183,7 @@
   .title {
     font-size: 1.5rem; /* Adjust font size for smaller screens */
     margin-top: 20px; /* Adjust top margin for title */
+    color: black;
   }
 
   .lower-half p {
@@ -253,6 +246,7 @@
   .title {
     font-size: 1.5rem; /* Adjust font size for smaller screens */
     margin-top: 20px; /* Adjust top margin for title */
+    color: black;
   }
 
   .lower-half p {
@@ -296,6 +290,7 @@
 
   .title {
     font-size: 1.5rem; /* Adjust font size for smaller screens */
+    color: black;
   }
 
   .lower-half p {
@@ -358,6 +353,7 @@
   .title {
       margin-top: 100px;
     font-size: 0.5rem; /* Adjust font size for smaller screens */
+    color: black;
   }
 
   .lower-half p {
@@ -420,6 +416,7 @@
   .title {
       margin-top: 100px;
     font-size: 0.7rem; /* Adjust font size for smaller screens */
+    color: black;
   }
 
   .lower-half p {

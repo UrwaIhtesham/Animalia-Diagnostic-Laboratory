@@ -14,26 +14,51 @@ body {
   overflow-y: auto;
 }
 
+.checkbox-label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.checkbox-label input[type="checkbox"] {
+  margin-right: 5px;
+  transform: scale(1.4);
+}
+
+.checkbox-label input[type="checkbox"]:checked::before {
+  content: 'a';
+  display: block;
+  width: 10px;
+  height: 10px;
+  background-color: maroon;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 2px;
+}
+
 .nav-bg {
   display: flex;
   align-items: center;
-  padding: 10px 0;
+  justify-content: space-between;
+  padding: 20px 0;
   background-color: #f0f0f0ce;
 }
 
 nav {
   justify-content: center;
-  padding: 20px 0;
-  margin-left: 150px;
+  padding: 10px 0;
+  margin-left: 15px;
   font-family: 'Baskervville SC', serif;
 }
 
-h1 {
-  margin-left: 100px;
+.nav-bg h1 {
+  margin-left: 30px;
   font-family: 'Baskervville SC', serif;
   font-size: 30px; /* Example font size for the heading */
   color: maroon;
   font-weight: bold;
+  text-align: right;
 }
 
 nav ul {
@@ -44,18 +69,18 @@ nav ul {
 }
 
 nav ul li {
-  margin-left: 90px;
+  margin-left: 40px;
 }
 
 nav ul li:last-child {
-  margin-right: 0;
+  margin-right: 30px;
 }
 
 nav ul li a {
   text-decoration: none;
   color: #242223;
   font-weight: bold;
-  font-size: 25px; /* Example font size for nav items */
+  font-size: 20px; /* Example font size for nav items */
 }
 
 nav ul li a:hover {
@@ -66,7 +91,7 @@ nav ul li a:hover {
 .button-bg {
   background-color: maroon;
   color: #f0efeff5;
-  font-size: 25px;
+  font-size: 20px;
   padding: 9px 15px;
   font-family: 'Baskervville SC', serif;
 }
@@ -101,10 +126,12 @@ nav ul li a:hover {
 
 .features .feature h2 {
   font-size: 30px;
+  color: black;
 }
 
 .features .feature p {
   font-size: 24px;
+  color: black;
 }
 
 .header {
@@ -275,8 +302,8 @@ nav ul li a:hover {
 .contact {
   padding: 30px 50px;
   text-align: center;
-  margin-left: 300px;
-  /*margin-right: 150px;*/
+  margin-left: 100px;
+  margin-right: 150px;
   margin-top:120px;
   background-color:white;
   position: absolute;

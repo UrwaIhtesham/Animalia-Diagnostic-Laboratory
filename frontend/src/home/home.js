@@ -50,7 +50,7 @@ function Home() {
                         <li><a href="#services">Services</a></li>
                         <li><a href="#contact">Contact Us</a></li>
                         <li><a href="#chatbot" onClick={openChatbot}>Chatbot</a></li>
-                        <li><a href="#appointment" className="button-bg">Book an Appointment</a></li>
+                        <li><a href="#appointment" >Book an Appointment</a></li>
                     </ul>
                 </nav>
             </header>

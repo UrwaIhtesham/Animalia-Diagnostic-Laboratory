@@ -1,6 +1,7 @@
 import React from 'react';
 import SymptomsDropdown from './SymptomsDropdown';
 import axios from 'axios';
+import Home from '../home/home';
 
 class ActionProvider {
   constructor(createChatBotMessage, setStateFunc) {
@@ -289,7 +290,7 @@ class ActionProvider {
     const linksMessage = this.createChatBotMessage(
       <div>
       <p>What would you like to do next?</p>
-      <a href="/" style={{ display: 'block', margin: '10px 0', color: 'maroon' }}>Go to Home Page</a>
+      <a href="/home" style={{ display: 'block', margin: '10px 0', color: 'maroon' }}>Go to Home Page</a>
       <a href="/lab-tests" style={{ display: 'block', margin: '10px 0', color: 'maroon' }}>Go to Lab Tests Page</a>
     </div>,
     {
