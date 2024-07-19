@@ -1,24 +1,21 @@
 body {
   font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
   background-color: #f0f0f0;
-  width: 100%;
-  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 0;
+  height: 100vh;
 }
 
 .appointment-container {
   background-color: rgb(240, 233, 233);
   padding: 20px;
-  border-radius: 10px;
+  border-radius: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   text-align: center;
   width: 100%;
-  height: 100%;
-  box-sizing: border-box;
+  
 }
 
 h1 {
@@ -26,6 +23,7 @@ h1 {
   background-color: maroon;
   padding: 10px;
   border-radius: 5px;
+  margin-bottom: 20px;
 }
 
 label {
@@ -35,7 +33,7 @@ label {
 }
 
 select {
-  width: 100%;
+  width: 50%;
   padding: 10px;
   margin-bottom: 20px;
   border: 1px solid #ccc;
@@ -44,16 +42,41 @@ select {
   color: white;
 }
 
-.appointment {
+.doctor-tables {
+  display: flex;
+  justify-content: space-between;
+}
+
+.doctor-table {
+  width: 48%;
+  border-collapse: collapse;
   margin-top: 20px;
 }
 
+.doctor-table th,
+.doctor-table td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+}
+
+.doctor-table th {
+  background-color: maroon;
+  color: white;
+}
+
 .doctor-image {
-  width: 150px;
-  height: 150px;
+  width: 60px;
+  height: 50px;
   border-radius: 50%;
   display: block;
   margin: 0 auto;
+}
+
+.appointment {
+  margin-top: 20px;
+  width: 100%;
+  
 }
 
 .doctor-details {
@@ -78,8 +101,4 @@ button {
 
 button:hover {
   background-color: #800000;
-}
-
-.doctor-option {
-  margin-bottom: 10px;
 }
