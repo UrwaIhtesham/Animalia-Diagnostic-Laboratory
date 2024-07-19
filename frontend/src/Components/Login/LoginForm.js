@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom"
+//import Home from '../../home/home';
 import Input from './Input';
 import './login.css';
 import axios from 'axios';
@@ -11,6 +13,7 @@ const LoginForm = ({ mode }) => {
   const [createPassword, setCreatePassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
   const [message, setMessage] = useState('');
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { id, value } = e.target;
@@ -49,6 +52,9 @@ const LoginForm = ({ mode }) => {
         console.log('Login Token:', token);
         localStorage.setItem('token', token);
         setMessage('Login successful');
+        setTimeout(() => {
+          navigate('/home');
+        }, 2000);
       } else if (mode === 'signup') {
         if (createPassword !== repeatPassword) {
           setMessage('Passwords do not match');
@@ -68,6 +74,9 @@ const LoginForm = ({ mode }) => {
           setMessage('Email Already exists');
         } else if (response.status === 201) {
           setMessage('Registration successful');
+          setTimeout(() => {
+            navigate('/home');
+          }, 2000);
         }
       }
     } catch (error) {

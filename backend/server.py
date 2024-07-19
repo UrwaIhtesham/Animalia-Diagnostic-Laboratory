@@ -83,8 +83,8 @@ def login():
         "email": user.email
     })
     
-bp = Blueprint('prediction', __name__)
-@bp.route('/predict', methods =['POST'])
+#bp = Blueprint('prediction', __name__)
+@app.route('/predict', methods =['POST'])
 def predict():
     data = request.json
     animal_type = data.get('animal_type')
