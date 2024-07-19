@@ -52,8 +52,9 @@ body {
     height: 500px;
     padding: 25px;
     background: #790e0e;
-    background-image: url('../../../public/images/babycat.jpeg');
-    background-size: cover;
+    /* background-image: url('../../../public/images/babycat.jpeg');
+    background-size: cover; */
+    background-color: white;
     z-index: 1;
     border-radius: 2px;
     color: grey;
