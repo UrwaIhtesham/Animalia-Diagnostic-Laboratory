@@ -1,7 +1,7 @@
 import React from "react";
 import './LandingPage.css';
 
-function LandingPage() {
+function LandingPage({ onSignIn, onSignUp }) {
     return (
         <div className="main">
             <div className="upper-half">
@@ -17,8 +17,8 @@ function LandingPage() {
                 <p>New to our website? Join Now.</p>
                 <br/>
                 <div className="buttons">
-                    <button>Sign in</button>
-                    <button>Sign up</button>
+                    <button onClick={onSignIn}>Sign in</button>
+                    <button onClick={onSignUp}>Sign up</button>
                 </div>
             </div>
         </div>
