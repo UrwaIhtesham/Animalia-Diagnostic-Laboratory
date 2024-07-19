@@ -1,13 +1,17 @@
 import React from "react";
+import { useMediaQuery  } from "react-responsive";
 import './LandingPage.css';
 
 function LandingPage({ onSignIn, onSignUp }) {
-    return (
-        <div className="main">
+
+        const isMobile = useMediaQuery({query: '(max-width:425px'});
+        const isTablet = useMediaQuery({query: '(max-width: 768px'});
+    return(
+        <div className={`main ${isMobile ? 'mobile' : isTablet ? 'tablet' : 'desktop'}`}>
             <div className="upper-half">
             <div className="background-image">
-                    <img src="/images/pets.jpg" alt="Animalia" className="bg-img" />
-                </div>
+                {/* <img src="/images/pets.jpg" alt="Animalia" className="bg-img" /> */}
+            </div>
                 
             </div>
             <div className="lower-half">
