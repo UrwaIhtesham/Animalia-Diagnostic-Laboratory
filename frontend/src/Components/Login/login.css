@@ -19,7 +19,6 @@ body {
     right: 0;
     height: 100%;
     overflow-y: scroll;
-    /* background-image: url('./images/lab.jpg');  */
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -35,13 +34,11 @@ body {
 
 .form-block-wrapper--is-login {
     opacity: .92;
-    /* background-color: white; */
     
 }
 
 .form-block-wrapper--is-signup {
     opacity: .94;
-    /* background-color: white; */
 }
 
 .form-block {
@@ -52,8 +49,6 @@ body {
     height: 500px;
     padding: 25px;
     background: #790e0e;
-    /* background-image: url('../../../public/images/babycat.jpeg');
-    background-size: cover; */
     background-color: white;
     z-index: 1;
     border-radius: 2px;

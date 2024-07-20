@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom"
-//import Home from '../../home/home';
 import Input from './Input';
 import './login.css';
 import axios from 'axios';

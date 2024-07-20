@@ -60,24 +60,9 @@
 
   .upper-half{
     background-image: url('pets.jpg');
-    /* background-size: contain; */
     background-repeat: no-repeat;
-    /* background-position: fit; */
     background-size: 100% 100%;
-    /*position: relative;
-    display: flex;
-    align-items: center;
-    height: 50vh; */
   }
-
-  /* .bg-img{
-    position: absolute;
-    height: auto;
-    max-width: 100%;
-    object-fit: contain;
-    /* top: -100rem; 
-    z-index: 0;
-  } */
 
   .lower-half{
     display: flex;
@@ -150,24 +135,9 @@
 
   .upper-half{
     background-image: url('pets.jpg');
-    /* background-size: contain; */
     background-repeat: no-repeat;
-    /* background-position: fit; */
     background-size: 100% 100%;
-    /*position: relative;
-    display: flex;
-    align-items: center;
-    height: 50vh; */
   }
-
-  /* .bg-img{
-    position: absolute;
-    height: auto;
-    max-width: 100%;
-    object-fit: contain;
-    /* top: -100rem; 
-    z-index: 0;
-  } */
 
   .lower-half{
     display: flex;
@@ -240,24 +210,9 @@
 
   .upper-half{
     background-image: url('pets.jpg');
-    /* background-size: contain; */
     background-repeat: no-repeat;
-    /* background-position: fit; */
     background-size: 100% 100%;
-    /*position: relative;
-    display: flex;
-    align-items: center;
-    height: 50vh; */
   }
-
-  /* .bg-img{
-    position: absolute;
-    height: auto;
-    max-width: 100%;
-    object-fit: contain;
-    /* top: -100rem; 
-    z-index: 0;
-  } */
 
   .lower-half{
     display: flex;
