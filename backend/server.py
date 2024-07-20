@@ -82,8 +82,7 @@ def login():
         "id": user.id,
         "email": user.email
     })
-    
-#bp = Blueprint('prediction', __name__)
+
 @app.route('/predict', methods =['POST'])
 def predict():
     data = request.json

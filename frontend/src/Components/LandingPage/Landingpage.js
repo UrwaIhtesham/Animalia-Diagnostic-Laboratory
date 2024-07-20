@@ -10,7 +10,6 @@ function LandingPage({ onSignIn, onSignUp }) {
         <div className={`main ${isMobile ? 'mobile' : isTablet ? 'tablet' : 'desktop'}`}>
             <div className="upper-half">
             <div className="background-image">
-                {/* <img src="/images/pets.jpg" alt="Animalia" className="bg-img" /> */}
             </div>
                 
             </div>
