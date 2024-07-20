@@ -185,8 +185,8 @@ input::placeholder {
     width: 100%;
 }
 
-input[type="checkbox"] {
-    /*display: none;*/
+#form-toggler {
+    display: none;
 }
 
 input[type="checkbox"] + label:before {

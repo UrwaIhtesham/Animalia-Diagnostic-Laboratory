@@ -1,10 +1,16 @@
 /* General styles */
 
+html, body {
+  overflow: hidden;
+}
+
+
 .main {
   display: flex;
   flex-direction: column;
   height: 100vh;
   width: 100vw;
+  overflow:hidden
 }
 
 .upper-half {
@@ -36,13 +42,43 @@
   gap: 1rem;
 }
 
-.buttons button {
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-  background-color: gray;
-  color: white;
-  border: none;
+.btn-hover {
+  /* padding: 0.5rem 1rem;
+  font-size: 2rem;
+  background-color: white;
+  color: black;
+  border: 2px solid black;
   cursor: pointer;
+  z-index: 5; */
+  width: 15vw;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  margin: 20px;
+  height: 55px;
+  text-align: center;
+  border: none;
+  background-size: 300% 100%;
+  border-radius: 50px;
+  -moz-transition: all .4s ease-in-out;
+  -o-transition: all .4s ease-in-out;
+  -webkit-transition: all .4s ease-in-out;
+  transition: all .4s ease-in-out;
+  background-image: linear-gradient(to right, #29323c, #485563, #485563, maroon);
+  box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);
+}
+
+.btn-hover:hover {
+  background-position: 100% 0;
+  -moz-transition: all .4s ease-in-out;
+  -o-transition: all .4s ease-in-out;
+  -webkit-transition: all .4s ease-in-out;
+  transition: all .4s ease-in-out;
+}
+
+.btn-hover:focus {
+  outline: none;
 }
 
 /* Responsive styles */
@@ -104,20 +140,43 @@
     z-index: 5;
   }
 
-  .buttons button {
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
-    background-color: gray;
+  .btn-hover {
+    /* padding: 0.5rem 1rem;
+    font-size: 2rem;
+    background-color: white;
     color: black;
+    border: 2px solid black;
     cursor: pointer;
-    z-index: 5;
+    z-index: 5; */
+    width: 30vw;
+    font-size: 1rem;
+    font-weight: 400;
+    color: #fff;
+    cursor: pointer;
+    margin: 20px;
+    height: 35px;
+    text-align: center;
+    border: none;
+    background-size: 300% 100%;
+    border-radius: 50px;
+    -moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+    background-image: linear-gradient(to right, #29323c, #485563, #485563, maroon);
+    box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);
   }
 
-  .buttons button:hover {
-    background-color: maroon;
-    border: 2px solid white;
-    color: white;
-    z-index: 5;
+  .btn-hover:hover {
+    background-position: 100% 0;
+    -moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+  }
+
+  .btn-hover:focus {
+    outline: none;
   }
 }
 
@@ -179,20 +238,43 @@
     z-index: 5;
   }
 
-  .buttons button {
-    padding: 0.5rem 1rem;
-    font-size: 1.5rem;
-    background-color: gray;
+  .btn-hover {
+    /* padding: 0.5rem 1rem;
+    font-size: 2rem;
+    background-color: white;
     color: black;
+    border: 2px solid black;
     cursor: pointer;
-    z-index: 5;
+    z-index: 5; */
+    width: 25vw;
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: #fff;
+    cursor: pointer;
+    margin: 20px;
+    height: 40px;
+    text-align: center;
+    border: none;
+    background-size: 300% 100%;
+    border-radius: 50px;
+    -moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+    background-image: linear-gradient(to right, #29323c, #485563, #485563, maroon);
+    box-shadow: 0 4px 15px 0 rgba(31, 37, 44, 0.75);
   }
 
-  .buttons button:hover {
-    background-color: maroon;
-    border: 2px solid white;
-    color: white;
-    z-index: 5;
+  .btn-hover:hover {
+    background-position: 100% 0;
+    -moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+  }
+
+  .btn-hover:focus {
+    outline: none;
   }
 }
 
@@ -252,21 +334,45 @@
     flex-direction: row;
     gap: 1.5rem;
     z-index: 5;
+    text-align: center;
   }
 
-  .buttons button {
-    padding: 0.5rem 1rem;
+  .btn-hover {
+    /* padding: 0.5rem 1rem;
     font-size: 2rem;
-    background-color: gray;
+    background-color: white;
     color: black;
+    border: 2px solid black;
     cursor: pointer;
-    z-index: 5;
+    z-index: 5; */
+    width: 15vw;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+    margin: 20px;
+    height: 55px;
+    text-align: center;
+    border: none;
+    background-size: 300% 100%;
+    border-radius: 50px;
+    -moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+    background-image: linear-gradient(to right, #29323c, #485563, #485563, maroon);
+    box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);
   }
 
-  .buttons button:hover {
-    background-color: maroon;
-    border: 2px solid white;
-    color: white;
-    z-index: 5;
+  .btn-hover:hover {
+    background-position: 100% 0;
+    -moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+  }
+
+  .btn-hover:focus {
+    outline: none;
   }
 }

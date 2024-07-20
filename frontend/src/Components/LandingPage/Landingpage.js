@@ -20,8 +20,8 @@ function LandingPage({ onSignIn, onSignUp }) {
                 <p>New to our website? Join Now.</p>
                 <br/>
                 <div className="buttons">
-                    <button onClick={onSignIn}>Sign in</button>
-                    <button onClick={onSignUp}>Sign up</button>
+                    <button className="btn-hover left" onClick={onSignIn}>Sign in</button>
+                    <button className="btn-hover right" onClick={onSignUp}>Sign up</button>
                 </div>
             </div>
         </div>
