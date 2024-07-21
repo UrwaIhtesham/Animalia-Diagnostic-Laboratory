@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Appointment.css';
-import doctorImage from './Doctor.png'; 
+import doctorImage from './Doctor.png';
 
 const doctors = [
   { id: 1, name: 'Dr. Harris Ali', specialization: 'Dog', fees: 'Rs.1000', experience: '5 years', timing: '10:00 AM - 4:00 PM' },
@@ -23,11 +23,7 @@ function Appointment() {
     setSelectedDoctor(null);
   };
 
-  const handleDoctorChange = (e) => {
-    const doctorId = e.target.value;
-    const doctor = doctors.find(doc => doc.id === parseInt(doctorId));
-    setSelectedDoctor(doctor);
-  };
+ 
 
   const uniqueSpecializations = Array.from(new Set(doctors.map(doctor => doctor.specialization)));
   const filteredDoctors = doctors.filter(
@@ -39,10 +35,6 @@ function Appointment() {
       setSelectedDoctor(filteredDoctors[0]);
     }
   }, [selectedSpecialization, filteredDoctors]);
-
-  const halfIndex = Math.ceil(doctors.length / 2);
-  const firstHalfDoctors = doctors.slice(0, halfIndex);
-  const secondHalfDoctors = doctors.slice(halfIndex);
 
   return (
     <div className="appointment-container">
@@ -57,69 +49,23 @@ function Appointment() {
       </select>
 
       {selectedSpecialization === '' && (
-        <div className="doctor-tables">
-          <table className="doctor-table">
-            <thead>
-              <tr>
-                <th>Image</th>
-                <th>Name</th>
-                <th>Specialization</th>
-                <th>Fees</th>
-                <th>Experience</th>
-                <th>Timing</th>
-              </tr>
-            </thead>
-            <tbody>
-              {firstHalfDoctors.map((doctor) => (
-                <tr key={doctor.id}>
-                  <td><img src={doctorImage} alt="Doctor" className="doctor-image" /></td>
-                  <td>{doctor.name}</td>
-                  <td>{doctor.specialization}</td>
-                  <td>{doctor.fees}</td>
-                  <td>{doctor.experience}</td>
-                  <td>{doctor.timing}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-          <table className="doctor-table">
-            <thead>
-              <tr>
-                <th>Image</th>
-                <th>Name</th>
-                <th>Specialization</th>
-                <th>Fees</th>
-                <th>Experience</th>
-                <th>Timing</th>
-              </tr>
-            </thead>
-            <tbody>
-              {secondHalfDoctors.map((doctor) => (
-                <tr key={doctor.id}>
-                  <td><img src={doctorImage} alt="Doctor" className="doctor-image" /></td>
-                  <td>{doctor.name}</td>
-                  <td>{doctor.specialization}</td>
-                  <td>{doctor.fees}</td>
-                  <td>{doctor.experience}</td>
-                  <td>{doctor.timing}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+        <div className="doctor-list">
+          {doctors.map((doctor) => (
+            <div key={doctor.id} className="doctor-card">
+              <img src={doctorImage} alt="Doctor" className="doctor-image" />
+              <div className="doctor-info">
+                <p><strong>Name:</strong> {doctor.name}</p>
+                <p><strong>Specialization:</strong> {doctor.specialization}</p>
+                <p><strong>Fees:</strong> {doctor.fees}</p>
+                <p><strong>Experience:</strong> {doctor.experience}</p>
+                <p><strong>Timing:</strong> {doctor.timing}</p>
+              </div>
+            </div>
+          ))}
         </div>
       )}
 
-      {filteredDoctors.length > 0 && (
-        <>
-          <label htmlFor="doctor">Choose Doctor:</label>
-          <select id="doctor" onChange={handleDoctorChange} value={selectedDoctor?.id || ''}>
-            <option value="">Select Doctor</option>
-            {filteredDoctors.map((doctor) => (
-              <option key={doctor.id} value={doctor.id}>{doctor.name}</option>
-            ))}
-          </select>
-        </>
-      )}
+      
 
       {selectedDoctor && (
         <div className="appointment">
