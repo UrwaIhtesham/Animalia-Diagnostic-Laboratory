@@ -19,7 +19,6 @@ body {
     right: 0;
     height: 100%;
     overflow-y: scroll;
-    /* background-image: url('./images/lab.jpg');  */
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -35,12 +34,11 @@ body {
 
 .form-block-wrapper--is-login {
     opacity: .92;
-    /* background-color: white; */
+    
 }
 
 .form-block-wrapper--is-signup {
     opacity: .94;
-    /* background-color: white; */
 }
 
 .form-block {
@@ -51,9 +49,11 @@ body {
     height: 500px;
     padding: 25px;
     background: #790e0e;
-
+    background-color: white;
+    z-index: 1;
     border-radius: 2px;
-    color: #fff;
+    color: grey;
+    filter: blur();
     box-shadow: 0px 0px 16px 9px rgba(0, 0, 0, 0.07);
 }
 
@@ -64,6 +64,7 @@ body {
 .form-block__header h1 {
     font-size: 30px;
     margin: 0 0 20px;
+    color: black;
 }
 
 .form-block__toggle-block {
@@ -71,9 +72,9 @@ body {
 }
 
 .form-block__toggle-block span {
-    font-size: 13px;
-    font-weight: 300;
-    color: rgba(255, 255, 255, .65);
+    font-size: 17px;
+    font-weight: 700;
+    color:#790e0e;
 }
 
 .form-block__input-wrapper {
@@ -98,20 +99,24 @@ body {
 .form-group__input {
     display: block;
     font-size: 15px;
-    color: #fff;
+    color: black;
     width: 100%;
     box-sizing: border-box;
     font-size: 16px;
     padding: 14px 10px;
     margin-bottom: 20px;
-    background: rgba(255, 255, 255, .25);
+    background: rgba(255, 0, 0, .25);
     border: 1px solid rgba(255, 255, 255, .1);
     border-radius: 1px;
 }
 
+input::placeholder {
+    color: black;
+}
+
 .form-group__input:focus {
     outline: none;
-    border: 1px solid #fff;
+    border: 1px solid #790e0e;
     background: transparent;
 }
 
@@ -161,7 +166,7 @@ body {
 }
 
 .button--primary {
-    background: #ED6A5E;
+    background: #790e0e;
     color: #fff;
     margin-top: 15px;
 }
@@ -170,11 +175,17 @@ body {
     box-shadow: 0px 0px 18px 15px rgba(0, 0, 0, 0.15);
 }
 
+.message {
+    color: black;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
 .full-width {
     width: 100%;
 }
 
-input[type="checkbox"] {
+#form-toggler {
     display: none;
 }
 
@@ -186,8 +197,9 @@ input[type="checkbox"] + label:before {
     right: 0;
     width: 43px;
     height: 8px;
-    background: rgba(255, 255, 255, .4);
+    background: rgba(255, 0, 0, .25);
     cursor: pointer;
+    z-index: 2;
     border-radius: 50px;
 }
 
@@ -199,8 +211,9 @@ input[type="checkbox"] + label:after {
     right: 18px;
     width: 25px;
     height: 25px;
-    background: #ED6A5E;
+    background: #790e0e;
     cursor: pointer;
+    z-index: 3;
     border-radius: 50%;
     box-shadow: 1px 1px 0px 0px rgba(0, 0, 0, 0.15);
     transition: all .3s ease-in-out;

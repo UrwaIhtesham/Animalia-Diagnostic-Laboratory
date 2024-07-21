@@ -3,14 +3,20 @@ import LoginForm from './LoginForm';
 class Login extends Component{
     constructor(props) {
         super(props);
+        console.log(props);
         this.state = {
             mode: this.props.mode
         }
+        console.log(this.state);
     }
 
     toggleMode = () => {
         const newMode = this.state.mode === 'login' ? 'signup' : 'login';
         this.setState({ mode: newMode });
+    }
+
+    handleSubmit =(e) => {
+        e.preventDefault();
     }
 
     render() {
@@ -26,7 +32,9 @@ class Login extends Component{
                             <label htmlFor="form-toggler"></label>
                         </div>
                     </header>
+                    {
                     <LoginForm mode={this.state.mode} onSubmit={this.props.onSubmit} />
+                    }
                 </section>
             </div>
         )

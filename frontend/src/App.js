@@ -1,36 +1,47 @@
-import React, { useState, useRef } from "react";
-//import Chatbot from 'react-chatbot-kit';
-//import 'react-chatbot-kit/build/main.css';
-//import config from './chatbot/config';
-//import ActionProvider from './chatbot/ActionProvider';
-//import MessageParser from './chatbot/MessageParser';
+import React, { useState } from "react";
+import { BrowserRouter as Router, Route, Routes, useNavigate } from "react-router-dom";
 import Home from './home/home';
-import Login from "./Components/Login/Login";
-import LandingPage from './Components/LandingPage/Landingpage'
-
-import './App.css'
+import LandingPage from './Components/LandingPage/Landingpage';
+import Login from './Components/Login/Login';
+import './App.css';
 
 function App() {
-  const [state] = useState({});
-  const stateRef = useRef(state);
+  const [showForm, setShowForm] = useState(false);
+  const [formMode, setFormMode] = useState('login');
 
-  stateRef.current = state;
+  const handleSignIn = () => {
+    setFormMode('login');
+    setShowForm(true);
+  };
+
+  const handleSignUp = () => {
+    setFormMode('signup');
+    setShowForm(true);
+  };
+
+  const closeForm = () => {
+    setShowForm(false);
+  };
 
   return (
-    /*<div className="App">
-       <Chatbot
-          config={config}
-          messageParser={MessageParser}
-          actionProvider={ActionProvider}
-          avatarStyle={{
-            width: '50px',
-            height: '50px',
-          }}
-        />
-        
-    </div>*/
-    <Login/>
-    //<LandingPage/>
+    <Router>
+      <div className="app">
+        <Routes>
+          <Route path="/" element={!showForm ? <LandingPage onSignIn={handleSignIn} onSignUp={handleSignUp} /> : (
+            <div className="overlay">
+              <div className="blurred-home">
+                <Home />
+              </div>
+              <div className="form-container">
+                <button className="close-button" onClick={closeForm}>X</button>
+                <Login mode={formMode} />
+              </div>
+            </div>
+          )} />
+          <Route path="/home" element={<Home />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
