@@ -6,7 +6,7 @@ import React, { useState, useRef } from "react";
 //import MessageParser from './chatbot/MessageParser';
 import Home from './home/home';
 //import LandingPage from './Components/LandingPage/Landingpage'
-
+import Labtest from './labtest/labtest';
 import './App.css'
 
 function App() {
@@ -27,9 +27,10 @@ function App() {
           }}
         />
         
-    </div>*/
+    </div>
     <Home/>
-    //<LandingPage/>
+    //<LandingPage/>*/
+    <Labtest/>
   );
 }
 

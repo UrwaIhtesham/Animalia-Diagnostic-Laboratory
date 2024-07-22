@@ -1,6 +1,7 @@
 import React from 'react';
 import SymptomsDropdown from './SymptomsDropdown';
 import axios from 'axios';
+const apiUrl = process.env.REACT_APP_API_URL;
 
 class ActionProvider {
   constructor(createChatBotMessage, setStateFunc) {
@@ -261,7 +262,7 @@ class ActionProvider {
   };
 
   predictDisease = (animalType, symptoms) => {
-    const url = 'http://localhost:5000/predict';
+    const url = '${apiUrl}/predict';
     const requestData={
       animal_type: animalType,
       symptoms: symptoms
