@@ -28,9 +28,9 @@ function App() {
         />
         
     </div>
-    <Home/>
-    //<LandingPage/>*/
     <Labtest/>
+    //<LandingPage/>*/
+    <Home/>
   );
 }
 

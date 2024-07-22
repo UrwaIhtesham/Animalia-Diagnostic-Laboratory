@@ -262,7 +262,7 @@ class ActionProvider {
   };
 
   predictDisease = (animalType, symptoms) => {
-    const url = '${apiUrl}/predict';
+    const url = 'http://localhost:5000/predict';
     const requestData={
       animal_type: animalType,
       symptoms: symptoms
