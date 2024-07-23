@@ -52,7 +52,9 @@ const LoginForm = ({ mode }) => {
         localStorage.setItem('token', token);
         setMessage('Login successful');
         setTimeout(() => {
-          navigate('/home');
+          const successfulemail= response.data.email;
+          console.log("Email in LoginFOrm",successfulemail );
+          navigate('/home', {state:{email: successfulemail}});
         }, 2000);
       } else if (mode === 'signup') {
         if (createPassword !== repeatPassword) {
