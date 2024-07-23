@@ -6,10 +6,14 @@ import config from '../chatbot/config';
 import ActionProvider from '../chatbot/ActionProvider';
 import MessageParser from '../chatbot/MessageParser';
 import Modal from 'react-modal';
+import { useLocation } from 'react-router-dom';
 import './home.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserMd, faSmile, faTooth, faPhone,faEnvelope} from '@fortawesome/free-solid-svg-icons';
 function Home() {
+  const location = useLocation();
+  const email = location.state?.email;
+  console.log("Email in Home", email);
   const [category, setCategory] = useState('All');
   const [isChatbotOpen, setIsChatbotOpen] = useState(false);
 
