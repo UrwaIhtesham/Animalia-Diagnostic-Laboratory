@@ -8,6 +8,7 @@ import os
 
 from app.models.users.user import db, User
 from app.models.doctors.doctor import db, Doctors
+from app.models.appointments.appointment import db, Appointments
 from app.routes import register_all_blueprints
 from app.models.predict import predict_disease
 
@@ -106,6 +107,7 @@ from app import create_app
 
 register_all_blueprints(app)
 
+
 @app.route('/doctors', methods=['GET'])
 def get_doctors():
     available_doctors = Doctors.query.filter_by(status='available').all()
@@ -122,6 +124,10 @@ def get_doctors():
     print(doctors_list)
     return jsonify(doctors_list)
 
+@app.route('/appointment', methods=['POST'])
+def appointment():
+    print("Inside appointment")
+    return jsonify({'error': 'Invalid input'}), 400
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)

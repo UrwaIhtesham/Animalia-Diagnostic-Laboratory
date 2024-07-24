@@ -6,11 +6,12 @@ import config from '../chatbot/config';
 import ActionProvider from '../chatbot/ActionProvider';
 import MessageParser from '../chatbot/MessageParser';
 import Modal from 'react-modal';
-import { useLocation } from 'react-router-dom';
+import { useLocation,useNavigate } from 'react-router-dom';
 import './home.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserMd, faSmile, faTooth, faPhone,faEnvelope} from '@fortawesome/free-solid-svg-icons';
 function Home() {
+  const navigate = useNavigate();
   const location = useLocation();
   const email = location.state?.email;
   console.log("Email in Home", email);
@@ -42,6 +43,10 @@ function Home() {
         }
         return images[category] || [];
     };
+    const handleAppointmentLink = (e) => {
+        e.preventDefault();  // Prevent the Link default navigation
+        navigate('/appointment', { state: { email } });
+      };
     return (
       <div>
         <div className="container">
@@ -54,7 +59,7 @@ function Home() {
                         <li><a href="#services">Services</a></li>
                         <li><a href="#contact">Contact Us</a></li>
                         <li><a href="#chatbot" onClick={openChatbot}>Chatbot</a></li>
-                        <li><a href="/appointment" >Book an Appointment</a></li>
+                        <li><a href="/appointment" onClick={handleAppointmentLink} >Book an Appointment</a></li>
                     </ul>
                 </nav>
             </header>
