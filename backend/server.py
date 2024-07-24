@@ -15,10 +15,17 @@ app = Flask(__name__)
 import secrets
 sk = secrets.token_hex(16)
 app.config['SECRET_KEY'] = sk
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:Password123*@localhost/animalia'
+ 
+ # Set the database URI dynamically
+db_username = os.getenv('DB_USERNAME')
+db_password = os.getenv('DB_PASSWORD')
+db_host = os.getenv('DB_HOST')
+db_name = os.getenv('DB_NAME')
 
-SQLALCHEMY_TRACK_MODIFICATIONS = False 
-SQLALCHEMY_ECHO = True
+app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+pymysql://{db_username}:{db_password}@{db_host}/{db_name}'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SQLALCHEMY_ECHO'] = True
+#just for testing
 
 bcrypt = Bcrypt(app)
 CORS(app, supports_credentials=True)
