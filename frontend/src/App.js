@@ -4,6 +4,7 @@ import Home from './home/home';
 import LandingPage from './Components/LandingPage/Landingpage';
 import Login from './Components/Login/Login';
 import './App.css';
+import Labtest from "./labtest/labtest";
 
 function App() {
   const [showForm, setShowForm] = useState(false);
@@ -26,8 +27,8 @@ function App() {
   return (
     <Router>
       <div className="app">
-        <Routes>
-          <Route path="/" element={!showForm ? <LandingPage onSignIn={handleSignIn} onSignUp={handleSignUp} /> : (
+         <Routes>
+          {/*<Route path="/" element={!showForm ? <LandingPage onSignIn={handleSignIn} onSignUp={handleSignUp} /> : (
             <div className="overlay">
               <div className="blurred-home">
                 <Home />
@@ -38,7 +39,9 @@ function App() {
               </div>
             </div>
           )} />
-          <Route path="/home" element={<Home />} />
+          <Route path="/home" element={<Home />} /> */
+          }
+          <Route path="/" element={<Labtest/>}/>
         </Routes>
       </div>
     </Router>

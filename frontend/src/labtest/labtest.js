@@ -123,7 +123,7 @@ function Labtest() {
         </tbody>
       </table>
       <div className="total-amount">
-        <h2>Total Amount: Rs.{totalAmount}</h2>
+        <h2 className='amount-txt'>Total Amount: Rs.{totalAmount}</h2>
       </div>
       <button className="payment-button" onClick={() => alert(`Proceeding to payment of Rs.${totalAmount}`)}>
         Payment to Proceed
