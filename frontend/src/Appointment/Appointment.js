@@ -2,11 +2,15 @@ import React, { useState, useEffect } from 'react';
 import './Appointment.css';
 import doctorImage from './Doctor.png';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
+
 
 
 function Appointment() {
 //   const { email } = useContext(UserContext);
+const location = useLocation();
+const email = location.state?.email;
+
   const [selectedSpecialization, setSelectedSpecialization] = useState('');
   const [selectedDoctor, setSelectedDoctor] = useState(null);
   const [doctors, setDoctors] = useState([]);
@@ -19,9 +23,28 @@ function Appointment() {
     setIsDisabled(true)
     setSelectedDoctor(null);
   };
-  const handleBookAppointment = (doctor) => {
-    alert(`Appointment booked with ${doctor.name}`);
-    navigate('/dashboard'); // Redirect to the dashboard
+  const handleBookAppointment = async(doctor) => {
+    const docid=doctor.id;
+    const fee= doctor.fee;
+    
+    try {
+      // Make the POST request and await the response
+      const response = await axios.post('http://127.0.0.1:5000/appointment', {
+        docid,
+        useremail: email,
+        fee
+      });
+  
+      // Log the response data
+      console.log(response.data);
+  
+      // Redirect to the dashboard after a successful response
+      navigate('/home');
+    } catch (error) {
+      // Handle any errors that occur during the request
+      console.error('Error booking appointment:', error);
+      // Optionally, you can show an error message to the user here
+    }
   };
   const uniqueSpecializations = Array.from(new Set(doctors.map(doctor => doctor.specialization)));
   const filteredDoctors = doctors.filter(
