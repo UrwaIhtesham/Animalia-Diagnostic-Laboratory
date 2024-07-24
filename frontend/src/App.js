@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes, useNavigate } from "react-route
 import Home from './home/home';
 import LandingPage from './Components/LandingPage/Landingpage';
 import Login from './Components/Login/Login';
+import Appointment from "./Appointment/Appointment";
 import './App.css';
 
 function App() {
@@ -39,6 +40,8 @@ function App() {
             </div>
           )} />
           <Route path="/home" element={<Home />} />
+          <Route path= "/appointment" element={<Appointment />} />
+
         </Routes>
       </div>
     </Router>

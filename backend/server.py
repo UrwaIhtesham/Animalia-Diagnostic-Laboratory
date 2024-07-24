@@ -7,6 +7,7 @@ from flask_sqlalchemy import SQLAlchemy
 import os
 
 from app.models.users.user import db, User
+from app.models.doctors.doctor import db, Doctors
 from app.routes import register_all_blueprints
 from app.models.predict import predict_disease
 
@@ -104,6 +105,22 @@ def predict():
 from app import create_app
 
 register_all_blueprints(app)
+
+@app.route('/doctors', methods=['GET'])
+def get_doctors():
+    available_doctors = Doctors.query.filter_by(status='available').all()
+    doctors_list = [
+        {
+            'id': doctor.id,
+            'name': doctor.name,
+            'specialization': doctor.specialization,
+            'fees': doctor.fee,
+            'experience': doctor.experience,
+            'timing': doctor.timing
+        } for doctor in available_doctors
+    ]
+    print(doctors_list)
+    return jsonify(doctors_list)
 
 
 if __name__ == '__main__':
