@@ -13,11 +13,14 @@ def create_app():
     app = Flask(__name__)
     db_username = os.getenv('DB_USERNAME')
     db_password = os.getenv('DB_PASSWORD')
-    db_host = os.getenv('DB_HOST')
+    db_url = os.getenv('DB_URL')  # Use 'DB_HOST' instead of 'DB_URL'
     db_name = os.getenv('DB_NAME')
-    
-    app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+mysqlconnector://{db_username}:{db_password}@{db_host}/{db_name}'
-    
+
+# Configure the SQLAlchemy database URI
+    app.config['SQLALCHEMY_DATABASE_URI'] = (
+    f"mysql+pymysql://{db_username}:{db_password}@"
+    f"{db_url}/{db_name}"
+         )
     db.init_app(app)
     bcrypt.init_app(app)
     jwt.init_app(app)

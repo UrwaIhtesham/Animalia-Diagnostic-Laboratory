@@ -19,10 +19,14 @@ app.config['SECRET_KEY'] = sk
  # Set the database URI dynamically
 db_username = os.getenv('DB_USERNAME')
 db_password = os.getenv('DB_PASSWORD')
-db_host = os.getenv('DB_HOST')
+db_url = os.getenv('DB_URL')  # Use 'DB_HOST' instead of 'DB_URL'
 db_name = os.getenv('DB_NAME')
 
-app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+pymysql://{db_username}:{db_password}@{db_host}/{db_name}'
+# Configure the SQLAlchemy database URI
+app.config['SQLALCHEMY_DATABASE_URI'] = (
+    f"mysql+pymysql://{db_username}:{db_password}@"
+    f"{db_url}/{db_name}"
+         )
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_ECHO'] = True
 #just for testing
