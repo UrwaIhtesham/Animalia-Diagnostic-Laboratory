@@ -28,6 +28,7 @@ const email = location.state?.email;
     const fee= doctor.fee;
     
     try {
+      console.log(email);
       // Make the POST request and await the response
       const response = await axios.post('http://127.0.0.1:5000/appointment', {
         docid,
@@ -66,9 +67,9 @@ const email = location.state?.email;
      <div className="sticky-header">
 
      
-        <h1>Doctor Appointment Booking</h1>
+        <h1 className='appoint-h1'>Doctor Appointment Booking</h1>
 
-        <label htmlFor="specialization">Choose Animal Specialization:</label>
+        <label className="label-label" htmlFor="specialization">Choose Animal Specialization:</label>
         <select id="specialization" onChange={handleSpecializationChange} value={selectedSpecialization} disabled={isDisabled}>
             <option value="">Select Specialization</option>
             {uniqueSpecializations.map((specialization, index) => (

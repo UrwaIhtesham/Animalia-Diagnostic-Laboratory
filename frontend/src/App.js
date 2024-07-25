@@ -5,6 +5,7 @@ import LandingPage from './Components/LandingPage/Landingpage';
 import Login from './Components/Login/Login';
 import Appointment from "./Appointment/Appointment";
 import './App.css';
+import Labtest from "./labtest/labtest";
 
 function App() {
   const [showForm, setShowForm] = useState(false);
@@ -41,7 +42,7 @@ function App() {
           )} />
           <Route path="/home" element={<Home />} />
           <Route path= "/appointment" element={<Appointment />} />
-
+          <Route path="/labtest" element={<Labtest/>}/>
         </Routes>
       </div>
     </Router>

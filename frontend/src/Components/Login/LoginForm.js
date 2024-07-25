@@ -76,7 +76,9 @@ const LoginForm = ({ mode }) => {
         } else if (response.status === 201) {
           setMessage('Registration successful');
           setTimeout(() => {
-            navigate('/home');
+            const successfulemail= response.data.email;
+            console.log("Email in LoginFOrm",successfulemail );
+            navigate('/home', {state:{email: successfulemail}});
           }, 2000);
         }
       }

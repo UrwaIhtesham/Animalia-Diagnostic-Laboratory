@@ -43,6 +43,11 @@ function Home() {
         }
         return images[category] || [];
     };
+
+    const handleLabTestLink = (e) => {
+        e.preventDefault();
+        navigate('/labtest', {state: { email}});
+    }
     const handleAppointmentLink = (e) => {
         e.preventDefault();  // Prevent the Link default navigation
         navigate('/appointment', { state: { email } });
@@ -56,9 +61,9 @@ function Home() {
                     <ul>
                         <li><a href="#home">Home</a></li>
                         <li><a href="#about">About Us</a></li>
-                        <li><a href="#services">Services</a></li>
                         <li><a href="#contact">Contact Us</a></li>
                         <li><a href="#chatbot" onClick={openChatbot}>Chatbot</a></li>
+                        <li><a href="#services" onClick={handleLabTestLink}>Lab test</a></li>
                         <li><a href="/appointment" onClick={handleAppointmentLink} >Book an Appointment</a></li>
                     </ul>
                 </nav>
