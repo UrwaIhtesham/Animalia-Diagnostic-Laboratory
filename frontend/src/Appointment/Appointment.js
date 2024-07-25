@@ -131,6 +131,15 @@ const email = location.state?.email;
             <p><strong>Timing:</strong> {selectedDoctor.timing}</p>
           </div>
           
+          <div className="doctor-details">
+            <p><strong>Specialization:</strong> {selectedDoctor.specialization}</p>
+            <p><strong>Fees per consultation:</strong> {selectedDoctor.fees}</p>
+            <p><strong>Experience:</strong> {selectedDoctor.experience}</p>
+            <p><strong>Timing:</strong> {selectedDoctor.timing}</p>
+          </div>
+          <button onClick={() => alert(`Appointment booked with ${selectedDoctor.name}`)}>
+            Book Appointment
+          </button>
         </div>
       )}
     </div>
