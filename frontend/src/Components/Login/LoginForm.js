@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom"
 import Input from './Input';
 import './login.css';
 import axios from 'axios';
+import { useMediaQuery } from 'react-responsive';
 
 const LoginForm = ({ mode }) => {
   const [username, setUsername] = useState('');
@@ -13,6 +14,9 @@ const LoginForm = ({ mode }) => {
   const [repeatPassword, setRepeatPassword] = useState('');
   const [message, setMessage] = useState('');
   const navigate = useNavigate();
+
+  const isMobile = useMediaQuery({query: '(max-width:425px'});
+  const isTablet = useMediaQuery({query: '(max-width: 768px'});
 
   const handleChange = (e) => {
     const { id, value } = e.target;
@@ -91,6 +95,7 @@ const LoginForm = ({ mode }) => {
 
   return (
     <form onSubmit={handleSubmit}>
+      <div className={`forms ${isMobile ? 'mobile' : isTablet ? 'tablet' : 'desktop'}`}>
       <div className="form-block__input-wrapper">
         <div className="form-group form-group--login">
           <Input
@@ -151,6 +156,7 @@ const LoginForm = ({ mode }) => {
         {mode === 'login' ? 'Log In' : 'Sign Up'}
       </button>
       {message && <p className='message'>{message}</p>}
+      </div>
     </form>
   );
 };
