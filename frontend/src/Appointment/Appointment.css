@@ -18,7 +18,7 @@
   margin-bottom: 20px; /* Add margin to create space below */
 }
 
-h1 {
+.appoint-h1 {
   color: white;
   background-color: maroon;
   padding: 10px;
@@ -31,14 +31,14 @@ h1 {
   text-align: center;
 }
 
-label {
+.label-label {
   display: block;
   margin-bottom: 10px;
   font-weight: bold;
   color: black;
 }
 
-select {
+#specialization{
   width: 50%;
   padding: 10px;
   margin-bottom: 20px;
