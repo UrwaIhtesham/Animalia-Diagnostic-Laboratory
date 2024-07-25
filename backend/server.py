@@ -126,8 +126,34 @@ def get_doctors():
 
 @app.route('/appointment', methods=['POST'])
 def appointment():
-    print("Inside appointment")
-    return jsonify({'error': 'Invalid input'}), 400
+   
+
+    if not request.is_json:
+        print("No JSON received")
+        return jsonify({"error": "No JSON payload provided"}), 400
+
+    data = request.get_json()
+    print("Data is: ",data)
+
+    # Check if necessary keys are present
+    if 'docid' not in data:
+        print("Missing docid")
+        return jsonify({"error": "Missing 'docid' in payload"}), 400
+
+    try:
+        new_appointment = Appointments(
+            doctorid=data['docid'],
+            useremail=data['useremail'],
+            fee=data['fee'],
+            day=data['selectedDay'],
+            time=data['selectedTime']
+        )
+        db.session.add(new_appointment)
+        db.session.commit()
+        return jsonify({"success": "Appointment added"}), 201
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({"error": str(e)}), 500
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)

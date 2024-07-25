@@ -18,7 +18,7 @@
   margin-bottom: 20px; /* Add margin to create space below */
 }
 
-h1 {
+.heading {
   color: white;
   background-color: maroon;
   padding: 10px;
@@ -102,6 +102,10 @@ select {
   height: 78vh;
 }
 
+.appointment h2, .appointment p{
+  color: black;
+}
+
 .doctor-details {
   text-align: center;
   justify-content: center;
@@ -113,7 +117,7 @@ select {
   justify-content: center;
 }
 
-button {
+.bookAppointment {
   padding: 10px 20px;
   border: none;
   border-radius: 5px;

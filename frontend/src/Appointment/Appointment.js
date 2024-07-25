@@ -3,7 +3,7 @@ import './Appointment.css';
 import doctorImage from './Doctor.png';
 import axios from 'axios';
 import { useNavigate, useLocation } from 'react-router-dom';
-
+import moment from 'moment';
 
 
 function Appointment() {
@@ -16,6 +16,11 @@ const email = location.state?.email;
   const [doctors, setDoctors] = useState([]);
   const navigate = useNavigate();
   const [isDisabled, setIsDisabled] = useState(false);
+  const [timeSlots, setTimeSlots] = useState([]);
+  const [selectedDay, setSelectedDay] = useState('');
+  const [selectedTime, setSelectedTime] = useState('');
+
+  const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
 
   const handleSpecializationChange = (e) => {
     
@@ -25,32 +30,99 @@ const email = location.state?.email;
   };
   const handleBookAppointment = async(doctor) => {
     const docid=doctor.id;
-    const fee= doctor.fee;
-    
-    try {
-      // Make the POST request and await the response
-      const response = await axios.post('http://127.0.0.1:5000/appointment', {
-        docid,
-        useremail: email,
-        fee
-      });
+    const fee= doctor.fees;
+    console.log(docid,fee,email);
+    setSelectedDoctor(doctor)
+    // try {
+    //   // Make the POST request and await the response
+    //   const response = await axios.post('http://127.0.0.1:5000/appointment', {
+    //     docid,
+    //     useremail: email,
+    //     fee
+    //   });
+    //   console.log(response.status)
+    //   if(response.status===201)
+    //   {
+    //     alert(`Appointment is booked with ${doctor.name}`)
+    //     // Redirect to the dashboard after a successful response
+    //     navigate('/home');
+
+    //   }
   
-      // Log the response data
-      console.log(response.data);
-  
-      // Redirect to the dashboard after a successful response
-      navigate('/home');
-    } catch (error) {
-      // Handle any errors that occur during the request
-      console.error('Error booking appointment:', error);
-      // Optionally, you can show an error message to the user here
-    }
+      
+    // } catch (error) {
+    //   // Handle any errors that occur during the request
+    //   console.error('Error booking appointment:', error);
+    //   // Optionally, you can show an error message to the user here
+    // }
   };
   const uniqueSpecializations = Array.from(new Set(doctors.map(doctor => doctor.specialization)));
   const filteredDoctors = doctors.filter(
     (doctor) => doctor.specialization === selectedSpecialization
   );
+  const handleappoint = async (selectedDoctor)=>{
+    const docid=selectedDoctor.id;
+    const fee= selectedDoctor.fees;
+    console.log("In FInal");
+    console.log(docid,fee,email);
+    console.log(selectedDoctor.name, selectedDay,selectedTime);
+    try {
+      // Make the POST request and await the response
+      const response = await axios.post('http://127.0.0.1:5000/appointment', {
+        docid,
+        useremail: email,
+        fee,
+        selectedDay,
+        selectedTime
+      });
+      console.log(response.status)
+      if(response.status===201)
+      {
+        alert(`Appointment is booked with ${selectedDoctor.name}`)
+        // Redirect to the dashboard after a successful response
+        navigate('/home');
 
+      }
+  
+      
+    } catch (error) {
+      // Handle any errors that occur during the request
+      console.error('Error booking appointment:', error);
+      // Optionally, you can show an error message to the user here
+    }
+
+  }
+  const parseTimeRange = (timeRange) => {
+    const [startTime, endTime] = timeRange.split(' - ');
+    return {
+      start: moment(startTime, 'h:mm A'),
+      end: moment(endTime, 'h:mm A'),
+    };
+  };
+
+  const generateTimeSlots = (start, end) => {
+    const slots = [];
+    let currentTime = start;
+
+    while (currentTime.isBefore(end)) {
+      slots.push(currentTime.format('h:mm A'));
+      currentTime = currentTime.add(30, 'minutes');
+    }
+
+    return slots;
+  };
+  const handleDayChange = (event) => {
+    setSelectedDay(event.target.value);
+  };
+  const handleTimeChange = (event) => {
+    setSelectedTime(event.target.value);
+  };
+  useEffect(() => {
+    if (selectedDoctor) {
+      const { start, end } = parseTimeRange(selectedDoctor.timing);
+      setTimeSlots(generateTimeSlots(start, end));
+    }
+  }, [selectedDoctor]);
   useEffect(() => {
     axios.get('http://127.0.0.1:5000/doctors')
         .then(response => {
@@ -66,7 +138,7 @@ const email = location.state?.email;
      <div className="sticky-header">
 
      
-        <h1>Doctor Appointment Booking</h1>
+        <h1 className="heading">Doctor Appointment Booking</h1>
 
         <label htmlFor="specialization">Choose Animal Specialization:</label>
         <select id="specialization" onChange={handleSpecializationChange} value={selectedSpecialization} disabled={isDisabled}>
@@ -105,7 +177,7 @@ const email = location.state?.email;
                 <p><strong>Fees:</strong> Rs {doctor.fees}</p>
                 <p><strong>Experience:</strong> {doctor.experience} years</p>
                 <p><strong>Timing:</strong> {doctor.timing}</p>
-                <button onClick={() => handleBookAppointment(doctor)}>
+                <button className='bookAppointment' onClick={() => handleBookAppointment(doctor)}>
                     Book Appointment
                 </button>
               </div>
@@ -129,7 +201,39 @@ const email = location.state?.email;
             <p><strong>Experience:</strong> {selectedDoctor.experience}</p>
             <p><strong>Timing:</strong> {selectedDoctor.timing}</p>
           </div>
-          
+          <div className="appointment-schedule">
+            <label htmlFor="day-select">Select a day:</label>
+              <select id="day-select" value={selectedDay} onChange={handleDayChange}>
+                <option value="">--Select a day--</option>
+                {daysOfWeek.map((day) => (
+                  <option key={day} value={day}>
+                    {day}
+                  </option>
+                ))}
+              </select>
+              {selectedDay && (
+              <div>
+                <label htmlFor="time-select">Select a time:</label>
+                <select id="time-select" value={selectedTime} onChange={handleTimeChange}>
+                  <option value="">--Select a time--</option>
+                  {timeSlots.map((time) => (
+                    <option key={time} value={time}>
+                      {time}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            )}
+            {selectedTime &&(
+              <div>
+                <button className='bookAppointment' onClick={() => handleappoint(selectedDoctor)}>
+                    Book Appointment
+                </button>
+              </div>
+            )
+            }
+
+          </div>
         </div>
       )}
     </div>
