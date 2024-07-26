@@ -5,7 +5,6 @@ import SymptomsDropdown from './SymptomsDropdown';
 import React from 'react';
 import BotAvatar from '../Components/BotAvatar/BotAvatar';
 
-//import avatar from './Avatar';
 
 const config = {
   initialMessages: [createChatBotMessage(<React.Fragment>
@@ -16,16 +15,12 @@ const config = {
   botName: 'Animalia',
   customStyles: {
     botMessageBox: 'bg-lightgray text-black text-lg',
-      //backgroundColor: 'lightgray',
-      //color: 'black',
-      //fontSize: 'larger',
     chatButton: {
       backgroundColor: 'maroon',
     },
   },
   customComponents:{
     botAvatar: (props) => <BotAvatar {...props}/>,
-    //optionsLinks: (props) => <OptionsLinks {...props} />,
   },
   
   widgets: [

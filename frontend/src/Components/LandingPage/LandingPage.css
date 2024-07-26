@@ -1,454 +1,350 @@
+/* General styles */
+
+html, body {
+  overflow: hidden;
+}
+
+
 .main {
-    display: grid;
-    flex-direction: column;
-    min-height: 100vh;
-    min-width: 100vw;
-  }
-  
-  .upper-half {
-    /*background-color: lightgray;*/ /* Light gray background */
-    /*background-image: url('/images/pets.jpg');*/
-    /*background-size: cover;*/
-    /*display: flex;*/
-    /*justify-content: center;*/
-    /*align-items: center;*/
-    /*width: 100vw;
-    height: 50vh;*/
-    position: relative;
-    height: 50vh;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  overflow:hidden
+}
+
+.upper-half {
+  flex: 1;
+}
+
+.background-image .bg-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.lower-half {
+  padding: 20px;
+  text-align: center;
+}
+
+/* Title styles */
+.title h1 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  z-index: 5;
+}
+
+/* Button styles */
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.btn-hover {
+  width: 15vw;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  margin: 20px;
+  height: 55px;
+  text-align: center;
+  border: none;
+  background-size: 300% 100%;
+  border-radius: 50px;
+  -moz-transition: all .4s ease-in-out;
+  -o-transition: all .4s ease-in-out;
+  -webkit-transition: all .4s ease-in-out;
+  transition: all .4s ease-in-out;
+  background-image: linear-gradient(to right, #29323c, #485563, #485563, maroon);
+  box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);
+}
+
+.btn-hover:hover {
+  background-position: 100% 0;
+  -moz-transition: all .4s ease-in-out;
+  -o-transition: all .4s ease-in-out;
+  -webkit-transition: all .4s ease-in-out;
+  transition: all .4s ease-in-out;
+}
+
+.btn-hover:focus {
+  outline: none;
+}
+
+/* Responsive styles */
+.mobile {
+  .main{
     display: flex;
-    justify-content: center;
-    align-items: center;
-    /*overflow: hidden;*/
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
   }
 
-  .bg-img {
-    position: absolute;
-    top: -68%;
-    left: 0;
-    width: 100%;
-    height: auto;
-    object-fit:fill;
+  .upper-half, .lower-half{
+    height: 50vh;
+  }
+
+  .upper-half{
+    background-image: url('pets.jpg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  }
+
+  .lower-half{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: maroon;
     z-index: 0;
   }
-  
-  .title {
-    z-index: 1;
-    font-size: 4rem;
-    text-align: center;
-    color: black; /* Darker text color */
-    margin-bottom: 0px;
-    margin-top: 30px;
-  }
-  
-  .lower-half {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 50vh;
-    background-color: maroon;
-  }
 
-  .lower-half::after {
+  .lower-half::after{
     content: '';
     position: absolute;
-    top: 50;
-    left: 0;
+    bottom: 0;
+    left:0;
     width: 100%;
-    height: 50%;
-    background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent white overlay */
-    z-index: 0; /* Ensure it's above content but below buttons */
-    }
-  
-  .lower-half p {
-    font-size: 2rem;
-    color: white; /* Darker text color */
-    margin-bottom: 0px;
-    margin-top: 150px;
+    height: 56%;
+    padding: 0px 0px;
+    margin: 0px 0px;
+    background-color: rgba(255, 255, 255, 0.2);
     z-index: 1;
+  }
+
+  .title h1 {
+    font-size: 1.5rem;
+    color: black;
+    z-index: 5;
+  }
+
+  .lower-half p{
+    font-size: 1rem;
+    color: white;
+    z-index: 5;
   }
   
   .buttons {
+    flex-direction: row;
+    gap: 1.5rem;
+    z-index: 5;
+  }
+
+  .btn-hover {
+    width: 30vw;
+    font-size: 1rem;
+    font-weight: 400;
+    color: #fff;
+    cursor: pointer;
+    margin: 20px;
+    height: 35px;
+    text-align: center;
+    border: none;
+    background-size: 300% 100%;
+    border-radius: 50px;
+    -moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+    background-image: linear-gradient(to right, #29323c, #485563, #485563, maroon);
+    box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);
+  }
+
+  .btn-hover:hover {
+    background-position: 100% 0;
+    -moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+  }
+
+  .btn-hover:focus {
+    outline: none;
+  }
+}
+
+.tablet {
+  .main{
     display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  .upper-half, .lower-half{
+    height: 50vh;
+  }
+
+  .upper-half{
+    background-image: url('pets.jpg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  }
+
+  .lower-half{
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-    gap: 2rem;
+    background-color: maroon;
+    z-index: 0;
+  }
+
+  .lower-half::after{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left:0;
     width: 100%;
-    max-width: 400px; /* Limit button width */
-    height: 100%;
+    height: 56%;
+    padding: 0px 0px;
+    margin: 0px 0px;
+    background-color: rgba(255, 255, 255, 0.2);
     z-index: 1;
   }
-  
-  .buttons button {
-    padding: 0.5rem 1rem;
+
+  .title h1 {
     font-size: 2rem;
-    background-color: gray; /* Bootstrap blue */
     color: black;
-    border: none;
+    z-index: 5;
+  }
+
+  .lower-half p{
+    font-size: 1.5rem;
+    color: white;
+    z-index: 5;
+  }
+  
+  .buttons {
+    flex-direction: row;
+    gap: 1.5rem;
+    z-index: 5;
+  }
+
+  .btn-hover {
+    width: 25vw;
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: #fff;
     cursor: pointer;
+    margin: 20px;
+    height: 40px;
+    text-align: center;
+    border: none;
+    background-size: 300% 100%;
+    border-radius: 50px;
+    -moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+    background-image: linear-gradient(to right, #29323c, #485563, #485563, maroon);
+    box-shadow: 0 4px 15px 0 rgba(31, 37, 44, 0.75);
+  }
+
+  .btn-hover:hover {
+    background-position: 100% 0;
+    -moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+  }
+
+  .btn-hover:focus {
+    outline: none;
+  }
+}
+
+.desktop {
+  .main{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  .upper-half, .lower-half{
+    height: 50vh;
+  }
+
+  .upper-half{
+    background-image: url('pets.jpg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  }
+
+  .lower-half{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: maroon;
+    z-index: 0;
+  }
+
+  .lower-half::after{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left:0;
+    width: 100%;
+    height: 56%;
+    padding: 0px 0px;
+    margin: 0px 0px;
+    background-color: rgba(255, 255, 255, 0.2);
     z-index: 1;
   }
-  
-  .buttons button:hover {
-    background-color: maroon; /* Darker shade of blue on hover */
-    border: 5px solid white;
+
+  .title h1 {
+    font-size: 3rem;
+    color: black;
+    z-index: 5;
+  }
+
+  .lower-half p{
+    font-size: 2rem;
     color: white;
+    z-index: 5;
   }
   
-  /* Media Queries */
-  @media screen and (max-width: 2560px) {
-    .upper-half{
-        height: 50vh;
-        z-index: 0;
-        background-color: whitesmoke;
-    }
-
-    .lower-half {
-        z-index: 1;
-        height: 50vh;
-    }
-
-    .lower-half::after {
-        content: '';
-        position: absolute;
-        top: 50;
-        left: 0;
-        width: 100%;
-        height: 50%;
-        background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent white overlay */
-        z-index: 0; /* Ensure it's above content but below buttons */
-    }
-
-    .bg-img {
-        z-index: 0;
-          top: -80%; /* Adjust vertical positioning of background image */
-      }
-    
-    .title {
-      font-size: 5rem; /* Adjust font size for smaller screens */
-      margin-top: 20px; /* Adjust top margin for title */
-    }
-  
-    .lower-half p {
-      font-size: 4rem; /* Adjust font size for smaller screens */
-      margin-top: 30px; /* Adjust margin for text */
-    }
-
-    .buttons {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: row;
-        gap: 3rem;
-        width: 100%;
-        max-width: 700px; /* Limit button width */
-        height: 100%;
-        z-index: 1;
-      }
-
-    .buttons button{
-        padding: 0.5rem 1rem;
-        font-size: 4rem;
-        background-color: gray; /* Bootstrap blue */
-        color: black;
-        border: none;
-        cursor: pointer;
-        z-index: 1;
-        margin-top: 0px;
-    }
+  .buttons {
+    flex-direction: row;
+    gap: 1.5rem;
+    z-index: 5;
+    text-align: center;
   }
 
-  @media screen and (max-width: 1440px) {
-    .upper-half{
-        height: 50vh;
-        z-index: 0;
-        background-color: whitesmoke;
-    }
-
-    .lower-half {
-        z-index: 1;
-        height: 50vh;
-    }
-
-    .lower-half::after {
-        content: '';
-        position: absolute;
-        top: 50;
-        left: 0;
-        width: 100%;
-        height: 50%;
-        background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent white overlay */
-        z-index: 0; /* Ensure it's above content but below buttons */
-    }
-
-    .bg-img {
-        z-index: 0;
-          top: -80%; /* Adjust vertical positioning of background image */
-      }
-    
-    .title {
-      font-size: 1.5rem; /* Adjust font size for smaller screens */
-      margin-top: 20px; /* Adjust top margin for title */
-    }
-  
-    .lower-half p {
-      font-size: 1.5rem; /* Adjust font size for smaller screens */
-      margin-top: 20px; /* Adjust margin for text */
-    }
-
-    .buttons {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: row;
-        gap: 3rem;
-        width: 100%;
-        max-width: 400px; /* Limit button width */
-        height: 100%;
-        z-index: 1;
-      }
-
-    .buttons button{
-        padding: 0.5rem 1rem;
-        font-size: 1.4rem;
-        background-color: gray; /* Bootstrap blue */
-        color: black;
-        border: none;
-        cursor: pointer;
-        z-index: 1;
-        margin-top: 0px;
-    }
+  .btn-hover {
+    width: 15vw;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+    margin: 2rem;
+    height: 4rem;
+    text-align: center;
+    border: none;
+    background-size: 300% 100%;
+    border-radius: 50px;
+    -moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+    background-image: linear-gradient(to right, #29323c, #485563, #485563, maroon);
+    box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);
   }
 
-@media screen and (max-width: 1024px) {
-    .upper-half{
-        height: 50vh;
-        z-index: 0;
-        background-color: whitesmoke;
-    }
-
-    .lower-half {
-        z-index: 1;
-        height: 50vh;
-    }
-
-    .lower-half::after {
-        content: '';
-        position: absolute;
-        top: 50;
-        left: 0;
-        width: 100%;
-        height: 50%;
-        background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent white overlay */
-        z-index: 0; /* Ensure it's above content but below buttons */
-    }
-
-    .bg-img {
-        z-index: 0;
-          top: -80%; /* Adjust vertical positioning of background image */
-      }
-    
-    .title {
-      font-size: 1.5rem; /* Adjust font size for smaller screens */
-      margin-top: 20px; /* Adjust top margin for title */
-    }
-  
-    .lower-half p {
-      font-size: 1.5rem; /* Adjust font size for smaller screens */
-      margin-top: 20px; /* Adjust margin for text */
-    }
-
-    .buttons {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: row;
-        gap: 3rem;
-        width: 100%;
-        max-width: 400px; /* Limit button width */
-        height: 100%;
-        z-index: 1;
-      }
-
-    .buttons button{
-        padding: 0.5rem 1rem;
-        font-size: 1.4rem;
-        background-color: gray; /* Bootstrap blue */
-        color: black;
-        border: none;
-        cursor: pointer;
-        z-index: 1;
-        margin-top: 0px;
-    }
-  }
-  
-  @media screen and (max-width: 768px) {
-    .lower-half{
-        z-index: 1;
-    }
-
-    .bg-img {
-      z-index: 0;
-    top: -30%; /* Adjust vertical positioning of background image */
-    }
-  
-    .title {
-      font-size: 1.5rem; /* Adjust font size for smaller screens */
-    }
-  
-    .lower-half p {
-      font-size: 1.2rem; /* Adjust font size for smaller screens */
-      margin-top: 10px; /* Adjust margin for text */
-    }
-
-    .buttons {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: row;
-        gap: 3rem;
-        width: 100%;
-        max-width: 400px; /* Limit button width */
-        height: 100%;
-        z-index: 1;
-      }
-
-    .buttons button{
-        padding: 0.5rem 1rem;
-        font-size: 1.5rem;
-        background-color: gray; /* Bootstrap blue */
-        color: black;
-        border: none;
-        cursor: pointer;
-        z-index: 1;
-        margin-top: 0px;
-    }
+  .btn-hover:hover {
+    background-position: 100% 0;
+    -moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
   }
 
-  @media screen and (max-width: 375px) {
-    .upper-half{
-        height: 30vh;
-        background-color: whitesmoke;
-    }
-
-    .lower-half{
-        z-index: 1;
-        height: 70vh;
-    }
-
-    .lower-half::after {
-        content: '';
-        position: absolute;
-        top: 50;
-        left: 0;
-        width: 100%;
-        height: 70%;
-        background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent white overlay */
-        z-index: 0; /* Ensure it's above content but below buttons */
-        }
-
-
-    .bg-img {
-      z-index: 0;
-        top: -50%; /* Adjust vertical positioning of background image */
-    }
-  
-    .title {
-        margin-top: 100px;
-      font-size: 0.5rem; /* Adjust font size for smaller screens */
-    }
-  
-    .lower-half p {
-      font-size: 0.6rem; /* Adjust font size for smaller screens */
-      margin-top: 10px; /* Adjust margin for text */
-    }
-
-    .buttons {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: row;
-        gap: 3rem;
-        width: 100%;
-        max-width: 300px; /* Limit button width */
-        height: 100%;
-        z-index: 1;
-      }
-
-    .buttons button{
-        padding: 0.5rem 1rem;
-        font-size: 0.8rem;
-        background-color: gray; /* Bootstrap blue */
-        color: black;
-        border: none;
-        cursor: pointer;
-        z-index: 1;
-        margin-top: 0px;
-    }
+  .btn-hover:focus {
+    outline: none;
   }
-  
-  @media screen and (max-width: 320px) {
-    .upper-half{
-        height: 40vh;
-        background-color: whitesmoke;
-    }
-
-    .lower-half{
-        z-index: 1;
-        height: 60vh;
-    }
-
-    .lower-half::after {
-        content: '';
-        position: absolute;
-        top: 50;
-        left: 0;
-        width: 100%;
-        height: 65%;
-        background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent white overlay */
-        z-index: 0; /* Ensure it's above content but below buttons */
-        }
-
-
-    .bg-img {
-      z-index: 0;
-        top: 30%; /* Adjust vertical positioning of background image */
-    }
-  
-    .title {
-        margin-top: 100px;
-      font-size: 0.7rem; /* Adjust font size for smaller screens */
-    }
-  
-    .lower-half p {
-      font-size: 0.6rem; /* Adjust font size for smaller screens */
-      margin-top: 10px; /* Adjust margin for text */
-    }
-
-    .buttons {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: row;
-        gap: 3rem;
-        width: 100%;
-        max-width: 300px; /* Limit button width */
-        height: 100%;
-        z-index: 1;
-      }
-
-    .buttons button{
-        padding: 0.5rem 1rem;
-        font-size: 0.8rem;
-        background-color: gray; /* Bootstrap blue */
-        color: black;
-        border: none;
-        cursor: pointer;
-        z-index: 1;
-        margin-top: 0px;
-    }
-  }
-
- 
+}
