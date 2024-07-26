@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import './labtest.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { useMediaQuery } from 'react-responsive';
+import { useLocation, useNavigate } from 'react-router-dom';
+import axios from 'axios';
+
 const tests = {
   goat: [
     { id: 1, name: 'General Herd Health Panel', price: 1000 },
@@ -52,6 +56,12 @@ function Labtest() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedAnimal, setSelectedAnimal] = useState('goat');
 
+  const location = useLocation();
+  const email = location.state?.email;
+
+  const isMobile = useMediaQuery({query: '(max-width:425px)'});
+  const isTablet = useMediaQuery({query: '(max-width: 768px)'});
+
   const handleAnimalChange = (event) => {
     setSelectedAnimal(event.target.value);
     setSelectedTests([]);
@@ -80,7 +90,25 @@ function Labtest() {
     return total + test.price;
   }, 0);
 
+  const handlePayment =async()=> {
+    const bookingDetails = {
+      email, selectedtests: selectedTests.map((testId) => ({
+        id: testId,
+        name: tests[selectedAnimal].find((test) => test.id === testId).name,
+        price: tests[selectedAnimal].find((test)=> test.id === testId).price,
+      })),
+    };
+
+    try {
+      await axios.post('http://localhost:5000/book_labtest', bookingDetails);
+      alert(`proceeding to payment of Rs.${totalAmount}`);
+    } catch (error) {
+      console.error('Error booking lab tests:', error);
+    }
+  };
+
   return (
+    <div className={`labtest ${isMobile ? 'mobile' : isTablet ? 'tablet' : 'desktop'}`}>
     <div className="tests-selection-container">
       <div className='headingg'>
       <h1 >Select Diagnostic Tests</h1></div>
@@ -125,9 +153,10 @@ function Labtest() {
       <div className="total-amount">
         <h2 className='amount-txt'>Total Amount: Rs.{totalAmount}</h2>
       </div>
-      <button className="payment-button" onClick={() => alert(`Proceeding to payment of Rs.${totalAmount}`)}>
+      <button className="payment-button" onClick={handlePayment}>
         Payment to Proceed
       </button>
+    </div>
     </div>
   );
 }

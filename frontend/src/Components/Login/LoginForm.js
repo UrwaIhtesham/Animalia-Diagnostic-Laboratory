@@ -75,7 +75,7 @@ const LoginForm = ({ mode }) => {
 
         console.log('Register Response:', response);
 
-        if (response.status === 401) {
+        if (response.status === 409) {
           setMessage('Email Already exists');
         } else if (response.status === 201) {
           setMessage('Registration successful');

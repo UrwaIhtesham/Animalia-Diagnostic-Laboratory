@@ -8,6 +8,8 @@ import os
 from app.models.users.user import db, User
 from app.models.doctors.doctor import db, Doctors
 from app.models.appointments.appointment import db, Appointments
+from app.models.labtests.bookedtests import db, BookTests
+from app.models.labtests.labtest import db, Tests
 from app.routes import register_all_blueprints
 from app.models.predict import predict_disease
 
@@ -62,7 +64,7 @@ def register():
     return jsonify({
         "id": new_user.id,
         "email": new_user.email
-    })
+    }), 201
 
 @app.route('/login', methods=['POST'])
 def login():
@@ -82,7 +84,51 @@ def login():
     return jsonify({
         "id": user.id,
         "email": user.email
-    })
+    }), 201
+
+
+@app.route('/book_labtest', methods=['POST'])
+def book_labtest():
+    data = request.json
+    customeremail = data['email']
+    selectedTests = data['selectedTests']
+    bookings = []
+
+    print("customer email", customeremail)
+    print("Selected Tests", selectedTests)
+
+    user = User.query.filter_by(email=customeremail).first()
+
+    print("User", user)
+
+    if not user:
+        return jsonify({"error":"User not found"}), 404
+    
+    customerid = user.id
+
+    for test in selectedTests:
+        test_details=Tests.query.filter_by(testid=test['id']).first()
+        if test_details:
+            booking = BookTests(
+                test_id = test_details.testid,
+                customerid = customerid,
+                testname = test_details.testname,
+                fees = test_details.testfee,
+                animal = test_details.animal,
+                payment_status='Paid'
+            )
+            print(booking)
+            bookings.append(booking)
+            db.session.add(booking)
+        
+        db.session.commit()
+        return jsonify({"message": "Booking succesful"}), 201
+
+@app.route('/bookedlabtests', methods=['POST'])
+def list_booked():
+    all_booked = BookTests.query.all()
+    results = [{"test id": BookTests.test_id, "customer_name": BookTests.customerid, "name": BookTests.testname, "fees": BookTests.fees, "animal": BookTests.animal, "payment status": BookTests.payment_status} for user in all_users]
+    return jsonify(results)
 
 @app.route('/predict', methods =['POST'])
 def predict():
