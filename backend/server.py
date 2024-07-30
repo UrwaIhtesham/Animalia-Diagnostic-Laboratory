@@ -13,6 +13,8 @@ from app.models.labtests.labtest import db, Tests
 from app.routes import register_all_blueprints
 from app.models.predict import predict_disease
 
+from sqlalchemy.sql import text
+
 app = Flask(__name__)
 
 import secrets
@@ -86,12 +88,48 @@ def login():
         "email": user.email
     }), 201
 
+@app.route('/animals', methods=['GET'])
+def get_animals():
+    try:
+        # Execute the query to get distinct animal types
+        sql=text('SELECT DISTINCT animal FROM tests')
+        animals = db.session.execute(sql).fetchall()
+        # Convert the result to a list of animal names
+        animal_list = [row[0] for row in animals]
+        print(animal_list)
+        return jsonify(animal_list)
+    except Exception as e:
+        # Log the error and return a 500 error response
+        print(f"Error fetching animals: {e}")
+        return jsonify({"error": "An error occurred while fetching animals."}), 500
+
+@app.route('/alltests', methods=['GET'])
+def get_all_tests():
+    try:
+        tests = Tests.query.all()
+
+        tests_list = [
+            {
+                'test id': test.testid,
+                'test name': test.testname,
+                'animal': test.animal,
+                'Fee': test.testfee
+            } for test in tests
+        ]
+        return jsonify(tests_list)
+    except Exception as e:
+        print(f"Error fetching tesrs: {e}")
+        return jsonify({"error": "An error occured while fetcing tests"}), 500
+
+@app.route('/tests', methods=['GET'])
+def get_tests():
+    animal = request.args.get
 
 @app.route('/book_labtest', methods=['POST'])
 def book_labtest():
     data = request.json
     customeremail = data['email']
-    selectedTests = data['selectedTests']
+    selectedTests = data['selectedtests']
     bookings = []
 
     print("customer email", customeremail)
@@ -115,20 +153,35 @@ def book_labtest():
                 testname = test_details.testname,
                 fees = test_details.testfee,
                 animal = test_details.animal,
-                payment_status='Paid'
+                payment_status='Paid',
+                test_status = 'In Progress'
             )
             print(booking)
             bookings.append(booking)
-            db.session.add(booking)
-        
-        db.session.commit()
-        return jsonify({"message": "Booking succesful"}), 201
 
-@app.route('/bookedlabtests', methods=['POST'])
+    db.session.add(booking)
+    db.session.commit()
+    return jsonify({"message": "Booking succesful"}), 201
+
+@app.route('/bookedlabtests', methods=['GET'])
 def list_booked():
     all_booked = BookTests.query.all()
-    results = [{"test id": BookTests.test_id, "customer_name": BookTests.customerid, "name": BookTests.testname, "fees": BookTests.fees, "animal": BookTests.animal, "payment status": BookTests.payment_status} for user in all_users]
+    results = [
+        {
+            "book test id": booked.booktest_id,
+            "test id": booked.test_id,
+            "customer id": booked.customerid,
+            "test name": booked.testname,
+            "fees": booked.fees,
+            "animal": booked.animal,
+            "payment status": booked.payment_status,
+            "test status": booked.test_status,
+            "url": booked.url
+        }
+        for booked in all_booked
+    ]
     return jsonify(results)
+
 
 @app.route('/predict', methods =['POST'])
 def predict():
