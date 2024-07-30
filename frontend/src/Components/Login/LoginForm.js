@@ -45,7 +45,7 @@ const LoginForm = ({ mode }) => {
 
     try {
       if (mode === 'login') {
-        const response = await axios.post('http://localhost:5000/login', { email: username, password });
+        const response = await axios.post('http://ec2-44-204-83-159.compute-1.amazonaws.com:5000/login', { email: username, password });
         console.log('Login Response:', response);
         const { token } = response.data;
         console.log('Login Token:', token);
@@ -60,7 +60,7 @@ const LoginForm = ({ mode }) => {
           return;
         }
 
-        const response = await axios.post('http://localhost:5000/register', {
+        const response = await axios.post('http://ec2-44-204-83-159.compute-1.amazonaws.com:5000/register', {
           name: fullname,
           email,
           password: createPassword,
