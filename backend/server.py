@@ -1,10 +1,8 @@
 from flask import Flask, Blueprint, request, jsonify, session
 from flask_cors import CORS
-
 from flask_bcrypt import Bcrypt
 from flask_sqlalchemy import SQLAlchemy
 import os
-
 from app.models.users.user import db, User
 from app.models.doctors.doctor import db, Doctors
 from app.models.appointments.appointment import db, Appointments
@@ -37,12 +35,17 @@ app.config['SQLALCHEMY_ECHO'] = True
 #just for testing
 
 bcrypt = Bcrypt(app)
-CORS(app, supports_credentials=True)
+CORS(app, resources={r"/*": {"origins": ["http://localhost:3000", "http://animalia-frontend-bucket.s3-website-us-east-1.amazonaws.com"]}})
 
 db.init_app(app)
 
 with app.app_context():
     db.create_all()
+
+
+@app.route('/')
+def index():
+    return jsonify({"message": "CORS is configured properly"})
 
 @app.route('/users', methods=['GET'])
 def listuser():
