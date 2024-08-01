@@ -136,6 +136,16 @@ def get_all_tests():
     except Exception as e:
         print(f"Error fetching tesrs: {e}")
         return jsonify({"error": "An error occured while fetcing tests"}), 500
+    
+
+@app.route('/addtest', methods=['POST'])
+def addtest():
+    data = request.json
+    new_test = Tests(testname=data['name'], testfee=data['testfees'], animal=data['animal'])
+    db.session.add(new_test)
+    db.session.commit()
+    return jsonify({"message": "Test added succesfully"}), 201
+
 
 @app.route('/tests', methods=['GET'])
 def get_tests():
