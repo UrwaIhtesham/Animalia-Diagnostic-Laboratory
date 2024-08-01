@@ -38,10 +38,12 @@ bcrypt = Bcrypt(app)
 CORS(app, resources={r"/*": {"origins": ["http://localhost:3000", 
 "http://animalia-frontend-bucket.s3-website-us-east-1.amazonaws.com"]}})
 db.init_app(app)
-
 with app.app_context():
     db.create_all()
 
+@app.route('/test-cors', methods=['GET'])
+def test_cors():
+    return jsonify({'message': 'CORS is working!'})
 
 @app.route('/')
 def index():
@@ -258,4 +260,4 @@ def appointment():
     return jsonify({'error': 'Invalid input'}), 400
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port=5000, debug=True)
