@@ -35,7 +35,8 @@ app.config['SQLALCHEMY_ECHO'] = True
 #just for testing
 
 bcrypt = Bcrypt(app)
-CORS(app, resources={r"/*": {"origins": "http://animalia-frontend-bucket.s3-website-us-east-1.amazonaws.com"}})
+CORS(app, resources={r"/*": {"origins": ["http://localhost:3000", 
+"http://animalia-frontend-bucket.s3-website-us-east-1.amazonaws.com"]}})
 db.init_app(app)
 
 with app.app_context():
