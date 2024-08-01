@@ -1,3 +1,96 @@
+// import React, { useState } from "react";
+// import { BrowserRouter as Router, Route, Routes, useNavigate } from "react-router-dom";
+// import Home from './home/home';
+// import LandingPage from './Components/LandingPage/Landingpage';
+// import Login from './Components/Login/Login';
+// import Appointment from "./Appointment/Appointment";
+// import './App.css';
+// import Labtest from "./labtest/labtest";
+
+// //admin
+// import Topbar from './admin/Topbar';
+// import Sidebar from './admin/Sidebar';
+// import Dashboard from './admin/dashboard';
+// import Team from './admin/team';
+// import Invoices from './admin/invoices';
+// import Contacts from './admin/contacts';
+// import Appointments from "./admin/appointments";
+// import AdminDoctorsPage from './admin/AdminDoctorsPage';
+// // import Ourtests from './admin/ourTests';
+// import OurTests from './admin/ourTests';
+// import { CssBaseline, ThemeProvider } from "@mui/material";
+// import { ColorModeContext, useMode } from "./theme";
+
+
+// function App() {
+//   const [showForm, setShowForm] = useState(false);
+//   const [formMode, setFormMode] = useState('login');
+//   const [theme, colorMode] = useMode();
+//   const [isSidebar, setIsSidebar] = useState(true);
+
+//   const handleSignIn = () => {
+//     setFormMode('login');
+//     setShowForm(true);
+//   };
+
+//   const handleSignUp = () => {
+//     setFormMode('signup');
+//     setShowForm(true);
+//   };
+
+//   const closeForm = () => {
+//     setShowForm(false);
+//   };
+
+//   return (
+//     <ColorModeContext.Provider value={colorMode}>
+//       <ThemeProvider theme={theme}>
+//         <CssBaseline />
+//         <Router>
+//           <div className="app">
+//             <Routes>
+//               <Route path="/" element={!showForm ? <LandingPage onSignIn={handleSignIn} onSignUp={handleSignUp} /> : (
+//                 <div className="overlay">
+//                   <div className="blurred-home">
+//                     <Home />
+//                   </div>
+//                   <div className="form-container">
+//                     <button className="close-button" onClick={closeForm}>X</button>
+//                     <Login mode={formMode} />
+//                   </div>
+//                 </div>
+//               )} />
+//               <Route path="/home" element={<Home />} />
+//               <Route path="/appointment" element={<Appointment />} />
+//               <Route path="/labtest" element={<Labtest />} />
+//               <Route path="/admin" element={
+//                 <div className="admin-app">
+//                   <Sidebar isSidebar={isSidebar} />
+//                   <main className="content">
+//                     <Topbar setIsSidebar={setIsSidebar} />
+//                     <Routes>
+//                       <Route path="/" element={<Dashboard />} />
+//                       <Route path="/team" element={<Team />} />
+//                       <Route path="/contacts" element={<Contacts />} />
+//                       <Route path="/invoices" element={<Invoices />} />
+//                       <Route path="/appointments" element={<Appointments />} />
+//                       <Route path="/doctors" element={<AdminDoctorsPage />} />
+//                       <Route path="/ourTests" element={<OurTests />} />
+//                     </Routes>
+//                   </main>
+//                 </div>
+//               } />
+//             </Routes>
+            
+//           </div>
+//         </Router>
+//       </ThemeProvider>
+//     </ColorModeContext.Provider>
+//   );
+// }
+
+// export default App;
+
 import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Routes, useLocation } from "react-router-dom";
 import Home from './home/home';

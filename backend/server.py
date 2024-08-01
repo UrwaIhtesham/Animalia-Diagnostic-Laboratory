@@ -142,6 +142,7 @@ def get_all_tests():
 
 @app.route('/addtest', methods=['POST'])
 def addtest():
+    print("Inside addtest route")
     data = request.json
     new_test = Tests(testname=data['name'], testfee=data['testfees'], animal=data['animal'])
     db.session.add(new_test)
