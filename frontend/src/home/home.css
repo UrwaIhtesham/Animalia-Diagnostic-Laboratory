@@ -45,13 +45,6 @@
   background-color: #f0f0f0ce;
 }
 
-nav {
-  justify-content: center;
-  padding: 10px 0;
-  margin-left: 15px;
-  font-family: 'Baskervville SC', serif;
-}
-
 .nav-bg h1 {
   margin-left: 30px;
   font-family: 'Baskervville SC', serif;
@@ -59,33 +52,6 @@ nav {
   color: maroon;
   font-weight: bold;
   text-align: right;
-}
-
-nav ul {
-  list-style-type: none;
-  margin: 0;
-  display: flex;
-  align-items: center;
-}
-
-nav ul li {
-  margin-left: 40px;
-}
-
-nav ul li:last-child {
-  margin-right: 30px;
-}
-
-nav ul li a {
-  text-decoration: none;
-  color: #242223;
-  font-weight: bold;
-  font-size: 20px; /* Example font size for nav items */
-}
-
-nav ul li a:hover {
-  text-decoration: underline;
-  color: maroon;
 }
 
 .button-bg {
@@ -1840,7 +1806,7 @@ nav ul li a:hover {
     background-color: #f0f0f0ce;
   }
   
-  nav {
+  .navbar {
     justify-content: center;
     padding: 0.2rem 0;
     margin-left: 0.2rem;
@@ -1856,29 +1822,29 @@ nav ul li a:hover {
     text-align: center;
   }
   
-  nav ul {
+  .navbar ul {
     list-style-type: none;
     margin: 0;
     display: flex;
     align-items: center;
   }
   
-  nav ul li {
+  .navbar ul li {
     margin-left: 1.5rem;
   }
   
-  nav ul li:last-child {
+  .navbar ul li:last-child {
     margin-right: 1rem;
   }
   
-  nav ul li a {
+  .navbar ul li a {
     text-decoration: none;
     color: #242223;
     font-weight: 600;
     font-size: 1rem; /* Example font size for nav items */
   }
   
-  nav ul li a:hover {
+  .navbar ul li a:hover {
     text-decoration: underline;
     color: maroon;
   }
