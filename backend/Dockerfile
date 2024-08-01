@@ -9,7 +9,8 @@ RUN apt-get update && apt-get install -y \
     default-libmysqlclient-dev \
     pkg-config
 COPY requirements.txt ./
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --upgrade pip
+RUN pip --default-timeout=100 install --no-cache-dir -r requirements.txt
 # Copy the config.env file to the container
 COPY config.env /app/config.env
 
