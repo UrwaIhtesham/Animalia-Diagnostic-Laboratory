@@ -39,7 +39,6 @@ def listuser():
     results = [{"id": user.id, "name": user.name, "email": user.email, "Created At": user.date_added} for user in all_users]
     return jsonify(results)
 
-
 @app.route('/register', methods=['POST'])
 def register():
     print("Inside Add user")
@@ -77,6 +76,11 @@ def login():
 
     if user is None:
         return jsonify({"error": "Unauthorized Access"}), 401
+    
+    if user.email == 'admin@gmail.com':
+        usertype="admin"
+    else:
+        usertype="user"
         
     if not bcrypt.check_password_hash(user.password, password):
         return jsonify({"error": "Unauthorized"}), 401
@@ -85,7 +89,8 @@ def login():
 
     return jsonify({
         "id": user.id,
-        "email": user.email
+        "email": user.email,
+        "user type": usertype
     }), 201
 
 @app.route('/animals', methods=['GET'])

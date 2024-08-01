@@ -69,7 +69,7 @@ function Home() {
         <div className={`container ${isMobile ? 'mobile' : isTablet ? 'tablet' : 'desktop'}`}>
             <header className="nav-bg">
                 <h1>Animalia Diagnostic Centre</h1>
-                <nav>
+                <nav className='navbar'>
                     <div className={`toggle-button ${isMenuOpen?'active':''}`} onClick={toggleMenu}>
                     <FontAwesomeIcon icon={isMenuOpen ? faTimes : faBars} />
                     </div>

@@ -49,17 +49,26 @@ const LoginForm = ({ mode }) => {
 
     try {
       if (mode === 'login') {
-        const response = await axios.post('http://localhost:5000/login', { email: username, password });
+        const response = await axios.post('http://localhost:5000/login', { email: username, password});
         console.log('Login Response:', response);
-        const { token } = response.data;
+        const { token} = response.data;
         console.log('Login Token:', token);
         localStorage.setItem('token', token);
         setMessage('Login successful');
+        if (response.data.email === "admin@gmail.com"){
+          setTimeout(()=> {
+            const successfulemail=response.data.email;
+            console.log("Email in LoginForm", successfulemail);
+            navigate('/admin', {state:{email:successfulemail}});
+          }, 2000);
+        }
+        else{
         setTimeout(() => {
           const successfulemail= response.data.email;
           console.log("Email in LoginFOrm",successfulemail );
           navigate('/home', {state:{email: successfulemail}});
         }, 2000);
+      }
       } else if (mode === 'signup') {
         if (createPassword !== repeatPassword) {
           setMessage('Passwords do not match');
