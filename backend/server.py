@@ -58,6 +58,10 @@ def listuser():
     results = [{"id": user.id, "name": user.name, "email": user.email, "Created At": user.date_added} for user in all_users]
     return jsonify(results)
 
+@app.route('/', methods=['GET'])
+def test():
+    return jsonify("hehe")
+
 @app.route('/register', methods=['POST'])
 def register():
     print("Inside Add user")
