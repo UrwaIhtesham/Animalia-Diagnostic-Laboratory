@@ -155,11 +155,19 @@ def get_all_tests():
 @app.route('/addtest', methods=['POST'])
 def addtest():
     print("Inside addtest route")
+    if request.method == 'OPTIONS':
+        response = app.make_default_options_response()
+        response.headers.add('Access-Control-Allow-Origin', '*')
+        response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
+        response.headers.add('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS')
+        response.headers.add('Access-Control-Allow-Credentials', 'true')
+        return response
     data = request.json
     new_test = Tests(testname=data['name'], testfee=data['testfees'], animal=data['animal'])
     db.session.add(new_test)
     db.session.commit()
     return jsonify({"message": "Test added succesfully"}), 201
+
 
 
 @app.route('/tests', methods=['GET'])
