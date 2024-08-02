@@ -262,7 +262,7 @@ class ActionProvider {
   };
 
   predictDisease = (animalType, symptoms) => {
-    const url = 'http://localhost:5000/predict';
+    const url = 'http://ec2-44-204-83-159.compute-1.amazonaws.com:5000/predict';
     const requestData={
       animal_type: animalType,
       symptoms: symptoms
