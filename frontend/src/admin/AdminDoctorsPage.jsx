@@ -25,7 +25,7 @@ const AdminDoctorsPage = () => {
 
   const fetchDoctors = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/doctors");
+      const response = await axios.get("http://ec2-44-204-83-159.compute-1.amazonaws.com:5000/doctors");
       setDoctors(response.data);
       console.log(response.data);
     } catch (error) {
@@ -42,7 +42,7 @@ const AdminDoctorsPage = () => {
   const handleAddDoctor = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5000/doctors", newDoctor);
+      await axios.post("http://ec2-44-204-83-159.compute-1.amazonaws.com:5000/doctors", newDoctor);
       fetchDoctors();
       setNewDoctor({
         doctorId: "",

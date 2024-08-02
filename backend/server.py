@@ -1,10 +1,8 @@
 from flask import Flask, Blueprint, request, jsonify, session
 from flask_cors import CORS
-
 from flask_bcrypt import Bcrypt
 from flask_sqlalchemy import SQLAlchemy
 import os
-
 from app.models.users.user import db, User
 from app.models.doctors.doctor import db, Doctors
 from app.models.appointments.appointment import db, Appointments
@@ -17,17 +15,30 @@ from sqlalchemy.sql import text
 
 app = Flask(__name__)
 
+app = Flask(__name__)
+
 import secrets
 sk = secrets.token_hex(16)
 app.config['SECRET_KEY'] = sk
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:Password123*@localhost/animalia'
+ 
+ # Set the database URI dynamically
+db_username = os.getenv('DB_USERNAME')
+db_password = os.getenv('DB_PASSWORD')
+db_url = os.getenv('DB_URL')  # Use 'DB_HOST' instead of 'DB_URL'
+db_name = os.getenv('DB_NAME')
 
-SQLALCHEMY_TRACK_MODIFICATIONS = False 
+# Configure the SQLAlchemy database URI
+app.config['SQLALCHEMY_DATABASE_URI'] = (
+    f"mysql+pymysql://{db_username}:{db_password}@"
+    f"{db_url}/{db_name}"
+         )
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_ECHO'] = True
+#just for testing
 
 bcrypt = Bcrypt(app)
-CORS(app, supports_credentials=True)
-
+CORS(app, resources={r"/*": {"origins": ["http://localhost:3000", 
+"http://animalia-frontend-bucket.s3-website-us-east-1.amazonaws.com"]}})
 db.init_app(app)
 
 with app.app_context():

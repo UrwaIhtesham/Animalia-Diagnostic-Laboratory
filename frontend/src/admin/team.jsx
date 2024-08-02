@@ -132,7 +132,7 @@ const Team = () => {
 
   const fetchTests = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/bookedlabtests");
+      const response = await axios.get("http://ec2-44-204-83-159.compute-1.amazonaws.com:5000/bookedlabtests");
       console.log("Fetched data:", response.data);
       // Map the data to match the columns and ensure each row has a unique id
       const mappedTests = response.data.map((test, index) => ({

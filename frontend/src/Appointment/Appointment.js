@@ -30,7 +30,7 @@ const email = location.state?.email;
     try {
       console.log(email);
       // Make the POST request and await the response
-      const response = await axios.post('http://127.0.0.1:5000/appointment', {
+      const response = await axios.post('http://ec2-44-204-83-159.compute-1.amazonaws.com:5000/appointment', {
         docid,
         useremail: email,
         fee
@@ -53,7 +53,7 @@ const email = location.state?.email;
   );
 
   useEffect(() => {
-    axios.get('http://127.0.0.1:5000/doctors')
+    axios.get('http://ec2-44-204-83-159.compute-1.amazonaws.com:5000/doctors')
         .then(response => {
             setDoctors(response.data);
         })

@@ -164,7 +164,7 @@ function Labtest() {
     console.log(bookingDetails);
 
     try {
-      await axios.post('http://localhost:5000/book_labtest', bookingDetails);
+      await axios.post('http://ec2-44-204-83-159.compute-1.amazonaws.com:5000/book_labtest', bookingDetails);
       alert(`proceeding to payment of Rs.${totalAmount}`);
     } catch (error) {
       console.error('Error booking lab tests:', error);

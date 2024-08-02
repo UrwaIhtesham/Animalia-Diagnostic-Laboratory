@@ -51,7 +51,7 @@ const OurTests = () => {
   const handleAddTests = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5000/addtest", newTests); // Fixed endpoint to add tests
+      await axios.post("http://ec2-44-204-83-159.compute-1.amazonaws.com:5000/addtest", newTests); // Fixed endpoint to add tests
       fetchTests();
       setNewTests({
         name: "",

@@ -14,7 +14,7 @@ const Invoices = () => {
   useEffect(() => {
     const fetchInvoiceData = async () => {
       try {
-        const response = await fetch("http://localhost:5000/bookedlabtests");
+        const response = await fetch("http://ec2-44-204-83-159.compute-1.amazonaws.com:5000/bookedlabtests");
         console.log(response);
         const data = await response.json();
         console.log("Data",data);
