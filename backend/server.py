@@ -38,6 +38,15 @@ bcrypt = Bcrypt(app)
 CORS(app, resources={r"/*": {"origins": ["http://localhost:3000", 
 "http://animalia-frontend-bucket.s3-website-us-east-1.amazonaws.com"]}})
 db.init_app(app)
+
+@app.after_request
+def after_request(response):
+    response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
+    response.headers.add('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS')
+    response.headers.add('Access-Control-Allow-Credentials', 'true')
+    return response
+
+register_all_blueprints(app)
 with app.app_context():
     db.create_all()
 
@@ -233,9 +242,7 @@ def predict():
     else:
         return jsonify({'error': 'Invalid input'}), 400
     
-from app import create_app
 
-register_all_blueprints(app)
 
 
 @app.route('/doctors', methods=['GET'])
