@@ -130,6 +130,15 @@ def get_all_tests():
 def get_tests():
     animal = request.args.get
 
+
+@app.route('/addtest', methods=['POST'])
+def addtest():
+    data = request.json
+    new_test = Tests(testname=data['name'], testfee=data['testfees'], animal=data['animal'])
+    db.session.add(new_test)
+    db.session.commit()
+    return jsonify({"message": "Test added succesfully"}), 201
+
 @app.route('/book_labtest', methods=['POST'])
 def book_labtest():
     data = request.json
