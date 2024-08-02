@@ -20,10 +20,11 @@ def create_app():
     app.config['SQLALCHEMY_DATABASE_URI'] = (
     f"mysql+pymysql://{db_username}:{db_password}@"
     f"{db_url}/{db_name}"
-         )
+         ) 
     db.init_app(app)
     bcrypt.init_app(app)
     jwt.init_app(app)
-    CORS(app, resources={r"/*": {"origins": ["http://localhost:3000", "http://animalia-frontend-bucket.s3-website-us-east-1.amazonaws.com"]}})
-
+    CORS(app, resources={r"/*": {"origins": ["http://localhost:3000", 
+"http://animalia-frontend-bucket.s3-website-us-east-1.amazonaws.com",
+"http://animalia-frontend-bucket.s3-website-us-east-1.amazonaws.com/admin"]}})
     return app
