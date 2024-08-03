@@ -74,7 +74,7 @@ function Labtest() {
     const fetchTests =async() => {
       try {
         console.log(email);
-        const response = await axios.get('http://localhost:5000/alltests');
+        const response = await axios.get('http://ec2-44-204-83-159.compute-1.amazonaws.com:5000/alltests');
         const fetchedTests = response.data;
         console.log("Fetched tests:", fetchedTests);
         setTests(fetchedTests);

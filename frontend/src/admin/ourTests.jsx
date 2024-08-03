@@ -21,7 +21,7 @@ const OurTests = () => {
 
   const fetchTests = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/alltests"); // Fixed endpoint to fetch tests
+      const response = await axios.get("http://ec2-44-204-83-159.compute-1.amazonaws.com:5000/alltests"); // Fixed endpoint to fetch tests
       console.log(response.data);
       // Map the data to match the columns
       const mappedTests = response.data.map((test) => ({

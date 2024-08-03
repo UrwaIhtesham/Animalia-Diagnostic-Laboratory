@@ -42,15 +42,28 @@ CORS(app, resources={r"/*": {"origins": ["http://localhost:3000",
 "http://animalia-frontend-bucket.s3-website-us-east-1.amazonaws.com/admin/"]}})
 db.init_app(app)
 
-class Tests(db.Model):
-    __tablename__ = 'tests'
-    testid = db.Column(db.Integer, primary_key=True, autoincrement=True, unique=True)
-    testname = db.Column(db.String(500), nullable=False)
-    testfee = db.Column(db.Integer, nullable=False)
-    animal = db.Column(db.String(50), nullable=False)
-
 with app.app_context():
     db.create_all()
+
+
+@app.route('/updateTestResult', methods=['POST'])
+def update_test_result():
+    data = request.get_json()
+    test_id = data.get('testId')
+    customer_id = data.get('customerId')
+    url = data.get('url')
+
+    # Query the BookTests table to find a matching record
+    booked_test = BookTests.query.filter_by(test_id=test_id, customerid=customer_id).first()
+
+    if booked_test:
+        # Update the URL if the test is found
+        booked_test.url = url
+        db.session.commit()
+        return jsonify({"message": "Test result URL updated successfully."})
+    else:
+        return jsonify({"error": "Test not found."}), 404
+
 
 @app.route('/users', methods=['GET'])
 def listuser():

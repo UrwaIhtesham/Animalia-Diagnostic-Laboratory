@@ -120,11 +120,28 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { tokens } from "../theme"; // Ensure path is correct
 import Header from "./comps/Header"; // Ensure path is correct
+import AWS from 'aws-sdk';
+import { v4 as uuidv4 } from 'uuid';
+
+const S3_BUCKET = 'animalia-results-bucket';
+const REGION = 'us-east-1';
+
+AWS.config.update({
+  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+  region: REGION,
+});
+
+const s3 = new AWS.S3();
+
 
 const Team = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const [tests, setTests] = useState([]);
+  const [file, setFile] = useState(null);
+  const [uploadingTestId, setUploadingTestId] = useState(null);
+  const [uploadingCustomerId, setUploadingCustomerId] = useState(null);
 
   useEffect(() => {
     fetchTests();
@@ -151,6 +168,56 @@ const Team = () => {
     }
   };
 
+
+  const handleFileChange = (event) => {
+    setFile(event.target.files[0]);
+  };
+
+  const handleUploadClick = (testId, customerId) => {
+    setUploadingTestId(testId);
+    setUploadingCustomerId(customerId);
+    document.getElementById('fileInput').click();
+  };
+
+  const uploadFile = async () => {
+    if (!file || !uploadingTestId || !uploadingCustomerId) return;
+
+    const fileName = `${uuidv4()}-${file.name}`;
+    const params = {
+      Bucket: S3_BUCKET,
+      Key: fileName,
+      Body: file,
+      ContentType: file.type,
+      ACL: 'public-read',
+    };
+
+    try {
+      const { Location } = await s3.upload(params).promise();
+      console.log('File uploaded successfully:', Location);
+      await updateTestResultUrl(uploadingTestId, uploadingCustomerId, Location);
+      setFile(null);
+      setUploadingTestId(null);
+      setUploadingCustomerId(null);
+      fetchTests();
+    } catch (error) {
+      console.error('Error uploading file:', error);
+    }
+  };
+
+  const updateTestResultUrl = async (testId, customerId, url) => {
+    try {
+      await axios.post(`http://ec2-44-204-83-159.compute-1.amazonaws.com:5000/updateTestResult`, {
+        testId,
+        customerId,
+        url,
+      });
+      console.log('Test result URL updated successfully.');
+    } catch (error) {
+      console.error('Error updating test result URL:', error);
+    }
+  };
+
+
   const columns = [
     { field: "id", headerName: "ID" },
     { field: "testId", headerName: "Test ID" },
@@ -172,6 +239,7 @@ const Team = () => {
           variant="contained"
           startIcon={<UploadIcon />}
           sx={{ backgroundColor: colors.primary[500], color: colors.grey[100] }}
+          onClick={() => handleUploadClick(cellParams.row.testId, cellParams.row.customerId)}
         >
           {cellParams.value ? "View" : "Upload"} {/* Adjust button text based on the presence of a URL */}
         </Button>
@@ -220,6 +288,13 @@ const Team = () => {
           getRowId={(row) => row.id}
         />
       </Box>
+      <input
+        type="file"
+        id="fileInput"
+        style={{ display: 'none' }}
+        onChange={handleFileChange}
+      />
+      <Button onClick={uploadFile} sx={{ display: 'none' }}>Upload File</Button>
     </Box>
   );
 };

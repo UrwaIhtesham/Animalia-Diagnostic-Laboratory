@@ -7,10 +7,15 @@ RUN apt-get update && apt-get install -y \
     libssl-dev \
     libffi-dev \
     default-libmysqlclient-dev \
-    pkg-config
+    python3-dev \
+    gcc \
+    g++ \
+    pkg-config \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 COPY requirements.txt ./
 RUN pip install --upgrade pip
-RUN pip --default-timeout=100 install --no-cache-dir -r requirements.txt
+RUN pip --default-timeout=400 install --no-cache-dir -r requirements.txt
 # Copy the config.env file to the container
 COPY config.env /app/config.env
 
