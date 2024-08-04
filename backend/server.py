@@ -1,5 +1,8 @@
-from flask import Flask, Blueprint, request, jsonify, session
+from flask import Flask, Blueprint, request, jsonify, session, redirect, url_for
 from flask_cors import CORS
+
+from functools import wraps
+from flask_jwt_extended import JWTManager
 
 from flask_bcrypt import Bcrypt
 from flask_sqlalchemy import SQLAlchemy
@@ -25,19 +28,35 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:Password123*@localhost/ani
 SQLALCHEMY_TRACK_MODIFICATIONS = False 
 app.config['SQLALCHEMY_ECHO'] = True
 
+jwt=JWTManager(app)
 bcrypt = Bcrypt(app)
-CORS(app, supports_credentials=True)
+CORS(app, supports_credentials=True, resources={r"/*": {"origins": "http://localhost:3000"}})
 
 db.init_app(app)
 
 with app.app_context():
     db.create_all()
 
+def generate_token():
+    token=sk
+    return token
+
 @app.route('/users', methods=['GET'])
 def listuser():
-    all_users = User.query.all()
-    results = [{"id": user.id, "name": user.name, "email": user.email, "Created At": user.date_added} for user in all_users]
-    return jsonify(results)
+    # all_users = User.query.all()
+    # results = [{"id": user.id, "name": user.name, "email": user.email, "Created At": user.date_added} for user in all_users]
+    # return jsonify(results)
+    print("Request received")  # Debug statement
+    auth_header = request.headers.get('Authorization')
+    print(auth_header)
+    if auth_header is None:
+        return jsonify({'error': 'Unauthorized access'}), 401
+    else:
+        exclude = 'admin@gmail.com'
+        all_users = User.query.filter(User.email != exclude).all()
+        results = [{"id": user.id, "name": user.name, "email": user.email, "Created At": user.date_added} for user in all_users]
+        return jsonify(results)
+
 
 @app.route('/register', methods=['POST'])
 def register():
@@ -87,11 +106,21 @@ def login():
     
     session["user_id"] = user.id
 
+    token = generate_token()
+    print("In login", token)
+    app.config.setdefault('TOKENS', {})[token] = user.id
+
+
     return jsonify({
         "id": user.id,
         "email": user.email,
         "user type": usertype
     }), 201
+
+@app.route('/logout', methods=['GET', 'POST'])
+def logout():    
+    return jsonify({"message": "Logged out successfully"}), 200
+
 
 @app.route('/animals', methods=['GET'])
 def get_animals():
@@ -125,6 +154,14 @@ def get_all_tests():
     except Exception as e:
         print(f"Error fetching tesrs: {e}")
         return jsonify({"error": "An error occured while fetcing tests"}), 500
+    
+@app.route('/addtest', methods=['POST'])
+def addtest():
+    data = request.json
+    new_test = Tests(testname=data['name'], testfee=data['testfees'], animal=data['animal'])
+    db.session.add(new_test)
+    db.session.commit()
+    return jsonify({"message": "Test added succesfully"}), 201
 
 @app.route('/tests', methods=['GET'])
 def get_tests():
@@ -164,8 +201,8 @@ def book_labtest():
             print(booking)
             bookings.append(booking)
 
-    db.session.add(booking)
-    db.session.commit()
+        db.session.add(booking)
+        db.session.commit()
     return jsonify({"message": "Booking succesful"}), 201
 
 @app.route('/bookedlabtests', methods=['GET'])
@@ -187,7 +224,6 @@ def list_booked():
     ]
     return jsonify(results)
 
-
 @app.route('/predict', methods =['POST'])
 def predict():
     data = request.json
@@ -205,10 +241,6 @@ def predict():
             return jsonify({'error': 'Prediction failed'}), 500
     else:
         return jsonify({'error': 'Invalid input'}), 400
-    
-from app import create_app
-
-register_all_blueprints(app)
 
 
 @app.route('/doctors', methods=['GET'])
@@ -221,16 +253,46 @@ def get_doctors():
             'specialization': doctor.specialization,
             'fees': doctor.fee,
             'experience': doctor.experience,
+            'days': doctor.day,
             'timing': doctor.timing
         } for doctor in available_doctors
     ]
     print(doctors_list)
     return jsonify(doctors_list)
 
+register_all_blueprints(app)
+
+@app.route('/adddoctors', methods=['POST'])
+def add_doctor():
+    try:
+        data = request.json
+        print(data)
+        new_doctor = Doctors(
+            name=data['name'],
+            specialization=data['specialization'],
+            fee=data['fee'],
+            experience=data['experience'],
+            day=data['days'],
+            timing=data['time'],
+            status='available'
+        )
+        db.session.add(new_doctor)
+        db.session.flush()  # Ensure changes are sent to the database
+        db.session.commit()  # Commit the transaction
+        return jsonify({"message": "Doctor added successfully"}), 200
+    except Exception as e:
+        db.session.rollback()  # Rollback in case of error
+        print(f"Error: {e}")
+        return jsonify({"error": "Failed to add doctor"}), 500
+ 
 @app.route('/appointment', methods=['POST'])
 def appointment():
     print("Inside appointment")
     return jsonify({'error': 'Invalid input'}), 400
+
+from app import create_app
+
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)

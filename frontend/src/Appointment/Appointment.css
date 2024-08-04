@@ -127,3 +127,30 @@ button {
 button:hover {
   background-color: #800000;
 }
+
+.appoint-h2{
+  background-color: #800000;
+}
+
+.appointment{
+  background-color: #faecec;
+}
+
+.doctor-details p{
+  color: black;
+}
+
+.appointment-schedule label{
+  color: black;
+  margin-right: 5px;
+}
+
+#day-select{
+  background-color: #800000;
+  color: #ccc;
+}
+
+#time-select{
+  background-color: #800000;
+  color: #ccc;
+}
