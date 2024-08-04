@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom"
 import Input from './Input';
 import './login.css';
 import axios from 'axios';
+import { useAuth } from '../../AuthContext';
 
 const LoginForm = ({ mode }) => {
   const [username, setUsername] = useState('');
@@ -13,6 +14,7 @@ const LoginForm = ({ mode }) => {
   const [repeatPassword, setRepeatPassword] = useState('');
   const [message, setMessage] = useState('');
   const navigate = useNavigate();
+  const { login } = useAuth();
 
   const handleChange = (e) => {
     const { id, value } = e.target;
@@ -45,16 +47,26 @@ const LoginForm = ({ mode }) => {
 
     try {
       if (mode === 'login') {
-        const response = await axios.post('http://localhost:5000/login', { email: username, password });
+        const response = await axios.post('http://localhost:5000/login', { email: username, password },{withCredentials:true});
         console.log('Login Response:', response);
-        const { token } = response.data;
-        console.log('Login Token:', token);
-        localStorage.setItem('token', token);
+        localStorage.setItem('token', response.data.token)
+        // localStorage.setItem('token', response.data.access_token);
+        // console.log(response.data.access_token);
         setMessage('Login successful');
         setTimeout(() => {
           const successfulemail= response.data.email;
           console.log("Email in LoginFOrm",successfulemail );
-          navigate('/home', {state:{email: successfulemail}});
+          localStorage.setItem('userEmail', successfulemail);
+          login();
+          if(response.data.email === 'admin@gmail.com')
+          {
+            navigate('/dashboard');
+          }
+          else
+          {
+            navigate('/home');
+          }
+          
         }, 2000);
       } else if (mode === 'signup') {
         if (createPassword !== repeatPassword) {

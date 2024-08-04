@@ -2,14 +2,11 @@ import React, { useState, useEffect } from 'react';
 import './Appointment.css';
 import doctorImage from './Doctor.png';
 import axios from 'axios';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import moment from 'moment';
 
-
 function Appointment() {
-//   const { email } = useContext(UserContext);
-const location = useLocation();
-const email = location.state?.email;
+  const email = localStorage.getItem('userEmail');
 
   const [selectedSpecialization, setSelectedSpecialization] = useState('');
   const [selectedDoctor, setSelectedDoctor] = useState(null);
@@ -19,79 +16,63 @@ const email = location.state?.email;
   const [timeSlots, setTimeSlots] = useState([]);
   const [selectedDay, setSelectedDay] = useState('');
   const [selectedTime, setSelectedTime] = useState('');
-
-  const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+  const [availableDays, setAvailableDays] = useState([]); // Ensure availableDays is initialized as an array
 
   const handleSpecializationChange = (e) => {
-    
     setSelectedSpecialization(e.target.value);
-    setIsDisabled(true)
+    setIsDisabled(true);
     setSelectedDoctor(null);
   };
-  const handleBookAppointment = async(doctor) => {
-    const docid=doctor.id;
-    const fee= doctor.fees;
-    console.log(docid,fee,email);
-    setSelectedDoctor(doctor)
-    // try {
-    //   // Make the POST request and await the response
-    //   const response = await axios.post('http://127.0.0.1:5000/appointment', {
-    //     docid,
-    //     useremail: email,
-    //     fee
-    //   });
-    //   console.log(response.status)
-    //   if(response.status===201)
-    //   {
-    //     alert(`Appointment is booked with ${doctor.name}`)
-    //     // Redirect to the dashboard after a successful response
-    //     navigate('/home');
 
-    //   }
-  
-      
-    // } catch (error) {
-    //   // Handle any errors that occur during the request
-    //   console.error('Error booking appointment:', error);
-    //   // Optionally, you can show an error message to the user here
-    // }
+  const handleBookAppointment = (doctor) => {
+    const docid = doctor.id;
+    const fee = doctor.fees;
+    console.log(docid, fee, email);
+    console.log(doctor.day);
+    setSelectedDoctor(doctor);
+    setAvailableDays(doctor.day ? doctor.day.split(',').map(day => day.trim()) : []); // Parse available days from doctor data
   };
-  const uniqueSpecializations = Array.from(new Set(doctors.map(doctor => doctor.specialization)));
+
+  const uniqueSpecializations = Array.from(new Set(doctors.map((doctor) => doctor.specialization)));
   const filteredDoctors = doctors.filter(
     (doctor) => doctor.specialization === selectedSpecialization
   );
-  const handleappoint = async (selectedDoctor)=>{
-    const docid=selectedDoctor.id;
-    const fee= selectedDoctor.fees;
+
+  const handleappoint = async (selectedDoctor) => {
+    const docid = selectedDoctor.id;
+    const fee = selectedDoctor.fees;
     console.log("In FInal");
-    console.log(docid,fee,email);
-    console.log(selectedDoctor.name, selectedDay,selectedTime);
+    console.log(docid, fee, email);
+    console.log(selectedDoctor.name, selectedDay, selectedTime);
     try {
-      // Make the POST request and await the response
-      const response = await axios.post('http://127.0.0.1:5000/appointment', {
-        docid,
-        useremail: email,
-        fee,
-        selectedDay,
-        selectedTime
-      });
-      console.log(response.status)
-      if(response.status===201)
-      {
-        alert(`Appointment is booked with ${selectedDoctor.name}`)
-        // Redirect to the dashboard after a successful response
+      const token = localStorage.getItem('token');
+      console.log(token);
+      const response = await axios.post(
+        'http://127.0.0.1:5000/appointments',
+        {
+          docid,
+          useremail: email,
+          fee,
+          selectedDay,
+          selectedTime,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
+        { withCredentials: true }
+      );
+      console.log(response.status);
+      if (response.status === 201) {
+        alert(`Appointment is booked with ${selectedDoctor.name}`);
         navigate('/home');
-
       }
-  
-      
     } catch (error) {
-      // Handle any errors that occur during the request
-      console.error('Error booking appointment:', error);
-      // Optionally, you can show an error message to the user here
+      alert(`Please select another day or time`);
     }
+  };
 
-  }
   const parseTimeRange = (timeRange) => {
     const [startTime, endTime] = timeRange.split(' - ');
     return {
@@ -111,41 +92,58 @@ const email = location.state?.email;
 
     return slots;
   };
+
   const handleDayChange = (event) => {
+    console.log("Handle day change", selectedDoctor.day);
     setSelectedDay(event.target.value);
   };
+
   const handleTimeChange = (event) => {
     setSelectedTime(event.target.value);
   };
+
   useEffect(() => {
     if (selectedDoctor) {
       const { start, end } = parseTimeRange(selectedDoctor.timing);
       setTimeSlots(generateTimeSlots(start, end));
     }
   }, [selectedDoctor]);
+
   useEffect(() => {
-    axios.get('http://127.0.0.1:5000/doctors')
-        .then(response => {
-            setDoctors(response.data);
-        })
-        .catch(error => {
-            console.error('There was an error fetching the doctors!', error);
-        });
+    const token = localStorage.getItem('token');
+    console.log(token);
+
+    axios
+      .get('http://127.0.0.1:5000/doctors', {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((response) => {
+        console.log('Response headers:', response.data);
+        setDoctors(response.data);
+      })
+      .catch((error) => {
+        console.error('There was an error fetching the doctors!', error);
+        if (error.response) {
+          console.log('Error response data:', error.response.data);
+          console.log('Error response status:', error.response.status);
+          console.log('Error response headers:', error.response.headers);
+        }
+      });
   }, []);
 
   return (
     <div className="appointment-container">
-     <div className="sticky-header">
-
-     
+      <div className="sticky-header">
         <h1 className="heading">Doctor Appointment Booking</h1>
 
         <label htmlFor="specialization">Choose Animal Specialization:</label>
         <select id="specialization" onChange={handleSpecializationChange} value={selectedSpecialization} disabled={isDisabled}>
-            <option value="">Select Specialization</option>
-            {uniqueSpecializations.map((specialization, index) => (
+          <option value="">Select Specialization</option>
+          {uniqueSpecializations.map((specialization, index) => (
             <option key={index} value={specialization}>{specialization}</option>
-            ))}
+          ))}
         </select>
       </div>
 
@@ -160,6 +158,7 @@ const email = location.state?.email;
                 <p><strong>Fees:</strong> Rs {doctor.fees}</p>
                 <p><strong>Experience:</strong> {doctor.experience} years</p>
                 <p><strong>Timing:</strong> {doctor.timing}</p>
+                <p><strong>Day:</strong> {doctor.day}</p>
               </div>
             </div>
           ))}
@@ -178,23 +177,18 @@ const email = location.state?.email;
                 <p><strong>Experience:</strong> {doctor.experience} years</p>
                 <p><strong>Timing:</strong> {doctor.timing}</p>
                 <button className='bookAppointment' onClick={() => handleBookAppointment(doctor)}>
-                    Book Appointment
+                  Book Appointment
                 </button>
               </div>
             </div>
           ))}
-          
         </div>
       )}
 
       {selectedDoctor && (
         <div className="appointment">
           <h2>Book Appointment with {selectedDoctor.name}</h2>
-          <img 
-            src={doctorImage} 
-            alt="Doctor"
-            className="doctor-image" 
-          />
+          <img src={doctorImage} alt="Doctor" className="doctor-image" />
           <div className="doctor-details">
             <p><strong>Specialization:</strong> {selectedDoctor.specialization}</p>
             <p><strong>Fees per consultation:</strong> {selectedDoctor.fees}</p>
@@ -203,15 +197,15 @@ const email = location.state?.email;
           </div>
           <div className="appointment-schedule">
             <label htmlFor="day-select">Select a day:</label>
-              <select id="day-select" value={selectedDay} onChange={handleDayChange}>
-                <option value="">--Select a day--</option>
-                {daysOfWeek.map((day) => (
-                  <option key={day} value={day}>
-                    {day}
-                  </option>
-                ))}
-              </select>
-              {selectedDay && (
+            <select id="day-select" value={selectedDay} onChange={handleDayChange}>
+              <option value="">--Select a day--</option>
+              {Array.isArray(availableDays) && availableDays.map((day, index) => (
+                <option key={index} value={day}>
+                  {day}
+                </option>
+              ))}
+            </select>
+            {selectedDay && (
               <div>
                 <label htmlFor="time-select">Select a time:</label>
                 <select id="time-select" value={selectedTime} onChange={handleTimeChange}>
@@ -224,15 +218,13 @@ const email = location.state?.email;
                 </select>
               </div>
             )}
-            {selectedTime &&(
+            {selectedTime && (
               <div>
                 <button className='bookAppointment' onClick={() => handleappoint(selectedDoctor)}>
-                    Book Appointment
+                  Book Appointment
                 </button>
               </div>
-            )
-            }
-
+            )}
           </div>
         </div>
       )}

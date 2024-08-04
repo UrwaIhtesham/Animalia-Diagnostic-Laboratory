@@ -9,6 +9,6 @@ class Doctors(db.Model):
     fee = db.Column(db.Integer)
     experience = db.Column(db.Integer)
     timing = db.Column(db.String(50))
-    status = db.Column(db.String(20))
+    day = db.Column(db.String(30))
     def __repr__(self):
         return f'{self.name}'
