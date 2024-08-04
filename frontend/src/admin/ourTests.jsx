@@ -51,7 +51,8 @@ const OurTests = () => {
   const handleAddTests = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5000/alltests", newTests); // Fixed endpoint to add tests
+      const response = await axios.post("http://localhost:5000/addtest", newTests); // Fixed endpoint to add tests
+      console.log(response);
       fetchTests();
       setNewTests({
         name: "",
@@ -65,7 +66,7 @@ const OurTests = () => {
 
   const columns = [
     { field: "id", headerName: "Test ID", width: 150 },
-    { field: "name", headerName: "Name", flex: 1 },
+    { field: "name", headerName: "Name", flex: 4 },
     { field: "testfees", headerName: "Fees", flex: 1 },
     { field: "animal", headerName: "Animal", flex: 1 }
   ];

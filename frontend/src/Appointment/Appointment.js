@@ -1,80 +1,298 @@
+// import React, { useState, useEffect } from 'react';
+// import './Appointment.css';
+// import doctorImage from './Doctor.png';
+// import axios from 'axios';
+// import { useNavigate, useLocation } from 'react-router-dom';
+
+
+
+// function Appointment() {
+// //   const { email } = useContext(UserContext);
+// const location = useLocation();
+// const email = location.state?.email;
+
+//   const [selectedSpecialization, setSelectedSpecialization] = useState('');
+//   const [selectedDoctor, setSelectedDoctor] = useState(null);
+//   const [doctors, setDoctors] = useState([]);
+//   const navigate = useNavigate();
+//   const [isDisabled, setIsDisabled] = useState(false);
+
+//   const handleSpecializationChange = (e) => {
+    
+//     setSelectedSpecialization(e.target.value);
+//     setIsDisabled(true)
+//     setSelectedDoctor(null);
+//   };
+//   const handleBookAppointment = async(doctor) => {
+//     const docid=doctor.id;
+//     const fee= doctor.fee;
+    
+//     try {
+//       console.log(email);
+//       // Make the POST request and await the response
+//       const response = await axios.post('http://127.0.0.1:5000/appointment', {
+//         docid,
+//         useremail: email,
+//         fee
+//       });
+  
+//       // Log the response data
+//       console.log(response.data);
+  
+//       // Redirect to the dashboard after a successful response
+//       navigate('/home');
+//     } catch (error) {
+//       // Handle any errors that occur during the request
+//       console.error('Error booking appointment:', error);
+//       // Optionally, you can show an error message to the user here
+//     }
+//   };
+//   const uniqueSpecializations = Array.from(new Set(doctors.map(doctor => doctor.specialization)));
+//   const filteredDoctors = doctors.filter(
+//     (doctor) => doctor.specialization === selectedSpecialization
+//   );
+
+//   useEffect(() => {
+//     axios.get('http://127.0.0.1:5000/doctors')
+//         .then(response => {
+//             setDoctors(response.data);
+//         })
+//         .catch(error => {
+//             console.error('There was an error fetching the doctors!', error);
+//         });
+//   }, []);
+
+//   return (
+//     <div className="appointment-container">
+//      <div className="sticky-header">
+
+     
+//         <h1 className='appoint-h1'>Doctor Appointment Booking</h1>
+
+//         <label className="label-label" htmlFor="specialization">Choose Animal Specialization:</label>
+//         <select id="specialization" onChange={handleSpecializationChange} value={selectedSpecialization} disabled={isDisabled}>
+//             <option value="">Select Specialization</option>
+//             {uniqueSpecializations.map((specialization, index) => (
+//             <option key={index} value={specialization}>{specialization}</option>
+//             ))}
+//         </select>
+//       </div>
+
+//       {selectedSpecialization === '' && doctors.length > 0 && (
+//         <div className="doctor-list">
+//           {doctors.map((doctor) => (
+//             <div key={doctor.id} className="doctor-card">
+//               <img src={doctorImage} alt="Doctor" className="doctor-image" />
+//               <div className="doctor-info">
+//                 <p><strong>Name:</strong> {doctor.name}</p>
+//                 <p><strong>Specialization:</strong> {doctor.specialization}</p>
+//                 <p><strong>Fees:</strong> Rs {doctor.fees}</p>
+//                 <p><strong>Experience:</strong> {doctor.experience} years</p>
+//                 <p><strong>Timing:</strong> {doctor.timing}</p>
+//               </div>
+//             </div>
+//           ))}
+//         </div>
+//       )}
+
+//       {selectedSpecialization !== '' && filteredDoctors.length > 0 && (
+//         <div className="doctor-list2">
+//           {filteredDoctors.map((doctor) => (
+//             <div key={doctor.id} className="doctor-card">
+//               <img src={doctorImage} alt="Doctor" className="doctor-image" />
+//               <div className="doctor-info">
+//                 <p><strong>Name:</strong> {doctor.name}</p>
+//                 <p><strong>Specialization:</strong> {doctor.specialization}</p>
+//                 <p><strong>Fees:</strong> Rs {doctor.fees}</p>
+//                 <p><strong>Experience:</strong> {doctor.experience} years</p>
+//                 <p><strong>Timing:</strong> {doctor.timing}</p>
+//                 <button onClick={() => handleBookAppointment(doctor)}>
+//                     Book Appointment
+//                 </button>
+//               </div>
+//             </div>
+//           ))}
+          
+//         </div>
+//       )}
+
+//       {selectedDoctor && (
+//         <div className="appointment">
+//           <h2>Book Appointment with {selectedDoctor.name}</h2>
+//           <img 
+//             src={doctorImage} 
+//             alt="Doctor"
+//             className="doctor-image" 
+//           />
+//           <div className="doctor-details">
+//             <p><strong>Specialization:</strong> {selectedDoctor.specialization}</p>
+//             <p><strong>Fees per consultation:</strong> {selectedDoctor.fees}</p>
+//             <p><strong>Experience:</strong> {selectedDoctor.experience}</p>
+//             <p><strong>Timing:</strong> {selectedDoctor.timing}</p>
+//           </div>
+          
+//           <div className="doctor-details">
+//             <p><strong>Specialization:</strong> {selectedDoctor.specialization}</p>
+//             <p><strong>Fees per consultation:</strong> {selectedDoctor.fees}</p>
+//             <p><strong>Experience:</strong> {selectedDoctor.experience}</p>
+//             <p><strong>Timing:</strong> {selectedDoctor.timing}</p>
+//           </div>
+//           <button onClick={() => alert(`Appointment booked with ${selectedDoctor.name}`)}>
+//             Book Appointment
+//           </button>
+//         </div>
+//       )}
+//     </div>
+//   );
+// }
+
+// export default Appointment;
 import React, { useState, useEffect } from 'react';
 import './Appointment.css';
 import doctorImage from './Doctor.png';
 import axios from 'axios';
-import { useNavigate, useLocation } from 'react-router-dom';
-
-
+import { useNavigate } from 'react-router-dom';
+import moment from 'moment';
 
 function Appointment() {
-//   const { email } = useContext(UserContext);
-const location = useLocation();
-const email = location.state?.email;
+  const email = localStorage.getItem('userEmail');
 
   const [selectedSpecialization, setSelectedSpecialization] = useState('');
   const [selectedDoctor, setSelectedDoctor] = useState(null);
   const [doctors, setDoctors] = useState([]);
   const navigate = useNavigate();
   const [isDisabled, setIsDisabled] = useState(false);
+  const [timeSlots, setTimeSlots] = useState([]);
+  const [selectedDay, setSelectedDay] = useState('');
+  const [selectedTime, setSelectedTime] = useState('');
+  const [availableDays, setAvailableDays] = useState([]); // Ensure availableDays is initialized as an array
 
   const handleSpecializationChange = (e) => {
-    
     setSelectedSpecialization(e.target.value);
-    setIsDisabled(true)
+    setIsDisabled(true);
     setSelectedDoctor(null);
   };
-  const handleBookAppointment = async(doctor) => {
-    const docid=doctor.id;
-    const fee= doctor.fee;
-    
-    try {
-      console.log(email);
-      // Make the POST request and await the response
-      const response = await axios.post('http://127.0.0.1:5000/appointment', {
-        docid,
-        useremail: email,
-        fee
-      });
-  
-      // Log the response data
-      console.log(response.data);
-  
-      // Redirect to the dashboard after a successful response
-      navigate('/home');
-    } catch (error) {
-      // Handle any errors that occur during the request
-      console.error('Error booking appointment:', error);
-      // Optionally, you can show an error message to the user here
-    }
+
+  const handleBookAppointment = (doctor) => {
+    const docid = doctor.id;
+    const fee = doctor.fees;
+    console.log(docid, fee, email);
+    console.log(doctor.days);
+    setSelectedDoctor(doctor);
+    setAvailableDays(doctor.days ? doctor.days.split(',').map(days => days.trim()) : []); // Parse available days from doctor data
   };
-  const uniqueSpecializations = Array.from(new Set(doctors.map(doctor => doctor.specialization)));
+
+  const uniqueSpecializations = Array.from(new Set(doctors.map((doctor) => doctor.specialization)));
   const filteredDoctors = doctors.filter(
     (doctor) => doctor.specialization === selectedSpecialization
   );
 
+  const handleappoint = async (selectedDoctor) => {
+    const docid = selectedDoctor.id;
+    const fee = selectedDoctor.fees;
+    console.log("In FInal");
+    console.log(docid, fee, email);
+    console.log(selectedDoctor.name, selectedDay, selectedTime);
+    try {
+      const token = localStorage.getItem('token');
+      console.log(token);
+      const response = await axios.post(
+        'http://127.0.0.1:5000/appointments',
+        {
+          docid,
+          useremail: email,
+          fee,
+          selectedDay,
+          selectedTime,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
+        { withCredentials: true }
+      );
+      console.log(response.status);
+      if (response.status === 201) {
+        alert(`Appointment is booked with ${selectedDoctor.name}`);
+        navigate('/home');
+      }
+    } catch (error) {
+      alert(`Please select another day or time`);
+    }
+  };
+
+  const parseTimeRange = (timeRange) => {
+    const [startTime, endTime] = timeRange.split(' - ');
+    return {
+      start: moment(startTime, 'h:mm A'),
+      end: moment(endTime, 'h:mm A'),
+    };
+  };
+
+  const generateTimeSlots = (start, end) => {
+    const slots = [];
+    let currentTime = start;
+
+    while (currentTime.isBefore(end)) {
+      slots.push(currentTime.format('h:mm A'));
+      currentTime = currentTime.add(30, 'minutes');
+    }
+
+    return slots;
+  };
+
+  const handleDayChange = (event) => {
+    console.log("Handle day change", selectedDoctor.days);
+    setSelectedDay(event.target.value);
+  };
+
+  const handleTimeChange = (event) => {
+    setSelectedTime(event.target.value);
+  };
+
   useEffect(() => {
-    axios.get('http://127.0.0.1:5000/doctors')
-        .then(response => {
-            setDoctors(response.data);
-        })
-        .catch(error => {
-            console.error('There was an error fetching the doctors!', error);
-        });
+    if (selectedDoctor) {
+      const { start, end } = parseTimeRange(selectedDoctor.timing);
+      setTimeSlots(generateTimeSlots(start, end));
+    }
+  }, [selectedDoctor]);
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    console.log(token);
+
+    axios
+      .get('http://127.0.0.1:5000/doctors', {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((response) => {
+        console.log('Response headers:', response.data);
+        setDoctors(response.data);
+      })
+      .catch((error) => {
+        console.error('There was an error fetching the doctors!', error);
+        if (error.response) {
+          console.log('Error response data:', error.response.data);
+          console.log('Error response status:', error.response.status);
+          console.log('Error response headers:', error.response.headers);
+        }
+      });
   }, []);
 
   return (
     <div className="appointment-container">
-     <div className="sticky-header">
+      <div className="sticky-header">
+        <h1 className="appoint-h1">Doctor Appointment Booking</h1>
 
-     
-        <h1 className='appoint-h1'>Doctor Appointment Booking</h1>
-
-        <label className="label-label" htmlFor="specialization">Choose Animal Specialization:</label>
+        <label className='label-label' htmlFor="specialization">Choose Animal Specialization:</label>
         <select id="specialization" onChange={handleSpecializationChange} value={selectedSpecialization} disabled={isDisabled}>
-            <option value="">Select Specialization</option>
-            {uniqueSpecializations.map((specialization, index) => (
+          <option value="">Select Specialization</option>
+          {uniqueSpecializations.map((specialization, index) => (
             <option key={index} value={specialization}>{specialization}</option>
-            ))}
+          ))}
         </select>
       </div>
 
@@ -89,6 +307,7 @@ const email = location.state?.email;
                 <p><strong>Fees:</strong> Rs {doctor.fees}</p>
                 <p><strong>Experience:</strong> {doctor.experience} years</p>
                 <p><strong>Timing:</strong> {doctor.timing}</p>
+                <p><strong>Day:</strong> {doctor.days}</p>
               </div>
             </div>
           ))}
@@ -106,40 +325,57 @@ const email = location.state?.email;
                 <p><strong>Fees:</strong> Rs {doctor.fees}</p>
                 <p><strong>Experience:</strong> {doctor.experience} years</p>
                 <p><strong>Timing:</strong> {doctor.timing}</p>
-                <button onClick={() => handleBookAppointment(doctor)}>
-                    Book Appointment
+                <p><strong>Day:</strong> {doctor.days}</p>
+                <button className='bookAppointment' onClick={() => handleBookAppointment(doctor)}>
+                  Book Appointment
                 </button>
               </div>
             </div>
           ))}
-          
         </div>
       )}
 
       {selectedDoctor && (
         <div className="appointment">
-          <h2>Book Appointment with {selectedDoctor.name}</h2>
-          <img 
-            src={doctorImage} 
-            alt="Doctor"
-            className="doctor-image" 
-          />
+          <h2 className='appoint-h2'>Book Appointment with {selectedDoctor.name}</h2>
+          <img src={doctorImage} alt="Doctor" className="doctor-image" />
           <div className="doctor-details">
             <p><strong>Specialization:</strong> {selectedDoctor.specialization}</p>
             <p><strong>Fees per consultation:</strong> {selectedDoctor.fees}</p>
             <p><strong>Experience:</strong> {selectedDoctor.experience}</p>
             <p><strong>Timing:</strong> {selectedDoctor.timing}</p>
           </div>
-          
-          <div className="doctor-details">
-            <p><strong>Specialization:</strong> {selectedDoctor.specialization}</p>
-            <p><strong>Fees per consultation:</strong> {selectedDoctor.fees}</p>
-            <p><strong>Experience:</strong> {selectedDoctor.experience}</p>
-            <p><strong>Timing:</strong> {selectedDoctor.timing}</p>
+          <div className="appointment-schedule">
+            <label htmlFor="day-select">Select a day:</label>
+            <select id="day-select" value={selectedDay} onChange={handleDayChange}>
+              <option value="">--Select a day--</option>
+              {Array.isArray(availableDays) && availableDays.map((day, index) => (
+                <option key={index} value={day}>
+                  {day}
+                </option>
+              ))}
+            </select>
+            {selectedDay && (
+              <div>
+                <label htmlFor="time-select">Select a time:</label>
+                <select id="time-select" value={selectedTime} onChange={handleTimeChange}>
+                  <option value="">--Select a time--</option>
+                  {timeSlots.map((time) => (
+                    <option key={time} value={time}>
+                      {time}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            )}
+            {selectedTime && (
+              <div>
+                <button className='bookAppointment' onClick={() => handleappoint(selectedDoctor)}>
+                  Book Appointment
+                </button>
+              </div>
+            )}
           </div>
-          <button onClick={() => alert(`Appointment booked with ${selectedDoctor.name}`)}>
-            Book Appointment
-          </button>
         </div>
       )}
     </div>
