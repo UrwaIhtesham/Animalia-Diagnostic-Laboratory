@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import './labtest.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faThumbsUp } from '@fortawesome/free-solid-svg-icons';
 import { useMediaQuery } from 'react-responsive';
-import { useLocation, useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import Modal from 'react-modal';
+import { useLocation } from 'react-router-dom';
+import './labtest.css';
 
 const tests = {
   goat: [
@@ -55,12 +55,13 @@ function Labtest() {
   const [selectedTests, setSelectedTests] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedAnimal, setSelectedAnimal] = useState('goat');
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const location = useLocation();
   const email = location.state?.email;
 
-  const isMobile = useMediaQuery({query: '(max-width:425px)'});
-  const isTablet = useMediaQuery({query: '(max-width: 768px)'});
+  const isMobile = useMediaQuery({ query: '(max-width:425px)' });
+  const isTablet = useMediaQuery({ query: '(max-width: 768px)' });
 
   const handleAnimalChange = (event) => {
     setSelectedAnimal(event.target.value);
@@ -90,73 +91,83 @@ function Labtest() {
     return total + test.price;
   }, 0);
 
-  const handlePayment =async()=> {
-    const bookingDetails = {
-      email, selectedtests: selectedTests.map((testId) => ({
-        id: testId,
-        name: tests[selectedAnimal].find((test) => test.id === testId).name,
-        price: tests[selectedAnimal].find((test)=> test.id === testId).price,
-      })),
-    };
+  const handlePayment = () => {
+    // Simulate successful booking and open the modal
+    setIsModalOpen(true);
+  };
 
-    try {
-      await axios.post('http://localhost:5000/book_labtest', bookingDetails);
-      alert(`proceeding to payment of Rs.${totalAmount}`);
-    } catch (error) {
-      console.error('Error booking lab tests:', error);
-    }
+  const closeModal = () => {
+    setIsModalOpen(false);
   };
 
   return (
     <div className={`labtest ${isMobile ? 'mobile' : isTablet ? 'tablet' : 'desktop'}`}>
-    <div className="tests-selection-container">
-      <div className='headingg'>
-      <h1 >Select Diagnostic Tests</h1></div>
-      <div className="search-bar-container">
-        <FontAwesomeIcon icon={faSearch} size="5x" className="search-icon" />
-        <input
-          type="text"
-          placeholder="Search by animal"
-          value={searchTerm}
-          onChange={handleSearchChange}
-        />
-        <button>Search</button>
-      </div>
-      <table>
-        <thead>
-          <tr>
-            <th>Test ID</th>
-            <th>Test Name</th>
-            <th>Test Price</th>
-            <th>Select</th>
-          </tr>
-        </thead>
-        <tbody>
-          {filteredTests.map((test) => (
-            <tr key={test.id}>
-              <td>{test.id}</td>
-              <td>{test.name}</td>
-              <td>Rs.{test.price}</td>
-              <td>
-                <input
-                  type="checkbox"
-                  value={test.id}
-                  onChange={() => handleTestChange(test.id)}
-                  checked={selectedTests.includes(test.id)}
-                  className='chk-box'
-                />
-              </td>
+      <div className="tests-selection-container">
+        <div className='headingg'>
+          <h1>Select Diagnostic Tests</h1>
+        </div>
+        <div className="search-bar-container">
+          <FontAwesomeIcon icon={faSearch} size="5x" className="search-icon" />
+          <input
+            type="text"
+            placeholder="Search by animal"
+            value={searchTerm}
+            onChange={handleSearchChange}
+          />
+          <button>Search</button>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Test ID</th>
+              <th>Test Name</th>
+              <th>Test Price</th>
+              <th>Select</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
-      <div className="total-amount">
-        <h2 className='amount-txt'>Total Amount: Rs.{totalAmount}</h2>
+          </thead>
+          <tbody>
+            {filteredTests.map((test) => (
+              <tr key={test.id}>
+                <td>{test.id}</td>
+                <td>{test.name}</td>
+                <td>Rs.{test.price}</td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value={test.id}
+                    onChange={() => handleTestChange(test.id)}
+                    checked={selectedTests.includes(test.id)}
+                    className='chk-box'
+                  />
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <div className="total-amount">
+          <h2 className='amount-txt'>Total Amount: Rs.{totalAmount}</h2>
+        </div>
+        <button className="payment-button" onClick={handlePayment}>
+          Payment to Proceed
+        </button>
       </div>
-      <button className="payment-button" onClick={handlePayment}>
-        Payment to Proceed
-      </button>
-    </div>
+
+      {/* Modal Component */}
+      <Modal
+        isOpen={isModalOpen}
+        onRequestClose={closeModal}
+        contentLabel="Payment Confirmation"
+        ariaHideApp={false}
+        overlayClassName="modal-overlay"
+      >
+          <div className="modal-class">
+            <h2>Payment Confirmation</h2>
+            <FontAwesomeIcon icon={faThumbsUp} size="3x" />
+            <p>Your payment of Rs.{totalAmount} is being processed.</p>
+            <button onClick={closeModal}>Close</button>
+          </div>
+
+      </Modal>
     </div>
   );
 }

@@ -29,7 +29,7 @@ function App() {
     <Router>
       <div className="app">
         <Routes>
-          <Route path="/" element={!showForm ? <LandingPage onSignIn={handleSignIn} onSignUp={handleSignUp} /> : (
+         {/*} <Route path="/" element={!showForm ? <LandingPage onSignIn={handleSignIn} onSignUp={handleSignUp} /> : (
             <div className="overlay">
               <div className="blurred-home">
                 <Home />
@@ -41,8 +41,8 @@ function App() {
             </div>
           )} />
           <Route path="/home" element={<Home />} />
-          <Route path= "/appointment" element={<Appointment />} />
-          <Route path="/labtest" element={<Labtest/>}/>
+          <Route path= "/appointment" element={<Appointment />} />*/}
+          <Route path="/" element={<Labtest/>}/>
         </Routes>
       </div>
     </Router>
