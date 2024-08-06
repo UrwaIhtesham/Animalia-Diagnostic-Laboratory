@@ -11,6 +11,8 @@ import ReceiptOutlinedIcon from "@mui/icons-material/ReceiptOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import EventNoteOutlinedIcon from "@mui/icons-material/EventNoteOutlined"; // Icon for Appointments
 import LocalHospitalOutlinedIcon from "@mui/icons-material/LocalHospitalOutlined"; // Icon for Doctors
+import VaccinesOutlinedIcon from '@mui/icons-material/VaccinesOutlined';
+import BookOnlineOutlinedIcon from '@mui/icons-material/BookOnlineOutlined';
 
 const Item = ({ title, to, icon, selected, setSelected }) => {
   const theme = useTheme();
@@ -58,6 +60,9 @@ const Sidebar = () => {
         "& .pro-menu-item.active": {
           color: `${maroon} !important`,
         },
+        "& .MuiButtonBase-root": {
+          color: `${maroon} !important`
+        }
       }}
     >
       <ProSidebar collapsed={isCollapsed}>
@@ -100,13 +105,6 @@ const Sidebar = () => {
               setSelected={setSelected}
             />
             <Item
-              title="Tests"
-              to="/admin/OurTests"
-              icon={<PeopleOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            />
-            <Item
               title="Contact Information"
               to="/admin/contacts"
               icon={<ContactsOutlinedIcon />}
@@ -130,14 +128,14 @@ const Sidebar = () => {
             <Item
               title="Our Tests"
               to="/admin/OurTests"
-              icon={<LocalHospitalOutlinedIcon />} // Icon for Doctors
+              icon={<VaccinesOutlinedIcon />} // Icon for Doctors
               selected={selected}
               setSelected={setSelected}
             />
             <Item
               title="Tests Appointment"
               to="/admin/team"
-              icon={<LocalHospitalOutlinedIcon />} // Icon for Doctors
+              icon={<BookOnlineOutlinedIcon />} // Icon for Doctors
               selected={selected}
               setSelected={setSelected}
             />

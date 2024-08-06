@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import './labtest.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faThumbsUp } from '@fortawesome/free-solid-svg-icons';
 import { useMediaQuery } from 'react-responsive';
 import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import Modal from 'react-modal';
+import Loading from '../Components/Loading/Loading';
 
 function Labtest() {
   const [tests, setTests] = useState([]);
@@ -12,17 +14,21 @@ function Labtest() {
   const [selectedTests, setSelectedTests] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedAnimal, setSelectedAnimal] = useState('');
+  const navigate = useNavigate();
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const location = useLocation();
-  const email = location.state?.email;
+  const email = localStorage.getItem('userEmail');
 
   const isMobile = useMediaQuery({query: '(max-width:425px)'});
   const isTablet = useMediaQuery({query: '(max-width: 768px)'});
+
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     
     const fetchTests =async() => {
       try {
+        setLoading(true);
         console.log(email);
         const response = await axios.get('http://localhost:5000/alltests');
         const fetchedTests = response.data;
@@ -35,6 +41,8 @@ function Labtest() {
         console.log(animalTypes);
       } catch (error) {
         console.error('Error fetching tests:', error);
+      } finally{
+        setLoading(false);
       }
     };
 
@@ -84,21 +92,20 @@ function Labtest() {
     return total + (test?test.Fee:0);
   }, 0);
 
-  const handlePayment =async()=> {
-    // const bookingDetails = {
-    //   email, 
-    //   selectedtests: selectedTests.map((testId) => ({
-    //     id: testId,
-    //     name: tests[selectedAnimal].find((test) => test.id === testId).name,
-    //     price: tests[selectedAnimal].find((test)=> test.id === testId).price,
-    //   })),
-    // };
+  const closeModal = () => {
+    setIsModalOpen(false);
+    navigate('/home');
+  };
+
+  const handlePayment = async()=> {
+    
 
     const allTests = tests;
 
     console.log("Tests Object:", tests);
     console.log("Selected Test IDs:", selectedTests);
-
+    localStorage.getItem('token');
+    console.log('token');
     const bookingDetails = {
       email,
       selectedtests: selectedTests.map((testId) => {
@@ -114,15 +121,20 @@ function Labtest() {
     console.log(bookingDetails);
 
     try {
+      setLoading(true);
       await axios.post('http://localhost:5000/book_labtest', bookingDetails);
-      alert(`proceeding to payment of Rs.${totalAmount}`);
+      // alert(`proceeding to payment of Rs.${totalAmount}`);
+      setIsModalOpen(true);
     } catch (error) {
       console.error('Error booking lab tests:', error);
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <div className={`labtest ${isMobile ? 'mobile' : isTablet ? 'tablet' : 'desktop'}`}>
+    {loading && <Loading/>}
     <div className="tests-selection-container">
       <div className='headingg'>
       <h1 >Select Diagnostic Tests</h1></div>
@@ -191,6 +203,24 @@ function Labtest() {
         Payment to Proceed
       </button>
     </div>
+
+          {/* Modal Component */}
+      <Modal
+        isOpen={isModalOpen}
+        onRequestClose={closeModal}
+        contentLabel="Payment Confirmation"
+        ariaHideApp={false}
+        overlayClassName="modal-overlay"
+      >
+          <div className="modal-class">
+            <h2>Payment Confirmation</h2>
+            <FontAwesomeIcon icon={faThumbsUp} size="3x" className="icon-red bounce" />
+            <p>Your payment of Rs.{totalAmount} is being processed.</p>
+            <button onClick={closeModal}>Close</button>
+          </div>
+
+      </Modal>
+
     </div>
   );
 }

@@ -1,0 +1,98 @@
+/* HTML: <div class="loader"></div> */
+/* .loader {
+    width: 100px;
+    --b: 8px; 
+    aspect-ratio: 1;
+    border-radius: 50%;
+    z-index:1002;
+    padding: 1px;
+    background-color: rgba(146, 127, 127, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: conic-gradient(#0000 10%,#800000) content-box;
+    -webkit-mask:
+      repeating-conic-gradient(#0000 0deg,#000 1deg 20deg,#0000 21deg 36deg),
+      radial-gradient(farthest-side,#0000 calc(100% - var(--b) - 1px),#000 calc(100% - var(--b)));
+    -webkit-mask-composite: destination-in;
+            mask-composite: intersect;
+    animation:l4 1s infinite steps(10);
+  }
+  @keyframes l4 {to{transform: rotate(1turn)}} */
+
+  /* loading.css */
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(82, 81, 81, 0.5); 
+    /* background-color: rgba(146, 127, 127, 0.8); */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1002; 
+  }
+  
+  .loader::before {
+    content: "";
+    display: block;
+    width: 50px;
+    height: 50px;
+    border: 5px solid #3b0707;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+
+  .load-h1{
+    color: white;
+  }
+  
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+
+  /* loader.css */
+/* .loader {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1002; 
+    background-color: rgba(255, 255, 255, 0.5); 
+  }
+  
+  .loader > div {
+    width: 100px;
+    --b: 8px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    padding: 1px;
+    background-color: rgba(146, 127, 127, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: conic-gradient(#0000 10%, #800000) content-box;
+    -webkit-mask:
+      repeating-conic-gradient(#0000 0deg, #000 1deg 20deg, #0000 21deg 36deg),
+      radial-gradient(farthest-side, #0000 calc(100% - var(--b) - 1px), #000 calc(100% - var(--b)));
+    -webkit-mask-composite: destination-in;
+            mask-composite: intersect;
+    animation: l4 1s infinite steps(10);
+  }
+  
+  @keyframes l4 {
+    to {
+      transform: rotate(1turn);
+    }
+  } */
+  

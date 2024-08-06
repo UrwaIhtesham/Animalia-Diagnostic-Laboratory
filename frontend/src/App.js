@@ -1,13 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Routes, useLocation } from "react-router-dom";
 import Home from './home/home';
 import LandingPage from './Components/LandingPage/Landingpage';
 import Login from './Components/Login/Login';
 import Appointment from "./Appointment/Appointment";
-// import PrivateRoute from './PrivateRoute';
-// import { AuthProvider } from './AuthContext';
+import PrivateRoute from './PrivateRoute';
+import { AuthProvider } from './AuthContext';
 import './App.css';
 import Labtest from './labtest/labtest';
+
+import {privateAxios} from "./services/axios.service";
+import Loading from "./Components/Loading/Loading";
 
 // New imports
 import Topbar from "./admin/Topbar";
@@ -23,6 +26,38 @@ import { ColorModeContext, useMode } from "./theme";
 import OurTests from "./admin/ourTests";
 
 function AppContent() {
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    const requestInterceptor = privateAxios.interceptors.request.use(
+      (config) => {
+        setLoading(true);
+        return config;
+      },
+      (error) => {
+        return Promise.reject(error);
+      }
+    );
+
+    const responseInterceptor = privateAxios.interceptors.response.use(
+      (response) => {
+        setLoading(false);
+        return response;
+      },
+      (error) => {
+        setLoading(false);
+        return Promise.reject(error);
+      }
+    );
+
+    return () => {
+      privateAxios.interceptors.request.eject(requestInterceptor);
+      privateAxios.interceptors.response.eject(responseInterceptor);
+    };
+  }, []);
+
+
+
   const location = useLocation();
 
   // List of paths where sidebar and topbar should be shown
@@ -63,6 +98,7 @@ function AppContent() {
 
   return (
     <div className="app">
+      {/* <Loading show={loading}/> */}
       {/* Conditionally render the sidebar based on the current route */}
       {showSidebarAndTopbar && <Sidebar isSidebar={isSidebar} />}
       <main className="content">
@@ -89,17 +125,17 @@ function AppContent() {
           <Route
             path="/home"
             element={
-              // <PrivateRoute>
+              <PrivateRoute>
                 <Home />
-              // </PrivateRoute>
+              </PrivateRoute>
             }
           />
           <Route
             path="/appointment"
             element={
-              // <PrivateRoute>
+              <PrivateRoute>
                 <Appointment />
-              // </PrivateRoute>
+              </PrivateRoute>
             }
           />
           <Route path="/labtest" element={<Labtest/>}/>
@@ -135,17 +171,48 @@ function App() {
   // New state hooks
   const [theme, colorMode] = useMode();
 
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    const requestInterceptor = privateAxios.interceptors.request.use(
+      (config) => {
+        setLoading(true);
+        return config;
+      },
+      (error) => {
+        return Promise.reject(error);
+      }
+    );
+
+    const responseInterceptor = privateAxios.interceptors.response.use(
+      (response) => {
+        setLoading(false);
+        return response;
+      },
+      (error) => {
+        setLoading(false);
+        return Promise.reject(error);
+      }
+    );
+
+    return () => {
+      privateAxios.interceptors.request.eject(requestInterceptor);
+      privateAxios.interceptors.response.eject(responseInterceptor);
+    };
+  }, []);
+
   return (
-    // <AuthProvider>
+    <AuthProvider>
       <ColorModeContext.Provider value={colorMode}>
         <ThemeProvider theme={theme}>
           <CssBaseline />
+          {/* <Loading show={loading}/> */}
           <Router>
             <AppContent />
           </Router>
         </ThemeProvider>
       </ColorModeContext.Provider>
-    // </AuthProvider>
+    </AuthProvider>
   );
 }
 

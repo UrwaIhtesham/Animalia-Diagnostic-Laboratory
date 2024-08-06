@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useMediaQuery  } from "react-responsive";
-import { useState } from 'react';
+// import { useState, useEffect } from 'react';
 import Chatbot from 'react-chatbot-kit';
 import 'react-chatbot-kit/build/main.css';
 import config from '../chatbot/config';
@@ -12,17 +12,34 @@ import './home.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserMd, faSmile, faTooth, faPhone,faEnvelope} from '@fortawesome/free-solid-svg-icons';
 import {faBars, faTimes} from '@fortawesome/free-solid-svg-icons';
+import {useAuth} from '../AuthContext';
+import axios from 'axios';
+import { IconButton } from '@mui/material';
+import Loading from '../Components/Loading/Loading';
+
 function Home() {
   const navigate = useNavigate();
   const location = useLocation();
   const email = location.state?.email;
   console.log("Email in Home", email);
+
+  const {logout} = useAuth();
+
   const [category, setCategory] = useState('All');
   const [isChatbotOpen, setIsChatbotOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const isMobile = useMediaQuery({query: '(max-width:425px'});
   const isTablet = useMediaQuery({query: '(max-width: 768px'});
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    // Simulate a loading state, replace with actual data fetching logic
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 2000); // Simulate loading time
+  }, []);
 
   const closeMenu = () => {
     setIsMenuOpen(false);
@@ -63,9 +80,26 @@ function Home() {
     const handleAppointmentLink = (e) => {
         e.preventDefault();  // Prevent the Link default navigation
         navigate('/appointment', { state: { email } });
-      };
+    };
+    const handlelogout = async() => {
+        logout()
+        try {
+            setIsLoading(true);
+            const response = await axios.post('http://localhost:5000/logout', {withCredentials: true})
+            if (response.status === 200){
+                alert('Successfully logged out')
+                navigate("/")
+            }
+        } catch (error) {
+            alert(`Not able to logout ${error}`);
+        } finally{
+            setIsLoading(false);
+        }
+    };
+
     return (
       <div>
+        {isLoading && <Loading/>}
         <div className={`container ${isMobile ? 'mobile' : isTablet ? 'tablet' : 'desktop'}`}>
             <header className="nav-bg">
                 <h1>Animalia Diagnostic Centre</h1>
@@ -80,6 +114,7 @@ function Home() {
                         <li><a href="#chatbot" onClick={openChatbot}>Chatbot</a></li>
                         <li><a href="#services" onClick={handleLabTestLink}>Lab test</a></li>
                         <li><a href="/appointment" onClick={handleAppointmentLink} >Book an Appointment</a></li>
+                        <li><a href="#" onClick={() => { handlelogout() }}> Log Out </a></li>
                     </ul>
                 </nav>
             </header>
@@ -92,9 +127,14 @@ function Home() {
         className="modal-overlay" 
         overlayClassName="modal-overlay"
         >
+            {isLoading && <Loading />}
         <div className={`chat ${isMobile ? 'mobile' : isTablet ? 'tablet' : 'desktop'}`}>
         <div className="modal-content"> 
-            <button className="chat-button" onClick={closeChatbot}>X</button> {/* Close button */}
+            <button className="chat-button" onClick={closeChatbot}>
+            <IconButton color="primary" aria-label="close">
+                <FontAwesomeIcon icon={faTimes} />
+            </IconButton>
+                </button> {/* Close button */}
             <Chatbot
                 config={config} // your chatbot configuration
                 messageParser={MessageParser} // your message parser component
@@ -206,7 +246,7 @@ function Home() {
                             <iframe
                                 title='Map'
                                 className='map-frame'
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.8354345095075!2d144.95565131531677!3d-37.817327979751924!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0xf577d8f31e6371d7!2sVictoria%20Harbour!5e0!3m2!1sen!2sau!4v1625791123451!5m2!1sen!2sau"
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3262.7449394783785!2d74.173940!3d31.422488!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3919030b4e09371f%3A0x0!2zMzHCsDI1JzIwLjkiTiA3NMKwMTAnMjUuNiJF!5e0!3m2!1sen!2s!4v1625791123451!5m2!1sen!2s&zoom=16&markers=31.422488,74.173940"
                                 style={{ border: 0 }}
                                 allowFullScreen=""
                                 loading="lazy"

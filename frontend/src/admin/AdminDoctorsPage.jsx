@@ -1,6 +1,8 @@
 import React from 'react';
 import { 
   Box, 
+  FormGroup,
+  FormLabel,
   Button, 
   TextField, 
   Typography, 
@@ -21,6 +23,8 @@ import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { tokens } from "../theme";
 import { useTheme } from '@mui/material/styles';
+import Loading from '../Components/Loading/Loading';
+import './AdminDoctorsPage';
 
 const daysofWeek = [
   "Monday",
@@ -46,6 +50,8 @@ const MenuProps = {
 const AdminDoctorsPage = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+
+  const [loading, setloading]= useState(false);
 
   const [name, setName] = useState("");
   const[specialization, setSpecialization] = useState("");
@@ -74,10 +80,10 @@ const AdminDoctorsPage = () => {
     return '';
   };
 
-  const handleSave = () => {
-    const timeRangeString = formatTimeRange();
-    axios.post('/api/doctors', { timeRange: timeRangeString });
-  }
+  // const handleSave = () => {
+  //   const timeRangeString = formatTimeRange();
+  //   axios.post('/api/doctors', { timeRange: timeRangeString });
+  // }
 
   const [doctors, setDoctors] = useState([]);
   const [newDoctor, setNewDoctor] = useState({
@@ -97,7 +103,13 @@ const AdminDoctorsPage = () => {
 
   const fetchDoctors = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/doctors");
+      const token = localStorage.getItem('token');
+      setloading(true);
+      const response = await axios.get("http://localhost:5000/doctors", {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
       console.log(response.data);
       const mappedDoctors = response.data.map(doctor => ({
         doctorId: doctor.id,
@@ -112,6 +124,8 @@ const AdminDoctorsPage = () => {
     } catch (error) {
       console.error("Error fetching doctors:", error);
       setError("Failed to fetch doctors. Please try again later.");
+    } finally{
+      setloading(false);
     }
   };
 
@@ -128,6 +142,10 @@ const AdminDoctorsPage = () => {
     setDays(typeof value === "string" ? value.split(","): value);
   };
 
+  const handleSelection = (value) => {
+    setSpecialization(value);
+  };
+
   const handleAddDoctor = async (e) => {
     e.preventDefault();
 
@@ -135,6 +153,8 @@ const AdminDoctorsPage = () => {
     const formattedTime = `${fromTime.toTimeString(). split(" ")[0]} - ${toTime.toTimeString().split(" ")[0]}`;
     //const timeRangeString = formatTimeRange();
     try {
+      setloading(true);
+      console.log(specialization);
       const response = await axios.post("http://localhost:5000/adddoctors", {
         // ...newDoctor,
         // time: timeRangeString // Use the formatted time range string
@@ -157,20 +177,22 @@ const AdminDoctorsPage = () => {
       if (response.status === 200){
         console.log("Doctor Added Successfully");
         fetchDoctors();
-        setNewDoctor({
-          doctorId: "",
-          name: "",
-          specialization: "",
-          fees: "",
-          time: "",
-          day: ""
-        });
-        setError("");
+        setName("");
+      setSpecialization("");
+      setfee("");
+      setExperience("");
+      setDays([]);
+      setFromTime(null);
+      setToTime(null);
+      setError("");
       }
     } catch (error) {
       console.error("Error adding doctor:", error);
       setError("Failed to add doctor. Please try again.");
+    } finally{
+      setloading(false);
     }
+
   };
 
   const columns = [
@@ -200,8 +222,18 @@ const AdminDoctorsPage = () => {
               '&:nth-of-type(even)': { backgroundColor: colors.primary[300] },
               '&:nth-of-type(odd)': { backgroundColor: colors.primary[400] },
             },
+            "& .MuiDataGrid-footerContainer": {
+            borderTop: "none",
+            backgroundColor: colors.primary[800],
+          },
+          "& css-1gywbfv-MuiButtonBase-root-MuiButton-root":{
+            backgroundColor: 'white !important',
+            color: colors.primary[800],
+
+          }
           }}
         >
+          {loading && <Loading/>}
           <DataGrid
             rows={doctors}
             columns={columns}
@@ -219,14 +251,69 @@ const AdminDoctorsPage = () => {
             fullWidth
             margin="normal"
           />
-          <TextField
+          {/* <TextField
             name="specialization"
             label="Specialization"
             value={specialization}
             onChange={(e) => setSpecialization(e.target.value)}
             fullWidth
             margin="normal"
-          />
+          /> */}
+          {/* <FormControl fullWidth margin="normal">
+      <Typography variant="h6" component="label" gutterBottom>
+        Specialization
+      </Typography>
+      <Select
+        value={specialization}
+        onChange={(e) => setSpecialization(e.target.value)}
+        fullWidth
+        displayEmpty
+        renderValue={(selected) => (selected ? selected : <Typography>Select a specialization</Typography>)}
+      >
+        <MenuItem value="Pet">Pet</MenuItem>
+        <MenuItem value="Poultry">Poultry</MenuItem>
+        <MenuItem value="Livestock">Livestock</MenuItem>
+      </Select>
+      </FormControl> */}
+      <FormControl component="fieldset" fullWidth margin="normal">
+        <FormLabel component="legend">Specialization</FormLabel>
+        <FormGroup row>
+          <Button
+            variant={specialization === 'Pet' ? 'contained' : 'outlined'}
+            onClick={() => handleSelection('Pet')}
+            sx={{ marginRight: 2, backgroundColor: 'white', color: 'maroon', fontSize:'10px', fontWeight:'900',
+              '&:hover': {
+          backgroundColor: specialization === 'Pet' ? 'darkred' : 'lightgrey',
+          color: specialization === 'Pet' ? 'white' : 'maroon',
+        }
+            }}
+            className='but'
+          >
+            Pet
+          </Button>
+          <Button
+            variant={specialization === 'Poultry' ? 'contained' : 'outlined'}
+            onClick={() => handleSelection('Poultry')}
+            sx={{ marginRight: 2, backgroundColor: 'white', color: 'maroon', fontSize:'10px', fontWeight:'900' }}
+            className='but'
+          >
+            Poultry
+          </Button>
+          <Button
+            variant={specialization === 'Livestock' ? 'contained' : 'outlined'}
+            onClick={() => handleSelection('Livestock')}
+            sx={{ marginRight: 2, backgroundColor: 'white', color: 'maroon', fontSize:'10px', fontWeight:'900' }}
+            className='but'
+          >
+            Livestock
+          </Button>
+        </FormGroup>
+      </FormControl>
+      {specialization && (
+        <Typography variant="body1" marginTop={2}>
+          Selected Specialization: {specialization}
+        </Typography>
+      )}
           <TextField
             name="fees"
             label="Fees"
@@ -301,8 +388,10 @@ const AdminDoctorsPage = () => {
             type="submit"
             variant="contained"
             color="secondary"
+            disabled={loading}
+            sx={{ margin: '1rem 0' }}
           >
-            Add Doctor
+            {loading ? "Adding..." : "Add Doctor"}
           </Button>
         </Box>
       </Box>

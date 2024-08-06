@@ -4,11 +4,15 @@ import { tokens } from "../theme"; // Ensure path is correct
 import axios from "axios";
 import Header from "./comps/Header";
 import { useState, useEffect } from "react"; // Import useState and useEffect
+import Loading from "../Components/Loading/Loading";
 
 const OurTests = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const [tests, setTests] = useState([]);
+
+  const [loading, setLoading] = useState(false);
+
   const [newTests, setNewTests] = useState({
     name: "",
     testfees: "",
@@ -21,6 +25,7 @@ const OurTests = () => {
 
   const fetchTests = async () => {
     try {
+      setLoading(true);
       const response = await axios.get("http://localhost:5000/alltests"); // Fixed endpoint to fetch tests
       console.log(response.data);
       // Map the data to match the columns
@@ -40,6 +45,8 @@ const OurTests = () => {
       setTests(mappedTests); // Set mappedTests to the state
     } catch (error) {
       console.error("Error fetching tests:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -51,6 +58,7 @@ const OurTests = () => {
   const handleAddTests = async (e) => {
     e.preventDefault();
     try {
+      setLoading(true);
       const response = await axios.post("http://localhost:5000/addtest", newTests); // Fixed endpoint to add tests
       console.log(response);
       fetchTests();
@@ -61,6 +69,8 @@ const OurTests = () => {
       });
     } catch (error) {
       console.error("Error adding tests:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -91,6 +101,7 @@ const OurTests = () => {
           },
         }}
       >
+        {loading && <Loading/>}
         <DataGrid rows={tests} columns={columns} getRowId={(row) => row.id} />
       </Box>
 
@@ -138,8 +149,8 @@ const OurTests = () => {
             style: { color: maroonColor } // Set label color
           }}
         />
-        <Button type="submit" variant="contained" sx={{ backgroundColor: "#400000", color: "#FFFFFF" }}>
-          Add Test
+        <Button type="submit" variant="contained" sx={{ backgroundColor: "#400000", color: "#FFFFFF", margin: "0.5rem 0" }} disabled={loading}>
+          {loading ? "Adding..." : "Add Test"}
         </Button>
       </Box>
     </Box>

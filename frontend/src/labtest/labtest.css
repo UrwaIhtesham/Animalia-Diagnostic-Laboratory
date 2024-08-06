@@ -942,3 +942,79 @@
   text-align: center;
 }
 }
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Modal Content */
+.modal-class {
+  background-color: rgb(252, 235, 235) !important;
+  border-radius: 8px !important;
+  padding: 20px !important;
+  max-width: 500px !important;
+  width: 31vw !important;
+  height: 29vh !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important;
+  text-align: center !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+}
+/* Modal Icon */
+.modal-class .fa-thumbs-up {
+
+  color: maroon;
+    margin-bottom: 5px;
+}
+
+/* Modal Heading */
+
+.modal-class h2 {
+  max-width: 100%;
+  overflow-wrap: break-word;
+  font-size: 1.5em; /* Base font size */
+  margin: 0 0 20px;
+  text-align: center;
+    word-wrap: break-word;
+    color: black;
+}
+
+/* Modal Paragraph */
+.modal-class p {
+  margin: 0 0 20px;
+  font-size: 15px;
+  margin-top: 5%;
+  word-wrap: break-word; /* Ensure long words break onto the next line */
+  color: black;
+}
+
+/* Close Button */
+.modal-class button {
+  background-color: maroon; /* Blue background for the button */
+  color: #fff; /* White text */
+  border: none;
+  border-radius: 4px;
+  padding: 5px 20px;
+  font-size: 12px;
+  cursor: pointer;
+  word-wrap: break-word; /* Ensure long words break onto the next line */
+  display: inline-block;
+  max-width: 100%;
+}
+
+.modal-class button:hover {
+  background-color: rgb(241, 44, 44); /* Darker blue on hover */
+}
+
+.ReactModal__Content {
+  position: relative !important;
+}
