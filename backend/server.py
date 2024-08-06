@@ -17,6 +17,25 @@ from app.routes import register_all_blueprints
 from app.models.predict import predict_disease
 
 from sqlalchemy.sql import text
+from flask import Flask, Blueprint, request, jsonify, session, redirect, url_for
+from flask_cors import CORS
+
+from functools import wraps
+from flask_jwt_extended import JWTManager
+
+from flask_bcrypt import Bcrypt
+from flask_sqlalchemy import SQLAlchemy
+import os
+
+from app.models.users.user import db, User
+from app.models.doctors.doctor import db, Doctors
+from app.models.appointments.appointment import db, Appointments
+from app.models.labtests.bookedtests import db, BookTests
+from app.models.labtests.labtest import db, Tests
+from app.routes import register_all_blueprints
+from app.models.predict import predict_disease
+
+from sqlalchemy.sql import text
 
 app = Flask(__name__)
 

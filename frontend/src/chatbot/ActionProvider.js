@@ -2,6 +2,10 @@ import React from 'react';
 import SymptomsDropdown from './SymptomsDropdown';
 import axios from 'axios';
 import Home from '../home/home';
+import React from 'react';
+import SymptomsDropdown from './SymptomsDropdown';
+import axios from 'axios';
+import Home from '../home/home';
 
 class ActionProvider {
   constructor(createChatBotMessage, setStateFunc) {
@@ -89,7 +93,132 @@ class ActionProvider {
       .catch(error => {
         console.error(`Error loading ${fileName}:`, error);
         const message = this.createChatBotMessage("Failed to load symptoms for the specified animal type.");
+  constructor(createChatBotMessage, setStateFunc) {
+    this.createChatBotMessage = createChatBotMessage;
+    this.setState = setStateFunc;
+    this.symptomsByAnimalType = {};
+    this.maxSymptoms = 4;
+    this.selectedSymptoms = [];
+
+    this.state = {
+      currentAnimalType: null
+    };
+  }
+
+  loadDiseaseMapping = (animalType) => {
+    let mappingFileName = '';
+
+    //Adding filename to variable mappingFileName according to the animalType
+    switch (animalType){
+      case 'dog':
+      case 'cat':
+      case 'parrot':
+        mappingFileName = 'pets_disease.txt';
+        break;
+      case 'cow':
+      case 'sheep':
+      case 'buffalo':
+      case 'goat':
+        mappingFileName = 'livestock_disease.txt';
+        break;
+      case 'chicken':
+        mappingFileName = 'poultry_disease.txt';
+        break;
+      default:
+        console.error('Unknown animal type: ', animalType);
+        return;
+    }
+
+    const mappingUrl = `${process.env.PUBLIC_URL}/diseases/${mappingFileName}`; // URL to the txt file in the public directory
+    fetch(mappingUrl)
+      .then(response => response.text())
+      .then(text => {
+        this.diseaseMapping = this.parseMapping(text);
+        //console.log('Loaded disease mapping:', this.diseaseMapping);
+      })
+      .catch(error => {
+        console.error('Error loading disease mapping:', error);
+      });
+  };
+  
+
+  handleSymptoms = (animalType) => {
+    this.loadDiseaseMapping(animalType);
+
+    const fileName = `${animalType.toLowerCase()}.txt`;
+    const filePath = `${process.env.PUBLIC_URL}/files/${fileName}`; // Adjust path as per your project structure
+
+    console.log(animalType);
+    console.log(`Fetching symptoms from: ${filePath}`); // Debugging statement
+
+    fetch(filePath)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`Failed to fetch ${fileName}`);
+        }
+        return response.text();
+      })
+      .then(data => {
+        const symptoms = data.trim().split('\n');
+  
+        if (symptoms.length === 0) {
+          const message = this.createChatBotMessage("No symptoms found for the specified animal type.");
+          this.updateChatbotState(message);
+          return;
+        }
+
+        const dropdownMessage = this.createChatBotMessage(
+          <SymptomsDropdown options={symptoms} data={{ animalType: animalType }} onSelect={(selectedSymptoms) => this.handleSelectSymptom(selectedSymptoms, animalType)} />,
+          {
+            withAvatar: true,
+          }
+        );
+        this.updateChatbotState(dropdownMessage);
+      })
+      .catch(error => {
+        console.error(`Error loading ${fileName}:`, error);
+        const message = this.createChatBotMessage("Failed to load symptoms for the specified animal type.");
         this.updateChatbotState(message);
+      });
+  };
+
+  handleSelectSymptom = (selectedSymptoms, animalType) => {
+    console.log('Selected symptoms in ActionProvider:', selectedSymptoms); // Debugging statement
+    const message = this.createChatBotMessage(`Selected symptoms: ${selectedSymptoms.join(', ')}`, {withAvatar: true});
+    this.updateChatbotState(message);
+    //const {currentAnimalType} = this.state;
+    console.log(animalType);
+
+    if (animalType){
+      this.predictDisease(animalType, selectedSymptoms);
+    } else {
+      console.error('Animal type not set. Cannot predict disease.');
+    }
+  }
+  
+  displaySelectedSymptoms() {
+    const message = this.createChatBotMessage(`Selected symptoms: ${this.selectedSymptoms.join(', ')}`, {withAvatar: true});
+    this.updateChatbotState(message);
+  }
+
+
+  
+
+
+  updateChatbotState(message) {
+    this.setState(prevState => ({
+      ...prevState,
+      messages: [...prevState.messages, message]
+    }));
+  }
+
+  greetUser = () => {
+    const greetingMessage = this.createChatBotMessage("Hello.");
+    this.updateChatbotState(greetingMessage);
+  };
+
+  handleAnimalCategory = (category) => {
+    const validCategories = ["pets", "pet", "ivestocks", "livestock", "poultry"];
       });
   };
 
