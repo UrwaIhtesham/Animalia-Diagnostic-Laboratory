@@ -144,6 +144,7 @@ function Labtest() {
             <input
               type="text"
               placeholder="Search by test name"
+              className='he'
               value={searchTerm}
               onChange={handleSearchChange}
             />

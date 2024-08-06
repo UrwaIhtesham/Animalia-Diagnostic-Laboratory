@@ -403,7 +403,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: white; /* Adjust background color */
+  /* background-color: white; Adjust background color */
   padding: 40px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Optional: add box shadow */
@@ -1017,7 +1017,7 @@
     /* top: 50%;
     left: 50%; */
     transform: translate(-50%, -50%);
-    background-color: white; /* Adjust background color */
+    /* background-color: white; Adjust background color */
     /* padding: 3rem 10rem; */
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Optional: add box shadow */
@@ -1657,7 +1657,7 @@
     /* top: 50%;
     left: 50%; */
     transform: translate(-50%, -50%);
-    background-color: white; /* Adjust background color */
+    /* background-color: white; Adjust background color */
     padding: 3rem 10rem;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Optional: add box shadow */
@@ -2272,7 +2272,7 @@
     /* top: 50%;
     left: 50%; */
     transform: translate(-50%, -50%);
-    background-color: white; /* Adjust background color */
+    /* background-color: white; Adjust background color */
     /* padding: 3.5rem 14rem; */
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Optional: add box shadow */
@@ -2304,7 +2304,7 @@
     min-height: 100%;
     margin-left: -2rem;
     margin-top: -5rem;
-    background-color: #f9e8e898;
+    background-color: white;
   }
   
   .react-chatbot-kit-chat-message-container{
@@ -2314,7 +2314,7 @@
   .react-chatbot-kit-chat-input-container {
     min-height: 2rem;
     margin-bottom: 1rem;
-    border: 0.1rem solid #ccc;
+    /* border: 0.1rem solid #ccc; */
     border-radius: 0.3rem;
     width: 110%;
   }
@@ -2347,6 +2347,7 @@
   
   .react-chatbot-kit-chat-bot-message-container {
     font:300;
+    color: black;
   }
   
   .react-chatbot-kit-user-chat-message {
@@ -2377,8 +2378,13 @@
     background-color: #ccc;
     border: 0.1rem solid #800000;
     border-radius: 0.3rem;
-    margin-bottom: 0.3rem;
-    margin-left: -8rem;
+    margin-bottom: 0.5rem;
+    margin-left: -5rem;
+    padding: 0 0;
+  }
+
+  .react-chatbot-kit-chat-btn-send-icon{
+    margin: 0 0 !important;
   }
 
 }

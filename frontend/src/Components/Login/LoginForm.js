@@ -51,7 +51,8 @@ const LoginForm = ({ mode }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
+
     try {
       setLoading(true);
       if (mode === 'login') {

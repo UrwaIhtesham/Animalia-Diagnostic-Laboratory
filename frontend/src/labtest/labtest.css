@@ -767,11 +767,15 @@
     font-size: 1.5rem; /* Increase icon size */
     color: #333; /* Icon color */
   }
+
+  .he::placeholder{
+    color: black;
+  }
   
   .search-bar-container button {
     position: absolute;
     right: 0; /* Align dropdown to the right */
-    top: 8%;
+    top: 50%;
     right: 0.5rem;
     transform: translateY(-50%); /* Center dropdown vertically */
     font-size: 1.5rem; /* Match font size with input field */ /* Border to match input field */

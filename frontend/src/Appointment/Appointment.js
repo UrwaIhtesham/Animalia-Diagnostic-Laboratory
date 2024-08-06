@@ -171,6 +171,7 @@ function Appointment() {
       <div className="sticky-header">
         <h1 className="appoint-h1">Doctor Appointment Booking</h1>
 
+        <p className='pp'>Note: Select Specific Specialization to Book an Appointment</p>
         <label className='label-label' htmlFor="specialization">Choose Animal Specialization:</label>
         <select id="specialization" onChange={handleSpecializationChange} value={selectedSpecialization} disabled={isDisabled}>
           <option value="">Select Specialization</option>
