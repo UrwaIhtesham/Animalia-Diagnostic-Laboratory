@@ -9,16 +9,18 @@
   
   .dropdown-header {
     background-color: lightgray;
-    padding: 10px;
+    padding: 0rem;
     cursor: pointer;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top: -3%;
+    margin-bottom: -3%;
   }
   
   .dropdown-content {
     background-color: lightgray;
-    padding: 10px;
+    padding: 0rem;
   }
   
   .symptoms-list ul {

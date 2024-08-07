@@ -271,8 +271,9 @@ html, body {
 
   .upper-half{
     background-image: url('pets.jpg');
-    background-repeat: no-repeat;
+    background-repeat:repeat;
     background-size: 100% 100%;
+    scale: 1;
   }
 
   .lower-half{
@@ -293,7 +294,7 @@ html, body {
     height: 56%;
     padding: 0px 0px;
     margin: 0px 0px;
-    background-color: rgba(255, 255, 255, 0.2);
+    /* background-color: rgba(255, 255, 255, 0.2); */
     z-index: 1;
   }
 
@@ -322,8 +323,8 @@ html, body {
     font-weight: 600;
     color: #fff;
     cursor: pointer;
-    margin: 20px;
-    height: 55px;
+    margin: 2rem;
+    height: 4rem;
     text-align: center;
     border: none;
     background-size: 300% 100%;

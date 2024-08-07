@@ -1,0 +1,6 @@
+/* Add this to your CSS file */
+#root > div > main > div.MuiBox-root.css-zwiamn > form > fieldset > div > button:nth-child(1) {
+    background-color: blue;
+    color: white;
+  }
+  
