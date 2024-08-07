@@ -158,6 +158,7 @@ const AdminDoctorsPage = () => {
     try {
       setloading(true);
       console.log(specialization);
+      const token = localStorage.getItem('token');
       const response = await axios.post("http://localhost:5000/adddoctors", {
         // ...newDoctor,
         // time: timeRangeString // Use the formatted time range string
@@ -165,6 +166,9 @@ const AdminDoctorsPage = () => {
         fee, experience,
         days: formattedDays,
         time: formattedTime,
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
       });
       console.log(response);
       // fetchDoctors();

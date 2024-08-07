@@ -27,10 +27,15 @@ function Labtest() {
   useEffect(() => {
     
     const fetchTests =async() => {
+      const token = localStorage.getItem('token');
       try {
         setLoading(true);
         console.log(email);
-        const response = await axios.get('http://localhost:5000/alltests');
+        const response = await axios.get('http://localhost:5000/alltests', {
+          headers: {
+            'Authentication': `Bearer ${token}`
+          }
+        });
         const fetchedTests = response.data;
         console.log("Fetched tests:", fetchedTests);
         setTests(fetchedTests);
@@ -119,10 +124,14 @@ function Labtest() {
     };
 
     console.log(bookingDetails);
-
+    const token = localStorage.getItem('token');
     try {
       setLoading(true);
-      await axios.post('http://localhost:5000/book_labtest', bookingDetails);
+      await axios.post('http://localhost:5000/book_labtest', bookingDetails, {
+        headers: {
+          'Authentication': `Bearer ${token}`
+        }
+      });
       // alert(`proceeding to payment of Rs.${totalAmount}`);
       setIsModalOpen(true);
     } catch (error) {

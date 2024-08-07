@@ -62,9 +62,6 @@ def generate_token():
 
 @app.route('/users', methods=['GET'])
 def listuser():
-    # all_users = User.query.all()
-    # results = [{"id": user.id, "name": user.name, "email": user.email, "Created At": user.date_added} for user in all_users]
-    # return jsonify(results)
     print("Request received")  # Debug statement
     auth_header = request.headers.get('Authorization')
     print(auth_header)
@@ -100,9 +97,15 @@ def register():
 
     session["user_id"] = new_user.id
 
+    token = generate_token()
+    print("In register", token)
+    app.config.setdefault('TOKENS', {})[token] = new_user.id
+
+
     return jsonify({
         "id": new_user.id,
-        "email": new_user.email
+        "email": new_user.email,
+        'token': token
     }), 201
 
 @app.route('/login', methods=['POST'])
@@ -137,7 +140,13 @@ def login():
     }), 201
 
 @app.route('/logout', methods=['GET', 'POST'])
-def logout():    
+def logout(): 
+    print("Request received")  # Debug statement
+    auth_header = request.headers.get('Authorization')
+    print(auth_header)
+    if auth_header is None:
+        return jsonify({'error': 'Unauthorized access'}),401
+       
     return jsonify({"message": "Logged out successfully"}), 200
 
 
@@ -158,6 +167,12 @@ def get_animals():
 
 @app.route('/alltests', methods=['GET'])
 def get_all_tests():
+    print("Request received")  # Debug statement
+    auth_header = request.headers.get('Authorization')
+    print(auth_header)
+    if auth_header is None:
+        return jsonify({'error': 'Unauthorized access'}),401
+    
     try:
         tests = Tests.query.all()
 
@@ -176,6 +191,12 @@ def get_all_tests():
     
 @app.route('/addtest', methods=['POST'])
 def addtest():
+    print("Request received")  # Debug statement
+    auth_header = request.headers.get('Authorization')
+    print(auth_header)
+    if auth_header is None:
+        return jsonify({'error': 'Unauthorized access'}),401
+    
     data = request.json
     test_name = data.get('name')
     animal = data.get('animal')
@@ -196,6 +217,12 @@ def get_tests():
 
 @app.route('/book_labtest', methods=['POST'])
 def book_labtest():
+    print("Request received")  # Debug statement
+    auth_header = request.headers.get('Authorization')
+    print(auth_header)
+    if auth_header is None:
+        return jsonify({'error': 'Unauthorized access'}),401
+    
     data = request.json
     customeremail = data['email']
     selectedTests = data['selectedtests']
@@ -234,6 +261,12 @@ def book_labtest():
 
 @app.route('/bookedlabtests', methods=['GET'])
 def list_booked():
+    print("Request received")  # Debug statement
+    auth_header = request.headers.get('Authorization')
+    print(auth_header)
+    if auth_header is None:
+        return jsonify({'error': 'Unauthorized access'}),401
+    
     all_booked = BookTests.query.all()
     results = [
         {
@@ -303,6 +336,12 @@ register_all_blueprints(app)
 
 @app.route('/adddoctors', methods=['POST'])
 def add_doctor():
+    print("Request received")  # Debug statement
+    auth_header = request.headers.get('Authorization')
+    print(auth_header)
+    if auth_header is None:
+        return jsonify({'error': 'Unauthorized access'}),401
+    
     try:
         data = request.json
         print(data)

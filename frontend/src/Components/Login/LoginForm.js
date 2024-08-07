@@ -56,7 +56,7 @@ const LoginForm = ({ mode }) => {
     try {
       setLoading(true);
       if (mode === 'login') {
-        const response = await axios.post('http://localhost:5000/login', { email: username, password});
+        const response = await axios.post('http://localhost:5000/login', { email: username, password}, );
         console.log('Login Response:', response);
         localStorage.setItem('token', response.data.token)
         console.log(localStorage.getItem('token'));

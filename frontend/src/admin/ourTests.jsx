@@ -51,9 +51,14 @@ const OurTests = () => {
   }, []);
 
   const fetchTests = async () => {
+    const token = localStorage.getItem('token');
     try {
       setLoading(true);
-      const response = await axios.get("http://localhost:5000/alltests"); // Fixed endpoint to fetch tests
+      const response = await axios.get("http://localhost:5000/alltests", {
+        headers:{
+          'Authorization' : `Bearer ${token}`
+        }
+      }); // Fixed endpoint to fetch tests
       console.log(response.data);
       // Map the data to match the columns
       const mappedTests = response.data.map((test) => ({
@@ -84,13 +89,17 @@ const OurTests = () => {
 
   const handleAddTests = async (e) => {
     e.preventDefault();
+    const token = localStorage.getItem('token');
     try {
       setLoading(true);
       const animalString = newTests.animal.join(', ');
       const response = await axios.post("http://localhost:5000/addtest", {
         name: newTests.name,
         testfees: newTests.testfees,
-        animal: animalString// Convert array to string
+        animal: animalString,
+        headers:{
+          'Authorization' : `Bearer ${token}`
+        }
       });  // Fixed endpoint to add tests
       console.log(response);
       fetchTests();
