@@ -13,6 +13,7 @@ import {
   OutlinedInput,
   Chip,
   Checkbox,
+  IconButton,
   ListItemText } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import axios from "axios";
@@ -24,6 +25,8 @@ import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { tokens } from "../theme";
 import { useTheme } from '@mui/material/styles';
 import Loading from '../Components/Loading/Loading';
+import AddIcon from '@mui/icons-material/Add';
+import RemoveIcon from '@mui/icons-material/Remove';
 import './AdminDoctorsPage';
 
 const daysofWeek = [
@@ -195,6 +198,14 @@ const AdminDoctorsPage = () => {
 
   };
 
+  const handleIncrement = () => {
+    setExperience(prev => (typeof prev === 'string' ? parseInt(prev) + 1 : prev + 1).toString());
+  };
+
+  const handleDecrement = () => {
+    setExperience(prev => (parseInt(prev) > 0 ? parseInt(prev) - 1 : 0));
+  };
+
   const columns = [
     { field: "doctorId", headerName: "Doctor ID", flex: 1 },
     { field: "name", headerName: "Name", flex: 2},
@@ -227,10 +238,9 @@ const AdminDoctorsPage = () => {
             backgroundColor: colors.primary[800],
           },
           "& css-1gywbfv-MuiButtonBase-root-MuiButton-root":{
-            backgroundColor: 'white !important',
-            color: colors.primary[800],
-
-          }
+            backgroundColor: specialization ? 'gray !important' : 'white',
+            color: specialization ? 'white' : colors.primary[800],
+          },
           }}
         >
           {loading && <Loading/>}
@@ -281,10 +291,10 @@ const AdminDoctorsPage = () => {
           <Button
             variant={specialization === 'Pet' ? 'contained' : 'outlined'}
             onClick={() => handleSelection('Pet')}
-            sx={{ marginRight: 2, backgroundColor: 'white', color: 'maroon', fontSize:'10px', fontWeight:'900',
+            sx={{ marginRight: 2, backgroundColor: specialization === 'Pet' ? 'gray' : 'white', color: specialization === 'Pet' ? 'maroon' : 'maroon', fontSize:'10px', fontWeight:'900',
               '&:hover': {
-          backgroundColor: specialization === 'Pet' ? 'darkred' : 'lightgrey',
-          color: specialization === 'Pet' ? 'white' : 'maroon',
+          backgroundColor: specialization === 'Pet' ? 'darkred' : 'white',
+          color: specialization === 'Pet' ? 'white' : 'lightgrey',
         }
             }}
             className='but'
@@ -294,7 +304,12 @@ const AdminDoctorsPage = () => {
           <Button
             variant={specialization === 'Poultry' ? 'contained' : 'outlined'}
             onClick={() => handleSelection('Poultry')}
-            sx={{ marginRight: 2, backgroundColor: 'white', color: 'maroon', fontSize:'10px', fontWeight:'900' }}
+            sx={{ marginRight: 2, backgroundColor: specialization === 'Poultry' ? 'gray' : 'white', color: specialization === 'Poultry' ? 'white' : 'maroon', fontSize:'10px', fontWeight:'900',
+              '&:hover': {
+                    backgroundColor: specialization === 'Poultry' ? 'darkgray' : 'white',
+                    color: specialization === 'Poultry' ? 'white' : 'lightgrey',
+                  },
+             }}
             className='but'
           >
             Poultry
@@ -302,7 +317,12 @@ const AdminDoctorsPage = () => {
           <Button
             variant={specialization === 'Livestock' ? 'contained' : 'outlined'}
             onClick={() => handleSelection('Livestock')}
-            sx={{ marginRight: 2, backgroundColor: 'white', color: 'maroon', fontSize:'10px', fontWeight:'900' }}
+            sx={{ marginRight: 2, backgroundColor: specialization === 'Livestock' ? 'gray' : 'white', color: specialization === 'Livestock' ? 'maroon' : 'maroon', fontSize:'10px', fontWeight:'900',
+              '&:hover': {
+          backgroundColor: specialization === 'Livestock' ? 'darkgray' : 'white',
+          color: specialization === 'Livestock' ? 'white' : 'lightgrey',
+        },
+             }}
             className='but'
           >
             Livestock
@@ -322,14 +342,34 @@ const AdminDoctorsPage = () => {
             fullWidth
             margin="normal"
           />
-          <TextField
+          {/* <TextField
             name="experience"
             label="Experience"
             value={experience}
             onChange={(e)=> setExperience(e.target.value)}
             fullWidth
             margin="normal"
-          />
+          /> */}
+          <Box mt={2} display="flex" alignItems="center">
+            <Typography>Experience (years): </Typography>
+            <Box display="flex" alignItems="center" ml={1}>
+              <IconButton size="small" onClick={handleDecrement}>
+                <RemoveIcon />
+              </IconButton>
+              <TextField
+                name="experience"
+                type="number"
+                value={experience}
+                onChange={(e) => setExperience(e.target.value)}
+                InputProps={{ inputProps: { min: 0 } }}
+                margin="normal"
+                style={{ width: "60px" }}
+              />
+              <IconButton size="small" onClick={handleIncrement}>
+                <AddIcon />
+              </IconButton>
+            </Box>
+          </Box>
           {/* <FormControl fullWidth margin="normal">
             <InputLabel id="day-label">Day</InputLabel>
             <Select

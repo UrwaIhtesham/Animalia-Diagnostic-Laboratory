@@ -9,7 +9,6 @@ import { AuthProvider } from './AuthContext';
 import './App.css';
 import Labtest from './labtest/labtest';
 
-import {privateAxios} from "./services/axios.service";
 import Loading from "./Components/Loading/Loading";
 
 // New imports
@@ -28,33 +27,33 @@ import OurTests from "./admin/ourTests";
 function AppContent() {
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    const requestInterceptor = privateAxios.interceptors.request.use(
-      (config) => {
-        setLoading(true);
-        return config;
-      },
-      (error) => {
-        return Promise.reject(error);
-      }
-    );
+  // useEffect(() => {
+  //   const requestInterceptor = privateAxios.interceptors.request.use(
+  //     (config) => {
+  //       setLoading(true);
+  //       return config;
+  //     },
+  //     (error) => {
+  //       return Promise.reject(error);
+  //     }
+  //   );
 
-    const responseInterceptor = privateAxios.interceptors.response.use(
-      (response) => {
-        setLoading(false);
-        return response;
-      },
-      (error) => {
-        setLoading(false);
-        return Promise.reject(error);
-      }
-    );
+  //   const responseInterceptor = privateAxios.interceptors.response.use(
+  //     (response) => {
+  //       setLoading(false);
+  //       return response;
+  //     },
+  //     (error) => {
+  //       setLoading(false);
+  //       return Promise.reject(error);
+  //     }
+  //   );
 
-    return () => {
-      privateAxios.interceptors.request.eject(requestInterceptor);
-      privateAxios.interceptors.response.eject(responseInterceptor);
-    };
-  }, []);
+  //   return () => {
+  //     privateAxios.interceptors.request.eject(requestInterceptor);
+  //     privateAxios.interceptors.response.eject(responseInterceptor);
+  //   };
+  // }, []);
 
 
 
@@ -173,33 +172,33 @@ function App() {
 
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    const requestInterceptor = privateAxios.interceptors.request.use(
-      (config) => {
-        setLoading(true);
-        return config;
-      },
-      (error) => {
-        return Promise.reject(error);
-      }
-    );
+  // useEffect(() => {
+  //   const requestInterceptor = privateAxios.interceptors.request.use(
+  //     (config) => {
+  //       setLoading(true);
+  //       return config;
+  //     },
+  //     (error) => {
+  //       return Promise.reject(error);
+  //     }
+  //   );
 
-    const responseInterceptor = privateAxios.interceptors.response.use(
-      (response) => {
-        setLoading(false);
-        return response;
-      },
-      (error) => {
-        setLoading(false);
-        return Promise.reject(error);
-      }
-    );
+  //   const responseInterceptor = privateAxios.interceptors.response.use(
+  //     (response) => {
+  //       setLoading(false);
+  //       return response;
+  //     },
+  //     (error) => {
+  //       setLoading(false);
+  //       return Promise.reject(error);
+  //     }
+  //   );
 
-    return () => {
-      privateAxios.interceptors.request.eject(requestInterceptor);
-      privateAxios.interceptors.response.eject(responseInterceptor);
-    };
-  }, []);
+  //   return () => {
+  //     privateAxios.interceptors.request.eject(requestInterceptor);
+  //     privateAxios.interceptors.response.eject(responseInterceptor);
+  //   };
+  // }, []);
 
   return (
     <AuthProvider>

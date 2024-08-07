@@ -46,7 +46,10 @@ function Home() {
   }
 
   const openChatbot = () => setIsChatbotOpen(true);
-  const closeChatbot = () => setIsChatbotOpen(false);
+  const closeChatbot = () => {
+    setIsChatbotOpen(false);
+    navigate('/home');
+  }
 
   const toggleMenu =() => setIsMenuOpen(!isMenuOpen);
     const images = {

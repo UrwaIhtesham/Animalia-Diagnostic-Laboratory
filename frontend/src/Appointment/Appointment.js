@@ -171,7 +171,7 @@ function Appointment() {
       <div className="sticky-header">
         <h1 className="appoint-h1">Doctor Appointment Booking</h1>
 
-        <p className='pp'>Note: Select Specific Specialization to Book an Appointment</p>
+        <p className='pp'>Note: Please Select Specific Specialization to Book an Appointment with Veterinary Doctor</p>
         <label className='label-label' htmlFor="specialization">Choose Animal Specialization:</label>
         <select id="specialization" onChange={handleSpecializationChange} value={selectedSpecialization} disabled={isDisabled}>
           <option value="">Select Specialization</option>
@@ -277,7 +277,7 @@ function Appointment() {
             <FontAwesomeIcon icon={faUserCheck} size="3x" className="icon-red bounce" />
 
             {selectedDoctor ? (
-      <p>Appointment Booking with Dr. {selectedDoctor.name} at {selectedDay}, {selectedTime} is successful</p>
+      <p>Appointment Booking with {selectedDoctor.name} at {selectedDay}, {selectedTime} is successful</p>
     ) : (
       <p>Appointment Booking is successful</p>
     )}

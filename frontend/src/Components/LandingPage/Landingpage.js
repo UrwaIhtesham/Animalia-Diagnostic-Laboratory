@@ -7,7 +7,8 @@ function LandingPage({ onSignIn, onSignUp }) {
         const isMobile = useMediaQuery({query: '(max-width:425px'});
         const isTablet = useMediaQuery({query: '(max-width: 768px'});
     return(
-        <div className={`main ${isMobile ? 'mobile' : isTablet ? 'tablet' : 'desktop'}`}>
+        <div className={`ma ${isMobile ? 'mobile' : isTablet ? 'tablet' : 'desktop'}`}>
+            <div className="main">
             <div className="upper-half">
             <div className="background-image">
             </div>
@@ -23,6 +24,7 @@ function LandingPage({ onSignIn, onSignUp }) {
                     <button className="btn-hover" onClick={onSignIn}>Sign in</button>
                     <button className="btn-hover" onClick={onSignUp}>Sign up</button>
                 </div>
+            </div>
             </div>
         </div>
     )

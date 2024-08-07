@@ -1,4 +1,9 @@
-import { Box, Button, TextField, Typography, useTheme } from "@mui/material";
+import { 
+  Box, Button, TextField, 
+  Typography, useTheme, FormControl,
+  InputLabel, Select, OutlinedInput,
+  MenuItem, Chip, FormLabel, FormGroup,
+Checkbox, ListItemText } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import { tokens } from "../theme"; // Ensure path is correct
 import axios from "axios";
@@ -16,8 +21,30 @@ const OurTests = () => {
   const [newTests, setNewTests] = useState({
     name: "",
     testfees: "",
-    animal: ""
+    animal: []
   });
+
+  const [selectedAnimals, setSelectedAnimals] = useState([]);
+
+  const Animals = [
+    'cow',
+    'dog',
+    'buffalo',
+    'goat',
+    'sheep',
+    'cat',
+    'parrot',
+    'chicken'
+  ];
+
+  const MenuProps = {
+    PaperProps: {
+      style: {
+        maxHeight: 224,
+        width: 250,
+      },
+    },
+  };
 
   useEffect(() => {
     fetchTests();
@@ -59,19 +86,33 @@ const OurTests = () => {
     e.preventDefault();
     try {
       setLoading(true);
-      const response = await axios.post("http://localhost:5000/addtest", newTests); // Fixed endpoint to add tests
+      const animalString = newTests.animal.join(', ');
+      const response = await axios.post("http://localhost:5000/addtest", {
+        name: newTests.name,
+        testfees: newTests.testfees,
+        animal: animalString// Convert array to string
+      });  // Fixed endpoint to add tests
       console.log(response);
       fetchTests();
       setNewTests({
         name: "",
         testfees: "",
-        animal: ""
+        animal: []
       });
     } catch (error) {
       console.error("Error adding tests:", error);
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleAnimalSelection = (animal) => {
+    setNewTests(prev => {
+      const updatedAnimals = prev.animal.includes(animal)
+        ? prev.animal.filter(a => a !== animal)
+        : [...prev.animal, animal];
+      return { ...prev, animal: updatedAnimals };
+    });
   };
 
   const columns = [
@@ -135,7 +176,7 @@ const OurTests = () => {
             style: { color: maroonColor } // Set label color
           }}
         />
-        <TextField
+        {/* <TextField
           name="animal"
           label="Animal"
           value={newTests.animal}
@@ -148,7 +189,33 @@ const OurTests = () => {
           InputLabelProps={{
             style: { color: maroonColor } // Set label color
           }}
-        />
+        /> */}
+        <FormControl component="fieldset" fullWidth margin="normal">
+          <FormLabel component="legend">Animal</FormLabel>
+          <FormGroup row>
+            {Animals.map((animal) => (
+              <Button
+                key={animal}
+                variant={selectedAnimals.includes(animal) ? 'contained' : 'outlined'}
+                onClick={() => handleAnimalSelection(animal)}
+                sx={{
+                  marginRight: 2,
+                  backgroundColor: selectedAnimals.includes(animal) ? 'gray' : 'white',
+                  color: selectedAnimals.includes(animal) ? 'white' : maroonColor,
+                  fontSize: '10px',
+                  fontWeight: '900',
+                  '&:hover': {
+                    backgroundColor: selectedAnimals.includes(animal) ? 'darkgray' : 'white',
+                    color: selectedAnimals.includes(animal) ? 'white' : 'lightgrey',
+                  },
+                }}
+                className='but'
+              >
+                {animal}
+              </Button>
+            ))}
+          </FormGroup>
+        </FormControl>
         <Button type="submit" variant="contained" sx={{ backgroundColor: "#400000", color: "#FFFFFF", margin: "0.5rem 0" }} disabled={loading}>
           {loading ? "Adding..." : "Add Test"}
         </Button>
