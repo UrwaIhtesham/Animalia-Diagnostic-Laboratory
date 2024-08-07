@@ -1,5 +1,9 @@
 from flask import Flask, Blueprint, request, jsonify, session,send_file
 from flask_cors import CORS
+
+from functools import wraps
+from flask_jwt_extended import JWTManager
+
 from flask_bcrypt import Bcrypt
 from flask_sqlalchemy import SQLAlchemy
 import os
@@ -43,6 +47,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_ECHO'] = True
 #just for testing
 
+jwt=JWTManager(app)
 bcrypt = Bcrypt(app)
 CORS(app, resources={r"/*": {"origins": ["http://localhost:3000", 
 "http://animalia-frontend-bucket.s3-website-us-east-1.amazonaws.com",
@@ -60,6 +65,10 @@ S3_BUCKET_NAME = os.getenv('S3_BUCKET_NAME')
 
 with app.app_context():
     db.create_all()
+
+def generate_token():
+    token=sk
+    return token
 
 
 @app.route('/Results', methods=['POST'])
@@ -179,9 +188,16 @@ def update_test_result():
 
 @app.route('/users', methods=['GET'])
 def listuser():
-    all_users = User.query.all()
-    results = [{"id": user.id, "name": user.name, "email": user.email, "Created At": user.date_added} for user in all_users]
-    return jsonify(results)
+    print("Request received")  # Debug statement
+    auth_header = request.headers.get('Authorization')
+    print(auth_header)
+    if auth_header is None:
+        return jsonify({'error': 'Unauthorized access'}), 401
+    else:
+        exclude = 'admin@gmail.com'
+        all_users = User.query.filter(User.email != exclude).all()
+        results = [{"id": user.id, "name": user.name, "email": user.email, "Created At": user.date_added} for user in all_users]
+        return jsonify(results)
 
 @app.route('/', methods=['GET'])
 def test():
@@ -210,9 +226,15 @@ def register():
 
     session["user_id"] = new_user.id
 
+    token = generate_token()
+    print("In register", token)
+    app.config.setdefault('TOKENS', {})[token] = new_user.id
+
+
     return jsonify({
         "id": new_user.id,
-        "email": new_user.email
+        "email": new_user.email,
+        'token': token
     }), 201
 
 @app.route('/login', methods=['POST'])
@@ -235,11 +257,27 @@ def login():
     
     session["user_id"] = user.id
 
+    token = generate_token()
+    print("In login", token)
+    app.config.setdefault('TOKENS', {})[token] = user.id
+
+
     return jsonify({
         "id": user.id,
         "email": user.email,
-        "user type": usertype
+        "token":token
     }), 201
+
+@app.route('/logout', methods=['GET', 'POST'])
+def logout(): 
+    print("Request received")  # Debug statement
+    auth_header = request.headers.get('Authorization')
+    print(auth_header)
+    if auth_header is None:
+        return jsonify({'error': 'Unauthorized access'}),401
+       
+    return jsonify({"message": "Logged out successfully"}), 200
+
 
 @app.route('/animals', methods=['GET'])
 def get_animals():
@@ -258,6 +296,12 @@ def get_animals():
 
 @app.route('/alltests', methods=['GET'])
 def get_all_tests():
+    print("Request received")  # Debug statement
+    auth_header = request.headers.get('Authorization')
+    print(auth_header)
+    if auth_header is None:
+        return jsonify({'error': 'Unauthorized access'}),401
+    
     try:
         tests = Tests.query.all()
 
@@ -273,6 +317,28 @@ def get_all_tests():
     except Exception as e:
         print(f"Error fetching tesrs: {e}")
         return jsonify({"error": "An error occured while fetcing tests"}), 500
+    
+@app.route('/addtest', methods=['POST'])
+def addtest():
+    print("Request received")  # Debug statement
+    auth_header = request.headers.get('Authorization')
+    print(auth_header)
+    if auth_header is None:
+        return jsonify({'error': 'Unauthorized access'}),401
+    
+    data = request.json
+    test_name = data.get('name')
+    animal = data.get('animal')
+
+    existing = Tests.query.filter_by(testname=test_name, animal=animal).first()
+
+    if existing:
+        return jsonify({"error": "Test with the same name and animal already exists."}), 400
+
+    new_test = Tests(testname=data['name'], testfee=data['testfees'], animal=data['animal'])
+    db.session.add(new_test)
+    db.session.commit()
+    return jsonify({"message": "Test added succesfully"}), 201
 
 @app.route('/tests', methods=['GET'])
 def get_tests():
@@ -289,6 +355,12 @@ def addtest():
 
 @app.route('/book_labtest', methods=['POST'])
 def book_labtest():
+    print("Request received")  # Debug statement
+    auth_header = request.headers.get('Authorization')
+    print(auth_header)
+    if auth_header is None:
+        return jsonify({'error': 'Unauthorized access'}),401
+    
     data = request.json
     customeremail = data['email']
     selectedTests = data['selectedtests']
@@ -321,12 +393,18 @@ def book_labtest():
             print(booking)
             bookings.append(booking)
 
-    db.session.add(booking)
-    db.session.commit()
+        db.session.add(booking)
+        db.session.commit()
     return jsonify({"message": "Booking succesful"}), 201
 
 @app.route('/bookedlabtests', methods=['GET'])
 def list_booked():
+    print("Request received")  # Debug statement
+    auth_header = request.headers.get('Authorization')
+    print(auth_header)
+    if auth_header is None:
+        return jsonify({'error': 'Unauthorized access'}),401
+    
     all_booked = BookTests.query.all()
     results = [
         {
@@ -344,9 +422,14 @@ def list_booked():
     ]
     return jsonify(results)
 
-
 @app.route('/predict', methods =['POST'])
 def predict():
+    print("Request received")  # Debug statement
+    auth_header = request.headers.get('Authorization')
+    print(auth_header)
+    if auth_header is None:
+        return jsonify({'error': 'Unauthorized access'}),401
+    
     data = request.json
     animal_type = data.get('animal_type')
     symptoms = data.get('symptoms')
@@ -370,24 +453,188 @@ register_all_blueprints(app)
 
 @app.route('/doctors', methods=['GET'])
 def get_doctors():
-    available_doctors = Doctors.query.filter_by(status='available').all()
-    doctors_list = [
-        {
-            'id': doctor.id,
-            'name': doctor.name,
-            'specialization': doctor.specialization,
-            'fees': doctor.fee,
-            'experience': doctor.experience,
-            'timing': doctor.timing
-        } for doctor in available_doctors
-    ]
-    print(doctors_list)
-    return jsonify(doctors_list)
+    print("Request received")  # Debug statement
+    auth_header = request.headers.get('Authorization')
+    print(auth_header)
+    if auth_header is None:
+        return jsonify({'error': 'Unauthorized access'}),401
+    else:
+        available_doctors = Doctors.query.filter_by(status='available').all()
+        doctors_list = [
+            {
+                'id': doctor.id,
+                'name': doctor.name,
+                'specialization': doctor.specialization,
+                'fees': doctor.fee,
+                'experience': doctor.experience,
+                'days': doctor.day,
+                'timing': doctor.timing
+            } for doctor in available_doctors
+        ]
+        print(doctors_list)
+        return jsonify(doctors_list)
 
-@app.route('/appointment', methods=['POST'])
+register_all_blueprints(app)
+
+@app.route('/adddoctors', methods=['POST'])
+def add_doctor():
+    print("Request received")  # Debug statement
+    auth_header = request.headers.get('Authorization')
+    print(auth_header)
+    if auth_header is None:
+        return jsonify({'error': 'Unauthorized access'}),401
+    
+    try:
+        data = request.json
+        print(data)
+        new_doctor = Doctors(
+            name=data['name'],
+            specialization=data['specialization'],
+            fee=data['fee'],
+            experience=data['experience'],
+            day=data['days'],
+            timing=data['time'],
+            status='available'
+        )
+        db.session.add(new_doctor)
+        db.session.flush()  # Ensure changes are sent to the database
+        db.session.commit()  # Commit the transaction
+        return jsonify({"message": "Doctor added successfully"}), 200
+    except Exception as e:
+        db.session.rollback()  # Rollback in case of error
+        print(f"Error: {e}")
+        return jsonify({"error": "Failed to add doctor"}), 500
+
+@app.route('/insights', methods=['GET'])
+def get_insights():
+    print("Request Recieved in insights")
+    auth_header = request.headers.get('Authorization')
+    print(auth_header)
+    if auth_header is None:
+        return jsonify({'error': 'Unauthorized Access'}), 401
+    else:
+        try:
+            user_count = User.query.count()
+            test_count = Tests.query.count()
+            booked_test_count = BookTests.query.count()
+            appointment_count = Appointments.query.count()
+
+            insights = {
+                "users": user_count,
+                'tests': test_count,
+                'booked_tests': booked_test_count,
+                'appointments': appointment_count
+            }
+
+            return jsonify(insights), 200
+        except Exception as e:
+            print(f"An error occurred: {e}")
+            return jsonify({'error':'Internal Server Error'}), 500
+
+@app.route('/revenue', methods=['GET'])
+def get_revenue():
+    print("Request Recieved in insights")
+    auth_header = request.headers.get('Authorization')
+    print(auth_header)
+    if auth_header is None:
+        return jsonify({'error': 'Unauthorized Access'}), 401
+    else:
+        try:
+            booked_appoint_revenue = Appointments.query.all()
+            booked_test_revenue = BookTests.query.all()
+
+            tests_count=0
+            tests_count = sum(appointment.fee for appointment in booked_appoint_revenue)
+
+            appoint_count = 0
+            appoint_count=sum(test.fees for test in booked_test_revenue)
+
+            total = tests_count + appoint_count
+            print(total)
+
+            result = {
+                'tests_count': tests_count,
+                'appoint_count': appoint_count,
+                'total': total
+            }
+
+            return jsonify({'revenue':result}), 200
+        except Exception as e:
+            print(f"An error occurred: {e}")
+            return jsonify({'error': 'Internal Server Error'}), 500
+ 
+@app.route('/appointments', methods=['POST'])
 def appointment():
-    print("Inside appointment")
-    return jsonify({'error': 'Invalid input'}), 400
+    print("Request received")  # Debug statement
+    auth_header = request.headers.get('Authorization')
+    print(auth_header)
+    if auth_header is None:
+            return jsonify({'error': 'Unauthorized access'}),401
+    
+    if not request.is_json:
+        return jsonify({"error": "No JSON payload provided"}), 400
+
+    data = request.get_json()
+
+    if 'docid' not in data:
+        return jsonify({"error": "Missing 'docid' in payload"}), 400
+
+    try:
+        existing_appointment = Appointments.query.filter_by(
+            doctorid=data['docid'],
+            day=data['selectedDay'],
+            time=data['selectedTime']
+        ).first()
+
+        if existing_appointment:
+            return jsonify({"error": "An appointment already exists for this doctor at the selected day and time. Please select another day or time."}), 409
+
+        
+        new_appointment = Appointments(
+            doctorid=data['docid'],
+            useremail=data['useremail'],
+            fee=data['fee'],
+            day=data['selectedDay'],
+            time=data['selectedTime']
+        )
+        db.session.add(new_appointment)
+        db.session.commit()
+        return jsonify({"success": "Appointment added"}), 201
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({"error": str(e)}), 500
+
+@app.route('/getappointments', methods=['GET'])
+def getappointments():
+    print("Request received")  # Debug statement
+    auth_header = request.headers.get('Authorization')
+    print(auth_header)
+    if auth_header is None:
+        return jsonify({'error': 'Unauthorized access'}), 401
+    else:
+        # Perform a join between Appointments and Doctors
+        all_appointments = db.session.query(Appointments, Doctors).join(Doctors, Appointments.doctorid == Doctors.id).all()
+        
+        # Format the results to include doctor's name
+        results = [{
+            "id": appointment.Appointments.id,
+            "email": appointment.Appointments.useremail,
+            "doctorid": appointment.Appointments.doctorid,
+            "doctorname": appointment.Doctors.name,
+            "fee": appointment.Appointments.fee,
+            "day": appointment.Appointments.day,
+            "timing": appointment.Appointments.time
+        } for appointment in all_appointments]
+        
+        return jsonify(results)
+
+        # all_appointments = Appointments.query.filter_by().all()
+        # results = [{"id": appointment.id, "email": appointment.useremail, "doctorid": appointment.doctorid, "fee": appointment.fee, "day": appointment.day, "timing": appointment.time} for appointment in all_appointments]
+        # return jsonify(results)
+
+from app import create_app
+
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000,debug=True)

@@ -1,55 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import './labtest.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faThumbsUp } from '@fortawesome/free-solid-svg-icons';
 import { useMediaQuery } from 'react-responsive';
 import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-
-// const tests = {
-//   goat: [
-//     { id: 1, name: 'General Herd Health Panel', price: 1000 },
-//     { id: 2, name: 'Caprine Respiratory Serologic Panel', price: 2000 },
-//     { id: 3, name: 'Brucellosis Testing', price: 1500 },
-//     { id: 4, name: 'Caprine Abortion Serologic Panel', price: 1800 },
-//   ],
-//   cow: [
-//     { id: 5, name: 'Mastitis Test', price: 2500 },
-//     { id: 6, name: 'Brucellosis Test', price: 3000 },
-//     { id: 7, name: 'Bovine Viral Diarrhea (BVD) Test', price: 2000 },
-//     { id: 8, name: 'Bovine Tuberculosis (TB) Test', price: 2200 },
-//   ],
-//   dog: [
-//     { id: 9, name: 'Complete Blood Count (CBC)', price: 500 },
-//     { id: 10, name: 'Biochemistry Profile', price: 1000 },
-//     { id: 11, name: 'Lyme Disease Test', price: 1500 },
-//     { id: 12, name: 'Heartworm Test', price: 2000 },
-//   ],
-//   cat: [
-//     { id: 13, name: 'Feline Heartworm Antigen Test', price: 1000 },
-//     { id: 14, name: 'Feline Panleukopenia Virus (FPV) Test', price: 1200 },
-//     { id: 15, name: 'Feline Immunodeficiency Virus (FIV) Test', price: 1400 },
-//     { id: 16, name: 'Feline Leukemia Virus (FeLV) Test', price: 1600 },
-//   ],
-//   parrot: [
-//     { id: 17, name: 'Parrot Blood Smear for Avian Leukosis', price: 800 },
-//     { id: 18, name: 'Parrot Avian Polyomavirus Test', price: 1000 },
-//     { id: 19, name: 'Parrot Fecal Test for Parasites', price: 1200 },
-//     { id: 20, name: 'Parrot Viral DNA Test', price: 1400 },
-//   ],
-//   buffalo: [
-//     { id: 21, name: 'Mastitis Test', price: 2500 },
-//     { id: 22, name: 'Blood Parasitology Test', price: 2700 },
-//     { id: 23, name: 'Tuberculosis Test (TB Test)', price: 3000 },
-//     { id: 24, name: 'Brucellosis Test', price: 3200 },
-//   ],
-//   sheep: [
-//     { id: 25, name: 'Ovine Progressive Pneumonia (OPP) Test', price: 900 },
-//     { id: 26, name: 'Scrapie Test', price: 1100 },
-//     { id: 27, name: 'Blood Test for Johne Disease', price: 1300 },
-//     { id: 28, name: 'Fecal Egg Count (FEC)', price: 1500 },
-//   ],
-// };
+import Modal from 'react-modal';
+import Loading from '../Components/Loading/Loading';
 
 function Labtest() {
   const [tests, setTests] = useState([]);
@@ -57,24 +14,28 @@ function Labtest() {
   const [selectedTests, setSelectedTests] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedAnimal, setSelectedAnimal] = useState('');
+  const navigate = useNavigate();
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const location = useLocation();
-  const email = location.state?.email;
+  const email = localStorage.getItem('userEmail');
 
   const isMobile = useMediaQuery({query: '(max-width:425px)'});
   const isTablet = useMediaQuery({query: '(max-width: 768px)'});
 
-  useEffect(() => {
-    // axios.get('http://localhost:5000/animals')
-    // .then(response => {
-    //   setAnimals(response.data);
-    // })
-    // .catch(error => console.error('Error fetching animals:', error));
+  const [loading, setLoading] = useState(false);
 
+  useEffect(() => {
+    
     const fetchTests =async() => {
+      const token = localStorage.getItem('token');
       try {
+        setLoading(true);
         console.log(email);
-        const response = await axios.get('http://ec2-44-204-83-159.compute-1.amazonaws.com:5000/alltests');
+        const response = await axios.get('http://localhost:5000/alltests', {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        });
         const fetchedTests = response.data;
         console.log("Fetched tests:", fetchedTests);
         setTests(fetchedTests);
@@ -85,6 +46,8 @@ function Labtest() {
         console.log(animalTypes);
       } catch (error) {
         console.error('Error fetching tests:', error);
+      } finally{
+        setLoading(false);
       }
     };
 
@@ -134,21 +97,20 @@ function Labtest() {
     return total + (test?test.Fee:0);
   }, 0);
 
-  const handlePayment =async()=> {
-    // const bookingDetails = {
-    //   email, 
-    //   selectedtests: selectedTests.map((testId) => ({
-    //     id: testId,
-    //     name: tests[selectedAnimal].find((test) => test.id === testId).name,
-    //     price: tests[selectedAnimal].find((test)=> test.id === testId).price,
-    //   })),
-    // };
+  const closeModal = () => {
+    setIsModalOpen(false);
+    navigate('/home');
+  };
+
+  const handlePayment = async()=> {
+    
 
     const allTests = tests;
 
     console.log("Tests Object:", tests);
     console.log("Selected Test IDs:", selectedTests);
-
+    localStorage.getItem('token');
+    console.log('token');
     const bookingDetails = {
       email,
       selectedtests: selectedTests.map((testId) => {
@@ -162,17 +124,26 @@ function Labtest() {
     };
 
     console.log(bookingDetails);
-
+    const token = localStorage.getItem('token');
     try {
-      await axios.post('http://ec2-44-204-83-159.compute-1.amazonaws.com:5000/book_labtest', bookingDetails);
-      alert(`proceeding to payment of Rs.${totalAmount}`);
+      setLoading(true);
+      await axios.post('http://localhost:5000/book_labtest', bookingDetails, {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
+      // alert(`proceeding to payment of Rs.${totalAmount}`);
+      setIsModalOpen(true);
     } catch (error) {
       console.error('Error booking lab tests:', error);
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <div className={`labtest ${isMobile ? 'mobile' : isTablet ? 'tablet' : 'desktop'}`}>
+    {loading && <Loading/>}
     <div className="tests-selection-container">
       <div className='headingg'>
       <h1 >Select Diagnostic Tests</h1></div>
@@ -182,6 +153,7 @@ function Labtest() {
             <input
               type="text"
               placeholder="Search by test name"
+              className='he'
               value={searchTerm}
               onChange={handleSearchChange}
             />
@@ -241,6 +213,24 @@ function Labtest() {
         Payment to Proceed
       </button>
     </div>
+
+          {/* Modal Component */}
+      <Modal
+        isOpen={isModalOpen}
+        onRequestClose={closeModal}
+        contentLabel="Payment Confirmation"
+        ariaHideApp={false}
+        overlayClassName="modal-overlay"
+      >
+          <div className="modal-class">
+            <h2>Payment Confirmation</h2>
+            <FontAwesomeIcon icon={faThumbsUp} size="3x" className="icon-red bounce" />
+            <p>Your payment of Rs.{totalAmount} is being processed.</p>
+            <button onClick={closeModal}>Close</button>
+          </div>
+
+      </Modal>
+
     </div>
   );
 }

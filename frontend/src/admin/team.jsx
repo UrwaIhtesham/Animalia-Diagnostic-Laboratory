@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import { tokens } from "../theme"; // Ensure path is correct
 import Header from "./comps/Header"; // Ensure path is correct
 
+
 const Team = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
@@ -13,13 +14,13 @@ const Team = () => {
   const [file, setFile] = useState(null);
   const [uploadingTestId, setUploadingTestId] = useState(null);
   const [uploadingCustomerId, setUploadingCustomerId] = useState(null);
-  const [uploadedUrls, setUploadedUrls] = useState({});
 
   useEffect(() => {
     fetchTests();
   }, []);
 
   const fetchTests = async () => {
+    const token = localStorage.getItem('token');
     try {
       const response = await axios.get("http://ec2-44-204-83-159.compute-1.amazonaws.com:5000/bookedlabtests");
       const mappedTests = response.data.map((test, index) => ({
@@ -97,7 +98,7 @@ const Team = () => {
     { field: "id", headerName: "ID" },
     { field: "testId", headerName: "Test ID" },
     { field: "customerId", headerName: "Customer ID", flex: 1 },
-    { field: "test", headerName: "Test", flex: 1 },
+    { field: "test", headerName: "Test", flex: 3 },
     { field: "animal", headerName: "Animal", flex: 1 },
     {
       field: "payment",

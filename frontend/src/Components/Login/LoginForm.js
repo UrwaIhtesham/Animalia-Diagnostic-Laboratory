@@ -4,6 +4,8 @@ import Input from './Input';
 import './login.css';
 import axios from 'axios';
 import { useMediaQuery } from 'react-responsive';
+import {useAuth} from '../../AuthContext';
+import Loading from '../Loading/Loading';
 
 const LoginForm = ({ mode }) => {
   const [username, setUsername] = useState('');
@@ -14,9 +16,12 @@ const LoginForm = ({ mode }) => {
   const [repeatPassword, setRepeatPassword] = useState('');
   const [message, setMessage] = useState('');
   const navigate = useNavigate();
+  const {login} = useAuth();
 
   const isMobile = useMediaQuery({query: '(max-width:425px'});
   const isTablet = useMediaQuery({query: '(max-width: 768px'});
+  const [loading, setLoading] = useState(false);
+  
 
   const handleChange = (e) => {
     const { id, value } = e.target;
@@ -47,28 +52,29 @@ const LoginForm = ({ mode }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+
     try {
+      setLoading(true);
       if (mode === 'login') {
         const response = await axios.post('http://ec2-44-204-83-159.compute-1.amazonaws.com:5000/login', { email: username, password});
         console.log('Login Response:', response);
-        const { token} = response.data;
-        console.log('Login Token:', token);
-        localStorage.setItem('token', token);
+        localStorage.setItem('token', response.data.token)
+        console.log(localStorage.getItem('token'));
         setMessage('Login successful');
-        if (response.data.email === "admin@gmail.com"){
           setTimeout(()=> {
             const successfulemail=response.data.email;
             console.log("Email in LoginForm", successfulemail);
-            navigate('/admin', {state:{email:successfulemail}});
-          }, 2000);
-        }
-        else{
-        setTimeout(() => {
-          const successfulemail= response.data.email;
-          console.log("Email in LoginFOrm",successfulemail );
-          navigate('/home', {state:{email: successfulemail}});
+            localStorage.setItem('userEmail', successfulemail);
+            login();
+            if(response.data.email === 'admin@gmail.com')
+            {
+              navigate('/admin', { state: { email: successfulemail } });
+            }
+            else
+            {
+              navigate('/home', { state: { email: successfulemail } });
+            }
         }, 2000);
-      }
       } else if (mode === 'signup') {
         if (createPassword !== repeatPassword) {
           setMessage('Passwords do not match');
@@ -79,10 +85,12 @@ const LoginForm = ({ mode }) => {
           name: fullname,
           email,
           password: createPassword,
-          confirm_password: repeatPassword
+          confirm_password: repeatPassword,
         });
 
         console.log('Register Response:', response);
+        localStorage.setItem('token', response.data.token)
+        console.log(localStorage.getItem('token'));
 
         if (response.status === 409) {
           setMessage('Email Already exists');
@@ -99,10 +107,14 @@ const LoginForm = ({ mode }) => {
       console.error('Error:', error);
       console.log('Error Response:', error.response);
       setMessage(mode === 'login' ? 'Incorrect email or password' : 'Registration failed');
+    } finally{
+      setLoading(false);
     }
   };
 
   return (
+    <div>
+      {loading && <Loading/>}
     <form onSubmit={handleSubmit}>
       <div className={`forms ${isMobile ? 'mobile' : isTablet ? 'tablet' : 'desktop'}`}>
       <div className="form-block__input-wrapper">
@@ -167,6 +179,7 @@ const LoginForm = ({ mode }) => {
       {message && <p className='message'>{message}</p>}
       </div>
     </form>
+    </div>
   );
 };
 
