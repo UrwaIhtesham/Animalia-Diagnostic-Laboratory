@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import SymptomsDropdown from './SymptomsDropdown';
 import axios from 'axios';
 import Home from '../home/home';
+
 
 class ActionProvider {
   constructor(createChatBotMessage, setStateFunc) {
@@ -262,12 +263,20 @@ class ActionProvider {
   };
 
   predictDisease = (animalType, symptoms) => {
+    const token = localStorage.getItem('token')
+    console.log(token)
     const url = 'http://localhost:5000/predict';
     const requestData={
       animal_type: animalType,
       symptoms: symptoms
     }
-    axios.post(url, requestData)
+    axios.post(url, requestData,{
+      headers: {
+            
+        'Authorization' : `Bearer ${token}`
+      
+    }
+    })
     .then(response => {
       console.log('Response from backend: ', response.data);
       const disease = response.data.disease;

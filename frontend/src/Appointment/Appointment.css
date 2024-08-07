@@ -1,69 +1,259 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f0f0f0;
+.appointment-container {
+  background-color: rgb(240, 233, 233);
+  padding: 20px; /* Reduced padding */
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 100%;
+  height: auto;
+}
+
+.sticky-header {
+  position: sticky;
+  top: 0;
+  background-color: rgb(240, 233, 233);
+  z-index: 1000;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin-bottom: 20px; /* Add margin to create space below */
+}
+
+.appoint-h1 {
+  color: white;
+  background-color: maroon;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  width: 80%;
+  /* margin-top: 2rem; */
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.label-label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: black;
+}
+
+.pp{
+  color: #800000;
+  font-weight: bolder;
+}
+
+#specialization{
+  width: 50%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: maroon;
+  color: white;
+}
+
+.doctor-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 50px; /* Add margin to create space from sticky header */
+}
+.doctor-list2{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+}
+
+.doctor-card {
+  background-color: #faecec;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-top: 10px;
+  padding: 10px;
+  width: 250px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.doctor-card:hover {
+  background-color: #ccc;
+  box-sizing: content-box;
+}
+
+.doctor-image {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  object-fit: cover;
+}
+
+.doctor-info p {
+  margin: 10px 0;
+  font-size: small;
+  color: black
+}
+
+.appointment {
+  margin-top: 20px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  height: 78vh;
+}
+
+.doctor-details {
+  text-align: center;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.doctor-details p {
+  margin: 5px 0;
+  justify-content: center;
+}
+
+.modal-class button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: maroon;
+  color: white;
+  cursor: pointer;
+  display: block;
+  margin: 20px auto 0;
+}
+
+button:hover {
+  background-color: #800000;
+}
+
+.appoint-h2{
+  background-color: #800000;
+}
+
+.appointment{
+  background-color: #faecec;
+}
+
+.doctor-details p{
+  color: black;
+}
+
+.appointment-schedule label{
+  color: black;
+  margin-right: 5px;
+}
+
+#day-select{
+  background-color: #800000;
+  color: #ccc;
+}
+
+#time-select{
+  background-color: #800000;
+  color: #ccc;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Modal Content */
+.modal-class {
+  background-color: rgb(252, 235, 235) !important;
+  border-radius: 8px !important;
+  padding: 20px !important;
+  max-width: 500px !important;
+  width: 31vw !important;
+  height: 29vh !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important;
+  text-align: center !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+}
+/* Modal Icon */
+.modal-class .fa-thumbs-up {
+
+  color: maroon;
+    margin-bottom: 5px;
+}
+
+/* Modal Heading */
+
+.modal-class h2 {
+  max-width: 100%;
+  overflow-wrap: break-word;
+  font-size: 1.5em; /* Base font size */
+  margin: 0 0 20px;
+  text-align: center;
+    word-wrap: break-word;
+    color: black;
+}
+
+/* Modal Paragraph */
+.modal-class p {
+  margin: 0 0 20px;
+  font-size: 15px;
+  margin-top: 5%;
+  word-wrap: break-word; /* Ensure long words break onto the next line */
+  color: black;
+}
+
+/* Close Button */
+.modal-class button {
+  background-color: maroon; /* Blue background for the button */
+  color: #fff; /* White text */
+  border: none;
+  border-radius: 4px;
+  padding: 5px 20px;
+  font-size: 12px;
+  cursor: pointer;
+  word-wrap: break-word; /* Ensure long words break onto the next line */
+  display: inline-block;
+  max-width: 100%;
+}
+
+.modal-class button:hover {
+  background-color: rgb(241, 44, 44); /* Darker blue on hover */
+}
+
+.ReactModal__Content {
+  position: relative !important;
+}
+
+.icon-red{
+  color: #800000;
+  animation: bounce;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
   }
-  
-  .app {
-    background-color: rgb(240, 233, 233);
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
+  40% {
+    transform: translateY(-10px);
   }
-  
-  h1 {
-    color: white;
-    background-color: maroon;
-    padding: 10px;
-    border-radius: 5px;
+  60% {
+    transform: translateY(-5px);
   }
-  
-  label {
-    display: block;
-    margin-bottom: 10px;
-    font-weight: bold;
-  }
-  
-  select {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: maroon;
-    color: white;
-  }
-  
-  .appointment {
-    margin-top: 20px;
-  }
-  
-  .doctor-image {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    display: block;
-    margin: 0 auto;
-  }
-  
-  button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    background-color: maroon; 
-    color: white;
-    cursor: pointer;
-    display: block;
-    margin: 20px auto 0;
-  }
-  
-  button:hover {
-    background-color: #800000;
-  }
-  
+}
+
+.bounce {
+  display: inline-block;
+  animation: bounce 1.5s ease infinite;
+}
