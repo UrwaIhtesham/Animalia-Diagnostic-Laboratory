@@ -101,7 +101,7 @@ import Appointment from "./Appointment/Appointment";
 // import { AuthProvider } from './AuthContext';
 import './App.css';
 import Labtest from "./labtest/labtest";
-
+import Results from "./results/results";
 // New imports
 import Topbar from "./admin/Topbar";
 import Sidebar from "./admin/Sidebar";
@@ -195,6 +195,7 @@ function AppContent() {
               // </PrivateRoute>
             }
           />
+           <Route path="/results" element={<Results/>}/>
           <Route path="/labtest" element={<Labtest/>}/>
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/team" element={<Team />} />

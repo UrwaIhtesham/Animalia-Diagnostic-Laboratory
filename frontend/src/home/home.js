@@ -55,7 +55,10 @@ function Home() {
         }
         return images[category] || [];
     };
-
+    const handleResultLink = (e) => {
+        e.preventDefault();
+        navigate('/results', {state: { email}});
+    }
     const handleLabTestLink = (e) => {
         e.preventDefault();
         navigate('/labtest', {state: { email}});
@@ -75,7 +78,7 @@ function Home() {
                     </div>
                     <ul className={`nav-links ${isMenuOpen ? 'active' : ''}`} onClick={closeMenu}>
                         <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#about" onClick={handleResultLink}>Results</a></li>
                         <li><a href="#contact">Contact Us</a></li>
                         <li><a href="#chatbot" onClick={openChatbot}>Chatbot</a></li>
                         <li><a href="#services" onClick={handleLabTestLink}>Lab test</a></li>
