@@ -71,7 +71,7 @@ function Appointment() {
         },
         {
           headers: {
-            Authorization: `Bearer ${token}`,
+            'Authorization': `Bearer ${token}`,
           },
         },
         { withCredentials: true }
@@ -145,7 +145,7 @@ function Appointment() {
     axios
       .get('http://127.0.0.1:5000/doctors', {
         headers: {
-          Authorization: `Bearer ${token}`,
+          'Authorization': `Bearer ${token}`,
         },
       })
       .then((response) => {

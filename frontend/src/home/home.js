@@ -18,6 +18,11 @@ import { IconButton } from '@mui/material';
 import Loading from '../Components/Loading/Loading';
 
 function Home() {
+    const [name, setName] = useState('');
+    const [contactemail, setContactEmail] = useState('');
+    const [mobile, setMobile] = useState('');
+    const [message, setMessage] = useState('');
+
   const navigate = useNavigate();
   const location = useLocation();
   const email = location.state?.email;
@@ -85,17 +90,53 @@ function Home() {
         navigate('/appointment', { state: { email } });
     };
     const handlelogout = async() => {
+        const token = localStorage.getItem('token');
         logout()
         try {
             setIsLoading(true);
-            const response = await axios.post('http://localhost:5000/logout', {withCredentials: true})
+            const response = await axios.post('http://localhost:5000/logout', {withCredentials: true}, {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            })
             if (response.status === 200){
                 alert('Successfully logged out')
-                navigate("/")
             }
         } catch (error) {
             alert(`Not able to logout ${error}`);
         } finally{
+            navigate("/")
+            setIsLoading(false);
+        }
+    };
+
+    const handleSubmit = async (e) => {
+        const token =localStorage.getItem('token');
+        e.preventDefault();
+
+        try {
+            setIsLoading(true);
+            const response = await axios.post('http://localhost:5000/contact', {
+                name,
+                contactemail,
+                mobile,
+                message
+            }, {
+            headers:{
+                'Authorization': `Bearer ${token}`
+            }
+            });
+            if (response.status === 200) {
+                alert('Message sent successfully');
+                setName('');
+                setContactEmail('');
+                setMobile('');
+                setMessage('');
+            }
+        } catch (error) {
+            alert('Failed to send message');
+            console.error('Error sending message:', error);
+        } finally {
             setIsLoading(false);
         }
     };
@@ -257,22 +298,22 @@ function Home() {
                         </div>
                         <div className="contact-form">
                             <h2>Contact Form</h2>
-                            <form className='form-control'>
+                            <form className='form-control' onSubmit={handleSubmit}>
                                 <label>
                                     Name:
-                                    <input type="text" name="name"/>
+                                    <input type="text" name="name" value={name} onChange={(e)=>setName(e.target.value)} required/>
                                 </label>
                                 <label>
                                     Email Address:
-                                    <input type="email" name="email"/>
+                                    <input type="email" name="email" value={contactemail} onChange={(e) => setContactEmail(e.target.value)} required/>
                                 </label>
                                 <label>
                                     Mobile Number:
-                                    <input type="tel" name="mobile"/>
+                                    <input type="tel" name="mobile" value={mobile} onChange={(e) => setMobile(e.target.value)} required/>
                                 </label>
                                 <label>
                                  Message:
-                                    <textarea name="message" placeholder="Enter Your Message"></textarea>
+                                    <textarea name="message" value={message} onChange={(e) => setMessage(e.target.value)} placeholder="Enter Your Message" required></textarea>
                                 </label>
                                 <button type="submit" className='submit-button'>Send Message</button>
                             </form>

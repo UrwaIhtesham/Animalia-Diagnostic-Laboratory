@@ -166,10 +166,10 @@ const AdminDoctorsPage = () => {
         fee, experience,
         days: formattedDays,
         time: formattedTime,
-        headers: {
-          'Authorization': `Bearer ${token}`
-        }
-      });
+      }, {headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    });
       console.log(response);
       // fetchDoctors();
       // setNewDoctor({

@@ -97,9 +97,9 @@ const OurTests = () => {
         name: newTests.name,
         testfees: newTests.testfees,
         animal: animalString,
-        headers:{
-          'Authorization' : `Bearer ${token}`
-        }
+      }, {headers:{
+        'Authorization' : `Bearer ${token}`
+      }
       });  // Fixed endpoint to add tests
       console.log(response);
       fetchTests();

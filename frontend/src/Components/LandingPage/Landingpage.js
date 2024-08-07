@@ -10,14 +10,14 @@ function LandingPage({ onSignIn, onSignUp }) {
         <div className={`ma ${isMobile ? 'mobile' : isTablet ? 'tablet' : 'desktop'}`}>
             <div className="main">
             <div className="upper-half">
-            <div className="background-image">
+                <div className="background-image">
             </div>
                 
             </div>
             <div className="lower-half">
-                <div className="title">
+                {/* <div className="title">
                     <h1>Animalia Diagnostic Centre</h1>
-                </div>
+                </div> */}
                 <p>New to our website? Join Now.</p>
                 <br/>
                 <div className="buttons">

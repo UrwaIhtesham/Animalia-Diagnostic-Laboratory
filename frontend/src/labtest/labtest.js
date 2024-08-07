@@ -33,7 +33,7 @@ function Labtest() {
         console.log(email);
         const response = await axios.get('http://localhost:5000/alltests', {
           headers: {
-            'Authentication': `Bearer ${token}`
+            'Authorization': `Bearer ${token}`
           }
         });
         const fetchedTests = response.data;
@@ -129,7 +129,7 @@ function Labtest() {
       setLoading(true);
       await axios.post('http://localhost:5000/book_labtest', bookingDetails, {
         headers: {
-          'Authentication': `Bearer ${token}`
+          'Authorization': `Bearer ${token}`
         }
       });
       // alert(`proceeding to payment of Rs.${totalAmount}`);

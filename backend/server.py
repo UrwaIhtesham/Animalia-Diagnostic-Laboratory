@@ -37,6 +37,7 @@ from app.models.predict import predict_disease
 
 from sqlalchemy.sql import text
 
+
 app = Flask(__name__)
 
 import secrets

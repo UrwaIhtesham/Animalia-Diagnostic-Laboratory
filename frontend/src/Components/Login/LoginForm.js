@@ -85,10 +85,12 @@ const LoginForm = ({ mode }) => {
           name: fullname,
           email,
           password: createPassword,
-          confirm_password: repeatPassword
+          confirm_password: repeatPassword,
         });
 
         console.log('Register Response:', response);
+        localStorage.setItem('token', response.data.token)
+        console.log(localStorage.getItem('token'));
 
         if (response.status === 409) {
           setMessage('Email Already exists');
