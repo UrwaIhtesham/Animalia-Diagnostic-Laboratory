@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display+SC:wght@400;700&display=swap');
+
+.background {
+  background-image: url('../../public/assets/pics/hehe1.jpg');
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Centers vertically */
+  align-items: center; 
+  font-family: 'Playfair Display SC', serif;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+.header-hehe{
+  background-color: #f4f4f4;
+  width: 100%;
+  color: #000;
+  background-image: url('../../public/assets/pics/greybg.jpg');
+  background-size: cover;
+  background-position: center;
+}
+.header-hehe p{
+  margin-top: 5px;
+}
+.sectionss {
+  display: flex;
+  flex-direction: column;
+  gap: 120px;
+  width: 100%;
+  max-width: 1200px;
+  padding: 20px;
+  box-sizing: border-box;
+  justify-content: center;
+  margin-top: 70px;
+}
+
+.background::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #800000c9;
+  z-index: -1;
+}
+
+.vertical-line {
+  position: absolute;
+  left: 50%; /* Move the start point to the center */
+  top: 80px; /* Vertical position */
+  width: 50%; /* Line spans 50% of the container width */
+  height: 2px; /* Line thickness */
+  background-color: rgb(82, 8, 8); /* Line color */
+  transform: translateX(-50%); /* Center the line horizontally */
+}
+
+.header-hehe h1 {
+  font-size: 2.1em;
+  margin: 0.5em;
+  margin-top: 34px;
+  text-align: center;
+  letter-spacing: 3px;
+  animation: slideInFromLeft 1s ease-out forwards;
+}
+
+.header-hehe p {
+  font-size: 0.8em;
+  margin: 0.5em;
+  letter-spacing: 1.5px;
+  font-weight: 200;
+  text-align: center;
+  animation: slideInFromRight 1s ease-out forwards;
+}
+
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromRight {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+
+  }
+}
+
+  .file-position{
+margin-top: 50px;
+  }
+
+.file-container {
+  display: flex;
+  flex-direction: column;
+  gap: 3em;
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  overflow: auto;
+  max-height: 500px; /* Adjust this value as needed */
+  align-items: center;
+}
+
+.file-card {
+  display: flex;
+  align-items: center;
+  background-color: #f4f4f4;
+  border: 1px solid #ddd;
+  border-radius: 15px;
+  width: 100%;
+  max-width: 400px;
+  height: 80px;
+  box-shadow: 0 10px 60px #3b0707ab;
+  overflow: hidden;
+}
+
+.thumbnail {
+  width: 100px;
+  height: 80px;
+  margin-right: 10px;
+  border: 1px solid #ddd;
+  border-radius: 15px;
+}
+
+.file-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  color: black;
+}
+
+.file-name {
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 100px;
+}
+
+.download-button {
+  background: none;
+  border: none;
+  color: #000;
+  cursor: pointer;
+  font-size: 1.5em;
+}
+
+
+
+
+
+
+

@@ -1,8 +1,11 @@
-from flask import Flask, Blueprint, request, jsonify, session
+from flask import Flask, Blueprint, request, jsonify, session,send_file
 from flask_cors import CORS
 from flask_bcrypt import Bcrypt
 from flask_sqlalchemy import SQLAlchemy
 import os
+import boto3
+import zipfile
+from werkzeug.utils import secure_filename
 from app.models.users.user import db, User
 from app.models.doctors.doctor import db, Doctors
 from app.models.appointments.appointment import db, Appointments
@@ -10,8 +13,12 @@ from app.models.labtests.bookedtests import db, BookTests
 from app.models.labtests.labtest import db, Tests
 from app.routes import register_all_blueprints
 from app.models.predict import predict_disease
+from dotenv import load_dotenv
+from io import BytesIO
+import mimetypes
 
 from sqlalchemy.sql import text
+load_dotenv()
 
 app = Flask(__name__)
 
@@ -42,27 +49,132 @@ CORS(app, resources={r"/*": {"origins": ["http://localhost:3000",
 "http://animalia-frontend-bucket.s3-website-us-east-1.amazonaws.com/admin/"]}})
 db.init_app(app)
 
+s3_client = boto3.client(
+    's3',
+    aws_access_key_id=os.getenv('AWS_ACCESS_KEY_ID'),
+    aws_secret_access_key=os.getenv('AWS_SECRET_ACCESS_KEY')
+)
+
+S3_BUCKET_NAME = os.getenv('S3_BUCKET_NAME')
+
+
 with app.app_context():
     db.create_all()
 
 
+@app.route('/Results', methods=['POST'])
+def result():
+    try:
+        data = request.json
+        email = data['email']
+        print(f"Received email: {email}")
+        # Fetch the customer id and tests related to the customer id linked to the email from the database table
+        user = User.query.filter_by(email=email).first()
+        if not user:
+            return jsonify({"error": "User not found"}), 404
+        
+        customer_id = user.id
+        tests = BookTests.query.filter_by(customerid=customer_id).all()
+        
+        if not tests:
+            return jsonify({"error": "No tests found for user"}), 404
+        
+        # Prepare ZIP file in memory
+        memory_file = BytesIO()
+        with zipfile.ZipFile(memory_file, 'w', zipfile.ZIP_DEFLATED) as zf:
+            for test in tests:
+                if test.url:
+                    filename = test.url.split('/')[-1]
+                    print(f"Fetching file: {filename} from S3")
+                    s3_response = s3_client.get_object(Bucket=S3_BUCKET_NAME, Key=filename)
+                    file_content = s3_response['Body'].read()
+                    zf.writestr(test.testname, file_content)
+        
+        memory_file.seek(0)
+        print("ZIP file created successfully")
+        return send_file(memory_file, mimetype='application/zip', download_name='test_results.zip')
+    
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+
+
+@app.route('/getTestResult', methods=['POST'])
+def get_test_result():
+    try:
+        data = request.json
+        test_id = data['testId']
+        customer_id = data['customerId']
+        # Fetch the URL from the database
+        file_url = get_file_url_from_db(test_id, customer_id)
+        
+        if file_url:
+            # Extract the file name from URL
+            filename = file_url.split('/')[-1]
+            print(f"Filename: {filename}")
+            # Download file from S3
+            s3_response = s3_client.get_object(Bucket=S3_BUCKET_NAME, Key=filename)
+            file_content = s3_response['Body'].read()
+            content_type = mimetypes.guess_type(filename)[0] or 'application/octet-stream'
+            # Send file to frontend
+            return send_file(BytesIO(file_content), download_name=filename, mimetype=content_type)
+
+
+        return jsonify({"error": "File not found"}), 404
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+def get_file_url_from_db(test_id, customer_id):
+    try:
+        # Query the database for the record matching the test_id and customer_id
+        booked_test = BookTests.query.filter_by(test_id=test_id, customerid=customer_id).first()
+        
+        # Check if the record exists and return the URL
+        if booked_test and booked_test.url:
+            return booked_test.url
+        else:
+            return None
+    except Exception as e:
+        print(f"Error retrieving file URL from database: {e}")
+        return None
+
+
+
+
 @app.route('/updateTestResult', methods=['POST'])
 def update_test_result():
-    data = request.get_json()
-    test_id = data.get('testId')
-    customer_id = data.get('customerId')
-    url = data.get('url')
+    if 'file' not in request.files:
+        return jsonify({"error": "No file part in the request"}), 400
 
-    # Query the BookTests table to find a matching record
-    booked_test = BookTests.query.filter_by(test_id=test_id, customerid=customer_id).first()
+    file = request.files['file']
+    if file.filename == '':
+        return jsonify({"error": "No selected file"}), 400
 
-    if booked_test:
-        # Update the URL if the test is found
-        booked_test.url = url
-        db.session.commit()
-        return jsonify({"message": "Test result URL updated successfully."})
-    else:
-        return jsonify({"error": "Test not found."}), 404
+    if file:
+        test_id = request.form.get('testId')
+        customer_id = request.form.get('customerId')
+        
+        # Query the BookTests table to find a matching record
+        booked_test = BookTests.query.filter_by(test_id=test_id, customerid=customer_id).first()
+
+        if not booked_test:
+            return jsonify({"error": "Test not found."}), 404
+
+        # Generate a unique file name for the upload
+        filename = f"{customer_id}_{test_id}_{file.filename}"
+
+        try:
+            # Upload file to S3
+            s3_client.upload_fileobj(file, S3_BUCKET_NAME, filename)
+            file_url = f"https://{S3_BUCKET_NAME}.s3.amazonaws.com/{filename}"
+
+            # Update the URL in the database
+            booked_test.url = file_url
+            db.session.commit()
+
+            return jsonify({"message": "Test result URL updated successfully.", "url": file_url})
+        except Exception as e:
+            return jsonify({"error": str(e)}), 500
 
 
 @app.route('/users', methods=['GET'])
@@ -251,7 +363,7 @@ def predict():
     else:
         return jsonify({'error': 'Invalid input'}), 400
     
-from app import create_app
+
 
 register_all_blueprints(app)
 
@@ -278,4 +390,4 @@ def appointment():
     return jsonify({'error': 'Invalid input'}), 400
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port=5000,debug=True)
