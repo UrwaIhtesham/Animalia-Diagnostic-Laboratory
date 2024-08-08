@@ -54,7 +54,7 @@ const OurTests = () => {
     const token = localStorage.getItem('token');
     try {
       setLoading(true);
-      const response = await axios.get("http://localhost:5000/alltests", {
+      const response = await axios.get("http://ec2-44-204-83-159.compute-1.amazonaws.com:5000/alltests", {
         headers:{
           'Authorization' : `Bearer ${token}`
         }
@@ -93,7 +93,7 @@ const OurTests = () => {
     try {
       setLoading(true);
       const animalString = newTests.animal.join(', ');
-      const response = await axios.post("http://localhost:5000/addtest", {
+      const response = await axios.post("http://ec2-44-204-83-159.compute-1.amazonaws.com:5000/addtest", {
         name: newTests.name,
         testfees: newTests.testfees,
         animal: animalString,

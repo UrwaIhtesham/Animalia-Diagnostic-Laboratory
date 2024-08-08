@@ -108,7 +108,7 @@ const AdminDoctorsPage = () => {
     try {
       const token = localStorage.getItem('token');
       setloading(true);
-      const response = await axios.get("http://localhost:5000/doctors", {
+      const response = await axios.get("http://ec2-44-204-83-159.compute-1.amazonaws.com:5000/doctors", {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -159,9 +159,7 @@ const AdminDoctorsPage = () => {
       setloading(true);
       console.log(specialization);
       const token = localStorage.getItem('token');
-      const response = await axios.post("http://localhost:5000/adddoctors", {
-        // ...newDoctor,
-        // time: timeRangeString // Use the formatted time range string
+      const response = await axios.post("http://ec2-44-204-83-159.compute-1.amazonaws.com:5000/adddoctors", {
         name, specialization, 
         fee, experience,
         days: formattedDays,
@@ -171,16 +169,6 @@ const AdminDoctorsPage = () => {
       }
     });
       console.log(response);
-      // fetchDoctors();
-      // setNewDoctor({
-      //   doctorId: "",
-      //   name: "",
-      //   specialization: "",
-      //   fees: "",
-      //   time: "",
-      //   day: ""
-      // });
-      // setError("");
       if (response.status === 200){
         console.log("Doctor Added Successfully");
         fetchDoctors();
@@ -265,30 +253,6 @@ const AdminDoctorsPage = () => {
             fullWidth
             margin="normal"
           />
-          {/* <TextField
-            name="specialization"
-            label="Specialization"
-            value={specialization}
-            onChange={(e) => setSpecialization(e.target.value)}
-            fullWidth
-            margin="normal"
-          /> */}
-          {/* <FormControl fullWidth margin="normal">
-      <Typography variant="h6" component="label" gutterBottom>
-        Specialization
-      </Typography>
-      <Select
-        value={specialization}
-        onChange={(e) => setSpecialization(e.target.value)}
-        fullWidth
-        displayEmpty
-        renderValue={(selected) => (selected ? selected : <Typography>Select a specialization</Typography>)}
-      >
-        <MenuItem value="Pet">Pet</MenuItem>
-        <MenuItem value="Poultry">Poultry</MenuItem>
-        <MenuItem value="Livestock">Livestock</MenuItem>
-      </Select>
-      </FormControl> */}
       <FormControl component="fieldset" fullWidth margin="normal">
         <FormLabel component="legend">Specialization</FormLabel>
         <FormGroup row>

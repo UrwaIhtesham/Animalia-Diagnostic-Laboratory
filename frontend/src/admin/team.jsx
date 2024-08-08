@@ -15,29 +15,38 @@ const Team = () => {
   const [uploadingTestId, setUploadingTestId] = useState(null);
   const [uploadingCustomerId, setUploadingCustomerId] = useState(null);
 
+
   useEffect(() => {
     fetchTests();
   }, []);
 
   const fetchTests = async () => {
     const token = localStorage.getItem('token');
+    console.log(`Token in team ${token}`);
     try {
-      const response = await axios.get("http://ec2-44-204-83-159.compute-1.amazonaws.com:5000/bookedlabtests");
-      const mappedTests = response.data.map((test, index) => ({
-        id: test["book test id"] || index,
-        testId: test["test id"],
-        customerId: test["customer id"],
-        test: test["test name"],
-        animal: test["animal"],
-        payment: test["payment status"],
-        results: test["url"],
-      }));
-      setTests(mappedTests);
-      console.log(mappedTests)
+        const response = await axios.get("http://ec2-44-204-83-159.compute-1.amazonaws.com:5000/bookedlabtests", {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        });
+
+        const mappedTests = response.data.map((test, index) => ({
+            id: test["book test id"] || index,
+            testId: test["test id"],
+            customerId: test["customer id"],
+            test: test["test name"],
+            animal: test["animal"],
+            payment: test["payment status"],
+            results: test["url"],
+        }));
+
+        setTests(mappedTests);
+        console.log(mappedTests);
     } catch (error) {
-      console.error("Error fetching tests:", error);
+        console.error("Error fetching tests:", error);
     }
-  };
+};
+
 
   const handleFileChange = (event) => {
     setFile(event.target.files[0]);
@@ -81,10 +90,6 @@ const Team = () => {
     try {
       const response = await axios.post("http://ec2-44-204-83-159.compute-1.amazonaws.com:5000/updateTestResult", formData);
       const { url } = response.data;
-      setUploadedUrls((prev) => ({
-        ...prev,
-        [uploadingTestId]: url,
-      }));
       setFile(null);
       setUploadingTestId(null);
       setUploadingCustomerId(null);

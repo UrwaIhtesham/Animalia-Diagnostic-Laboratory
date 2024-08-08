@@ -1,9 +1,7 @@
 from flask import Flask, Blueprint, request, jsonify, session,send_file,redirect, url_for
 from flask_cors import CORS
-
 from functools import wraps
 from flask_jwt_extended import JWTManager
-
 from flask_bcrypt import Bcrypt
 from flask_sqlalchemy import SQLAlchemy
 import os
@@ -23,8 +21,6 @@ import mimetypes
 
 from sqlalchemy.sql import text
 load_dotenv()
-
-app = Flask(__name__)
 
 app = Flask(__name__)
 
@@ -345,14 +341,6 @@ def get_tests():
     animal = request.args.get
 
 
-@app.route('/addtest', methods=['POST'])
-def addtest():
-    data = request.json
-    new_test = Tests(testname=data['name'], testfee=data['testfees'], animal=data['animal'])
-    db.session.add(new_test)
-    db.session.commit()
-    return jsonify({"message": "Test added succesfully"}), 201
-
 @app.route('/book_labtest', methods=['POST'])
 def book_labtest():
     print("Request received")  # Debug statement
@@ -474,7 +462,7 @@ def get_doctors():
         print(doctors_list)
         return jsonify(doctors_list)
 
-register_all_blueprints(app)
+
 
 @app.route('/adddoctors', methods=['POST'])
 def add_doctor():
@@ -627,13 +615,6 @@ def getappointments():
         } for appointment in all_appointments]
         
         return jsonify(results)
-
-        # all_appointments = Appointments.query.filter_by().all()
-        # results = [{"id": appointment.id, "email": appointment.useremail, "doctorid": appointment.doctorid, "fee": appointment.fee, "day": appointment.day, "timing": appointment.time} for appointment in all_appointments]
-        # return jsonify(results)
-
-from app import create_app
-
 
 
 if __name__ == '__main__':

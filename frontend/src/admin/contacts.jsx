@@ -25,7 +25,7 @@ const Contacts = () => {
   useEffect(() => {
     const token=localStorage.getItem('token');
     setLoading(true);
-    axios.get('http://127.0.0.1:5000/users',{
+    axios.get('http://ec2-44-204-83-159.compute-1.amazonaws.com:5000/users',{
       headers:{
         'Authorization' : `Bearer ${token}`
       }

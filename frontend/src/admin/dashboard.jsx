@@ -44,7 +44,7 @@ const Dashboard = () => {
     const fetchInsights = async () => {
       const token=localStorage.getItem('token');
       try {
-        const response = await axios.get('http://localhost:5000/insights', {
+        const response = await axios.get('http://ec2-44-204-83-159.compute-1.amazonaws.com:5000/insights', {
           headers: {
             Authorization: `Bearer ${token}` // Replace with actual token
           }
@@ -52,7 +52,7 @@ const Dashboard = () => {
         setInsights(response.data);
         console.log(response.data);
 
-        const revenueResponse = await axios.get('http://localhost:5000/revenue', {
+        const revenueResponse = await axios.get('http://ec2-44-204-83-159.compute-1.amazonaws.com:5000/revenue', {
           headers: {
             Authorization: `Bearer ${token}` // Replace with actual token
           }
@@ -62,7 +62,7 @@ const Dashboard = () => {
         setAppointCount(revenueResponse.data.revenue.appoint_count);
         console.log(revenueResponse);
 
-        const invoice = await axios.get('http://localhost:5000/bookedlabtests', {
+        const invoice = await axios.get('http://ec2-44-204-83-159.compute-1.amazonaws.com:5000/bookedlabtests', {
           headers:{
             Authorization: `Bearer ${token}`
           }
@@ -70,7 +70,7 @@ const Dashboard = () => {
         setInvoice(invoice.data);
         console.log(invoice);
 
-        const users_data = await axios.get('http://localhost:5000/users', {
+        const users_data = await axios.get('http://ec2-44-204-83-159.compute-1.amazonaws.com:5000/users', {
           headers:{
             Authorization: `Bearer ${token}`
           }

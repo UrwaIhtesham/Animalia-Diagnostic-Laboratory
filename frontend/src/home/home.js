@@ -97,7 +97,7 @@ function Home() {
         logout()
         try {
             setIsLoading(true);
-            const response = await axios.post('http://localhost:5000/logout', {withCredentials: true}, {
+            const response = await axios.post('http://ec2-44-204-83-159.compute-1.amazonaws.com:5000/logout', {withCredentials: true}, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }

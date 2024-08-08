@@ -31,7 +31,7 @@ function Labtest() {
       try {
         setLoading(true);
         console.log(email);
-        const response = await axios.get('http://localhost:5000/alltests', {
+        const response = await axios.get('http://ec2-44-204-83-159.compute-1.amazonaws.com:5000/alltests', {
           headers: {
             'Authorization': `Bearer ${token}`
           }
@@ -127,7 +127,7 @@ function Labtest() {
     const token = localStorage.getItem('token');
     try {
       setLoading(true);
-      await axios.post('http://localhost:5000/book_labtest', bookingDetails, {
+      await axios.post('http://ec2-44-204-83-159.compute-1.amazonaws.com:5000/book_labtest', bookingDetails, {
         headers: {
           'Authorization': `Bearer ${token}`
         }

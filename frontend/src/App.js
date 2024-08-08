@@ -10,7 +10,6 @@ import './App.css';
 import Labtest from './labtest/labtest';
 
 import Loading from "./Components/Loading/Loading";
-import Labtest from "./labtest/labtest";
 import Results from "./results/results";
 // New imports
 import Topbar from "./admin/Topbar";

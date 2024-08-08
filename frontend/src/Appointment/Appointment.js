@@ -61,7 +61,7 @@ function Appointment() {
       console.log(token);
       setLoading(true);
       const response = await axios.post(
-        'http://127.0.0.1:5000/appointments',
+        'http://ec2-44-204-83-159.compute-1.amazonaws.com:5000/appointments',
         {
           docid,
           useremail: email,
@@ -143,7 +143,7 @@ function Appointment() {
     console.log(token);
 
     axios
-      .get('http://127.0.0.1:5000/doctors', {
+      .get('http://ec2-44-204-83-159.compute-1.amazonaws.com:5000/doctors', {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
