@@ -1,8 +1,8 @@
 /* App.css */
-body {
+/* body {
   margin: 0;
   font-family: Arial, sans-serif;
-}
+} */
 
 .container {
   background-image: url('../../public/assets/pics/lab.jpg'); /* Path to your background image */
@@ -45,13 +45,6 @@ body {
   background-color: #f0f0f0ce;
 }
 
-nav {
-  justify-content: center;
-  padding: 10px 0;
-  margin-left: 15px;
-  font-family: 'Baskervville SC', serif;
-}
-
 .nav-bg h1 {
   margin-left: 30px;
   font-family: 'Baskervville SC', serif;
@@ -59,33 +52,6 @@ nav {
   color: maroon;
   font-weight: bold;
   text-align: right;
-}
-
-nav ul {
-  list-style-type: none;
-  margin: 0;
-  display: flex;
-  align-items: center;
-}
-
-nav ul li {
-  margin-left: 40px;
-}
-
-nav ul li:last-child {
-  margin-right: 30px;
-}
-
-nav ul li a {
-  text-decoration: none;
-  color: #242223;
-  font-weight: bold;
-  font-size: 20px; /* Example font size for nav items */
-}
-
-nav ul li a:hover {
-  text-decoration: underline;
-  color: maroon;
 }
 
 .button-bg {
@@ -141,27 +107,27 @@ nav ul li a:hover {
   margin-top: 5px;
 }
 
-.about .sec {
+/* .about .sec {
   display: flex;
   padding: 40px;
-  align-items: center; /* Center vertically */
+  align-items: center; 
 }
 
 .about .sec .left {
-  width: 40%; /* Adjust as needed */
-  padding-right: 20px; /* Add spacing between image and content */
+  width: 40%; 
+  padding-right: 20px; 
 }
 
 .about .sec .left img {
-  width: 100%; /* Make the image fill its container */
-  max-width: 100%; /* Ensure image doesn't exceed its original size */
-  height: auto; /* Maintain aspect ratio */
+  width: 100%; 
+  max-width: 100%; 
+  height: auto; 
   margin-left: 160px;
   margin-top: 70px;
 }
 
 .about .sec .right {
-  width: 40%; /* Adjust as needed */
+  width: 40%; 
   text-align: left; 
   margin-left: 140px;
   margin-bottom: 250px;
@@ -193,7 +159,7 @@ nav ul li a:hover {
 .about .sec .right p{
   font-size: 30px;
   margin-top: 8px;
-}
+} */
 
 .container-2{
   margin-top: 0;
@@ -202,10 +168,10 @@ nav ul li a:hover {
 }
 .achievements {
   color: white;
-  padding: 150px 150px;
+  padding: 1rem 1rem;
   text-align: center;
   background-color:#0c0a0ad0 ;
-  margin-top: 80px;
+  margin-top: 1rem;
 }
 
 .achievements h1 {
@@ -250,11 +216,17 @@ nav ul li a:hover {
 .gallery {
   padding: 100px 50px;
   text-align: center;
+  flex-direction: row !important;
+  gap: 1rem;
+  z-index: 5;
 }
 
 .gallery-buttons {
   margin-bottom: 20px;
   margin-top: 40px;
+  flex-direction: row !important;
+  gap: 1rem;
+  z-index: 5;
 }
 
 .gallery-buttons button {
@@ -292,7 +264,7 @@ nav ul li a:hover {
   transform: scale(1.05);
 }
 
-.gallery h2#gallery-heading{
+#gallery-heading{
   font-size: 60px;
   color:#574f4f;
   margin-bottom: 30px;
@@ -431,7 +403,7 @@ nav ul li a:hover {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: white; /* Adjust background color */
+  /* background-color: white; Adjust background color */
   padding: 40px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Optional: add box shadow */
@@ -513,4 +485,1906 @@ nav ul li a:hover {
   height: 55px;
   margin-left: 20px;
   background-color: maroon;
+}
+
+.mobile{
+  .container{
+    background-image: url('../../public/assets/pics/lab.jpg'); /* Path to your background image */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    position: relative;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .checkbox-label {
+    display: block;
+    margin-bottom: 5px;
+    color: black !important;
+  }
+  
+  .checkbox-label input[type="checkbox"] {
+    margin-right: 5px;
+    transform: scale(1.4);
+  }
+  
+  .checkbox-label input[type="checkbox"]:checked::before {
+    content: 'a';
+    display: block;
+    width: 10px;
+    height: 10px;
+    background-color: maroon;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 2px;
+  }
+
+  .toggle-button{
+    display: block;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 5;
+    font-size: 1rem;
+    cursor: pointer;
+    color: maroon;
+  }
+
+  .toggle-button.active {
+    color: #ccc; /* Color when menu is active */
+  }
+
+  .nav-links{
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0rem;
+    left: 0;
+    background-color: #29323c;
+    overflow-y: hidden;
+    list-style-type: disc;
+    padding-left: 2rem;
+    justify-content: flex-start;
+    padding-top: 5rem;
+  }
+
+  .active{
+    display: flex;
+  }
+
+  .nav-links li{
+    margin: 1rem 0;
+    text-align: start;
+    color: #ccc;
+    list-style-position: inside;
+  }
+  
+  .nav-bg {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.3rem 0;
+    background-color: #f0f0f0ce;
+  }
+  
+  nav {
+    justify-content: center;
+    padding: 0.2rem 0;
+    margin-left: 0.2rem;
+    font-family: 'Baskervville SC', serif;
+  }
+  
+  .nav-bg h1 {
+    margin-left: 0.7rem;
+    font-family: 'Baskervville SC', serif;
+    font-size: 1rem; /* Example font size for the heading */
+    color: maroon;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  nav ul li a{
+    color: #ccc;
+    font-size: 1rem;
+  }
+
+  nav ul li a:hover{
+    color: maroon;
+    font-size: 1rem;
+    text-decoration: underline;
+  }
+
+  .features {
+    width: 100%;
+    display: flex;
+    padding: 0;
+    margin-top: 25rem;
+    margin-bottom: 0px; /* Add margin to separate from the next section */
+    overflow-x: hidden;
+  }
+  
+  .feature-cards {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .features .feature {
+    flex: 1 1 0;
+    border: 0.5px solid #24222398;
+    padding: 0.4rem;
+    font-family: 'Baskervville SC', serif;
+    text-align: center;
+    background-color: #f0f0f0b9;
+  }
+  
+  .features .feature h2 {
+    font-size: 0.8rem;
+    color: black;
+  }
+  
+  .features .feature p {
+    font-size: 0.8rem;
+    color: black;
+  }
+
+  .about {
+    display: flex;
+    padding: 40rem;
+    align-items: center;
+    padding: 0rem 0rem;
+  }
+
+  .sec {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0rem 0rem;
+    background-color: white;
+  }
+
+  .left{
+    width: 100%;
+    padding: 0rem 0rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .left img {
+    width: 100%;
+    height: auto;
+  }
+
+  .right {
+    width: 100%;
+    text-align: left; 
+    margin-left: 2rem;
+    margin-bottom: 1rem;
+    margin-right: 1rem;
+  }
+
+  .hehe{
+    text-align: left; 
+    margin-left: 1rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.3rem;
+    padding:1rem;
+  }
+
+  #heading-1 {
+    color: #574f4f;
+    margin-top: 1.5rem;
+    font-size: 1.8rem;
+    text-align: left;
+  }
+  
+  #heading-2 {
+    color: #800000;
+    margin-top: 0rem;
+    font-size: 1.6rem;
+    text-align: left;
+  }
+
+  .about-h3 {
+    color: #800000;
+    font-size: 1.4rem;
+    text-align: left;
+  }
+  
+  .about-p{
+    font-size: 1rem;
+    margin-top: 1rem;
+  }
+
+  .header {
+    background-color:white;
+    padding: 0px;
+    text-align: center;
+    margin-top: 3rem;
+  }
+  
+  .button-bg {
+    background-color: maroon;
+    color: #f0efeff5;
+    font-size: 20px;
+    padding: 9px 15px;
+    font-family: 'Baskervville SC', serif;
+  }
+  
+  .button-bg:hover{
+    background-color:#f0f0f0ce;
+    color: #790e0e;
+  }
+
+  .achievements {
+    color: white;
+    padding: 0.5rem 0.8rem;
+    text-align: center;
+    background-color:#0c0a0ad0 ;
+    margin-top: 1rem;
+  }
+
+  .container-2{
+    margin-top: 0;
+    padding-top: 0px;
+  }
+  
+  .achieve-h1 {
+    margin-bottom: 1.5rem;
+    color: white;
+    font-size: 1.8rem;
+  }
+  
+  .achieve-p {
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    line-height: 2rem;
+    text-align: start;
+    text-align: justify;
+  }
+  
+  .achievement-cards {
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .achievement-card {
+    width: 20%;
+    margin-top: 0.2rem;
+  }
+  
+  .achievement-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .achievement-card p {
+    font-size: 1rem;
+  }
+  
+  .divider {
+    border: 0;
+    height: 0.1rem;
+    background: white; /* Adjust the color to your preference */
+    margin: 0rem 0; /* Adjust the spacing as needed */
+  }
+  
+  .gallery {
+    padding: 0.3rem 0.5rem;
+    text-align: center;
+    background-color: white;
+  }
+
+  .gallery-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 0.1rem;
+    z-index: 5;
+    text-align: center;
+  }
+
+  .galleryimg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 10vw;
+    font-size: 1rem;
+    font-weight: 400;
+    color: #fff;
+    cursor: pointer;
+    margin: 0.5rem;
+    height: 2rem;
+    text-align: center;
+    border: none;
+    background-size: 300% 100%;
+    border-radius: 2rem;
+    -moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+    background-image: linear-gradient(to right, #29323c, #485563, #485563, maroon);
+    box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);
+  }
+
+  .galleryimg:hover {
+    background-position: 100% 0;
+    -moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+  }
+
+  .galleryimg:focus {
+    outline: none;
+  }
+  
+  /* .gallery-buttons button {
+    background: maroon;
+    border: 2px solid maroon;
+    color: white;
+    padding: 20px 40px;
+    margin: 10px 40px;
+    font-size: 30px;
+    cursor: pointer;
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+  
+  .gallery-buttons button:hover {
+    background: maroon;
+    color: white;
+  } */
+  
+  .gallery-images {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  
+  .gallery-images img {
+    margin-top: 1rem;
+    width: 10rem;
+    height: 10rem;
+    border-radius: 2rem;
+    transition: transform 0.3s ease;
+  }
+  
+  .gallery-images img:hover {
+    transform: scale(1.05);
+  }
+  
+  #gallery-heading{
+    font-size: 2rem;
+    color:#574f4f;
+    margin-bottom: 1rem;
+  }
+
+  .contact {
+    padding: 1rem 1rem;
+    text-align: center;
+    margin-left: 1rem;
+    margin-right: 0.5rem;
+    margin-top: 3rem;
+    background-color:white;
+    position: absolute;
+    box-shadow: 0 8px 6px rgba(73, 72, 72, 0.6); 
+    border-radius: 1rem;
+  }
+  
+  .contact-container {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    flex-direction: column;
+  }
+  
+  .contact-map {
+    flex: 1;
+    margin-top: 2rem;
+    border-radius: 5rem;
+  }
+
+  .map-frame{
+    width: 80vw;
+    height: 40vh;
+  }
+  
+  .contact-form {
+    flex: 1;
+    text-align: left;
+    margin-top: 1rem;
+    margin-left: 1.5rem;
+    padding-right: 1rem;
+    
+  }
+  
+  .contact-form h2 {
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    color:#574f4f;
+  }
+  
+  .contact-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .contact-form label {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    color:#574f4f
+  }
+  
+  .contact-form input,
+  .contact-form textarea {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    height: 0.3rem;
+  }
+  
+  .contact-form textarea {
+    height: 2rem;
+  }
+  
+  .contact-form .submit-button {
+    width: 40vw;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #fff;
+    cursor: pointer;
+    margin: 1rem;
+    height: 3rem;
+    text-align: center;
+    border: none;
+    background-size: 300% 100%;
+    border-radius: 5rem;
+    -moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+    background-image: linear-gradient(to right, #29323c, #485563, #485563, maroon);
+    box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);
+  }
+  
+  .contact-form button:hover {
+    background-position: 100% 0;
+    -moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+  }
+  .color-div{
+    background-color: #ab0707a8;
+    height: 300px;
+    position: relative;
+  
+  }
+  
+  .color-div::before{
+    content: "";
+    background-color: #ffffff; 
+    height: 3rem; 
+    position: absolute;
+    top: 40rem; 
+    left: 0;
+    right: 0;
+    z-index: -1
+  
+  }
+  
+  .footer {
+    display: flex;
+    padding: 1rem;
+    color: white;
+    font-size: 0.5rem;
+    background-color:#433c3c; /* Example background color */
+    font-family: 'Baskervville SC', serif;
+    margin-top: 30rem; /* Adjust as needed */
+    position: relative;
+    height: 2rem;
+    justify-content: space-between; /* Adjust to align items */
+    align-items: center; /* Align items vertically */
+    text-align: start; /* Center text within the footer */
+  }
+  
+  .footer .centered-text {
+    flex: 1; /* Take up remaining space */
+  }
+  
+  .footer .right-text {
+    text-align: right;
+    margin-right: 1rem; /* Align text to the right */
+  }
+
+  .modal-content {
+    position: absolute;
+    /* top: 50%;
+    left: 50%; */
+    transform: translate(-50%, -50%);
+    /* background-color: white; Adjust background color */
+    /* padding: 3rem 10rem; */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Optional: add box shadow */
+    width: 100%;
+    height: 100%;
+  }
+  
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Adjust background opacity */
+    z-index: 1000; /* Ensure overlay is on top */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  
+  .react-chatbot-kit-chat-container {
+    width: 100%;
+    min-height: 100%;
+  }
+  
+  .react-chatbot-kit-chat-inner-container {
+    width: 100%;
+    height: 100%;
+    margin-left: 0rem;
+    background-color: #f9e8e898;
+  }
+  
+  .react-chatbot-kit-chat-message-container{
+    height: 85vh;
+  }
+  
+  .react-chatbot-kit-chat-input-container {
+    min-height: 2rem;
+    margin-bottom: 0.2rem;
+    border: 0.1rem solid #ccc;
+    border-radius: 0.3rem;
+    width: 100%;
+  }
+  
+  .react-chatbot-kit-chat-input {
+    font-size: 0.8rem;
+  }
+  
+  .react-chatbot-kit-chat-header {
+    height: 0.8rem;
+    font-size: 0.8rem !important;
+    color: maroon;
+  }
+  
+  .react-chatbot-kit-chat-bot-message {
+    margin: 0;
+    width: 70%;
+    font-size: 0.8rem !important;
+    font-weight: 300;
+    background-color: lightgray;
+    color: black;
+    height: 5%;
+  }
+
+  .react-chatbot-kit-chat-bot-message-arrow{
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-right: 8px solid #2898ec;
+  }
+  
+  .react-chatbot-kit-chat-bot-message-container {
+    font:300;
+  }
+  
+  .react-chatbot-kit-user-chat-message {
+    background-color: maroon;
+    color: white;
+    font-size: 0.8rem !important;
+    font-weight: 300;
+    height: 1rem;
+  }
+  .react-chatbot-kit-user-chat-message-arrow {
+    border-left: 8px solid maroon;
+  }
+  .react-chatbot-kit-chat-bot-avatar-container {
+    border-radius: 0%;
+    width: 3rem;
+    height: 3rem;
+    margin-right: 1rem;
+  }
+  
+  .react-chatbot-kit-user-avatar-container {
+    width: 3rem;
+    height: 3rem;
+    margin-left: 1rem;
+    background-color: maroon;
+  }
+
+  .chat-button{
+    /* color: #800000;
+    background-color: #ccc;
+    border: 0.1rem solid #800000;
+    border-radius: 0.3rem;
+    margin-bottom: 0.3rem;
+    margin-left: -9rem; */
+    display: none;
+  }
+}
+
+.tablet {
+  .container{
+    background-image: url('../../public/assets/pics/lab.jpg'); /* Path to your background image */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    position: relative;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .checkbox-label {
+    display: block;
+    margin-bottom: 5px;
+    color: black !important;
+  }
+  
+  .checkbox-label input[type="checkbox"] {
+    margin-right: 5px;
+    transform: scale(1.4);
+  }
+  
+  .checkbox-label input[type="checkbox"]:checked::before {
+    content: '';
+    display: block;
+    width: 10px;
+    height: 10px;
+    background-color: maroon;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 2px;
+  }
+
+  .toggle-button{
+    display: block;
+    /* margin-right: 2rem; */
+    position: absolute;
+    top: 1.5rem;
+    right: 1rem;
+    z-index: 5;
+    font-size: 1.3rem;
+    cursor: pointer;
+    color: maroon;
+  }
+
+  .toggle-button.active {
+    color: #ccc; /* Color when menu is active */
+  }
+
+  .nav-links{
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0rem;
+    left: 0;
+    background-color: #29323c;
+    overflow-y: hidden;
+    list-style-type: disc;
+    padding-left: 2rem;
+    justify-content: flex-start;
+    padding-top: 5rem;
+  }
+
+  .active{
+    display: flex;
+  }
+
+  .nav-links li{
+    margin: 1rem 0;
+    text-align: start;
+    color: #ccc;
+    list-style-position: inside;
+  }
+  
+  .nav-bg {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    background-color: #f0f0f0ce;
+  }
+  
+  nav {
+    justify-content: center;
+    padding: 0.2rem 0;
+    margin-left: 0.2rem;
+    font-family: 'Baskervville SC', serif;
+  }
+  
+  .nav-bg h1 {
+    margin-left: 0.7rem;
+    font-family: 'Baskervville SC', serif;
+    font-size: 1.3rem; /* Example font size for the heading */
+    color: maroon;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  nav ul li a{
+    color: #ccc;
+    font-size: 1rem;
+  }
+
+  nav ul li a:hover{
+    color: maroon;
+    font-size: 1rem;
+    text-decoration: underline;
+  }
+
+  .features {
+    width: 100%;
+    display: flex;
+    padding: 0;
+    margin-top: 27rem;
+    margin-bottom: 0px; /* Add margin to separate from the next section */
+    overflow-x: hidden;
+  }
+  
+  .feature-cards {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .features .feature {
+    flex: 1 1 0;
+    border: 0.5px solid #24222398;
+    padding: 1rem;
+    font-family: 'Baskervville SC', serif;
+    text-align: center;
+    background-color: #f0f0f0b9;
+  }
+  
+  .features .feature h2 {
+    font-size: 1rem;
+    color: black;
+  }
+  
+  .features .feature p {
+    font-size: 1rem;
+    color: black;
+  }
+
+  .about {
+    display: flex;
+    padding: 40rem;
+    align-items: center;
+    padding: 0rem 0rem;
+  }
+
+  .sec {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0rem 0rem;
+    background-color: white;
+  }
+
+  .left{
+    width: 40%;
+    padding: 4rem 0rem;
+  }
+
+  .left img {
+    width: 100%;
+    height: auto;
+    margin-left: 3rem;
+    margin-top: 5rem;
+    border-radius: 3rem;
+  }
+
+  .right {
+    width: 60%;
+    text-align: left; 
+    margin-left: 5rem;
+    margin-bottom: 1.5rem;
+    margin-right: 1rem;
+  }
+
+  .hehe{
+    text-align: left; 
+    margin-left: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 0.3rem;
+    padding:1rem;
+  }
+
+  #heading-1 {
+    color: #574f4f;
+    margin-top: 3rem;
+    font-size: 3rem;
+    text-align: left;
+  }
+  
+  #heading-2 {
+    color: #800000;
+    margin-top: 0rem;
+    font-size: 2.7rem;
+    text-align: left;
+  }
+
+  .about-h3 {
+    color: #800000;
+    font-size: 1.5rem;
+    text-align: left;
+  }
+  
+  .about-p{
+    font-size: 1.2rem;
+    margin-top: 1.5rem;
+  }
+
+  .header {
+    background-color:white;
+    padding: 0px;
+    text-align: center;
+    margin-top: 10rem;
+  }
+  
+  .button-bg {
+    background-color: maroon;
+    color: #f0efeff5;
+    font-size: 20px;
+    padding: 9px 15px;
+    font-family: 'Baskervville SC', serif;
+  }
+  
+  .button-bg:hover{
+    background-color:#f0f0f0ce;
+    color: #790e0e;
+  }
+
+  .achievements {
+    color: white;
+    padding: 0.8rem 0.8rem;
+    text-align: center;
+    background-color:#0c0a0ad0 ;
+    margin-top: 1.4rem;
+  }
+
+  .container-2{
+    margin-top: 0;
+    padding-top: 0px;
+  }
+  
+  .achieve-h1 {
+    margin-bottom: 2rem;
+    color: white;
+    font-size: 2.3rem;
+  }
+  
+  .achieve-p {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    line-height: 2.5rem;
+    text-align: center;
+  }
+  
+  .achievement-cards {
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .achievement-card {
+    width: 20%;
+    margin-top: 1rem;
+  }
+  
+  .achievement-card h3 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .achievement-card p {
+    font-size: 1.5rem;
+  }
+  
+  .divider {
+    border: 0;
+    height: 0.1rem;
+    background: white; /* Adjust the color to your preference */
+    margin: 0rem 0; /* Adjust the spacing as needed */
+  }
+  
+  .gallery {
+    padding: 0.5rem 0.5rem;
+    text-align: center;
+  }
+
+  .gallery-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 0.4rem;
+    z-index: 5;
+    text-align: center;
+  }
+
+  .galleryimg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 17vw;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #fff;
+    cursor: pointer;
+    margin: 1.5rem;
+    height: 3rem;
+    text-align: center;
+    border: none;
+    background-size: 300% 100%;
+    border-radius: 3rem;
+    -moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+    background-image: linear-gradient(to right, #29323c, #485563, #485563, maroon);
+    box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);
+  }
+
+  .galleryimg:hover {
+    background-position: 100% 0;
+    -moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+  }
+
+  .galleryimg:focus {
+    outline: none;
+  }
+  
+  /* .gallery-buttons button {
+    background: maroon;
+    border: 2px solid maroon;
+    color: white;
+    padding: 20px 40px;
+    margin: 10px 40px;
+    font-size: 30px;
+    cursor: pointer;
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+  
+  .gallery-buttons button:hover {
+    background: maroon;
+    color: white;
+  } */
+  
+  .gallery-images {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  
+  .gallery-images img {
+    margin-top: 1.5rem;
+    width: 20rem;
+    height: 15rem;
+    border-radius: 2rem;
+    transition: transform 0.3s ease;
+  }
+  
+  .gallery-images img:hover {
+    transform: scale(1.05);
+  }
+  
+  #gallery-heading{
+    font-size: 2.5rem;
+    color:#574f4f;
+    margin-bottom: 1rem;
+  }
+
+  .contact {
+    padding: 1rem 2rem;
+    text-align: center;
+    margin-left: 1rem;
+    margin-right: 0.5rem;
+    margin-top: 3rem;
+    background-color:white;
+    position: absolute;
+    box-shadow: 0 8px 6px rgba(73, 72, 72, 0.6); 
+    border-radius: 1rem;
+  }
+  
+  .contact-container {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    flex-direction: column;
+  }
+  
+  .contact-map {
+    flex: 1;
+    margin-top: 2rem;
+    border-radius: 5rem;
+  }
+
+  .map-frame{
+    width: 80vw;
+    height: 40vh;
+  }
+  
+  .contact-form {
+    flex: 1;
+    text-align: left;
+    margin-top: 1rem;
+    margin-left: 1.5rem;
+    padding-right: 1rem;
+    
+  }
+  
+  .contact-form h2 {
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    color:#574f4f;
+  }
+  
+  .contact-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .contact-form label {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    color:#574f4f
+  }
+  
+  .contact-form input,
+  .contact-form textarea {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    height: 0.3rem;
+  }
+  
+  .contact-form textarea {
+    height: 2rem;
+  }
+  
+  .contact-form .submit-button {
+    width: 40vw;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #fff;
+    cursor: pointer;
+    margin: 1rem;
+    height: 3rem;
+    text-align: center;
+    border: none;
+    background-size: 300% 100%;
+    border-radius: 5rem;
+    -moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+    background-image: linear-gradient(to right, #29323c, #485563, #485563, maroon);
+    box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);
+  }
+  
+  .contact-form button:hover {
+    background-position: 100% 0;
+    -moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+  }
+  .color-div{
+    background-color: #ab0707a8;
+    height: 300px;
+    position: relative;
+  
+  }
+  
+  .color-div::before{
+    content: "";
+    background-color: #ffffff; 
+    height: 3rem; 
+    position: absolute;
+    top: 40rem; 
+    left: 0;
+    right: 0;
+    z-index: -1
+  
+  }
+  
+  .footer {
+    display: flex;
+    padding: 1.3rem;
+    color: white;
+    font-size: 0.9rem;
+    background-color:#433c3c; /* Example background color */
+    font-family: 'Baskervville SC', serif;
+    margin-top: 30rem; /* Adjust as needed */
+    position: relative;
+    height: 3rem;
+    justify-content: space-between; /* Adjust to align items */
+    align-items: center; /* Align items vertically */
+    text-align: start; /* Center text within the footer */
+  }
+  
+  .footer .centered-text {
+    flex: 1; /* Take up remaining space */
+  }
+  
+  .footer .right-text {
+    text-align: right;
+    margin-right: 2rem; /* Align text to the right */
+  }
+
+  .modal-content {
+    position: absolute;
+    /* top: 50%;
+    left: 50%; */
+    transform: translate(-50%, -50%);
+    /* background-color: white; Adjust background color */
+    padding: 3rem 10rem;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Optional: add box shadow */
+    width: 30vw;
+    height: 75vh;
+  }
+  
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Adjust background opacity */
+    z-index: 1000; /* Ensure overlay is on top */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  
+  .react-chatbot-kit-chat-container {
+    width: 65vh;
+    min-height: 70vh;
+  }
+  
+  .react-chatbot-kit-chat-inner-container {
+    width: 100%;
+    min-height: 100%;
+    margin-left: -9rem;
+    background-color: #f9e8e898;
+  }
+  
+  .react-chatbot-kit-chat-message-container{
+    height: 60vh;
+  }
+  
+  .react-chatbot-kit-chat-input-container {
+    min-height: 2rem;
+    margin-bottom: 1rem;
+    border: 0.1rem solid #ccc;
+    border-radius: 0.3rem;
+    width: 100%;
+  }
+  
+  .react-chatbot-kit-chat-input {
+    font-size: 1rem;
+  }
+  
+  .react-chatbot-kit-chat-header {
+    height: 0.8rem;
+    font-size: 0.8rem !important;
+    color: maroon;
+  }
+  
+  .react-chatbot-kit-chat-bot-message {
+    margin: 0;
+    width: 70%;
+    font-size: 1rem !important;
+    font-weight: 300;
+    background-color: lightgray;
+    color: black;
+    height: 5%;
+  }
+
+  .react-chatbot-kit-chat-bot-message-arrow{
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-right: 8px solid #2898ec;
+  }
+  
+  .react-chatbot-kit-chat-bot-message-container {
+    font:300;
+  }
+  
+  .react-chatbot-kit-user-chat-message {
+    background-color: maroon;
+    color: white;
+    font-size: 1rem !important;
+    font-weight: 400;
+  }
+  .react-chatbot-kit-user-chat-message-arrow {
+    border-left: 8px solid maroon;
+  }
+  .react-chatbot-kit-chat-bot-avatar-container {
+    border-radius: 0%;
+    width: 3rem;
+    height: 3rem;
+    margin-right: 1rem;
+  }
+  
+  .react-chatbot-kit-user-avatar-container {
+    width: 3rem;
+    height: 3rem;
+    margin-left: 1rem;
+    background-color: maroon;
+  }
+
+  .chat-button{
+    color: #800000;
+    background-color: #ccc;
+    border: 0.1rem solid #800000;
+    border-radius: 0.3rem;
+    margin-bottom: 0.3rem;
+    margin-left: -9rem;
+  }
+}
+
+.desktop {
+  .container{
+    background-image: url('../../public/assets/pics/lab.jpg'); /* Path to your background image */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    position: relative;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .checkbox-label {
+    display: block;
+    margin-bottom: 5px;
+    color:black !important;
+  }
+  
+  .checkbox-label input[type="checkbox"] {
+    margin-right: 5px;
+    transform: scale(1.4);
+  }
+  
+  .checkbox-label input[type="checkbox"]:checked::before {
+    content: '';
+    display: block;
+    width: 10px;
+    height: 10px;
+    background-color: maroon;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 2px;
+  }
+
+  .toggle-button{
+    display: none;
+  }
+
+  .nav-links{
+    
+  }
+  
+  .nav-bg {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 0;
+    background-color: #f0f0f0ce;
+  }
+  
+  .navbar {
+    justify-content: center;
+    padding: 0.2rem 0;
+    margin-left: 0.2rem;
+    font-family: 'Baskervville SC', serif;
+  }
+  
+  .nav-bg h1 {
+    margin-left: 0.7rem;
+    font-family: 'Baskervville SC', serif;
+    font-size: 1.3rem; /* Example font size for the heading */
+    color: maroon;
+    font-weight: 600;
+    text-align: center;
+  }
+  
+  .navbar ul {
+    list-style-type: none;
+    margin: 0;
+    display: flex;
+    align-items: center;
+  }
+  
+  .navbar ul li {
+    margin-left: 1.5rem;
+  }
+  
+  .navbar ul li:last-child {
+    margin-right: 1rem;
+  }
+  
+  .navbar ul li a {
+    text-decoration: none;
+    color: #242223;
+    font-weight: 600;
+    font-size: 1rem; /* Example font size for nav items */
+  }
+  
+  .navbar ul li a:hover {
+    text-decoration: underline;
+    color: maroon;
+  }
+
+  .features {
+    width: 100%;
+    display: flex;
+    padding: 0;
+    margin-top: 25rem;
+    margin-bottom: 0px; /* Add margin to separate from the next section */
+    overflow-x: hidden;
+  }
+  
+  .feature-cards {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .features .feature {
+    flex: 1 1 0;
+    border: 0.5px solid #24222398;
+    padding: 1.3rem;
+    font-family: 'Baskervville SC', serif;
+    text-align: center;
+    background-color: #f0f0f0b9;
+  }
+  
+  .features .feature h2 {
+    font-size: 1rem;
+    color: black;
+  }
+  
+  .features .feature p {
+    font-size: 1rem;
+    color: black;
+  }
+
+  .about {
+    display: flex;
+    padding: 40rem;
+    align-items: center;
+    padding: 0rem 0rem;
+  }
+
+  .sec {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0rem 0rem;
+    background-color: white;
+  }
+
+  .left{
+    width: 40%;
+    padding: 3rem 1rem;
+  }
+
+  .left img {
+    width: 100%;
+    height: auto;
+    margin-left: 3rem;
+    margin-top: 5rem;
+    border-radius: 3rem;
+  }
+
+  .right {
+    width: 60%;
+    text-align: left; 
+    margin-left: 5rem;
+    margin-bottom: 1.5rem;
+    margin-right: 1rem;
+  }
+
+  .hehe{
+    text-align: left; 
+    margin-left: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 0.3rem;
+    padding:1rem;
+  }
+
+  #heading-1 {
+    color: #574f4f;
+    margin-top: 2rem;
+    font-size: 3.5rem;
+    text-align: left;
+  }
+  
+  #heading-2 {
+    color: #800000;
+    margin-top: 0rem;
+    font-size: 2.5rem;
+    text-align: left;
+  }
+
+  .about-h3 {
+    color: #800000;
+    font-size: 1.8rem;
+    text-align: left;
+  }
+  
+  .about-p{
+    font-size: 1.5rem;
+    margin-top: 1rem;
+    color: #790e0e;
+  }
+
+  .header {
+    background-color:white;
+    padding: 0px;
+    text-align: center;
+    margin-top: 5rem;
+  }
+  
+  .button-bg {
+    background-color: maroon;
+    color: #f0efeff5;
+    font-size: 20px;
+    padding: 9px 15px;
+    font-family: 'Baskervville SC', serif;
+  }
+  
+  .button-bg:hover{
+    background-color:#f0f0f0ce;
+    color: #790e0e;
+  }
+
+  .achievements {
+    color: white;
+    padding: 1rem 1rem;
+    text-align: center;
+    background-color:#0c0a0ad0 ;
+    /* margin-top: 2rem; */
+  }
+
+  .container-2{
+    margin-top: 0;
+    padding-top: 0px;
+  }
+  
+  .achieve-h1 {
+    margin-bottom: 1rem;
+    color: white;
+    font-size: 3rem;
+  }
+  
+  .achieve-p {
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    line-height: 3rem;
+    text-align: center;
+  }
+  
+  .achievement-cards {
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .achievement-card {
+    width: 20%;
+    margin-top: 0.5rem;
+  }
+  
+  .achievement-card h3 {
+    font-size: 3rem;
+    margin-bottom: 4rem;
+  }
+  
+  .achievement-card p {
+    font-size: 2rem;
+  }
+  
+  .divider {
+    border: 0;
+    height: 0.1rem;
+    background: white; /* Adjust the color to your preference */
+    margin: 0rem 0; /* Adjust the spacing as needed */
+  }
+  
+  .gallery {
+    padding: 1rem 0.5rem;
+    text-align: center;
+    background-color: white;
+  }
+
+  .gallery-buttons {
+    flex-direction: row !important;
+    gap: 1rem;
+    z-index: 5;
+    text-align: center;
+    display: flex;
+  }
+
+  .galleryimg {
+    width: 15vw;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+    margin: 2rem;
+    height: 4rem;
+    text-align: center;
+    border: none;
+    background-size: 300% 100%;
+    border-radius: 5rem;
+    -moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+    background-image: linear-gradient(to right, #29323c, #485563, #485563, maroon);
+    box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);
+  }
+
+  .galleryimg:hover {
+    background-position: 100% 0;
+    -moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+  }
+
+  .galleryimg:focus {
+    outline: none;
+  }
+  
+  /* .gallery-buttons button {
+    background: maroon;
+    border: 2px solid maroon;
+    color: white;
+    padding: 20px 40px;
+    margin: 10px 40px;
+    font-size: 30px;
+    cursor: pointer;
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+  
+  .gallery-buttons button:hover {
+    background: maroon;
+    color: white;
+  } */
+  
+  .gallery-images {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  .gallery-images img {
+    margin-top: 2rem;
+    width: 25rem;
+    height: 20rem;
+    border-radius: 2rem;
+    transition: transform 0.3s ease;
+  }
+  
+  .gallery-images img:hover {
+    transform: scale(1.05);
+  }
+  
+  #gallery-heading{
+    font-size: 3rem;
+    color:#574f4f;
+    margin-bottom: 1rem;
+  }
+
+  .contact {
+    padding: 3rem 3rem;
+    text-align: center;
+    margin-left: 4rem;
+    margin-right: 2rem;
+    margin-top:2rem;
+    background-color:white;
+    position: absolute;
+    box-shadow: 0 8px 6px rgba(73, 72, 72, 0.6); 
+    border-radius: 2rem;
+  }
+  
+  .contact-container {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+  }
+  
+  .contact-map {
+    flex: 1;
+    margin-top: 6rem;
+    border-radius: 3rem;
+  }
+
+  .map-frame{
+    width: 40vw;
+    height: 60vh;
+  }
+  
+  .contact-form {
+    flex: 1;
+    text-align: left;
+    margin-top: 2rem;
+    margin-left: 1rempx;
+    padding-right: 2rem;
+    
+  }
+  
+  .contact-form h2 {
+    margin-bottom: 2rem;
+    font-size: 3rem;
+    color:#574f4f;
+  }
+  
+  .contact-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  .contact-form label {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    font-size: 1.5rem;
+    color:#574f4f
+  }
+  
+  .contact-form input,
+  .contact-form textarea {
+    width: 80%;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+  }
+  
+  .contact-form textarea {
+    height: 7rem;
+  }
+  
+  .contact-form .submit-button {
+    width: 15vw;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+    margin: 2rem;
+    height: 4rem;
+    text-align: center;
+    border: none;
+    background-size: 300% 100%;
+    border-radius: 5rem;
+    -moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+    background-image: linear-gradient(to right, #29323c, #485563, #485563, maroon);
+    box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);
+  }
+  
+  .contact-form button:hover {
+    background-position: 100% 0;
+    -moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+  }
+  .color-div{
+    background-color: #ab0707a8 !important;
+    height: 540px;
+    position: relative;
+  
+  }
+  
+  .color-div::before{
+    content: "";
+    background-color: white; /* Grey background */
+    height: 580px; /* Half of 1080px */
+    position: absolute;
+    top: 540px; /* Position the grey background below the red background */
+    left: 0;
+    right: 0;
+    z-index: -1
+  
+  }
+  
+  .footer {
+    display: flex;
+    padding: 2rem;
+    color: white;
+    font-size: 1rem;
+    background-color:#433c3c; /* Example background color */
+    font-family: 'Baskervville SC', serif;
+    margin-top: 30rem; /* Adjust as needed */
+    position: relative;
+    height: 4rem;
+    justify-content: space-between; /* Adjust to align items */
+    align-items: center; /* Align items vertically */
+    text-align: center; /* Center text within the footer */
+  }
+  
+  .footer .centered-text {
+    flex: 1; /* Take up remaining space */
+  }
+  
+  .footer .right-text {
+    text-align: right;
+    margin-right: 2rem; /* Align text to the right */
+  }
+  
+  
+  .modal-content {
+    position: absolute;
+    /* top: 50%;
+    left: 50%; */
+    transform: translate(-50%, -50%);
+    /* background-color: white; Adjust background color */
+    /* padding: 3.5rem 14rem; */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Optional: add box shadow */
+    width: 70vw;
+    height: 75vh;
+  }
+  
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Adjust background opacity */
+    z-index: 1000; /* Ensure overlay is on top */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  
+  .react-chatbot-kit-chat-container {
+    width: 60vh;
+    min-height: 70vh;
+  }
+  
+  .react-chatbot-kit-chat-inner-container {
+    width: 110%;
+    min-height: 100%;
+    margin-left: -2rem;
+    margin-top: -5rem;
+    background-color: white;
+  }
+  
+  .react-chatbot-kit-chat-message-container{
+    height: 60vh;
+  }
+  
+  .react-chatbot-kit-chat-input-container {
+    min-height: 2rem;
+    /* margin-bottom: 1rem; */
+    /* border: 0.1rem solid #ccc; */
+    border-radius: 0.3rem;
+    width: 110%;
+  }
+  
+  .react-chatbot-kit-chat-input {
+    /* font-size: 1rem; */
+  }
+  
+  .react-chatbot-kit-chat-header {
+    height: 0.8rem;
+    font-size: 0.8rem !important;
+    color: maroon;
+  }
+  
+  .react-chatbot-kit-chat-bot-message {
+    margin: 0;
+    width: 70%;
+    font-size: 1rem !important;
+    font-weight: 300;
+    background-color: lightgray;
+    color: black;
+    height: 5%;
+  }
+
+  .react-chatbot-kit-chat-bot-message-arrow{
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-right: 8px solid #2898ec;
+  }
+  
+  .react-chatbot-kit-chat-bot-message-container {
+    font:300;
+    color: black;
+  }
+  
+  .react-chatbot-kit-user-chat-message {
+    background-color: maroon;
+    color: white;
+    font-size: 1rem !important;
+    font-weight: 400;
+  }
+  .react-chatbot-kit-user-chat-message-arrow {
+    border-left: 8px solid maroon;
+  }
+  .react-chatbot-kit-chat-bot-avatar-container {
+    border-radius: 0%;
+    width: 3rem;
+    height: 3rem;
+    margin-right: 1rem;
+  }
+  
+  .react-chatbot-kit-user-avatar-container {
+    width: 3rem;
+    height: 3rem;
+    margin-left: 1rem;
+    background-color: maroon;
+  }
+
+  .chat-button{
+    color: #800000;
+    background-color: #ccc;
+    border: 0.1rem solid #800000;
+    border-radius: 0.3rem;
+    margin-bottom: 0.5rem;
+    margin-left: -5rem;
+    padding: 0 0;
+  }
+
+  .react-chatbot-kit-chat-btn-send-icon{
+    margin: 0 0 !important;
+  }
+
 }
