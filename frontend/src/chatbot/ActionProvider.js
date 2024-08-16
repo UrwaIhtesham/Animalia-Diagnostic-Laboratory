@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import SymptomsDropdown from './SymptomsDropdown';
 import axios from 'axios';
 import Home from '../home/home';
+
 
 class ActionProvider {
   constructor(createChatBotMessage, setStateFunc) {
@@ -262,12 +263,20 @@ class ActionProvider {
   };
 
   predictDisease = (animalType, symptoms) => {
-    const url = 'http://localhost:5000/predict';
+    const token = localStorage.getItem('token')
+    console.log(token)
+    const url = 'http://ec2-44-204-83-159.compute-1.amazonaws.com:5000/predict';
     const requestData={
       animal_type: animalType,
       symptoms: symptoms
     }
-    axios.post(url, requestData)
+    axios.post(url, requestData,{
+      headers: {
+            
+        'Authorization' : `Bearer ${token}`
+      
+    }
+    })
     .then(response => {
       console.log('Response from backend: ', response.data);
       const disease = response.data.disease;
@@ -277,7 +286,6 @@ class ActionProvider {
       const diseaseName = this.diseaseMapping[disease] || 'Unknown disease';
       const message = this.createChatBotMessage(`Predicted disease: ${diseaseName}`, {withAvatar: true});
       this.updateChatbotState(message);
-      this.redirect();
     })
     .catch(error => {
       console.error('Error predicting disease:', error);
@@ -291,7 +299,7 @@ class ActionProvider {
       <div>
       <p>What would you like to do next?</p>
       <a href="/home" style={{ display: 'block', margin: '10px 0', color: 'maroon' }}>Go to Home Page</a>
-      <a href="/lab-tests" style={{ display: 'block', margin: '10px 0', color: 'maroon' }}>Go to Lab Tests Page</a>
+      <a href="/labtest" style={{ display: 'block', margin: '10px 0', color: 'maroon' }}>Go to Lab Tests Page</a>
     </div>,
     {
       withAvatar: true,
