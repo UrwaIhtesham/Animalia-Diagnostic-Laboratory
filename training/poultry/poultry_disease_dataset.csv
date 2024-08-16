@@ -1,0 +1,255 @@
+Animal,Symptom1,Symptom2,Symptom3,Symptom4,Disease
+chicken,depression,cough,ruffled feathers,difficulty breathing,E. coli
+chicken,diarrhea,loss of appetite,diarrhea,poor growth,salmonella
+chicken,swelling,blisters,blisters,decolored body parts,mycoplasma synoviae
+chicken,loss of appetite,fatigue,swelling,diarrhea,avian influenza
+chicken,difficulty breathing,depression,cough,ruffled feathers,E. coli
+chicken,swelling,blisters,blisters,decolored body parts,mycoplasma synoviae
+chicken,loss of appetite,diarrhea,cough,discharge,new castle disease
+chicken,depression,cough,ruffled feathers,difficulty breathing,E. coli
+chicken,ruffled feathers,cough,depression,difficulty breathing,E. coli
+chicken,loss of appetite,swelling,fatigue,diarrhea,avian influenza
+chicken,dehydration,diarrhea,inflammation,loss of appetite,gumboro
+chicken,diarrhea,poor growth,diarrhea,loss of appetite,salmonella
+chicken,cough,depression,difficulty breathing,ruffled feathers,E. coli
+chicken,loss of appetite,diarrhea,fatigue,poor growth,salmonella
+chicken,difficulty breathing,depression,cough,ruffled feathers,E. coli
+chicken,discharge,cough,diarrhea,loss of appetite,new castle disease
+chicken,loss of appetite,discharge,diarrhea,cough,new castle disease
+chicken,ruffled feathers,depression,cough,difficulty breathing,E. coli
+chicken,loss of appetite,diarrhea,fatigue,swelling,avian influenza
+chicken,decrease in eggs,cough,sneezing,difficulty breathing,mycoplasma gallisepticum
+chicken,diarrhea,fatigue,loss of appetite,swelling,avian influenza
+chicken,difficulty breathing,ruffled feathers,cough,depression,E. coli
+chicken,loss of appetite,diarrhea,dehydration,inflammation,gumboro
+chicken,swelling,loss of appetite,fatigue,diarrhea,avian influenza
+chicken,loss of appetite,cough,discharge,diarrhea,new castle disease
+chicken,loss of appetite,fatigue,swelling,diarrhea,avian influenza
+chicken,loss of appetite,fatigue,swelling,diarrhea,avian influenza
+chicken,loss of appetite,diarrhea,dehydration,inflammation,gumboro
+chicken,poor growth,loss of appetite,fatigue,diarrhea,salmonella
+chicken,soft shelled eggs,pale eggs,shell less eggs,reduction in eggs,egg drop syndrome
+chicken,diarrhea,swelling,fatigue,loss of appetite,avian influenza
+chicken,,ruffled feathers,,diarrhea,Pasteurella multocida
+chicken,cough,loss of appetite,diarrhea,discharge,new castle disease
+chicken,cough,decrease in egg,sneezing,difficulty breathing,mycoplasma gallisepticum
+chicken,difficulty breathing,depression,cough,ruffled feathers,E. coli
+chicken,loss of appetite,diarrhea,fatigue,poor growth,salmonella
+chicken,fever,ruffled feathers,fatigue,diarrhea,Pasteurella multocida
+chicken,loss of appetite,diarrhea,inflammation,dehydration,gumboro
+chicken,loss of appetite,diarrhea,cough,discharge,new castle disease
+chicken,loss of appetite,fatigue,diarrhea,swelling,avian influenza
+chicken,dehydration,diarrhea,inflammation,loss of appetite,gumboro
+chicken,fever,,fatigue,diarrhea,Pasteurella multocida
+chicken,depression,ruffled feathers,cough,difficulty breathing,E. coli
+chicken,loss of appetite,fatigue,diarrhea,swelling,avian influenza
+chicken,diarrhea,fatigue,loss of appetite,swelling,avian influenza
+chicken,diarrhea,loss of appetite,diarrhea,poor growth,salmonella
+chicken,discharge,cough,diarrhea,loss of appetite,new castle disease
+chicken,depression,decolored body parts,swelling,blisters,mycoplasma synoviae
+chicken,loss of appetite,discharge,diarrhea,cough,new castle disease
+chicken,difficulty breathing,depression,cough,ruffled feathers,E. coli
+chicken,diarrhea,loss of appetite,fatigue,poor growth,salmonella
+chicken,swelling,sneezing,cough,infection,infectious bronchitis
+chicken,loss of appetite,dehydration,inflammation,diarrhea,gumboro
+chicken,difficulty breathing,depression,cough,ruffled feathers,E. coli
+chicken,poor growth,loss of appetite,fatigue,diarrhea,salmonella
+chicken,shall less eggs,pale eggs,reduction in eggs,soft shelled eggs,egg drop syndrome
+chicken,cough,infection,swelling,sneezing,infectious bronchitis
+chicken,swelling,blisters,depression,decolored body parts,mycoplasma synoviae
+chicken,fever,ruffled feathers,fatigue,diarrhea,Pasteurella multocida
+chicken,swelling,sneezing,cough,infection,infectious bronchitis
+chicken,depression,decolored body parts,swelling,blisters,mycoplasma synoviae
+chicken,diarrhea,loss of appetite,diarrhea,poor growth,salmonella
+chicken,difficulty breathing,decrease in egg,sneezing,cough,mycoplasma gallisepticum
+chicken,inflammation,dehydration,diarrhea,loss of appetite,gumboro
+chicken,decrease in eggs,cough,sneezing,difficulty breathing,mycoplasma gallisepticum
+chicken,poor growth,loss of appetite,fatigue,diarrhea,salmonella
+chicken,soft shelled eggs,pale eggs,shell less eggs,reduction in eggs,egg drop syndrome
+chicken,diarrhea,cough,loss of appetite,discharge,new castle disease
+chicken,loss of appetite,diarrhea,fatigue,poor growth,salmonella
+chicken,dehydration,diarrhea,inflammation,loss of appetite,gumboro
+chicken,shell less eggs,soft shelled eggs,reduction in eggs,pale eggs,egg drop syndrome
+chicken,cough,sneezing,swelling,infection,infectious bronchitis
+chicken,swelling,sneezing,cough,infection,infectious bronchitis
+chicken,depression,cough,ruffled feathers,difficulty breathing,E. coli
+chicken,reduction in eggs,pale eggs,shell less eggs,soft shelled eggs,egg drop syndrome
+chicken,depression,decolored body parts,swelling,blisters,mycoplasma synoviae
+chicken,sneezing,cough,swelling,infection,infectious bronchitis
+chicken,dehydration,inflammation,diarrhea,loss of appetite,gumboro
+chicken,shall less eggs,reduction in eggs,pale eggs,soft shelled eggs,egg drop syndrome
+chicken,difficulty breathing,ruffled feathers,cough,depression,E. coli
+chicken,depression,ruffled feathers,cough,difficulty breathing,E. coli
+chicken,depression,blisters,decolored body parts,swelling,mycoplasma synoviae
+chicken,fever,ruffled feathers,fatigue,diarrhea,Pasteurella multocida
+chicken,sneezing,cough,swelling,infection,infectious bronchitis
+chicken,loss of appetite,cough,diarrhea,discharge,new castle disease
+chicken,soft shelled eggs,pale eggs,shell less eggs,reduction in eggs,egg drop syndrome
+chicken,fever,ruffled feathers,,diarrhea,Pasteurella multocida
+chicken,dehydration,diarrhea,inflammation,loss of appetite,gumboro
+chicken,cough,loss of appetite,diarrhea,discharge,new castle disease
+chicken,decrease in eggs,cough,sneezing,difficulty breathing,mycoplasma gallisepticum
+chicken,reduction in eggs,shall less eggs,pale eggs,soft shelled eggs,egg drop syndrome
+chicken,diarrhea,loss of appetite,fatigue,swelling,avian influenza
+chicken,reduction in eggs,pale eggs,shell less eggs,soft shelled eggs,egg drop syndrome
+chicken,difficulty breathing,cough,sneezing,decrease in egg,mycoplasma gallisepticum
+chicken,loss of appetite,cough,diarrhea,discharge,new castle disease
+chicken,cough,depression,difficulty breathing,ruffled feathers,E. coli
+chicken,depression,blisters,decolored body parts,swelling,mycoplasma synoviae
+chicken,decolored body parts,blisters,swelling,depression,mycoplasma synoviae
+chicken,loss of appetite,diarrhea,cough,discharge,new castle disease
+chicken,,ruffled feathers,fatigue,diarrhea,Pasteurella multocida
+chicken,diarrhea,loss of appetite,diarrhea,poor growth,salmonella
+chicken,sneezing,difficulty breathing,decrease in egg,cough,mycoplasma gallisepticum
+chicken,soft shelled eggs,pale eggs,shell less eggs,reduction in eggs,egg drop syndrome
+chicken,depression,cough,ruffled feathers,difficulty breathing,E. coli
+chicken,poor growth,loss of appetite,fatigue,diarrhea,salmonella
+chicken,diarrhea,loss of appetite,fatigue,swelling,avian influenza
+chicken,depression,decolored body parts,swelling,blisters,mycoplasma synoviae
+chicken,reduction in eggs,shall less eggs,pale eggs,soft shelled eggs,egg drop syndrome
+chicken,inflammation,diarrhea,dehydration,loss of appetite,gumboro
+chicken,depression,blisters,swelling,decolored body parts,mycoplasma synoviae
+chicken,depression,difficulty breathing,ruffled feathers,cough,E. coli
+chicken,diarrhea,loss of appetite,fatigue,poor growth,salmonella
+chicken,loss of appetite,discharge,diarrhea,cough,new castle disease
+chicken,diarrhea,poor growth,fatigue,loss of appetite,salmonella
+chicken,swelling,sneezing,cough,infection,infectious bronchitis
+chicken,inflammation,diarrhea,dehydration,loss of appetite,gumboro
+chicken,depression,swelling,blisters,decolored body parts,mycoplasma synoviae
+chicken,difficulty breathing,decrease in egg,sneezing,cough,mycoplasma gallisepticum
+chicken,sneezing,cough,decrease in egg,difficulty breathing,mycoplasma gallisepticum
+chicken,sneezing,difficulty breathing,decrease in egg,cough,mycoplasma gallisepticum
+chicken,diarrhea,cough,loss of appetite,discharge,new castle disease
+chicken,pale eggs,soft shelled eggs,reduction in eggs,shall less eggs,egg drop syndrome
+chicken,loss of appetite,cough,discharge,diarrhea,new castle disease
+chicken,diarrhea,loss of appetite,diarrhea,poor growth,salmonella
+chicken,loss of appetite,swelling,fatigue,diarrhea,avian influenza
+chicken,diarrhea,dehydration,inflammation,loss of appetite,gumboro
+chicken,diarrhea,cough,loss of appetite,discharge,new castle disease
+chicken,diarrhea,poor growth,fatigue,loss of appetite,salmonella
+chicken,shell legs,pale eggs,reduction in eggs,soft shelled eggs,egg drop syndrome
+chicken,difficulty breathing,depression,cough,ruffled feathers,E. coli
+chicken,fatigue,loss of appetite,diarrhea,swelling,avian influenza
+chicken,poor growth,loss of appetite,fatigue,diarrhea,salmonella
+chicken,depression,blisters,decolored body parts,swelling,mycoplasma synoviae
+chicken,difficulty breathing,decrease in egg,sneezing,cough,mycoplasma gallisepticum
+chicken,diarrhea,loss of appetite,fatigue,swelling,avian influenza
+chicken,pale eggs,soft shelled eggs,reduction in eggs,shall less eggs,egg drop syndrome
+chicken,blisters,depression,swelling,decolored body parts,mycoplasma synoviae
+chicken,poor growth,loss of appetite,fatigue,diarrhea,salmonella
+chicken,loss of appetite,fatigue,diarrhea,swelling,avian influenza
+chicken,diarrhea,fatigue,loss of appetite,swelling,avian influenza
+chicken,diarrhea,loss of appetite,diarrhea,poor growth,salmonella
+chicken,sneezing,cough,swelling,infection,infectious bronchitis
+chicken,loss of appetite,diarrhea,dehydration,inflammation,gumboro
+chicken,swelling,sneezing,cough,infection,infectious bronchitis
+chicken,dehydration,inflammation,diarrhea,loss of appetite,gumboro
+chicken,decrease in eggs,cough,sneezing,difficulty breathing,mycoplasma gallisepticum
+chicken,diarrhea,swelling,fatigue,loss of appetite,avian influenza
+chicken,loss of appetite,diarrhea,cough,discharge,new castle disease
+chicken,loss of appetite,diarrhea,fatigue,swelling,avian influenza
+chicken,fever,ruffled feathers,fatigue,diarrhea,Pasteurella multocida
+chicken,ruffled feathers,cough,depression,difficulty breathing,E. coli
+chicken,cough,sneezing,swelling,infection,infectious bronchitis
+chicken,cough,depression,difficulty breathing,ruffled feathers,E. coli
+chicken,cough,decrease in egg,sneezing,difficulty breathing,mycoplasma gallisepticum
+chicken,depression,swelling,blisters,decolored body parts,mycoplasma synoviae
+chicken,depression,difficulty breathing,ruffled feathers,cough,E. coli
+chicken,decrease in eggs,cough,sneezing,difficulty breathing,mycoplasma gallisepticum
+chicken,loss of appetite,fatigue,diarrhea,swelling,avian influenza
+chicken,cough,depression,difficulty breathing,ruffled feathers,E. coli
+chicken,dehydration,inflammation,diarrhea,loss of appetite,gumboro
+chicken,soft shelled eggs,pale eggs,shell less eggs,reduction in eggs,egg drop syndrome
+chicken,sneezing,difficulty breathing,decrease in egg,cough,mycoplasma gallisepticum
+chicken,shell less eggs,soft shelled eggs,reduction in eggs,pale eggs,egg drop syndrome
+chicken,shall less eggs,reduction in eggs,pale eggs,soft shelled eggs,egg drop syndrome
+chicken,infection,sneezing,swelling,cough,infectious bronchitis
+chicken,poor growth,loss of appetite,fatigue,diarrhea,salmonella
+chicken,pale eggs,reduction in eggs,shell less eggs,soft shelled eggs,egg drop syndrome
+chicken,difficulty breathing,cough,sneezing,decrease in egg,mycoplasma gallisepticum
+chicken,infection,sneezing,swelling,cough,infectious bronchitis
+chicken,swelling,blisters,blisters,decolored body parts,mycoplasma synoviae
+chicken,swelling,loss of appetite,fatigue,diarrhea,avian influenza
+chicken,inflammation,dehydration,diarrhea,loss of appetite,gumboro
+chicken,loss of appetite,fatigue,diarrhea,swelling,avian influenza
+chicken,decrease in eggs,cough,sneezing,difficulty breathing,mycoplasma gallisepticum
+chicken,reduction in eggs,shall less eggs,pale eggs,soft shelled eggs,egg drop syndrome
+chicken,infection,sneezing,swelling,cough,infectious bronchitis
+chicken,shell less eggs,pale eggs,soft shelled eggs,reduction in eggs,egg drop syndrome
+chicken,discharge,cough,diarrhea,loss of appetite,new castle disease
+chicken,loss of appetite,swelling,diarrhea,fatigue,avian influenza
+chicken,ruffled feathers,depression,cough,difficulty breathing,E. coli
+chicken,cough,sneezing,difficulty breathing,decrease in egg,mycoplasma gallisepticum
+chicken,cough,sneezing,difficulty breathing,decrease in egg,mycoplasma gallisepticum
+chicken,decolored body parts,blisters,swelling,depression,mycoplasma synoviae
+chicken,pale eggs,soft shelled eggs,reduction in eggs,shall less eggs,egg drop syndrome
+chicken,shell less eggs,pale eggs,soft shelled eggs,reduction in eggs,egg drop syndrome
+chicken,diarrhea,loss of appetite,diarrhea,poor growth,salmonella
+chicken,depression,blisters,swelling,decolored body parts,mycoplasma synoviae
+chicken,cough,sneezing,swelling,infection,infectious bronchitis
+chicken,depression,cough,ruffled feathers,difficulty breathing,E. coli
+chicken,loss of appetite,swelling,fatigue,diarrhea,avian influenza
+chicken,depression,blisters,swelling,decolored body parts,mycoplasma synoviae
+chicken,loss of appetite,diarrhea,cough,discharge,new castle disease
+chicken,loss of appetite,swelling,diarrhea,fatigue,avian influenza
+chicken,shell less eggs,pale eggs,soft shelled eggs,reduction in eggs,egg drop syndrome
+chicken,infection,swelling,sneezing,cough,infectious bronchitis
+chicken,cough,sneezing,difficulty breathing,decrease in egg,mycoplasma gallisepticum
+chicken,inflammation,diarrhea,dehydration,loss of appetite,gumboro
+chicken,swelling,blisters,depression,decolored body parts,mycoplasma synoviae
+chicken,pale eggs,reduction in eggs,shell less eggs,soft shelled eggs,egg drop syndrome
+chicken,difficulty breathing,depression,cough,ruffled feathers,E. coli
+chicken,sneezing,cough,swelling,infection,infectious bronchitis
+chicken,fever,ruffled feathers,fatigue,diarrhea,Pasteurella multocida
+chicken,cough,infection,sneezing,swelling,infectious bronchitis
+chicken,reduction in eggs,pale eggs,shell less eggs,soft shelled eggs,egg drop syndrome
+chicken,loss of appetite,cough,discharge,diarrhea,new castle disease
+chicken,diarrhea,fatigue,loss of appetite,poor growth,salmonella
+chicken,ruffled feathers,cough,depression,difficulty breathing,E. coli
+chicken,cough,decrease in egg,sneezing,difficulty breathing,mycoplasma gallisepticum
+chicken,difficulty breathing,cough,sneezing,decrease in egg,mycoplasma gallisepticum
+chicken,cough,loss of appetite,diarrhea,discharge,new castle disease
+chicken,depression,difficulty breathing,ruffled feathers,cough,E. coli
+chicken,depression,decolored body parts,swelling,blisters,mycoplasma synoviae
+chicken,fatigue,loss of appetite,diarrhea,swelling,avian influenza
+chicken,sneezing,cough,decrease in egg,difficulty breathing,mycoplasma gallisepticum
+chicken,loss of appetite,swelling,fatigue,diarrhea,avian influenza
+chicken,inflammation,diarrhea,dehydration,loss of appetite,gumboro
+chicken,diarrhea,loss of appetite,fatigue,poor growth,salmonella
+chicken,depression,ruffled feathers,cough,difficulty breathing,E. coli
+chicken,depression,cough,ruffled feathers,difficulty breathing,E. coli
+chicken,diarrhea,fatigue,loss of appetite,poor growth,salmonella
+chicken,depression,decolored body parts,swelling,blisters,mycoplasma synoviae
+chicken,infection,swelling,sneezing,cough,infectious bronchitis
+chicken,blisters,depression,swelling,decolored body parts,mycoplasma synoviae
+chicken,diarrhea,swelling,fatigue,loss of appetite,avian influenza
+chicken,depression,cough,ruffled feathers,difficulty breathing,E. coli
+chicken,inflammation,diarrhea,dehydration,loss of appetite,gumboro
+chicken,diarrhea,loss of appetite,fatigue,swelling,avian influenza
+chicken,swelling,sneezing,cough,infection,infectious bronchitis
+chicken,difficulty breathing,depression,cough,ruffled feathers,E. coli
+chicken,poor growth,loss of appetite,fatigue,diarrhea,salmonella
+chicken,diarrhea,loss of appetite,diarrhea,poor growth,salmonella
+chicken,loss of appetite,swelling,fatigue,diarrhea,avian influenza
+chicken,depression,cough,ruffled feathers,difficulty breathing,E. coli
+chicken,sneezing,cough,swelling,infection,infectious bronchitis
+chicken,decolored body parts,blisters,swelling,depression,mycoplasma synoviae
+chicken,,diarrhea,dehydration,loss of appetite,gumboro
+chicken,diarrhea,,fatigue,swelling,avian influenza
+chicken,swelling,,cough,infection,infectious bronchitis
+chicken,,depression,cough,ruffled feathers,E. coli
+chicken,poor growth,loss of appetite,fatigue,,salmonella
+chicken,diarrhea,loss of appetite,,poor growth,salmonella
+chicken,loss of appetite,swelling,fatigue,diarrhea,avian influenza
+chicken,,cough,ruffled feathers,,E. coli
+chicken,,cough,swelling,infection,infectious bronchitis
+chicken,,,swelling,depression,mycoplasma synoviae
+chicken,cough,infection,,swelling,infectious bronchitis
+chicken,reduction in eggs,,shell less eggs,soft shelled eggs,egg drop syndrome
+chicken,loss of appetite,cough,discharge,,new castle disease
+chicken,,,loss of appetite,poor growth,salmonella
+chicken,ruffled feathers,cough,,difficulty breathing,E. coli
+chicken,cough,,sneezing,difficulty breathing,mycoplasma gallisepticum
+chicken,difficulty breathing,,sneezing,,mycoplasma gallisepticum
+chicken,,loss of appetite,diarrhea,discharge,new castle disease
+chicken,,difficulty breathing,ruffled feathers,cough,E. coli

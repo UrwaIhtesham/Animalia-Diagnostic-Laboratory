@@ -1,0 +1,6 @@
+0: 'anthrax'
+1: 'blackleg'
+2: 'foot and mouth'
+3: 'lumpy virus'
+4: 'pneumonia'
+

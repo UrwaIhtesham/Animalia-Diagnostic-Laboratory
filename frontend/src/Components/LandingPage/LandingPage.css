@@ -1,0 +1,376 @@
+/* General styles */
+
+html, body {
+  overflow: hidden;
+}
+
+
+.main {
+  display: flex;
+  flex-direction: column;
+  /* height: 100vh;
+  width: 100vw; */
+  overflow:hidden;
+  background-color: #ccc;
+}
+
+.upper-half {
+  flex: 1;
+}
+
+/* .background-image .bg-img {
+  width: 100%;
+  height: auto;
+  display: block;
+} */
+
+.lower-half {
+  padding: 20px;
+  text-align: center;
+}
+
+/* Title styles */
+.title h1 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  z-index: 5;
+}
+
+/* Button styles */
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.btn-hover {
+  width: 15vw;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  margin: 20px;
+  height: 55px;
+  text-align: center;
+  border: none;
+  background-size: 300% 100%;
+  border-radius: 50px;
+  -moz-transition: all .4s ease-in-out;
+  -o-transition: all .4s ease-in-out;
+  -webkit-transition: all .4s ease-in-out;
+  transition: all .4s ease-in-out;
+  background-image: linear-gradient(to right, #29323c, #485563, #485563, maroon);
+  box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);
+}
+
+.btn-hover:hover {
+  background-position: 100% 0;
+  -moz-transition: all .4s ease-in-out;
+  -o-transition: all .4s ease-in-out;
+  -webkit-transition: all .4s ease-in-out;
+  transition: all .4s ease-in-out;
+}
+
+.btn-hover:focus {
+  outline: none;
+}
+
+/* Responsive styles */
+.mobile {
+  .main{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  .upper-half, .lower-half{
+    height: 50vh;
+  }
+
+  .upper-half{
+    background-image: url('pets.jpg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  }
+
+  .lower-half{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: maroon;
+    z-index: 0;
+  }
+
+  .lower-half::after{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left:0;
+    width: 100%;
+    height: 56%;
+    padding: 0px 0px;
+    margin: 0px 0px;
+    background-color: rgba(255, 255, 255, 0.2);
+    z-index: 1;
+  }
+
+  .title h1 {
+    font-size: 1.5rem;
+    color: black;
+    z-index: 5;
+  }
+
+  .lower-half p{
+    font-size: 1rem;
+    color: white;
+    z-index: 5;
+  }
+  
+  .buttons {
+    flex-direction: row;
+    gap: 1.5rem;
+    z-index: 5;
+  }
+
+  .btn-hover {
+    width: 30vw;
+    font-size: 1rem;
+    font-weight: 400;
+    color: #fff;
+    cursor: pointer;
+    margin: 20px;
+    height: 35px;
+    text-align: center;
+    border: none;
+    background-size: 300% 100%;
+    border-radius: 50px;
+    -moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+    background-image: linear-gradient(to right, #29323c, #485563, #485563, maroon);
+    box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);
+  }
+
+  .btn-hover:hover {
+    background-position: 100% 0;
+    -moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+  }
+
+  .btn-hover:focus {
+    outline: none;
+  }
+}
+
+.tablet {
+  .main{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  .upper-half, .lower-half{
+    height: 50vh;
+  }
+
+  .upper-half{
+    background-image: url('pets.jpg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  }
+
+  .lower-half{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: maroon;
+    z-index: 0;
+  }
+
+  .lower-half::after{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left:0;
+    width: 100%;
+    height: 56%;
+    padding: 0px 0px;
+    margin: 0px 0px;
+    background-color: rgba(255, 255, 255, 0.2);
+    z-index: 1;
+  }
+
+  .title h1 {
+    font-size: 2rem;
+    color: black;
+    z-index: 5;
+  }
+
+  .lower-half p{
+    font-size: 1.5rem;
+    color: white;
+    z-index: 5;
+  }
+  
+  .buttons {
+    flex-direction: row;
+    gap: 1.5rem;
+    z-index: 5;
+  }
+
+  .btn-hover {
+    width: 25vw;
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: #fff;
+    cursor: pointer;
+    margin: 20px;
+    height: 40px;
+    text-align: center;
+    border: none;
+    background-size: 300% 100%;
+    border-radius: 50px;
+    -moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+    background-image: linear-gradient(to right, #29323c, #485563, #485563, maroon);
+    box-shadow: 0 4px 15px 0 rgba(31, 37, 44, 0.75);
+  }
+
+  .btn-hover:hover {
+    background-position: 100% 0;
+    -moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+  }
+
+  .btn-hover:focus {
+    outline: none;
+  }
+}
+
+.desktop {
+  .main{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+    /* background: url('pets.jpg'); */
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    /* background-size: 100% 100%; */
+  }
+
+  .upper-half, .lower-half{
+    height: 50vh;
+  }
+
+  .upper-half{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background: url('../../../public/images/pets.jpg') no-repeat center / contain,
+    linear-gradient(to top, #e1dfe0 30%, #fdfdfd 70%); */
+    /* background-repeat:no-repeat;
+    background-size: contain;
+    background-position: center; */
+    /* scale: 1; */
+    /* background: linear-gradient(to bottom, #f8f8f8, #dbdbda); */
+    background-image: url('../../../public/images/pets.jpg');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    z-index: 1005;
+  }
+
+  .background-image{
+    background-image: url('pets.jpg');
+    background-repeat: repeat;
+    background-size: 100% 100%;
+    filter: blur(10px);
+    z-index:1004;
+  }
+
+  .lower-half{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(88, 23, 23);
+    z-index: 0;
+  }
+
+  .lower-half::after{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left:0;
+    width: 100%;
+    height: 56%;
+    padding: 0px 0px;
+    margin: 0px 0px;
+    /* background-color: rgba(255, 255, 255, 0.2); */
+    z-index: 1;
+  }
+
+  .title h1 {
+    font-size: 3rem;
+    color: black;
+    z-index: 5;
+  }
+
+  .lower-half p{
+    font-size: 2rem;
+    color: white;
+    z-index: 5;
+  }
+  
+  .buttons {
+    flex-direction: row;
+    gap: 1.5rem;
+    z-index: 5;
+    text-align: center;
+  }
+
+  .btn-hover {
+    width: 15vw;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+    margin: 2rem;
+    height: 4rem;
+    text-align: center;
+    border: none;
+    background-size: 300% 100%;
+    border-radius: 50px;
+    -moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+    background-image: linear-gradient(to right, #29323c, #485563, #485563, maroon);
+    box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);
+  }
+
+  .btn-hover:hover {
+    background-position: 100% 0;
+    -moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+  }
+
+  .btn-hover:focus {
+    outline: none;
+  }
+}
